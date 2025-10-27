@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classement du Groupe - AutoEva</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/group-ranking.css">
+
+    <style>
+      /* Add padding for fixed navbar */
+      body { padding-top: 75px; /* Adjust if your navbar height is different */ }
+    </style>
+</head>
+<body class="group-ranking-page">
+    <header id="navbar"></header>
+
+    <main class="container my-5">
+        <div class="text-center mb-5">
+            <h1 class="display-5 fw-bold text-primary">
+                <i class="bi bi-people-fill me-2"></i>Classement du Groupe
+            </h1>
+            
+            <h2 id="groupNameDisplay" class="h3 text-secondary fw-normal">Chargement...</h2>
+        </div>
+
+       
+        <div class="card shadow-sm border-0 rounded-4 ranking-card">
+            <div class="card-body p-0"> 
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped align-middle mb-0 ranking-table">
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col" class="text-center rank-col">#</th>
+                                <th scope="col" class="avatar-col"></th> 
+                                <th scope="col">Nom</th>
+                                <th scope="col" class="text-end points-col">Points</th>
+                            </tr>
+                        </thead>
+                        <tbody id="groupRankingTableBody">
+                           
+                            <tr class="placeholder-glow">
+                                <td class="text-center"><span class="placeholder col-3"></span></td>
+                                <td><div class="placeholder rounded-circle" style="width:35px; height: 35px;"></div></td>
+                                <td><span class="placeholder col-8"></span></td>
+                                <td class="text-end"><span class="placeholder col-4"></span></td>
+                            </tr>
+                            <tr class="placeholder-glow">
+                                <td class="text-center"><span class="placeholder col-3"></span></td>
+                                <td><div class="placeholder rounded-circle" style="width:35px; height: 35px;"></div></td>
+                                <td><span class="placeholder col-6"></span></td>
+                                <td class="text-end"><span class="placeholder col-4"></span></td>
+                            </tr>
+                           
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+             
+             <div class="card-footer text-center bg-light border-0 py-3">
+                 <a href="dashboard.html" class="btn btn-outline-secondary btn-sm rounded-pill px-3">
+                     <i class="bi bi-arrow-left me-1"></i>Retour au Dashboard
+                 </a>
+             </div>
+        </div>
+    </main>
+
+    <footer id="footer"></footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script type="module" src="/assets/js/student/group-ranking.js"></script> 
+    <script type="module" src="/assets/js/navbar-student.js"></script>
+    <script type="module" src="/assets/js/footer.js"></script>
+</body>
+</html>

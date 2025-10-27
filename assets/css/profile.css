@@ -1,0 +1,149 @@
+/* ======================== */
+/* Styles Globaux & Footer  */
+/* ======================== */
+html {
+    height: 100%;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  
+  /* --- Correction Sticky Footer --- */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: 75px; /* Espace pour ta navbar fixe */
+}
+
+/* ⭐️ Le <main> prend l'espace restant ⭐️ */
+main.container {
+  flex-grow: 1;
+}
+
+#footer {
+  margin-top: auto; /* Pousse le footer en bas */
+}
+
+/* ======================== */
+/* Styles de la Page Profil */
+/* ======================== */
+
+/* ===== Profil Card ===== */
+.profile-card {
+    max-width: 900px; /* Largeur augmentée */
+    margin: 20px auto; /* Marge réduite */
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    padding: 30px;
+    transition: transform 0.3s ease;
+}
+.profile-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Avatar */
+.avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid #0d6efd;
+    object-fit: cover;
+}
+
+/* Info nom/groupe */
+.info-title { font-weight: 600; color: #555; }
+.info-content { font-size: 1.1rem; }
+
+/* Quiz Table */
+.quiz-table th, .quiz-table td { vertical-align: middle; }
+
+/* ===== Skeleton Styles (CORRIGÉ) ===== */
+.skeleton-card {
+    text-align: center;
+}
+
+/* Base pour tous les skeletons (shimmer) */
+.skeleton-avatar,
+.skeleton-text,
+.skeleton-table td > div { /* Cible le <div> DANS le <td> */
+    background-color: #e9ecef; /* Couleur de base */
+    position: relative;
+    overflow: hidden; /* Important pour le shimmer */
+    border-radius: 6px;
+}
+.skeleton-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 auto 15px auto;
+}
+.skeleton-text {
+    height: 20px;
+    margin: 10px auto;
+}
+.skeleton-text.long { width: 60%; height: 25px; }
+.skeleton-text.medium { width: 40%; height: 18px; margin-bottom:20px; }
+
+/* Skeleton table (CORRIGÉ) */
+.skeleton-table td {
+    padding: 5px;
+    background: none;
+    border: none;
+}
+.skeleton-table td > div {
+    height: 20px;
+    width: 100%; 
+    margin: 0;
+}
+
+/* ===== Shimmer Animation (CORRIGÉ) ===== */
+.skeleton-avatar::after,
+.skeleton-text::after,
+.skeleton-table td > div::after { /* Cible le <div> */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+    animation: shimmer 1.5s infinite;
+    transform: translateX(-100%); 
+}
+
+@keyframes shimmer {
+    100% {
+        transform: translateX(100%); 
+    }
+}
+
+/* ===== Avatar Modal ===== */
+
+/* ❌ SUPPRIMÉ : Les styles .modal, .modal-content, et .close ont été retirés */
+/* Ils entraient en conflit avec Bootstrap. */
+
+
+/* Avatar Grid (Conservé) */
+.avatars-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.avatars-grid img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border 0.2s;
+}
+
+.avatars-grid img:hover {
+    border: 2px solid #0d6efd;
+}

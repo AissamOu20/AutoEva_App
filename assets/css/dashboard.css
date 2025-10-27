@@ -1,0 +1,211 @@
+/* ======================== */
+/* dashboard.css            */
+/* Student Dashboard Styles */
+/* ======================== */
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f8f9fa; /* Light background */
+  color: #343a40; /* Default text color */
+}
+
+/* --- Welcome Hero Section --- */
+.welcome-hero {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.9) 0%, rgba(230, 240, 255, 0.7) 100%), #ffffff; /* Subtle gradient */
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.05);
+}
+
+.welcome-hero #usernameDisplayWelcome {
+    font-weight: 700; /* Bolder username */
+}
+
+/* Typed.js Text Styling */
+.typed-text {
+  color: #0d6efd; /* Primary blue */
+  /* font-weight: 600; Inherited now */
+}
+.typed-cursor {
+    opacity: 1;
+    animation: typedjsBlink 0.7s infinite;
+}
+@keyframes typedjsBlink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Start Quiz Button */
+.btn-start-quiz {
+  font-weight: 600;
+  padding: 0.8rem 2rem;
+  box-shadow: 0 4px 15px rgba(13, 110, 253, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-start-quiz:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 25px rgba(13, 110, 253, 0.35);
+}
+
+/* --- Leaderboard Sections --- */
+.leaderboard-section h2 {
+    color: #495057; /* Dark grey heading */
+    margin-bottom: 3rem !important; /* Ensure spacing */
+}
+.leaderboard-section h2 i {
+    vertical-align: middle; /* Align icon better */
+}
+
+
+/* --- Leaderboard Card Styling (Common) --- */
+/* Reusing/Adapting styles similar to classment.css */
+.leaderboard-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 1.2rem 1rem; /* Adjusted padding */
+    text-align: center;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%; /* Ensure cards in a row have same height */
+}
+.leaderboard-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Rank Badge --- */
+.rank-badge {
+    position: absolute;
+    top: -1px; left: -1px;
+    background-color: #6c757d; /* Default */
+    color: white;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem; /* Slightly smaller */
+    font-weight: 700;
+    border-bottom-right-radius: 12px;
+    line-height: 1;
+    min-width: 35px; /* Adjusted size */
+    z-index: 2;
+}
+/* Top 3 Styles */
+.leaderboard-card.rank-1 .rank-badge { background-color: #ffc107; color: #343a40; } /* Gold */
+.leaderboard-card.rank-2 .rank-badge { background-color: #adb5bd; color: #343a40; } /* Silver */
+.leaderboard-card.rank-3 .rank-badge { background-color: #cd7f32; color: white; } /* Bronze */
+/* Optional: Add subtle borders for top 3 */
+.leaderboard-card.rank-1 { border-top: 4px solid #ffc107; }
+.leaderboard-card.rank-2 { border-top: 4px solid #adb5bd; }
+.leaderboard-card.rank-3 { border-top: 4px solid #cd7f32; }
+
+
+/* --- Student Card Specifics --- */
+.student-card .avatar {
+    width: 65px; /* Slightly smaller avatar for student list */
+    height: 65px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 0.8rem;
+    margin-bottom: 0.5rem;
+    border: 3px solid #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.student-card .name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #343a40;
+    margin-bottom: 0.1rem;
+}
+.student-card .details {
+    font-size: 0.8rem;
+    color: #6c757d;
+    margin-bottom: 0.8rem;
+}
+.student-card .points {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #198754;
+    margin-top: auto; /* Push to bottom */
+}
+
+/* --- Group Card Specifics --- */
+.group-card .group-icon { /* Optional: Add an icon for groups */
+    font-size: 3rem;
+    color: #6f42c1; /* Purple */
+    margin-top: 0.8rem;
+    margin-bottom: 0.75rem;
+}
+.group-card .name { /* Group Name */
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #343a40;
+    margin-bottom: 0.25rem;
+}
+.group-card .details { /* Student Count */
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-bottom: 1rem;
+}
+.group-card .points { /* Group Points */
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fd7e14; /* Orange for group points */
+    margin-top: auto;
+}
+
+/* --- Current User Highlight --- */
+.leaderboard-card.current-user {
+  background-color: #e6f7ec; /* Light green background */
+  border-left: 5px solid #198754 !important; /* Stronger green border */
+  box-shadow: 0 6px 20px rgba(25, 135, 84, 0.15); /* Subtle green shadow */
+}
+
+.leaderboard-card.current-user .rank-badge {
+  background-color: #198754; /* Green badge */
+  color: white;
+}
+
+.leaderboard-card.current-user .name {
+  font-weight: 700;
+  color: #146c43; /* Darker green */
+}
+
+/* --- Group Card Button --- */
+.leaderboard-card.group-card .btn-group-details {
+    margin-top: 0.75rem; /* Space above the button */
+    width: 100%; /* Make button take full width */
+}
+
+.leaderboard-card.group-card .btn-sm {
+    font-size: 0.8rem; /* Smaller button text */
+    padding: 0.3rem 0.8rem;
+}
+
+
+/* --- Skeleton Loader Styles --- */
+.skeleton-card { background-color: #e9ecef; border-color: #dee2e6; box-shadow: none; min-height: 250px; } /* Added min-height */
+.skeleton-card:hover { transform: none; box-shadow: none; }
+.skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: skeleton-loading 1.5s infinite linear; border-radius: 4px; color: transparent !important; user-select: none; border: none !important; }
+@keyframes skeleton-loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+/* Specific skeleton element sizes */
+.skeleton-card .rank-badge.skeleton { width: 35px; height: 26px; border-bottom-right-radius: 12px; background-color: #ced4da !important; animation: none; position: absolute; top: -1px; left: -1px; z-index: 2; border-left: none !important;}
+.skeleton-card .avatar.skeleton { width: 65px !important; height: 65px !important; border-radius: 50% !important; margin-top: 0.8rem !important; margin-bottom: 0.5rem !important; border: 3px solid #e0e0e0 !important; box-shadow: none !important;}
+.skeleton-card .name.skeleton { width: 50% !important; height: 18px !important; margin: 0 auto 0.4rem auto !important; }
+.skeleton-card .details.skeleton { width: 35% !important; height: 12px !important; margin: 0 auto 0.8rem auto !important; }
+.skeleton-card .points.skeleton { width: 25% !important; height: 22px !important; margin: auto auto 0 auto !important; }
+
+
+/* --- Animations --- */
+.animate-fade-in { opacity: 0; animation: fadeInAnimation 0.8s ease-out forwards; }
+.animate-slide-up { opacity: 0; transform: translateY(30px); animation: slideInUpAnimation 0.8s ease-out forwards; }
+@keyframes fadeInAnimation  { to { opacity: 1; } }
+@keyframes slideInUpAnimation { to { opacity: 1; transform: translateY(0); } }
+/* Delays */
+.animate-delay-1 { animation-delay: 0.15s; }
+.animate-delay-2 { animation-delay: 0.3s; }
+.animate-delay-3 { animation-delay: 0.45s; }
+.animate-delay-4 { animation-delay: 0.6s; }

@@ -1,0 +1,191 @@
+
+    /* Base Body Styles */
+    body {
+      font-family: 'Inter', sans-serif; /* Consistent font */
+      background-color: #f4f7f6; /* Very light background */
+      padding-top: 75px; /* Adjust if navbar height changes */
+      display: flex; /* Added for footer positioning */
+      flex-direction: column; /* Added for footer positioning */
+      min-height: 100vh; /* Added for footer positioning */
+    }
+    main {
+        flex-grow: 1; /* Allow main content to fill space */
+    }
+
+    /* ======================== */
+    /* Leaderboard Styles       */
+    /* (Copied from your CSS)   */
+    /* ======================== */
+
+    .leaderboard-page h1 {
+        color: #004F9F; /* Dark blue from logo */
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    /* --- Individual Leaderboard Card --- */
+    .leaderboard-card {
+        background-color: #ffffff;
+        border-radius: 12px; /* More rounded corners */
+        padding: 1.5rem 1rem;
+        text-align: center;
+        border: 1px solid #e9ecef;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative; /* For rank badge positioning */
+        overflow: hidden; /* Ensure rank badge corners are clipped */
+        display: flex; /* Use flexbox for layout */
+        flex-direction: column;
+        align-items: center;
+        height: 100%; /* Ensure cards in a row have same height */
+    }
+
+    .leaderboard-card:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    /* --- Rank Badge --- */
+    .rank-badge {
+        position: absolute;
+        top: -1px; /* Slight overlap for effect */
+        left: -1px;
+        background-color: #6c757d; /* Default grey */
+        color: white;
+        padding: 0.4rem 0.8rem;
+        font-size: 1rem;
+        font-weight: 700;
+        border-bottom-right-radius: 12px; /* Match card corner */
+        line-height: 1;
+        min-width: 40px; /* Ensure minimum width */
+        z-index: 2; /* Above card content */
+    }
+    .rank-badge i { /* Style for potential icon */
+        margin-right: 0.25rem;
+        font-size: 0.9em;
+    }
+
+    /* --- Top 3 Rank Styles --- */
+    .leaderboard-card.rank-1 .rank-badge { background-color: #ffc107; color: #343a40; } /* Gold */
+    .leaderboard-card.rank-2 .rank-badge { background-color: #adb5bd; color: #343a40; } /* Silver */
+    .leaderboard-card.rank-3 .rank-badge { background-color: #cd7f32; color: white; } /* Bronze */
+
+    .leaderboard-card.rank-1 { border-left: 5px solid #ffc107; }
+    .leaderboard-card.rank-2 { border-left: 5px solid #adb5bd; }
+    .leaderboard-card.rank-3 { border-left: 5px solid #cd7f32; }
+
+
+    /* --- Avatar --- */
+    .leaderboard-card .avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-top: 1rem; /* Space below rank badge */
+        margin-bottom: 0.75rem;
+        border: 3px solid #ffffff; /* White border */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+    }
+
+    /* --- Name --- */
+    .leaderboard-card .name {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #343a40;
+        margin-bottom: 0.25rem;
+    }
+
+    /* --- Details (Group) --- */
+    .leaderboard-card .details {
+        font-size: 0.85rem;
+        color: #6c757d; /* Grey text */
+        margin-bottom: 1rem;
+    }
+
+    /* --- Points --- */
+    .leaderboard-card .points {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #198754; /* Success green for points */
+        margin-top: auto; /* Push points to the bottom if card heights vary */
+    }
+    .leaderboard-card .points i { /* Optional icon */
+        font-size: 0.9em;
+        margin-right: 0.3rem;
+    }
+
+
+    /* --- Skeleton Loader Styles --- */
+    .skeleton-card {
+        background-color: #e9ecef !important; /* Lighter grey for skeleton background */
+        border-color: #dee2e6 !important;
+        box-shadow: none !important;
+        min-height: 250px; /* Give skeleton a minimum height */
+    }
+    .skeleton-card:hover {
+        transform: none !important; /* Disable hover effect on skeletons */
+        box-shadow: none !important;
+    }
+    .skeleton {
+        background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+        background-size: 200% 100%;
+        animation: skeleton-loading 1.5s infinite linear;
+        border-radius: 4px;
+        color: transparent !important; /* Hide any accidental text */
+        user-select: none !important;
+        -webkit-user-select: none;
+        border: none !important; /* Override other borders */
+    }
+    @keyframes skeleton-loading {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+    }
+
+    .skeleton-card .rank-badge.skeleton {
+        width: 40px;
+        height: 28px; /* Approx height based on padding/font-size */
+        border-bottom-right-radius: 12px;
+        background-color: #ced4da !important; /* Slightly darker grey for badge, important override */
+        animation: none; /* No shimmer on badge */
+        position: absolute; top: -1px; left: -1px;
+        z-index: 2;
+        border-left: none !important; /* Remove rank border */
+    }
+    .skeleton-card .avatar.skeleton {
+        width: 80px !important; /* Use !important if needed */
+        height: 80px !important;
+        border-radius: 50% !important;
+        margin-top: 1rem !important;
+        margin-bottom: 0.75rem !important;
+        border: 3px solid #e0e0e0 !important; /* Match shimmer color */
+        box-shadow: none !important;
+    }
+    .skeleton-card .name.skeleton {
+        width: 60% !important;
+        height: 20px !important;
+        margin: 0 auto 0.5rem auto !important; /* Center skeleton line */
+    }
+    .skeleton-card .details.skeleton {
+        width: 40% !important;
+        height: 14px !important;
+        margin: 0 auto 1rem auto !important; /* Center skeleton line */
+    }
+    .skeleton-card .points.skeleton {
+        width: 30% !important;
+        height: 24px !important;
+        margin: auto auto 0 auto !important; /* Push to bottom and center */
+    }
+
+    /* --- Current User Highlight --- */
+    .leaderboard-card.current-user {
+      background-color: #e6f7ec; /* Light green background */
+      border-left: 5px solid #198754 !important; /* Stronger green border, important override */
+      box-shadow: 0 6px 20px rgba(25, 135, 84, 0.15); /* Subtle green shadow */
+    }
+    .leaderboard-card.current-user .rank-badge {
+      background-color: #198754; /* Green badge */
+      color: white;
+    }
+    .leaderboard-card.current-user .name {
+      font-weight: 700;
+      color: #146c43; /* Darker green */
+    }

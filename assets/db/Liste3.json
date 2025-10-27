@@ -1,0 +1,4401 @@
+{
+"quizzs":[
+ {
+  "Catégorie": "Mathématiques et sciences fondamentales",
+  "Niveau": "BASE",
+  "Compétences": "Convertir les unités dans différents systèmes de mesure (métrique, impérial)",
+  "Code": "MATH",
+  "Version": "V1",
+  "ID_Quiz": "MATH-BASE-V1",
+  "Titre_Quiz": "Mathématiques et sciences fondamentales - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Mathématiques et sciences fondamentales",
+  "Niveau": "BASE",
+  "Compétences": "Calculer avec les puissances et les notations scientifiques",
+  "Code": "MATH",
+  "Version": "V2",
+  "ID_Quiz": "MATH-BASE-V2",
+  "Titre_Quiz": "Mathématiques et sciences fondamentales - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Mathématiques et sciences fondamentales",
+  "Niveau": "BASE",
+  "Compétences": "Appliquer les règles de calcul algébrique de base",
+  "Code": "MATH",
+  "Version": "V3",
+  "ID_Quiz": "MATH-BASE-V3",
+  "Titre_Quiz": "Mathématiques et sciences fondamentales - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Mathématiques et sciences fondamentales",
+  "Niveau": "BASE",
+  "Compétences": "Résoudre des équations du premier degré",
+  "Code": "MATH",
+  "Version": "V4",
+  "ID_Quiz": "MATH-BASE-V4",
+  "Titre_Quiz": "Mathématiques et sciences fondamentales - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Mathématiques et sciences fondamentales",
+  "Niveau": "BASE",
+  "Compétences": "Effectuer des calculs de proportionnalité",
+  "Code": "MATH",
+  "Version": "V5",
+  "ID_Quiz": "MATH-BASE-V5",
+  "Titre_Quiz": "Mathématiques et sciences fondamentales - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Mathématiques et sciences fondamentales",
+  "Niveau": "BASE",
+  "Compétences": "Manipuler les fractions et pourcentages",
+  "Code": "MATH",
+  "Version": "V6",
+  "ID_Quiz": "MATH-BASE-V6",
+  "Titre_Quiz": "Mathématiques et sciences fondamentales - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Mathématiques et sciences fondamentales",
+  "Niveau": "BASE",
+  "Compétences": "Interpréter des données numériques simples",
+  "Code": "MATH",
+  "Version": "V7",
+  "ID_Quiz": "MATH-BASE-V7",
+  "Titre_Quiz": "Mathématiques et sciences fondamentales - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Mathématiques et sciences fondamentales",
+  "Niveau": "BASE",
+  "Compétences": "Utiliser correctement la règle de trois",
+  "Code": "MATH",
+  "Version": "V8",
+  "ID_Quiz": "MATH-BASE-V8",
+  "Titre_Quiz": "Mathématiques et sciences fondamentales - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Mathématiques et sciences fondamentales",
+  "Niveau": "INTER",
+  "Compétences": "Résoudre des équations du second degré",
+  "Code": "MATH",
+  "Version": "V1",
+  "ID_Quiz": "MATH-INTER-V1",
+  "Titre_Quiz": "Mathématiques et sciences fondamentales - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Mathématiques et sciences fondamentales",
+  "Niveau": "INTER",
+  "Compétences": "Appliquer les formules trigonométriques dans des cas pratiques",
+  "Code": "MATH",
+  "Version": "V2",
+  "ID_Quiz": "MATH-INTER-V2",
+  "Titre_Quiz": "Mathématiques et sciences fondamentales - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Mathématiques et sciences fondamentales",
+  "Niveau": "INTER",
+  "Compétences": "Utiliser les fonctions logarithmiques et exponentielles",
+  "Code": "MATH",
+  "Version": "V3",
+  "ID_Quiz": "MATH-INTER-V3",
+  "Titre_Quiz": "Mathématiques et sciences fondamentales - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Mathématiques et sciences fondamentales",
+  "Niveau": "INTER",
+  "Compétences": "Calculer des surfaces et volumes complexes",
+  "Code": "MATH",
+  "Version": "V4",
+  "ID_Quiz": "MATH-INTER-V4",
+  "Titre_Quiz": "Mathématiques et sciences fondamentales - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Mathématiques et sciences fondamentales",
+  "Niveau": "INTER",
+  "Compétences": "Déterminer les caractéristiques d'une fonction",
+  "Code": "MATH",
+  "Version": "V5",
+  "ID_Quiz": "MATH-INTER-V5",
+  "Titre_Quiz": "Mathématiques et sciences fondamentales - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Mathématiques et sciences fondamentales",
+  "Niveau": "INTER",
+  "Compétences": "Tracer des courbes à partir d'équations",
+  "Code": "MATH",
+  "Version": "V6",
+  "ID_Quiz": "MATH-INTER-V6",
+  "Titre_Quiz": "Mathématiques et sciences fondamentales - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Mathématiques et sciences fondamentales",
+  "Niveau": "INTER",
+  "Compétences": "Analyser des données statistiques simples",
+  "Code": "MATH",
+  "Version": "V7",
+  "ID_Quiz": "MATH-INTER-V7",
+  "Titre_Quiz": "Mathématiques et sciences fondamentales - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Mathématiques et sciences fondamentales",
+  "Niveau": "INTER",
+  "Compétences": "Calculer des moyennes, médianes et écarts-types",
+  "Code": "MATH",
+  "Version": "V8",
+  "ID_Quiz": "MATH-INTER-V8",
+  "Titre_Quiz": "Mathématiques et sciences fondamentales - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Mathématiques et sciences fondamentales",
+  "Niveau": "EXPERT",
+  "Compétences": "Résoudre des systèmes d'équations à plusieurs inconnues",
+  "Code": "MATH",
+  "Version": "V1",
+  "ID_Quiz": "MATH-EXPERT-V1",
+  "Titre_Quiz": "Mathématiques et sciences fondamentales - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Mathématiques et sciences fondamentales",
+  "Niveau": "EXPERT",
+  "Compétences": "Appliquer des méthodes d'analyse de données",
+  "Code": "MATH",
+  "Version": "V2",
+  "ID_Quiz": "MATH-EXPERT-V2",
+  "Titre_Quiz": "Mathématiques et sciences fondamentales - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Mathématiques et sciences fondamentales",
+  "Niveau": "EXPERT",
+  "Compétences": "Interpréter des représentations graphiques complexes",
+  "Code": "MATH",
+  "Version": "V3",
+  "ID_Quiz": "MATH-EXPERT-V3",
+  "Titre_Quiz": "Mathématiques et sciences fondamentales - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Mathématiques et sciences fondamentales",
+  "Niveau": "EXPERT",
+  "Compétences": "Utiliser les dérivées et intégrales simples",
+  "Code": "MATH",
+  "Version": "V4",
+  "ID_Quiz": "MATH-EXPERT-V4",
+  "Titre_Quiz": "Mathématiques et sciences fondamentales - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Mathématiques et sciences fondamentales",
+  "Niveau": "EXPERT",
+  "Compétences": "Manipuler les nombres complexes",
+  "Code": "MATH",
+  "Version": "V5",
+  "ID_Quiz": "MATH-EXPERT-V5",
+  "Titre_Quiz": "Mathématiques et sciences fondamentales - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Mathématiques et sciences fondamentales",
+  "Niveau": "EXPERT",
+  "Compétences": "Analyser des phénomènes périodiques",
+  "Code": "MATH",
+  "Version": "V6",
+  "ID_Quiz": "MATH-EXPERT-V6",
+  "Titre_Quiz": "Mathématiques et sciences fondamentales - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Mathématiques et sciences fondamentales",
+  "Niveau": "EXPERT",
+  "Compétences": "Modéliser mathématiquement des situations réelles",
+  "Code": "MATH",
+  "Version": "V7",
+  "ID_Quiz": "MATH-EXPERT-V7",
+  "Titre_Quiz": "Mathématiques et sciences fondamentales - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Mathématiques et sciences fondamentales",
+  "Niveau": "EXPERT",
+  "Compétences": "Appliquer les lois de probabilité",
+  "Code": "MATH",
+  "Version": "V8",
+  "ID_Quiz": "MATH-EXPERT-V8",
+  "Titre_Quiz": "Mathématiques et sciences fondamentales - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Électricité \/ Électronique",
+  "Niveau": "BASE",
+  "Compétences": "Identifier les composants électriques de base",
+  "Code": "ELEC",
+  "Version": "V1",
+  "ID_Quiz": "ELEC-BASE-V1",
+  "Titre_Quiz": "Électricité \/ Électronique - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Électricité \/ Électronique",
+  "Niveau": "BASE",
+  "Compétences": "Mesurer les grandeurs électriques (tension, intensité, résistance)",
+  "Code": "ELEC",
+  "Version": "V2",
+  "ID_Quiz": "ELEC-BASE-V2",
+  "Titre_Quiz": "Électricité \/ Électronique - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Électricité \/ Électronique",
+  "Niveau": "BASE",
+  "Compétences": "Appliquer la loi d'Ohm dans des circuits simples",
+  "Code": "ELEC",
+  "Version": "V3",
+  "ID_Quiz": "ELEC-BASE-V3",
+  "Titre_Quiz": "Électricité \/ Électronique - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Électricité \/ Électronique",
+  "Niveau": "BASE",
+  "Compétences": "Calculer des puissances électriques",
+  "Code": "ELEC",
+  "Version": "V4",
+  "ID_Quiz": "ELEC-BASE-V4",
+  "Titre_Quiz": "Électricité \/ Électronique - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Électricité \/ Électronique",
+  "Niveau": "BASE",
+  "Compétences": "Câbler des circuits électriques simples",
+  "Code": "ELEC",
+  "Version": "V5",
+  "ID_Quiz": "ELEC-BASE-V5",
+  "Titre_Quiz": "Électricité \/ Électronique - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Électricité \/ Électronique",
+  "Niveau": "BASE",
+  "Compétences": "Lire des schémas électriques basiques",
+  "Code": "ELEC",
+  "Version": "V6",
+  "ID_Quiz": "ELEC-BASE-V6",
+  "Titre_Quiz": "Électricité \/ Électronique - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Électricité \/ Électronique",
+  "Niveau": "BASE",
+  "Compétences": "Utiliser un multimètre correctement",
+  "Code": "ELEC",
+  "Version": "V7",
+  "ID_Quiz": "ELEC-BASE-V7",
+  "Titre_Quiz": "Électricité \/ Électronique - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Électricité \/ Électronique",
+  "Niveau": "BASE",
+  "Compétences": "Respecter les normes de sécurité électrique",
+  "Code": "ELEC",
+  "Version": "V8",
+  "ID_Quiz": "ELEC-BASE-V8",
+  "Titre_Quiz": "Électricité \/ Électronique - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Électricité \/ Électronique",
+  "Niveau": "INTER",
+  "Compétences": "Analyser des circuits en courant alternatif",
+  "Code": "ELEC",
+  "Version": "V1",
+  "ID_Quiz": "ELEC-INTER-V1",
+  "Titre_Quiz": "Électricité \/ Électronique - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Électricité \/ Électronique",
+  "Niveau": "INTER",
+  "Compétences": "Dimensionner un circuit électrique selon des contraintes données",
+  "Code": "ELEC",
+  "Version": "V2",
+  "ID_Quiz": "ELEC-INTER-V2",
+  "Titre_Quiz": "Électricité \/ Électronique - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Électricité \/ Électronique",
+  "Niveau": "INTER",
+  "Compétences": "Utiliser un oscilloscope et des appareils de mesure spécialisés",
+  "Code": "ELEC",
+  "Version": "V3",
+  "ID_Quiz": "ELEC-INTER-V3",
+  "Titre_Quiz": "Électricité \/ Électronique - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Électricité \/ Électronique",
+  "Niveau": "INTER",
+  "Compétences": "Calculer des impédances complexes",
+  "Code": "ELEC",
+  "Version": "V4",
+  "ID_Quiz": "ELEC-INTER-V4",
+  "Titre_Quiz": "Électricité \/ Électronique - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Électricité \/ Électronique",
+  "Niveau": "INTER",
+  "Compétences": "Mesurer des déphasages et facteurs de puissance",
+  "Code": "ELEC",
+  "Version": "V5",
+  "ID_Quiz": "ELEC-INTER-V5",
+  "Titre_Quiz": "Électricité \/ Électronique - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Électricité \/ Électronique",
+  "Niveau": "INTER",
+  "Compétences": "Concevoir des filtres passifs",
+  "Code": "ELEC",
+  "Version": "V6",
+  "ID_Quiz": "ELEC-INTER-V6",
+  "Titre_Quiz": "Électricité \/ Électronique - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Électricité \/ Électronique",
+  "Niveau": "INTER",
+  "Compétences": "Installer des équipements électriques selon les normes",
+  "Code": "ELEC",
+  "Version": "V7",
+  "ID_Quiz": "ELEC-INTER-V7",
+  "Titre_Quiz": "Électricité \/ Électronique - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Électricité \/ Électronique",
+  "Niveau": "INTER",
+  "Compétences": "Dépanner des installations électriques simples",
+  "Code": "ELEC",
+  "Version": "V8",
+  "ID_Quiz": "ELEC-INTER-V8",
+  "Titre_Quiz": "Électricité \/ Électronique - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Électricité \/ Électronique",
+  "Niveau": "EXPERT",
+  "Compétences": "Concevoir des circuits électroniques pour applications spécifiques",
+  "Code": "ELEC",
+  "Version": "V1",
+  "ID_Quiz": "ELEC-EXPERT-V1",
+  "Titre_Quiz": "Électricité \/ Électronique - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Électricité \/ Électronique",
+  "Niveau": "EXPERT",
+  "Compétences": "Dépanner des systèmes électroniques complexes",
+  "Code": "ELEC",
+  "Version": "V2",
+  "ID_Quiz": "ELEC-EXPERT-V2",
+  "Titre_Quiz": "Électricité \/ Électronique - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Électricité \/ Électronique",
+  "Niveau": "EXPERT",
+  "Compétences": "Programmer des cartes électroniques (Arduino, Raspberry Pi)",
+  "Code": "ELEC",
+  "Version": "V3",
+  "ID_Quiz": "ELEC-EXPERT-V3",
+  "Titre_Quiz": "Électricité \/ Électronique - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Électricité \/ Électronique",
+  "Niveau": "EXPERT",
+  "Compétences": "Appliquer les principes de l'électronique numérique",
+  "Code": "ELEC",
+  "Version": "V4",
+  "ID_Quiz": "ELEC-EXPERT-V4",
+  "Titre_Quiz": "Électricité \/ Électronique - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Électricité \/ Électronique",
+  "Niveau": "EXPERT",
+  "Compétences": "Configurer des systèmes d'acquisition de données",
+  "Code": "ELEC",
+  "Version": "V5",
+  "ID_Quiz": "ELEC-EXPERT-V5",
+  "Titre_Quiz": "Électricité \/ Électronique - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Électricité \/ Électronique",
+  "Niveau": "EXPERT",
+  "Compétences": "Développer des interfaces homme-machine simples",
+  "Code": "ELEC",
+  "Version": "V6",
+  "ID_Quiz": "ELEC-EXPERT-V6",
+  "Titre_Quiz": "Électricité \/ Électronique - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Électricité \/ Électronique",
+  "Niveau": "EXPERT",
+  "Compétences": "Simuler des circuits avec des logiciels spécialisés",
+  "Code": "ELEC",
+  "Version": "V7",
+  "ID_Quiz": "ELEC-EXPERT-V7",
+  "Titre_Quiz": "Électricité \/ Électronique - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Électricité \/ Électronique",
+  "Niveau": "EXPERT",
+  "Compétences": "Dimensionner des alimentations et protections électriques",
+  "Code": "ELEC",
+  "Version": "V8",
+  "ID_Quiz": "ELEC-EXPERT-V8",
+  "Titre_Quiz": "Électricité \/ Électronique - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Mécanique \/ Pneumatique \/ Hydraulique",
+  "Niveau": "BASE",
+  "Compétences": "Identifier les composants mécaniques standards",
+  "Code": "MECA",
+  "Version": "V1",
+  "ID_Quiz": "MECA-BASE-V1",
+  "Titre_Quiz": "Mécanique \/ Pneumatique \/ Hydraulique - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Mécanique \/ Pneumatique \/ Hydraulique",
+  "Niveau": "BASE",
+  "Compétences": "Calculer des forces et des moments",
+  "Code": "MECA",
+  "Version": "V2",
+  "ID_Quiz": "MECA-BASE-V2",
+  "Titre_Quiz": "Mécanique \/ Pneumatique \/ Hydraulique - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Mécanique \/ Pneumatique \/ Hydraulique",
+  "Niveau": "BASE",
+  "Compétences": "Réaliser des schémas techniques simples",
+  "Code": "MECA",
+  "Version": "V3",
+  "ID_Quiz": "MECA-BASE-V3",
+  "Titre_Quiz": "Mécanique \/ Pneumatique \/ Hydraulique - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Mécanique \/ Pneumatique \/ Hydraulique",
+  "Niveau": "BASE",
+  "Compétences": "Mesurer des dimensions avec précision",
+  "Code": "MECA",
+  "Version": "V4",
+  "ID_Quiz": "MECA-BASE-V4",
+  "Titre_Quiz": "Mécanique \/ Pneumatique \/ Hydraulique - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Mécanique \/ Pneumatique \/ Hydraulique",
+  "Niveau": "BASE",
+  "Compétences": "Utiliser les outils de métrologie de base",
+  "Code": "MECA",
+  "Version": "V5",
+  "ID_Quiz": "MECA-BASE-V5",
+  "Titre_Quiz": "Mécanique \/ Pneumatique \/ Hydraulique - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Mécanique \/ Pneumatique \/ Hydraulique",
+  "Niveau": "BASE",
+  "Compétences": "Appliquer les principes de la statique",
+  "Code": "MECA",
+  "Version": "V6",
+  "ID_Quiz": "MECA-BASE-V6",
+  "Titre_Quiz": "Mécanique \/ Pneumatique \/ Hydraulique - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Mécanique \/ Pneumatique \/ Hydraulique",
+  "Niveau": "BASE",
+  "Compétences": "Interpréter des plans mécaniques simples",
+  "Code": "MECA",
+  "Version": "V7",
+  "ID_Quiz": "MECA-BASE-V7",
+  "Titre_Quiz": "Mécanique \/ Pneumatique \/ Hydraulique - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Mécanique \/ Pneumatique \/ Hydraulique",
+  "Niveau": "BASE",
+  "Compétences": "Respecter les tolérances dimensionnelles",
+  "Code": "MECA",
+  "Version": "V8",
+  "ID_Quiz": "MECA-BASE-V8",
+  "Titre_Quiz": "Mécanique \/ Pneumatique \/ Hydraulique - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Mécanique \/ Pneumatique \/ Hydraulique",
+  "Niveau": "INTER",
+  "Compétences": "Analyser des systèmes mécaniques en mouvement",
+  "Code": "MECA",
+  "Version": "V1",
+  "ID_Quiz": "MECA-INTER-V1",
+  "Titre_Quiz": "Mécanique \/ Pneumatique \/ Hydraulique - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Mécanique \/ Pneumatique \/ Hydraulique",
+  "Niveau": "INTER",
+  "Compétences": "Dimensionner des composants pneumatiques et hydrauliques",
+  "Code": "MECA",
+  "Version": "V2",
+  "ID_Quiz": "MECA-INTER-V2",
+  "Titre_Quiz": "Mécanique \/ Pneumatique \/ Hydraulique - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Mécanique \/ Pneumatique \/ Hydraulique",
+  "Niveau": "INTER",
+  "Compétences": "Interpréter des plans et des schémas complexes",
+  "Code": "MECA",
+  "Version": "V3",
+  "ID_Quiz": "MECA-INTER-V3",
+  "Titre_Quiz": "Mécanique \/ Pneumatique \/ Hydraulique - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Mécanique \/ Pneumatique \/ Hydraulique",
+  "Niveau": "INTER",
+  "Compétences": "Calculer des rendements mécaniques",
+  "Code": "MECA",
+  "Version": "V4",
+  "ID_Quiz": "MECA-INTER-V4",
+  "Titre_Quiz": "Mécanique \/ Pneumatique \/ Hydraulique - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Mécanique \/ Pneumatique \/ Hydraulique",
+  "Niveau": "INTER",
+  "Compétences": "Déterminer des couples et puissances nécessaires",
+  "Code": "MECA",
+  "Version": "V5",
+  "ID_Quiz": "MECA-INTER-V5",
+  "Titre_Quiz": "Mécanique \/ Pneumatique \/ Hydraulique - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Mécanique \/ Pneumatique \/ Hydraulique",
+  "Niveau": "INTER",
+  "Compétences": "Monter et ajuster des ensembles mécaniques",
+  "Code": "MECA",
+  "Version": "V6",
+  "ID_Quiz": "MECA-INTER-V6",
+  "Titre_Quiz": "Mécanique \/ Pneumatique \/ Hydraulique - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Mécanique \/ Pneumatique \/ Hydraulique",
+  "Niveau": "INTER",
+  "Compétences": "Contrôler la conformité de pièces mécaniques",
+  "Code": "MECA",
+  "Version": "V7",
+  "ID_Quiz": "MECA-INTER-V7",
+  "Titre_Quiz": "Mécanique \/ Pneumatique \/ Hydraulique - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Mécanique \/ Pneumatique \/ Hydraulique",
+  "Niveau": "INTER",
+  "Compétences": "Diagnostiquer des défauts d'alignement",
+  "Code": "MECA",
+  "Version": "V8",
+  "ID_Quiz": "MECA-INTER-V8",
+  "Titre_Quiz": "Mécanique \/ Pneumatique \/ Hydraulique - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Mécanique \/ Pneumatique \/ Hydraulique",
+  "Niveau": "EXPERT",
+  "Compétences": "Concevoir des systèmes mécaniques complets",
+  "Code": "MECA",
+  "Version": "V1",
+  "ID_Quiz": "MECA-EXPERT-V1",
+  "Titre_Quiz": "Mécanique \/ Pneumatique \/ Hydraulique - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Mécanique \/ Pneumatique \/ Hydraulique",
+  "Niveau": "EXPERT",
+  "Compétences": "Optimiser des systèmes pneumatiques et hydrauliques",
+  "Code": "MECA",
+  "Version": "V2",
+  "ID_Quiz": "MECA-EXPERT-V2",
+  "Titre_Quiz": "Mécanique \/ Pneumatique \/ Hydraulique - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Mécanique \/ Pneumatique \/ Hydraulique",
+  "Niveau": "EXPERT",
+  "Compétences": "Résoudre des problèmes complexes de dynamique",
+  "Code": "MECA",
+  "Version": "V3",
+  "ID_Quiz": "MECA-EXPERT-V3",
+  "Titre_Quiz": "Mécanique \/ Pneumatique \/ Hydraulique - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Mécanique \/ Pneumatique \/ Hydraulique",
+  "Niveau": "EXPERT",
+  "Compétences": "Utiliser des logiciels de CAO",
+  "Code": "MECA",
+  "Version": "V4",
+  "ID_Quiz": "MECA-EXPERT-V4",
+  "Titre_Quiz": "Mécanique \/ Pneumatique \/ Hydraulique - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Mécanique \/ Pneumatique \/ Hydraulique",
+  "Niveau": "EXPERT",
+  "Compétences": "Analyser des défaillances mécaniques",
+  "Code": "MECA",
+  "Version": "V5",
+  "ID_Quiz": "MECA-EXPERT-V5",
+  "Titre_Quiz": "Mécanique \/ Pneumatique \/ Hydraulique - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Mécanique \/ Pneumatique \/ Hydraulique",
+  "Niveau": "EXPERT",
+  "Compétences": "Calculer la résistance des matériaux dans des cas complexes",
+  "Code": "MECA",
+  "Version": "V6",
+  "ID_Quiz": "MECA-EXPERT-V6",
+  "Titre_Quiz": "Mécanique \/ Pneumatique \/ Hydraulique - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Mécanique \/ Pneumatique \/ Hydraulique",
+  "Niveau": "EXPERT",
+  "Compétences": "Dimensionner des composants selon des charges variables",
+  "Code": "MECA",
+  "Version": "V7",
+  "ID_Quiz": "MECA-EXPERT-V7",
+  "Titre_Quiz": "Mécanique \/ Pneumatique \/ Hydraulique - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Mécanique \/ Pneumatique \/ Hydraulique",
+  "Niveau": "EXPERT",
+  "Compétences": "Définir des gammes d'usinage ou d'assemblage",
+  "Code": "MECA",
+  "Version": "V8",
+  "ID_Quiz": "MECA-EXPERT-V8",
+  "Titre_Quiz": "Mécanique \/ Pneumatique \/ Hydraulique - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Informatique et automatismes",
+  "Niveau": "BASE",
+  "Compétences": "Utiliser efficacement les logiciels bureautiques standards",
+  "Code": "INFO",
+  "Version": "V1",
+  "ID_Quiz": "INFO-BASE-V1",
+  "Titre_Quiz": "Informatique et automatismes - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Informatique et automatismes",
+  "Niveau": "BASE",
+  "Compétences": "Configurer un ordinateur et ses périphériques",
+  "Code": "INFO",
+  "Version": "V2",
+  "ID_Quiz": "INFO-BASE-V2",
+  "Titre_Quiz": "Informatique et automatismes - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Informatique et automatismes",
+  "Niveau": "BASE",
+  "Compétences": "Rédiger des algorithmes simples",
+  "Code": "INFO",
+  "Version": "V3",
+  "ID_Quiz": "INFO-BASE-V3",
+  "Titre_Quiz": "Informatique et automatismes - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Informatique et automatismes",
+  "Niveau": "BASE",
+  "Compétences": "Installer des logiciels standards",
+  "Code": "INFO",
+  "Version": "V4",
+  "ID_Quiz": "INFO-BASE-V4",
+  "Titre_Quiz": "Informatique et automatismes - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Informatique et automatismes",
+  "Niveau": "BASE",
+  "Compétences": "Sauvegarder et archiver des données",
+  "Code": "INFO",
+  "Version": "V5",
+  "ID_Quiz": "INFO-BASE-V5",
+  "Titre_Quiz": "Informatique et automatismes - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Informatique et automatismes",
+  "Niveau": "BASE",
+  "Compétences": "Protéger un système contre les menaces basiques",
+  "Code": "INFO",
+  "Version": "V6",
+  "ID_Quiz": "INFO-BASE-V6",
+  "Titre_Quiz": "Informatique et automatismes - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Informatique et automatismes",
+  "Niveau": "BASE",
+  "Compétences": "Naviguer efficacement sur internet",
+  "Code": "INFO",
+  "Version": "V7",
+  "ID_Quiz": "INFO-BASE-V7",
+  "Titre_Quiz": "Informatique et automatismes - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Informatique et automatismes",
+  "Niveau": "BASE",
+  "Compétences": "Utiliser des outils collaboratifs",
+  "Code": "INFO",
+  "Version": "V8",
+  "ID_Quiz": "INFO-BASE-V8",
+  "Titre_Quiz": "Informatique et automatismes - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Informatique et automatismes",
+  "Niveau": "INTER",
+  "Compétences": "Programmer dans au moins un langage informatique",
+  "Code": "INFO",
+  "Version": "V1",
+  "ID_Quiz": "INFO-INTER-V1",
+  "Titre_Quiz": "Informatique et automatismes - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Informatique et automatismes",
+  "Niveau": "INTER",
+  "Compétences": "Configurer des automates programmables industriels (API)",
+  "Code": "INFO",
+  "Version": "V2",
+  "ID_Quiz": "INFO-INTER-V2",
+  "Titre_Quiz": "Informatique et automatismes - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Informatique et automatismes",
+  "Niveau": "INTER",
+  "Compétences": "Mettre en place un réseau informatique simple",
+  "Code": "INFO",
+  "Version": "V3",
+  "ID_Quiz": "INFO-INTER-V3",
+  "Titre_Quiz": "Informatique et automatismes - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Informatique et automatismes",
+  "Niveau": "INTER",
+  "Compétences": "Installer et configurer des systèmes d'exploitation",
+  "Code": "INFO",
+  "Version": "V4",
+  "ID_Quiz": "INFO-INTER-V4",
+  "Titre_Quiz": "Informatique et automatismes - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Informatique et automatismes",
+  "Niveau": "INTER",
+  "Compétences": "Développer des macros et automatisations",
+  "Code": "INFO",
+  "Version": "V5",
+  "ID_Quiz": "INFO-INTER-V5",
+  "Titre_Quiz": "Informatique et automatismes - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Informatique et automatismes",
+  "Niveau": "INTER",
+  "Compétences": "Gérer une base de données simple",
+  "Code": "INFO",
+  "Version": "V6",
+  "ID_Quiz": "INFO-INTER-V6",
+  "Titre_Quiz": "Informatique et automatismes - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Informatique et automatismes",
+  "Niveau": "INTER",
+  "Compétences": "Diagnostiquer des pannes informatiques courantes",
+  "Code": "INFO",
+  "Version": "V7",
+  "ID_Quiz": "INFO-INTER-V7",
+  "Titre_Quiz": "Informatique et automatismes - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Informatique et automatismes",
+  "Niveau": "INTER",
+  "Compétences": "Réaliser des interfaces simples homme-machine",
+  "Code": "INFO",
+  "Version": "V8",
+  "ID_Quiz": "INFO-INTER-V8",
+  "Titre_Quiz": "Informatique et automatismes - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Informatique et automatismes",
+  "Niveau": "EXPERT",
+  "Compétences": "Développer des applications métier complètes",
+  "Code": "INFO",
+  "Version": "V1",
+  "ID_Quiz": "INFO-EXPERT-V1",
+  "Titre_Quiz": "Informatique et automatismes - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Informatique et automatismes",
+  "Niveau": "EXPERT",
+  "Compétences": "Configurer des systèmes SCADA",
+  "Code": "INFO",
+  "Version": "V2",
+  "ID_Quiz": "INFO-EXPERT-V2",
+  "Titre_Quiz": "Informatique et automatismes - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Informatique et automatismes",
+  "Niveau": "EXPERT",
+  "Compétences": "Implémenter des protocoles de communication industriels",
+  "Code": "INFO",
+  "Version": "V3",
+  "ID_Quiz": "INFO-EXPERT-V3",
+  "Titre_Quiz": "Informatique et automatismes - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Informatique et automatismes",
+  "Niveau": "EXPERT",
+  "Compétences": "Sécuriser des réseaux informatiques",
+  "Code": "INFO",
+  "Version": "V4",
+  "ID_Quiz": "INFO-EXPERT-V4",
+  "Titre_Quiz": "Informatique et automatismes - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Informatique et automatismes",
+  "Niveau": "EXPERT",
+  "Compétences": "Intégrer des systèmes d'information",
+  "Code": "INFO",
+  "Version": "V5",
+  "ID_Quiz": "INFO-EXPERT-V5",
+  "Titre_Quiz": "Informatique et automatismes - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Informatique et automatismes",
+  "Niveau": "EXPERT",
+  "Compétences": "Optimiser des bases de données",
+  "Code": "INFO",
+  "Version": "V6",
+  "ID_Quiz": "INFO-EXPERT-V6",
+  "Titre_Quiz": "Informatique et automatismes - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Informatique et automatismes",
+  "Niveau": "EXPERT",
+  "Compétences": "Déployer des solutions IoT industrielles",
+  "Code": "INFO",
+  "Version": "V7",
+  "ID_Quiz": "INFO-EXPERT-V7",
+  "Titre_Quiz": "Informatique et automatismes - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Informatique et automatismes",
+  "Niveau": "EXPERT",
+  "Compétences": "Automatiser des processus industriels complexes",
+  "Code": "INFO",
+  "Version": "V8",
+  "ID_Quiz": "INFO-EXPERT-V8",
+  "Titre_Quiz": "Informatique et automatismes - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Maintenance et dépannage",
+  "Niveau": "BASE",
+  "Compétences": "Appliquer des procédures de maintenance préventive",
+  "Code": "MAINT",
+  "Version": "V1",
+  "ID_Quiz": "MAINT-BASE-V1",
+  "Titre_Quiz": "Maintenance et dépannage - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Maintenance et dépannage",
+  "Niveau": "BASE",
+  "Compétences": "Utiliser correctement l'outillage standard",
+  "Code": "MAINT",
+  "Version": "V2",
+  "ID_Quiz": "MAINT-BASE-V2",
+  "Titre_Quiz": "Maintenance et dépannage - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Maintenance et dépannage",
+  "Niveau": "BASE",
+  "Compétences": "Diagnostiquer des pannes simples",
+  "Code": "MAINT",
+  "Version": "V3",
+  "ID_Quiz": "MAINT-BASE-V3",
+  "Titre_Quiz": "Maintenance et dépannage - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Maintenance et dépannage",
+  "Niveau": "BASE",
+  "Compétences": "Remplacer des composants défectueux",
+  "Code": "MAINT",
+  "Version": "V4",
+  "ID_Quiz": "MAINT-BASE-V4",
+  "Titre_Quiz": "Maintenance et dépannage - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Maintenance et dépannage",
+  "Niveau": "BASE",
+  "Compétences": "Rédiger des comptes-rendus d'intervention",
+  "Code": "MAINT",
+  "Version": "V5",
+  "ID_Quiz": "MAINT-BASE-V5",
+  "Titre_Quiz": "Maintenance et dépannage - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Maintenance et dépannage",
+  "Niveau": "BASE",
+  "Compétences": "Respecter les plannings de maintenance",
+  "Code": "MAINT",
+  "Version": "V6",
+  "ID_Quiz": "MAINT-BASE-V6",
+  "Titre_Quiz": "Maintenance et dépannage - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Maintenance et dépannage",
+  "Niveau": "BASE",
+  "Compétences": "Nettoyer et ranger les équipements",
+  "Code": "MAINT",
+  "Version": "V7",
+  "ID_Quiz": "MAINT-BASE-V7",
+  "Titre_Quiz": "Maintenance et dépannage - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Maintenance et dépannage",
+  "Niveau": "BASE",
+  "Compétences": "Vérifier le bon fonctionnement après intervention",
+  "Code": "MAINT",
+  "Version": "V8",
+  "ID_Quiz": "MAINT-BASE-V8",
+  "Titre_Quiz": "Maintenance et dépannage - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Maintenance et dépannage",
+  "Niveau": "INTER",
+  "Compétences": "Planifier des opérations de maintenance",
+  "Code": "MAINT",
+  "Version": "V1",
+  "ID_Quiz": "MAINT-INTER-V1",
+  "Titre_Quiz": "Maintenance et dépannage - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Maintenance et dépannage",
+  "Niveau": "INTER",
+  "Compétences": "Effectuer des interventions de dépannage complexes",
+  "Code": "MAINT",
+  "Version": "V2",
+  "ID_Quiz": "MAINT-INTER-V2",
+  "Titre_Quiz": "Maintenance et dépannage - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Maintenance et dépannage",
+  "Niveau": "INTER",
+  "Compétences": "Utiliser des instruments de diagnostic spécialisés",
+  "Code": "MAINT",
+  "Version": "V3",
+  "ID_Quiz": "MAINT-INTER-V3",
+  "Titre_Quiz": "Maintenance et dépannage - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Maintenance et dépannage",
+  "Niveau": "INTER",
+  "Compétences": "Analyser des historiques de pannes",
+  "Code": "MAINT",
+  "Version": "V4",
+  "ID_Quiz": "MAINT-INTER-V4",
+  "Titre_Quiz": "Maintenance et dépannage - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Maintenance et dépannage",
+  "Niveau": "INTER",
+  "Compétences": "Réaliser des contrôles non destructifs",
+  "Code": "MAINT",
+  "Version": "V5",
+  "ID_Quiz": "MAINT-INTER-V5",
+  "Titre_Quiz": "Maintenance et dépannage - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Maintenance et dépannage",
+  "Niveau": "INTER",
+  "Compétences": "Ajuster des mécanismes de précision",
+  "Code": "MAINT",
+  "Version": "V6",
+  "ID_Quiz": "MAINT-INTER-V6",
+  "Titre_Quiz": "Maintenance et dépannage - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Maintenance et dépannage",
+  "Niveau": "INTER",
+  "Compétences": "Calibrer des instruments de mesure",
+  "Code": "MAINT",
+  "Version": "V7",
+  "ID_Quiz": "MAINT-INTER-V7",
+  "Titre_Quiz": "Maintenance et dépannage - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Maintenance et dépannage",
+  "Niveau": "INTER",
+  "Compétences": "Coordonner des interventions multi-techniques",
+  "Code": "MAINT",
+  "Version": "V8",
+  "ID_Quiz": "MAINT-INTER-V8",
+  "Titre_Quiz": "Maintenance et dépannage - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Maintenance et dépannage",
+  "Niveau": "EXPERT",
+  "Compétences": "Mettre en œuvre une maintenance prédictive",
+  "Code": "MAINT",
+  "Version": "V1",
+  "ID_Quiz": "MAINT-EXPERT-V1",
+  "Titre_Quiz": "Maintenance et dépannage - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Maintenance et dépannage",
+  "Niveau": "EXPERT",
+  "Compétences": "Analyser les défaillances récurrentes",
+  "Code": "MAINT",
+  "Version": "V2",
+  "ID_Quiz": "MAINT-EXPERT-V2",
+  "Titre_Quiz": "Maintenance et dépannage - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Maintenance et dépannage",
+  "Niveau": "EXPERT",
+  "Compétences": "Proposer des solutions d'amélioration",
+  "Code": "MAINT",
+  "Version": "V3",
+  "ID_Quiz": "MAINT-EXPERT-V3",
+  "Titre_Quiz": "Maintenance et dépannage - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Maintenance et dépannage",
+  "Niveau": "EXPERT",
+  "Compétences": "Optimiser les plans de maintenance",
+  "Code": "MAINT",
+  "Version": "V4",
+  "ID_Quiz": "MAINT-EXPERT-V4",
+  "Titre_Quiz": "Maintenance et dépannage - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Maintenance et dépannage",
+  "Niveau": "EXPERT",
+  "Compétences": "Gérer des stocks de pièces détachées",
+  "Code": "MAINT",
+  "Version": "V5",
+  "ID_Quiz": "MAINT-EXPERT-V5",
+  "Titre_Quiz": "Maintenance et dépannage - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Maintenance et dépannage",
+  "Niveau": "EXPERT",
+  "Compétences": "Former des techniciens aux procédures de maintenance",
+  "Code": "MAINT",
+  "Version": "V6",
+  "ID_Quiz": "MAINT-EXPERT-V6",
+  "Titre_Quiz": "Maintenance et dépannage - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Maintenance et dépannage",
+  "Niveau": "EXPERT",
+  "Compétences": "Rédiger des modes opératoires détaillés",
+  "Code": "MAINT",
+  "Version": "V7",
+  "ID_Quiz": "MAINT-EXPERT-V7",
+  "Titre_Quiz": "Maintenance et dépannage - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Maintenance et dépannage",
+  "Niveau": "EXPERT",
+  "Compétences": "Calculer des indicateurs de performance maintenance",
+  "Code": "MAINT",
+  "Version": "V8",
+  "ID_Quiz": "MAINT-EXPERT-V8",
+  "Titre_Quiz": "Maintenance et dépannage - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Qualité, sécurité et environnement",
+  "Niveau": "BASE",
+  "Compétences": "Appliquer les règles de sécurité au travail",
+  "Code": "QSE",
+  "Version": "V1",
+  "ID_Quiz": "QSE-BASE-V1",
+  "Titre_Quiz": "Qualité, sécurité et environnement - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Qualité, sécurité et environnement",
+  "Niveau": "BASE",
+  "Compétences": "Respecter les procédures qualité",
+  "Code": "QSE",
+  "Version": "V2",
+  "ID_Quiz": "QSE-BASE-V2",
+  "Titre_Quiz": "Qualité, sécurité et environnement - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Qualité, sécurité et environnement",
+  "Niveau": "BASE",
+  "Compétences": "Gérer correctement les déchets industriels",
+  "Code": "QSE",
+  "Version": "V3",
+  "ID_Quiz": "QSE-BASE-V3",
+  "Titre_Quiz": "Qualité, sécurité et environnement - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Qualité, sécurité et environnement",
+  "Niveau": "BASE",
+  "Compétences": "Utiliser les équipements de protection individuelle",
+  "Code": "QSE",
+  "Version": "V4",
+  "ID_Quiz": "QSE-BASE-V4",
+  "Titre_Quiz": "Qualité, sécurité et environnement - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Qualité, sécurité et environnement",
+  "Niveau": "BASE",
+  "Compétences": "Identifier les risques dans son environnement de travail",
+  "Code": "QSE",
+  "Version": "V5",
+  "ID_Quiz": "QSE-BASE-V5",
+  "Titre_Quiz": "Qualité, sécurité et environnement - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Qualité, sécurité et environnement",
+  "Niveau": "BASE",
+  "Compétences": "Réagir correctement en cas d'urgence",
+  "Code": "QSE",
+  "Version": "V6",
+  "ID_Quiz": "QSE-BASE-V6",
+  "Titre_Quiz": "Qualité, sécurité et environnement - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Qualité, sécurité et environnement",
+  "Niveau": "BASE",
+  "Compétences": "Trier les déchets selon leur nature",
+  "Code": "QSE",
+  "Version": "V7",
+  "ID_Quiz": "QSE-BASE-V7",
+  "Titre_Quiz": "Qualité, sécurité et environnement - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Qualité, sécurité et environnement",
+  "Niveau": "BASE",
+  "Compétences": "Signaler les non-conformités",
+  "Code": "QSE",
+  "Version": "V8",
+  "ID_Quiz": "QSE-BASE-V8",
+  "Titre_Quiz": "Qualité, sécurité et environnement - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Qualité, sécurité et environnement",
+  "Niveau": "INTER",
+  "Compétences": "Participer à une démarche d'amélioration continue",
+  "Code": "QSE",
+  "Version": "V1",
+  "ID_Quiz": "QSE-INTER-V1",
+  "Titre_Quiz": "Qualité, sécurité et environnement - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Qualité, sécurité et environnement",
+  "Niveau": "INTER",
+  "Compétences": "Mettre en œuvre des plans de prévention des risques",
+  "Code": "QSE",
+  "Version": "V2",
+  "ID_Quiz": "QSE-INTER-V2",
+  "Titre_Quiz": "Qualité, sécurité et environnement - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Qualité, sécurité et environnement",
+  "Niveau": "INTER",
+  "Compétences": "Appliquer les normes ISO pertinentes",
+  "Code": "QSE",
+  "Version": "V3",
+  "ID_Quiz": "QSE-INTER-V3",
+  "Titre_Quiz": "Qualité, sécurité et environnement - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Qualité, sécurité et environnement",
+  "Niveau": "INTER",
+  "Compétences": "Réaliser des contrôles qualité",
+  "Code": "QSE",
+  "Version": "V4",
+  "ID_Quiz": "QSE-INTER-V4",
+  "Titre_Quiz": "Qualité, sécurité et environnement - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Qualité, sécurité et environnement",
+  "Niveau": "INTER",
+  "Compétences": "Analyser des causes de non-conformité",
+  "Code": "QSE",
+  "Version": "V5",
+  "ID_Quiz": "QSE-INTER-V5",
+  "Titre_Quiz": "Qualité, sécurité et environnement - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Qualité, sécurité et environnement",
+  "Niveau": "INTER",
+  "Compétences": "Proposer des actions correctives",
+  "Code": "QSE",
+  "Version": "V6",
+  "ID_Quiz": "QSE-INTER-V6",
+  "Titre_Quiz": "Qualité, sécurité et environnement - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Qualité, sécurité et environnement",
+  "Niveau": "INTER",
+  "Compétences": "Sensibiliser les équipes aux bonnes pratiques",
+  "Code": "QSE",
+  "Version": "V7",
+  "ID_Quiz": "QSE-INTER-V7",
+  "Titre_Quiz": "Qualité, sécurité et environnement - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Qualité, sécurité et environnement",
+  "Niveau": "INTER",
+  "Compétences": "Évaluer l'impact environnemental d'un procédé",
+  "Code": "QSE",
+  "Version": "V8",
+  "ID_Quiz": "QSE-INTER-V8",
+  "Titre_Quiz": "Qualité, sécurité et environnement - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Qualité, sécurité et environnement",
+  "Niveau": "EXPERT",
+  "Compétences": "Piloter des audits qualité",
+  "Code": "QSE",
+  "Version": "V1",
+  "ID_Quiz": "QSE-EXPERT-V1",
+  "Titre_Quiz": "Qualité, sécurité et environnement - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Qualité, sécurité et environnement",
+  "Niveau": "EXPERT",
+  "Compétences": "Analyser les risques professionnels et environnementaux",
+  "Code": "QSE",
+  "Version": "V2",
+  "ID_Quiz": "QSE-EXPERT-V2",
+  "Titre_Quiz": "Qualité, sécurité et environnement - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Qualité, sécurité et environnement",
+  "Niveau": "EXPERT",
+  "Compétences": "Proposer des solutions d'optimisation énergétique",
+  "Code": "QSE",
+  "Version": "V3",
+  "ID_Quiz": "QSE-EXPERT-V3",
+  "Titre_Quiz": "Qualité, sécurité et environnement - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Qualité, sécurité et environnement",
+  "Niveau": "EXPERT",
+  "Compétences": "Mettre en place des systèmes de management intégré",
+  "Code": "QSE",
+  "Version": "V4",
+  "ID_Quiz": "QSE-EXPERT-V4",
+  "Titre_Quiz": "Qualité, sécurité et environnement - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Qualité, sécurité et environnement",
+  "Niveau": "EXPERT",
+  "Compétences": "Élaborer des tableaux de bord qualité",
+  "Code": "QSE",
+  "Version": "V5",
+  "ID_Quiz": "QSE-EXPERT-V5",
+  "Titre_Quiz": "Qualité, sécurité et environnement - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Qualité, sécurité et environnement",
+  "Niveau": "EXPERT",
+  "Compétences": "Conduire des revues de processus",
+  "Code": "QSE",
+  "Version": "V6",
+  "ID_Quiz": "QSE-EXPERT-V6",
+  "Titre_Quiz": "Qualité, sécurité et environnement - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Qualité, sécurité et environnement",
+  "Niveau": "EXPERT",
+  "Compétences": "Gérer des situations de crise",
+  "Code": "QSE",
+  "Version": "V7",
+  "ID_Quiz": "QSE-EXPERT-V7",
+  "Titre_Quiz": "Qualité, sécurité et environnement - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Qualité, sécurité et environnement",
+  "Niveau": "EXPERT",
+  "Compétences": "Développer une démarche RSE adaptée",
+  "Code": "QSE",
+  "Version": "V8",
+  "ID_Quiz": "QSE-EXPERT-V8",
+  "Titre_Quiz": "Qualité, sécurité et environnement - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Compétences transversales",
+  "Niveau": "BASE",
+  "Compétences": "Communiquer clairement à l'écrit et à l'oral",
+  "Code": "TRANS",
+  "Version": "V1",
+  "ID_Quiz": "TRANS-BASE-V1",
+  "Titre_Quiz": "Compétences transversales - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Compétences transversales",
+  "Niveau": "BASE",
+  "Compétences": "Travailler efficacement en équipe",
+  "Code": "TRANS",
+  "Version": "V2",
+  "ID_Quiz": "TRANS-BASE-V2",
+  "Titre_Quiz": "Compétences transversales - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Compétences transversales",
+  "Niveau": "BASE",
+  "Compétences": "Organiser son travail selon les priorités",
+  "Code": "TRANS",
+  "Version": "V3",
+  "ID_Quiz": "TRANS-BASE-V3",
+  "Titre_Quiz": "Compétences transversales - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Compétences transversales",
+  "Niveau": "BASE",
+  "Compétences": "Rechercher des informations pertinentes",
+  "Code": "TRANS",
+  "Version": "V4",
+  "ID_Quiz": "TRANS-BASE-V4",
+  "Titre_Quiz": "Compétences transversales - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Compétences transversales",
+  "Niveau": "BASE",
+  "Compétences": "Respecter les délais impartis",
+  "Code": "TRANS",
+  "Version": "V5",
+  "ID_Quiz": "TRANS-BASE-V5",
+  "Titre_Quiz": "Compétences transversales - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Compétences transversales",
+  "Niveau": "BASE",
+  "Compétences": "Écouter activement les interlocuteurs",
+  "Code": "TRANS",
+  "Version": "V6",
+  "ID_Quiz": "TRANS-BASE-V6",
+  "Titre_Quiz": "Compétences transversales - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Compétences transversales",
+  "Niveau": "BASE",
+  "Compétences": "Synthétiser des informations techniques",
+  "Code": "TRANS",
+  "Version": "V7",
+  "ID_Quiz": "TRANS-BASE-V7",
+  "Titre_Quiz": "Compétences transversales - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Compétences transversales",
+  "Niveau": "BASE",
+  "Compétences": "S'adapter aux changements de situation",
+  "Code": "TRANS",
+  "Version": "V8",
+  "ID_Quiz": "TRANS-BASE-V8",
+  "Titre_Quiz": "Compétences transversales - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Compétences transversales",
+  "Niveau": "INTER",
+  "Compétences": "Rédiger des rapports techniques détaillés",
+  "Code": "TRANS",
+  "Version": "V1",
+  "ID_Quiz": "TRANS-INTER-V1",
+  "Titre_Quiz": "Compétences transversales - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Compétences transversales",
+  "Niveau": "INTER",
+  "Compétences": "Animer des réunions professionnelles",
+  "Code": "TRANS",
+  "Version": "V2",
+  "ID_Quiz": "TRANS-INTER-V2",
+  "Titre_Quiz": "Compétences transversales - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Compétences transversales",
+  "Niveau": "INTER",
+  "Compétences": "Gérer un projet technique simple",
+  "Code": "TRANS",
+  "Version": "V3",
+  "ID_Quiz": "TRANS-INTER-V3",
+  "Titre_Quiz": "Compétences transversales - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Compétences transversales",
+  "Niveau": "INTER",
+  "Compétences": "Négocier avec des fournisseurs ou clients",
+  "Code": "TRANS",
+  "Version": "V4",
+  "ID_Quiz": "TRANS-INTER-V4",
+  "Titre_Quiz": "Compétences transversales - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Compétences transversales",
+  "Niveau": "INTER",
+  "Compétences": "Expliquer des concepts techniques à des non-spécialistes",
+  "Code": "TRANS",
+  "Version": "V5",
+  "ID_Quiz": "TRANS-INTER-V5",
+  "Titre_Quiz": "Compétences transversales - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Compétences transversales",
+  "Niveau": "INTER",
+  "Compétences": "Résoudre des conflits interpersonnels",
+  "Code": "TRANS",
+  "Version": "V6",
+  "ID_Quiz": "TRANS-INTER-V6",
+  "Titre_Quiz": "Compétences transversales - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Compétences transversales",
+  "Niveau": "INTER",
+  "Compétences": "Prendre des initiatives appropriées",
+  "Code": "TRANS",
+  "Version": "V7",
+  "ID_Quiz": "TRANS-INTER-V7",
+  "Titre_Quiz": "Compétences transversales - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Compétences transversales",
+  "Niveau": "INTER",
+  "Compétences": "Argumenter des choix techniques",
+  "Code": "TRANS",
+  "Version": "V8",
+  "ID_Quiz": "TRANS-INTER-V8",
+  "Titre_Quiz": "Compétences transversales - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Compétences transversales",
+  "Niveau": "EXPERT",
+  "Compétences": "Former des collaborateurs sur des sujets techniques",
+  "Code": "TRANS",
+  "Version": "V1",
+  "ID_Quiz": "TRANS-EXPERT-V1",
+  "Titre_Quiz": "Compétences transversales - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Compétences transversales",
+  "Niveau": "EXPERT",
+  "Compétences": "Coordonner l'activité d'une équipe technique",
+  "Code": "TRANS",
+  "Version": "V2",
+  "ID_Quiz": "TRANS-EXPERT-V2",
+  "Titre_Quiz": "Compétences transversales - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Compétences transversales",
+  "Niveau": "EXPERT",
+  "Compétences": "Conduire un projet d'amélioration complexe",
+  "Code": "TRANS",
+  "Version": "V3",
+  "ID_Quiz": "TRANS-EXPERT-V3",
+  "Titre_Quiz": "Compétences transversales - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Compétences transversales",
+  "Niveau": "EXPERT",
+  "Compétences": "Représenter l'entreprise auprès de partenaires",
+  "Code": "TRANS",
+  "Version": "V4",
+  "ID_Quiz": "TRANS-EXPERT-V4",
+  "Titre_Quiz": "Compétences transversales - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Compétences transversales",
+  "Niveau": "EXPERT",
+  "Compétences": "Budgétiser des interventions techniques",
+  "Code": "TRANS",
+  "Version": "V5",
+  "ID_Quiz": "TRANS-EXPERT-V5",
+  "Titre_Quiz": "Compétences transversales - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Compétences transversales",
+  "Niveau": "EXPERT",
+  "Compétences": "Élaborer des cahiers des charges fonctionnels",
+  "Code": "TRANS",
+  "Version": "V6",
+  "ID_Quiz": "TRANS-EXPERT-V6",
+  "Titre_Quiz": "Compétences transversales - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Compétences transversales",
+  "Niveau": "EXPERT",
+  "Compétences": "Négocier des contrats de maintenance",
+  "Code": "TRANS",
+  "Version": "V7",
+  "ID_Quiz": "TRANS-EXPERT-V7",
+  "Titre_Quiz": "Compétences transversales - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Compétences transversales",
+  "Niveau": "EXPERT",
+  "Compétences": "Développer un réseau professionnel",
+  "Code": "TRANS",
+  "Version": "V8",
+  "ID_Quiz": "TRANS-EXPERT-V8",
+  "Titre_Quiz": "Compétences transversales - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Savoirs technologiques spécifiques",
+  "Niveau": "BASE",
+  "Compétences": "Identifier les matériaux et leurs propriétés",
+  "Code": "TECH",
+  "Version": "V1",
+  "ID_Quiz": "TECH-BASE-V1",
+  "Titre_Quiz": "Savoirs technologiques spécifiques - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Savoirs technologiques spécifiques",
+  "Niveau": "BASE",
+  "Compétences": "Utiliser les outils informatiques du domaine",
+  "Code": "TECH",
+  "Version": "V2",
+  "ID_Quiz": "TECH-BASE-V2",
+  "Titre_Quiz": "Savoirs technologiques spécifiques - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Savoirs technologiques spécifiques",
+  "Niveau": "BASE",
+  "Compétences": "Appliquer les normes sectorielles de base",
+  "Code": "TECH",
+  "Version": "V3",
+  "ID_Quiz": "TECH-BASE-V3",
+  "Titre_Quiz": "Savoirs technologiques spécifiques - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Savoirs technologiques spécifiques",
+  "Niveau": "BASE",
+  "Compétences": "Lire des documents techniques en anglais",
+  "Code": "TECH",
+  "Version": "V4",
+  "ID_Quiz": "TECH-BASE-V4",
+  "Titre_Quiz": "Savoirs technologiques spécifiques - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Savoirs technologiques spécifiques",
+  "Niveau": "BASE",
+  "Compétences": "Manipuler des instruments de mesure spécifiques",
+  "Code": "TECH",
+  "Version": "V5",
+  "ID_Quiz": "TECH-BASE-V5",
+  "Titre_Quiz": "Savoirs technologiques spécifiques - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Savoirs technologiques spécifiques",
+  "Niveau": "BASE",
+  "Compétences": "Respecter les réglementations professionnelles",
+  "Code": "TECH",
+  "Version": "V6",
+  "ID_Quiz": "TECH-BASE-V6",
+  "Titre_Quiz": "Savoirs technologiques spécifiques - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Savoirs technologiques spécifiques",
+  "Niveau": "BASE",
+  "Compétences": "Utiliser le vocabulaire technique approprié",
+  "Code": "TECH",
+  "Version": "V7",
+  "ID_Quiz": "TECH-BASE-V7",
+  "Titre_Quiz": "Savoirs technologiques spécifiques - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Savoirs technologiques spécifiques",
+  "Niveau": "BASE",
+  "Compétences": "Suivre les procédures d'assurance qualité",
+  "Code": "TECH",
+  "Version": "V8",
+  "ID_Quiz": "TECH-BASE-V8",
+  "Titre_Quiz": "Savoirs technologiques spécifiques - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Savoirs technologiques spécifiques",
+  "Niveau": "INTER",
+  "Compétences": "Analyser les caractéristiques techniques des équipements",
+  "Code": "TECH",
+  "Version": "V1",
+  "ID_Quiz": "TECH-INTER-V1",
+  "Titre_Quiz": "Savoirs technologiques spécifiques - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Savoirs technologiques spécifiques",
+  "Niveau": "INTER",
+  "Compétences": "Comparer des solutions technologiques",
+  "Code": "TECH",
+  "Version": "V2",
+  "ID_Quiz": "TECH-INTER-V2",
+  "Titre_Quiz": "Savoirs technologiques spécifiques - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Savoirs technologiques spécifiques",
+  "Niveau": "INTER",
+  "Compétences": "Traduire un besoin client en solutions techniques",
+  "Code": "TECH",
+  "Version": "V3",
+  "ID_Quiz": "TECH-INTER-V3",
+  "Titre_Quiz": "Savoirs technologiques spécifiques - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Savoirs technologiques spécifiques",
+  "Niveau": "INTER",
+  "Compétences": "Réaliser des essais selon des protocoles établis",
+  "Code": "TECH",
+  "Version": "V4",
+  "ID_Quiz": "TECH-INTER-V4",
+  "Titre_Quiz": "Savoirs technologiques spécifiques - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Savoirs technologiques spécifiques",
+  "Niveau": "INTER",
+  "Compétences": "Interpréter des résultats d'analyse",
+  "Code": "TECH",
+  "Version": "V5",
+  "ID_Quiz": "TECH-INTER-V5",
+  "Titre_Quiz": "Savoirs technologiques spécifiques - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Savoirs technologiques spécifiques",
+  "Niveau": "INTER",
+  "Compétences": "Adapter des solutions à des contraintes spécifiques",
+  "Code": "TECH",
+  "Version": "V6",
+  "ID_Quiz": "TECH-INTER-V6",
+  "Titre_Quiz": "Savoirs technologiques spécifiques - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Savoirs technologiques spécifiques",
+  "Niveau": "INTER",
+  "Compétences": "Évaluer la conformité d'une installation",
+  "Code": "TECH",
+  "Version": "V7",
+  "ID_Quiz": "TECH-INTER-V7",
+  "Titre_Quiz": "Savoirs technologiques spécifiques - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Savoirs technologiques spécifiques",
+  "Niveau": "INTER",
+  "Compétences": "Proposer des améliorations techniques",
+  "Code": "TECH",
+  "Version": "V8",
+  "ID_Quiz": "TECH-INTER-V8",
+  "Titre_Quiz": "Savoirs technologiques spécifiques - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Savoirs technologiques spécifiques",
+  "Niveau": "EXPERT",
+  "Compétences": "Développer des solutions techniques innovantes",
+  "Code": "TECH",
+  "Version": "V1",
+  "ID_Quiz": "TECH-EXPERT-V1",
+  "Titre_Quiz": "Savoirs technologiques spécifiques - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Savoirs technologiques spécifiques",
+  "Niveau": "EXPERT",
+  "Compétences": "Intégrer des technologies émergentes",
+  "Code": "TECH",
+  "Version": "V2",
+  "ID_Quiz": "TECH-EXPERT-V2",
+  "Titre_Quiz": "Savoirs technologiques spécifiques - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Savoirs technologiques spécifiques",
+  "Niveau": "EXPERT",
+  "Compétences": "Optimiser des processus industriels",
+  "Code": "TECH",
+  "Version": "V3",
+  "ID_Quiz": "TECH-EXPERT-V3",
+  "Titre_Quiz": "Savoirs technologiques spécifiques - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Savoirs technologiques spécifiques",
+  "Niveau": "EXPERT",
+  "Compétences": "Concevoir des bancs de test spécifiques",
+  "Code": "TECH",
+  "Version": "V4",
+  "ID_Quiz": "TECH-EXPERT-V4",
+  "Titre_Quiz": "Savoirs technologiques spécifiques - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Savoirs technologiques spécifiques",
+  "Niveau": "EXPERT",
+  "Compétences": "Élaborer des méthodes d'essai",
+  "Code": "TECH",
+  "Version": "V5",
+  "ID_Quiz": "TECH-EXPERT-V5",
+  "Titre_Quiz": "Savoirs technologiques spécifiques - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Savoirs technologiques spécifiques",
+  "Niveau": "EXPERT",
+  "Compétences": "Veiller technologiquement dans son domaine",
+  "Code": "TECH",
+  "Version": "V6",
+  "ID_Quiz": "TECH-EXPERT-V6",
+  "Titre_Quiz": "Savoirs technologiques spécifiques - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Savoirs technologiques spécifiques",
+  "Niveau": "EXPERT",
+  "Compétences": "Collaborer avec des bureaux d'études",
+  "Code": "TECH",
+  "Version": "V7",
+  "ID_Quiz": "TECH-EXPERT-V7",
+  "Titre_Quiz": "Savoirs technologiques spécifiques - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Savoirs technologiques spécifiques",
+  "Niveau": "EXPERT",
+  "Compétences": "Valider des solutions par prototypage",
+  "Code": "TECH",
+  "Version": "V8",
+  "ID_Quiz": "TECH-EXPERT-V8",
+  "Titre_Quiz": "Savoirs technologiques spécifiques - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Unités et grandeurs physiques",
+  "Niveau": "BASE",
+  "Compétences": "Identifier les unités du système international (SI) et leurs symboles",
+  "Code": "UNIT",
+  "Version": "V1",
+  "ID_Quiz": "UNIT-BASE-V1",
+  "Titre_Quiz": "Unités et grandeurs physiques - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Unités et grandeurs physiques",
+  "Niveau": "BASE",
+  "Compétences": "Associer correctement les unités aux grandeurs physiques correspondantes",
+  "Code": "UNIT",
+  "Version": "V2",
+  "ID_Quiz": "UNIT-BASE-V2",
+  "Titre_Quiz": "Unités et grandeurs physiques - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Unités et grandeurs physiques",
+  "Niveau": "BASE",
+  "Compétences": "Convertir des unités au sein d'un même système de mesure",
+  "Code": "UNIT",
+  "Version": "V3",
+  "ID_Quiz": "UNIT-BASE-V3",
+  "Titre_Quiz": "Unités et grandeurs physiques - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Unités et grandeurs physiques",
+  "Niveau": "BASE",
+  "Compétences": "Reconnaitre les préfixes des multiples et sous-multiples (kilo, milli, micro, etc.)",
+  "Code": "UNIT",
+  "Version": "V4",
+  "ID_Quiz": "UNIT-BASE-V4",
+  "Titre_Quiz": "Unités et grandeurs physiques - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Unités et grandeurs physiques",
+  "Niveau": "BASE",
+  "Compétences": "Distinguer les grandeurs scalaires des grandeurs vectorielles",
+  "Code": "UNIT",
+  "Version": "V5",
+  "ID_Quiz": "UNIT-BASE-V5",
+  "Titre_Quiz": "Unités et grandeurs physiques - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Unités et grandeurs physiques",
+  "Niveau": "BASE",
+  "Compétences": "Utiliser les unités dérivées pour les grandeurs composées",
+  "Code": "UNIT",
+  "Version": "V6",
+  "ID_Quiz": "UNIT-BASE-V6",
+  "Titre_Quiz": "Unités et grandeurs physiques - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Unités et grandeurs physiques",
+  "Niveau": "BASE",
+  "Compétences": "Appliquer les règles d'écriture des unités (majuscules, symboles)",
+  "Code": "UNIT",
+  "Version": "V7",
+  "ID_Quiz": "UNIT-BASE-V7",
+  "Titre_Quiz": "Unités et grandeurs physiques - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Unités et grandeurs physiques",
+  "Niveau": "BASE",
+  "Compétences": "Calculer avec les unités composées (N\/m², kg·m\/s², etc.)",
+  "Code": "UNIT",
+  "Version": "V8",
+  "ID_Quiz": "UNIT-BASE-V8",
+  "Titre_Quiz": "Unités et grandeurs physiques - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Unités et grandeurs physiques",
+  "Niveau": "INTER",
+  "Compétences": "Convertir des unités entre différents systèmes de mesure (métrique, impérial)",
+  "Code": "UNIT",
+  "Version": "V1",
+  "ID_Quiz": "UNIT-INTER-V1",
+  "Titre_Quiz": "Unités et grandeurs physiques - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Unités et grandeurs physiques",
+  "Niveau": "INTER",
+  "Compétences": "Analyser la cohérence dimensionnelle d'une équation",
+  "Code": "UNIT",
+  "Version": "V2",
+  "ID_Quiz": "UNIT-INTER-V2",
+  "Titre_Quiz": "Unités et grandeurs physiques - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Unités et grandeurs physiques",
+  "Niveau": "INTER",
+  "Compétences": "Utiliser les unités spécifiques à différents domaines techniques",
+  "Code": "UNIT",
+  "Version": "V3",
+  "ID_Quiz": "UNIT-INTER-V3",
+  "Titre_Quiz": "Unités et grandeurs physiques - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Unités et grandeurs physiques",
+  "Niveau": "INTER",
+  "Compétences": "Déterminer les unités résultant d'opérations entre grandeurs",
+  "Code": "UNIT",
+  "Version": "V4",
+  "ID_Quiz": "UNIT-INTER-V4",
+  "Titre_Quiz": "Unités et grandeurs physiques - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Unités et grandeurs physiques",
+  "Niveau": "INTER",
+  "Compétences": "Manipuler les ordres de grandeur et la notation scientifique",
+  "Code": "UNIT",
+  "Version": "V5",
+  "ID_Quiz": "UNIT-INTER-V5",
+  "Titre_Quiz": "Unités et grandeurs physiques - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Unités et grandeurs physiques",
+  "Niveau": "INTER",
+  "Compétences": "Évaluer l'incertitude d'une mesure et son impact",
+  "Code": "UNIT",
+  "Version": "V6",
+  "ID_Quiz": "UNIT-INTER-V6",
+  "Titre_Quiz": "Unités et grandeurs physiques - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Unités et grandeurs physiques",
+  "Niveau": "INTER",
+  "Compétences": "Choisir les unités adaptées à un contexte professionnel spécifique",
+  "Code": "UNIT",
+  "Version": "V7",
+  "ID_Quiz": "UNIT-INTER-V7",
+  "Titre_Quiz": "Unités et grandeurs physiques - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Unités et grandeurs physiques",
+  "Niveau": "INTER",
+  "Compétences": "Interpréter les équations aux dimensions",
+  "Code": "UNIT",
+  "Version": "V8",
+  "ID_Quiz": "UNIT-INTER-V8",
+  "Titre_Quiz": "Unités et grandeurs physiques - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Unités et grandeurs physiques",
+  "Niveau": "EXPERT",
+  "Compétences": "Établir des relations entre grandeurs physiques complexes",
+  "Code": "UNIT",
+  "Version": "V1",
+  "ID_Quiz": "UNIT-EXPERT-V1",
+  "Titre_Quiz": "Unités et grandeurs physiques - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Unités et grandeurs physiques",
+  "Niveau": "EXPERT",
+  "Compétences": "Vérifier l'homogénéité d'une formule par analyse dimensionnelle",
+  "Code": "UNIT",
+  "Version": "V2",
+  "ID_Quiz": "UNIT-EXPERT-V2",
+  "Titre_Quiz": "Unités et grandeurs physiques - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Unités et grandeurs physiques",
+  "Niveau": "EXPERT",
+  "Compétences": "Adapter des modèles physiques à différents systèmes d'unités",
+  "Code": "UNIT",
+  "Version": "V3",
+  "ID_Quiz": "UNIT-EXPERT-V3",
+  "Titre_Quiz": "Unités et grandeurs physiques - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Unités et grandeurs physiques",
+  "Niveau": "EXPERT",
+  "Compétences": "Concevoir des systèmes de mesure pour des grandeurs spécifiques",
+  "Code": "UNIT",
+  "Version": "V4",
+  "ID_Quiz": "UNIT-EXPERT-V4",
+  "Titre_Quiz": "Unités et grandeurs physiques - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Unités et grandeurs physiques",
+  "Niveau": "EXPERT",
+  "Compétences": "Évaluer la propagation des incertitudes dans des calculs complexes",
+  "Code": "UNIT",
+  "Version": "V5",
+  "ID_Quiz": "UNIT-EXPERT-V5",
+  "Titre_Quiz": "Unités et grandeurs physiques - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Unités et grandeurs physiques",
+  "Niveau": "EXPERT",
+  "Compétences": "Créer des abaques de conversion pour des grandeurs composées",
+  "Code": "UNIT",
+  "Version": "V6",
+  "ID_Quiz": "UNIT-EXPERT-V6",
+  "Titre_Quiz": "Unités et grandeurs physiques - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Unités et grandeurs physiques",
+  "Niveau": "EXPERT",
+  "Compétences": "Interpréter des grandeurs adimensionnelles (nombre de Reynolds, etc.)",
+  "Code": "UNIT",
+  "Version": "V7",
+  "ID_Quiz": "UNIT-EXPERT-V7",
+  "Titre_Quiz": "Unités et grandeurs physiques - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Unités et grandeurs physiques",
+  "Niveau": "EXPERT",
+  "Compétences": "Appliquer les méthodes de régression pour établir des lois physiques",
+  "Code": "UNIT",
+  "Version": "V8",
+  "ID_Quiz": "UNIT-EXPERT-V8",
+  "Titre_Quiz": "Unités et grandeurs physiques - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Logique et raisonnement",
+  "Niveau": "BASE",
+  "Compétences": "Identifier les propositions vraies et fausses",
+  "Code": "LOG",
+  "Version": "V1",
+  "ID_Quiz": "LOG-BASE-V1",
+  "Titre_Quiz": "Logique et raisonnement - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Logique et raisonnement",
+  "Niveau": "BASE",
+  "Compétences": "Appliquer les opérateurs logiques de base (ET, OU, NON)",
+  "Code": "LOG",
+  "Version": "V2",
+  "ID_Quiz": "LOG-BASE-V2",
+  "Titre_Quiz": "Logique et raisonnement - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Logique et raisonnement",
+  "Niveau": "BASE",
+  "Compétences": "Construire des tables de vérité simples",
+  "Code": "LOG",
+  "Version": "V3",
+  "ID_Quiz": "LOG-BASE-V3",
+  "Titre_Quiz": "Logique et raisonnement - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Logique et raisonnement",
+  "Niveau": "BASE",
+  "Compétences": "Formuler des raisonnements déductifs élémentaires",
+  "Code": "LOG",
+  "Version": "V4",
+  "ID_Quiz": "LOG-BASE-V4",
+  "Titre_Quiz": "Logique et raisonnement - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Logique et raisonnement",
+  "Niveau": "BASE",
+  "Compétences": "Reconnaître les implications logiques directes",
+  "Code": "LOG",
+  "Version": "V5",
+  "ID_Quiz": "LOG-BASE-V5",
+  "Titre_Quiz": "Logique et raisonnement - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Logique et raisonnement",
+  "Niveau": "BASE",
+  "Compétences": "Détecter les contradictions dans un raisonnement simple",
+  "Code": "LOG",
+  "Version": "V6",
+  "ID_Quiz": "LOG-BASE-V6",
+  "Titre_Quiz": "Logique et raisonnement - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Logique et raisonnement",
+  "Niveau": "BASE",
+  "Compétences": "Appliquer le raisonnement par contraposée",
+  "Code": "LOG",
+  "Version": "V7",
+  "ID_Quiz": "LOG-BASE-V7",
+  "Titre_Quiz": "Logique et raisonnement - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Logique et raisonnement",
+  "Niveau": "BASE",
+  "Compétences": "Utiliser la logique propositionnelle dans des situations concrètes",
+  "Code": "LOG",
+  "Version": "V8",
+  "ID_Quiz": "LOG-BASE-V8",
+  "Titre_Quiz": "Logique et raisonnement - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Logique et raisonnement",
+  "Niveau": "INTER",
+  "Compétences": "Concevoir des circuits logiques combinatoires",
+  "Code": "LOG",
+  "Version": "V1",
+  "ID_Quiz": "LOG-INTER-V1",
+  "Titre_Quiz": "Logique et raisonnement - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Logique et raisonnement",
+  "Niveau": "INTER",
+  "Compétences": "Résoudre des problèmes par raisonnement par récurrence",
+  "Code": "LOG",
+  "Version": "V2",
+  "ID_Quiz": "LOG-INTER-V2",
+  "Titre_Quiz": "Logique et raisonnement - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Logique et raisonnement",
+  "Niveau": "INTER",
+  "Compétences": "Utiliser les quantificateurs logiques (∀, ∃)",
+  "Code": "LOG",
+  "Version": "V3",
+  "ID_Quiz": "LOG-INTER-V3",
+  "Titre_Quiz": "Logique et raisonnement - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Logique et raisonnement",
+  "Niveau": "INTER",
+  "Compétences": "Appliquer les règles d'inférence logique",
+  "Code": "LOG",
+  "Version": "V4",
+  "ID_Quiz": "LOG-INTER-V4",
+  "Titre_Quiz": "Logique et raisonnement - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Logique et raisonnement",
+  "Niveau": "INTER",
+  "Compétences": "Formaliser des problèmes concrets en expressions logiques",
+  "Code": "LOG",
+  "Version": "V5",
+  "ID_Quiz": "LOG-INTER-V5",
+  "Titre_Quiz": "Logique et raisonnement - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Logique et raisonnement",
+  "Niveau": "INTER",
+  "Compétences": "Analyser des algorithmes selon leur logique",
+  "Code": "LOG",
+  "Version": "V6",
+  "ID_Quiz": "LOG-INTER-V6",
+  "Titre_Quiz": "Logique et raisonnement - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Logique et raisonnement",
+  "Niveau": "INTER",
+  "Compétences": "Construire des démonstrations par l'absurde",
+  "Code": "LOG",
+  "Version": "V7",
+  "ID_Quiz": "LOG-INTER-V7",
+  "Titre_Quiz": "Logique et raisonnement - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Logique et raisonnement",
+  "Niveau": "INTER",
+  "Compétences": "Décomposer un problème complexe en sous-problèmes logiques",
+  "Code": "LOG",
+  "Version": "V8",
+  "ID_Quiz": "LOG-INTER-V8",
+  "Titre_Quiz": "Logique et raisonnement - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Logique et raisonnement",
+  "Niveau": "EXPERT",
+  "Compétences": "Développer des fonctions logiques complexes",
+  "Code": "LOG",
+  "Version": "V1",
+  "ID_Quiz": "LOG-EXPERT-V1",
+  "Titre_Quiz": "Logique et raisonnement - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Logique et raisonnement",
+  "Niveau": "EXPERT",
+  "Compétences": "Optimiser des expressions logiques",
+  "Code": "LOG",
+  "Version": "V2",
+  "ID_Quiz": "LOG-EXPERT-V2",
+  "Titre_Quiz": "Logique et raisonnement - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Logique et raisonnement",
+  "Niveau": "EXPERT",
+  "Compétences": "Concevoir des circuits séquentiels",
+  "Code": "LOG",
+  "Version": "V3",
+  "ID_Quiz": "LOG-EXPERT-V3",
+  "Titre_Quiz": "Logique et raisonnement - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Logique et raisonnement",
+  "Niveau": "EXPERT",
+  "Compétences": "Appliquer la logique floue à des problèmes techniques",
+  "Code": "LOG",
+  "Version": "V4",
+  "ID_Quiz": "LOG-EXPERT-V4",
+  "Titre_Quiz": "Logique et raisonnement - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Logique et raisonnement",
+  "Niveau": "EXPERT",
+  "Compétences": "Modéliser des systèmes à états finis",
+  "Code": "LOG",
+  "Version": "V5",
+  "ID_Quiz": "LOG-EXPERT-V5",
+  "Titre_Quiz": "Logique et raisonnement - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Logique et raisonnement",
+  "Niveau": "EXPERT",
+  "Compétences": "Implémenter des automates programmables selon une logique définie",
+  "Code": "LOG",
+  "Version": "V6",
+  "ID_Quiz": "LOG-EXPERT-V6",
+  "Titre_Quiz": "Logique et raisonnement - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Logique et raisonnement",
+  "Niveau": "EXPERT",
+  "Compétences": "Analyser des protocoles de communication selon leur logique",
+  "Code": "LOG",
+  "Version": "V7",
+  "ID_Quiz": "LOG-EXPERT-V7",
+  "Titre_Quiz": "Logique et raisonnement - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Logique et raisonnement",
+  "Niveau": "EXPERT",
+  "Compétences": "Évaluer la robustesse logique d'un système",
+  "Code": "LOG",
+  "Version": "V8",
+  "ID_Quiz": "LOG-EXPERT-V8",
+  "Titre_Quiz": "Logique et raisonnement - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Métrologie et instrumentation",
+  "Niveau": "BASE",
+  "Compétences": "Choisir l'instrument de mesure adapté à une grandeur spécifique",
+  "Code": "METRO",
+  "Version": "V1",
+  "ID_Quiz": "METRO-BASE-V1",
+  "Titre_Quiz": "Métrologie et instrumentation - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Métrologie et instrumentation",
+  "Niveau": "BASE",
+  "Compétences": "Vérifier l'étalonnage d'un instrument de mesure",
+  "Code": "METRO",
+  "Version": "V2",
+  "ID_Quiz": "METRO-BASE-V2",
+  "Titre_Quiz": "Métrologie et instrumentation - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Métrologie et instrumentation",
+  "Niveau": "BASE",
+  "Compétences": "Estimer la précision d'une mesure",
+  "Code": "METRO",
+  "Version": "V3",
+  "ID_Quiz": "METRO-BASE-V3",
+  "Titre_Quiz": "Métrologie et instrumentation - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Métrologie et instrumentation",
+  "Niveau": "BASE",
+  "Compétences": "Appliquer les procédures de mesure standardisées",
+  "Code": "METRO",
+  "Version": "V4",
+  "ID_Quiz": "METRO-BASE-V4",
+  "Titre_Quiz": "Métrologie et instrumentation - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Métrologie et instrumentation",
+  "Niveau": "BASE",
+  "Compétences": "Identifier les sources d'erreur dans une chaîne de mesure",
+  "Code": "METRO",
+  "Version": "V5",
+  "ID_Quiz": "METRO-BASE-V5",
+  "Titre_Quiz": "Métrologie et instrumentation - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Métrologie et instrumentation",
+  "Niveau": "BASE",
+  "Compétences": "Interpréter les spécifications métrologiques d'un appareil",
+  "Code": "METRO",
+  "Version": "V6",
+  "ID_Quiz": "METRO-BASE-V6",
+  "Titre_Quiz": "Métrologie et instrumentation - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Métrologie et instrumentation",
+  "Niveau": "BASE",
+  "Compétences": "Enregistrer des mesures selon les formats conventionnels",
+  "Code": "METRO",
+  "Version": "V7",
+  "ID_Quiz": "METRO-BASE-V7",
+  "Titre_Quiz": "Métrologie et instrumentation - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Métrologie et instrumentation",
+  "Niveau": "BASE",
+  "Compétences": "Manipuler correctement les instruments sans les endommager",
+  "Code": "METRO",
+  "Version": "V8",
+  "ID_Quiz": "METRO-BASE-V8",
+  "Titre_Quiz": "Métrologie et instrumentation - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Métrologie et instrumentation",
+  "Niveau": "INTER",
+  "Compétences": "Calibrer des instruments de mesure selon les références",
+  "Code": "METRO",
+  "Version": "V1",
+  "ID_Quiz": "METRO-INTER-V1",
+  "Titre_Quiz": "Métrologie et instrumentation - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Métrologie et instrumentation",
+  "Niveau": "INTER",
+  "Compétences": "Analyser la répétabilité et reproductibilité des mesures",
+  "Code": "METRO",
+  "Version": "V2",
+  "ID_Quiz": "METRO-INTER-V2",
+  "Titre_Quiz": "Métrologie et instrumentation - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Métrologie et instrumentation",
+  "Niveau": "INTER",
+  "Compétences": "Calculer des incertitudes de mesure composées",
+  "Code": "METRO",
+  "Version": "V3",
+  "ID_Quiz": "METRO-INTER-V3",
+  "Titre_Quiz": "Métrologie et instrumentation - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Métrologie et instrumentation",
+  "Niveau": "INTER",
+  "Compétences": "Corriger les erreurs systématiques identifiées",
+  "Code": "METRO",
+  "Version": "V4",
+  "ID_Quiz": "METRO-INTER-V4",
+  "Titre_Quiz": "Métrologie et instrumentation - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Métrologie et instrumentation",
+  "Niveau": "INTER",
+  "Compétences": "Concevoir un protocole de mesure adapté à un besoin spécifique",
+  "Code": "METRO",
+  "Version": "V5",
+  "ID_Quiz": "METRO-INTER-V5",
+  "Titre_Quiz": "Métrologie et instrumentation - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Métrologie et instrumentation",
+  "Niveau": "INTER",
+  "Compétences": "Interpréter des certificats d'étalonnage",
+  "Code": "METRO",
+  "Version": "V6",
+  "ID_Quiz": "METRO-INTER-V6",
+  "Titre_Quiz": "Métrologie et instrumentation - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Métrologie et instrumentation",
+  "Niveau": "INTER",
+  "Compétences": "Configurer des systèmes d'acquisition de données",
+  "Code": "METRO",
+  "Version": "V7",
+  "ID_Quiz": "METRO-INTER-V7",
+  "Titre_Quiz": "Métrologie et instrumentation - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Métrologie et instrumentation",
+  "Niveau": "INTER",
+  "Compétences": "Vérifier la traçabilité métrologique d'une mesure",
+  "Code": "METRO",
+  "Version": "V8",
+  "ID_Quiz": "METRO-INTER-V8",
+  "Titre_Quiz": "Métrologie et instrumentation - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Métrologie et instrumentation",
+  "Niveau": "EXPERT",
+  "Compétences": "Développer des méthodes d'étalonnage pour des instruments spécifiques",
+  "Code": "METRO",
+  "Version": "V1",
+  "ID_Quiz": "METRO-EXPERT-V1",
+  "Titre_Quiz": "Métrologie et instrumentation - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Métrologie et instrumentation",
+  "Niveau": "EXPERT",
+  "Compétences": "Mettre en œuvre une chaîne de mesure complexe",
+  "Code": "METRO",
+  "Version": "V2",
+  "ID_Quiz": "METRO-EXPERT-V2",
+  "Titre_Quiz": "Métrologie et instrumentation - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Métrologie et instrumentation",
+  "Niveau": "EXPERT",
+  "Compétences": "Optimiser les paramètres métrologiques d'un système",
+  "Code": "METRO",
+  "Version": "V3",
+  "ID_Quiz": "METRO-EXPERT-V3",
+  "Titre_Quiz": "Métrologie et instrumentation - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Métrologie et instrumentation",
+  "Niveau": "EXPERT",
+  "Compétences": "Analyser statistiquement des séries de mesures",
+  "Code": "METRO",
+  "Version": "V4",
+  "ID_Quiz": "METRO-EXPERT-V4",
+  "Titre_Quiz": "Métrologie et instrumentation - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Métrologie et instrumentation",
+  "Niveau": "EXPERT",
+  "Compétences": "Évaluer la conformité d'un processus par rapport à des tolérances",
+  "Code": "METRO",
+  "Version": "V5",
+  "ID_Quiz": "METRO-EXPERT-V5",
+  "Titre_Quiz": "Métrologie et instrumentation - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Métrologie et instrumentation",
+  "Niveau": "EXPERT",
+  "Compétences": "Gérer un parc d'instruments de mesure",
+  "Code": "METRO",
+  "Version": "V6",
+  "ID_Quiz": "METRO-EXPERT-V6",
+  "Titre_Quiz": "Métrologie et instrumentation - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Métrologie et instrumentation",
+  "Niveau": "EXPERT",
+  "Compétences": "Développer un plan d'assurance qualité métrologique",
+  "Code": "METRO",
+  "Version": "V7",
+  "ID_Quiz": "METRO-EXPERT-V7",
+  "Titre_Quiz": "Métrologie et instrumentation - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Métrologie et instrumentation",
+  "Niveau": "EXPERT",
+  "Compétences": "Concevoir des dispositifs d'essai conformes aux normes",
+  "Code": "METRO",
+  "Version": "V8",
+  "ID_Quiz": "METRO-EXPERT-V8",
+  "Titre_Quiz": "Métrologie et instrumentation - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Analyse et résolution de problèmes",
+  "Niveau": "BASE",
+  "Compétences": "Identifier clairement un problème technique",
+  "Code": "PROB",
+  "Version": "V1",
+  "ID_Quiz": "PROB-BASE-V1",
+  "Titre_Quiz": "Analyse et résolution de problèmes - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Analyse et résolution de problèmes",
+  "Niveau": "BASE",
+  "Compétences": "Collecter des données pertinentes sur une situation problématique",
+  "Code": "PROB",
+  "Version": "V2",
+  "ID_Quiz": "PROB-BASE-V2",
+  "Titre_Quiz": "Analyse et résolution de problèmes - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Analyse et résolution de problèmes",
+  "Niveau": "BASE",
+  "Compétences": "Distinguer les causes des symptômes",
+  "Code": "PROB",
+  "Version": "V3",
+  "ID_Quiz": "PROB-BASE-V3",
+  "Titre_Quiz": "Analyse et résolution de problèmes - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Analyse et résolution de problèmes",
+  "Niveau": "BASE",
+  "Compétences": "Appliquer des méthodes structurées de résolution de problèmes",
+  "Code": "PROB",
+  "Version": "V4",
+  "ID_Quiz": "PROB-BASE-V4",
+  "Titre_Quiz": "Analyse et résolution de problèmes - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Analyse et résolution de problèmes",
+  "Niveau": "BASE",
+  "Compétences": "Documenter les étapes de la résolution d'un problème",
+  "Code": "PROB",
+  "Version": "V5",
+  "ID_Quiz": "PROB-BASE-V5",
+  "Titre_Quiz": "Analyse et résolution de problèmes - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Analyse et résolution de problèmes",
+  "Niveau": "BASE",
+  "Compétences": "Vérifier l'efficacité d'une solution appliquée",
+  "Code": "PROB",
+  "Version": "V6",
+  "ID_Quiz": "PROB-BASE-V6",
+  "Titre_Quiz": "Analyse et résolution de problèmes - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Analyse et résolution de problèmes",
+  "Niveau": "BASE",
+  "Compétences": "Utiliser des check-lists de diagnostic",
+  "Code": "PROB",
+  "Version": "V7",
+  "ID_Quiz": "PROB-BASE-V7",
+  "Titre_Quiz": "Analyse et résolution de problèmes - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Analyse et résolution de problèmes",
+  "Niveau": "BASE",
+  "Compétences": "Communiquer clairement sur un problème identifié",
+  "Code": "PROB",
+  "Version": "V8",
+  "ID_Quiz": "PROB-BASE-V8",
+  "Titre_Quiz": "Analyse et résolution de problèmes - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Analyse et résolution de problèmes",
+  "Niveau": "INTER",
+  "Compétences": "Analyser un problème complexe par décomposition",
+  "Code": "PROB",
+  "Version": "V1",
+  "ID_Quiz": "PROB-INTER-V1",
+  "Titre_Quiz": "Analyse et résolution de problèmes - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Analyse et résolution de problèmes",
+  "Niveau": "INTER",
+  "Compétences": "Appliquer la méthode des 5 Pourquoi ou le diagramme d'Ishikawa",
+  "Code": "PROB",
+  "Version": "V2",
+  "ID_Quiz": "PROB-INTER-V2",
+  "Titre_Quiz": "Analyse et résolution de problèmes - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Analyse et résolution de problèmes",
+  "Niveau": "INTER",
+  "Compétences": "Prioriser les problèmes selon leur impact",
+  "Code": "PROB",
+  "Version": "V3",
+  "ID_Quiz": "PROB-INTER-V3",
+  "Titre_Quiz": "Analyse et résolution de problèmes - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Analyse et résolution de problèmes",
+  "Niveau": "INTER",
+  "Compétences": "Élaborer plusieurs hypothèses explicatives",
+  "Code": "PROB",
+  "Version": "V4",
+  "ID_Quiz": "PROB-INTER-V4",
+  "Titre_Quiz": "Analyse et résolution de problèmes - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Analyse et résolution de problèmes",
+  "Niveau": "INTER",
+  "Compétences": "Concevoir des tests pour valider ou invalider des hypothèses",
+  "Code": "PROB",
+  "Version": "V5",
+  "ID_Quiz": "PROB-INTER-V5",
+  "Titre_Quiz": "Analyse et résolution de problèmes - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Analyse et résolution de problèmes",
+  "Niveau": "INTER",
+  "Compétences": "Appliquer des raisonnements inductifs et déductifs",
+  "Code": "PROB",
+  "Version": "V6",
+  "ID_Quiz": "PROB-INTER-V6",
+  "Titre_Quiz": "Analyse et résolution de problèmes - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Analyse et résolution de problèmes",
+  "Niveau": "INTER",
+  "Compétences": "Utiliser l'analyse par arbre des causes",
+  "Code": "PROB",
+  "Version": "V7",
+  "ID_Quiz": "PROB-INTER-V7",
+  "Titre_Quiz": "Analyse et résolution de problèmes - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Analyse et résolution de problèmes",
+  "Niveau": "INTER",
+  "Compétences": "Synthétiser les apprentissages issus de la résolution d'un problème",
+  "Code": "PROB",
+  "Version": "V8",
+  "ID_Quiz": "PROB-INTER-V8",
+  "Titre_Quiz": "Analyse et résolution de problèmes - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Analyse et résolution de problèmes",
+  "Niveau": "EXPERT",
+  "Compétences": "Mettre en œuvre des méthodes avancées de résolution de problèmes (DMAIC, 8D)",
+  "Code": "PROB",
+  "Version": "V1",
+  "ID_Quiz": "PROB-EXPERT-V1",
+  "Titre_Quiz": "Analyse et résolution de problèmes - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Analyse et résolution de problèmes",
+  "Niveau": "EXPERT",
+  "Compétences": "Anticiper des problèmes potentiels par analyse préventive",
+  "Code": "PROB",
+  "Version": "V2",
+  "ID_Quiz": "PROB-EXPERT-V2",
+  "Titre_Quiz": "Analyse et résolution de problèmes - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Analyse et résolution de problèmes",
+  "Niveau": "EXPERT",
+  "Compétences": "Analyser des problèmes intermittents ou à causes multiples",
+  "Code": "PROB",
+  "Version": "V3",
+  "ID_Quiz": "PROB-EXPERT-V3",
+  "Titre_Quiz": "Analyse et résolution de problèmes - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Analyse et résolution de problèmes",
+  "Niveau": "EXPERT",
+  "Compétences": "Développer des outils d'aide à la décision",
+  "Code": "PROB",
+  "Version": "V4",
+  "ID_Quiz": "PROB-EXPERT-V4",
+  "Titre_Quiz": "Analyse et résolution de problèmes - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Analyse et résolution de problèmes",
+  "Niveau": "EXPERT",
+  "Compétences": "Concevoir des plans d'action pour des problèmes systémiques",
+  "Code": "PROB",
+  "Version": "V5",
+  "ID_Quiz": "PROB-EXPERT-V5",
+  "Titre_Quiz": "Analyse et résolution de problèmes - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Analyse et résolution de problèmes",
+  "Niveau": "EXPERT",
+  "Compétences": "Faciliter des sessions collectives de résolution de problèmes",
+  "Code": "PROB",
+  "Version": "V6",
+  "ID_Quiz": "PROB-EXPERT-V6",
+  "Titre_Quiz": "Analyse et résolution de problèmes - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Analyse et résolution de problèmes",
+  "Niveau": "EXPERT",
+  "Compétences": "Modéliser des systèmes complexes pour identifier des points critiques",
+  "Code": "PROB",
+  "Version": "V7",
+  "ID_Quiz": "PROB-EXPERT-V7",
+  "Titre_Quiz": "Analyse et résolution de problèmes - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Analyse et résolution de problèmes",
+  "Niveau": "EXPERT",
+  "Compétences": "Évaluer le rapport coût\/bénéfice des solutions proposées",
+  "Code": "PROB",
+  "Version": "V8",
+  "ID_Quiz": "PROB-EXPERT-V8",
+  "Titre_Quiz": "Analyse et résolution de problèmes - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Interprétation et analyse des données",
+  "Niveau": "BASE",
+  "Compétences": "Lire correctement différents types de graphiques",
+  "Code": "DATA",
+  "Version": "V1",
+  "ID_Quiz": "DATA-BASE-V1",
+  "Titre_Quiz": "Interprétation et analyse des données - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Interprétation et analyse des données",
+  "Niveau": "BASE",
+  "Compétences": "Extraire des données pertinentes de documents techniques",
+  "Code": "DATA",
+  "Version": "V2",
+  "ID_Quiz": "DATA-BASE-V2",
+  "Titre_Quiz": "Interprétation et analyse des données - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Interprétation et analyse des données",
+  "Niveau": "BASE",
+  "Compétences": "Calculer des indicateurs statistiques de base",
+  "Code": "DATA",
+  "Version": "V3",
+  "ID_Quiz": "DATA-BASE-V3",
+  "Titre_Quiz": "Interprétation et analyse des données - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Interprétation et analyse des données",
+  "Niveau": "BASE",
+  "Compétences": "Interpréter des tendances dans des séries de données",
+  "Code": "DATA",
+  "Version": "V4",
+  "ID_Quiz": "DATA-BASE-V4",
+  "Titre_Quiz": "Interprétation et analyse des données - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Interprétation et analyse des données",
+  "Niveau": "BASE",
+  "Compétences": "Présenter des données sous forme visuelle appropriée",
+  "Code": "DATA",
+  "Version": "V5",
+  "ID_Quiz": "DATA-BASE-V5",
+  "Titre_Quiz": "Interprétation et analyse des données - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Interprétation et analyse des données",
+  "Niveau": "BASE",
+  "Compétences": "Distinguer les corrélations des relations causales",
+  "Code": "DATA",
+  "Version": "V6",
+  "ID_Quiz": "DATA-BASE-V6",
+  "Titre_Quiz": "Interprétation et analyse des données - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Interprétation et analyse des données",
+  "Niveau": "BASE",
+  "Compétences": "Vérifier la cohérence des données recueillies",
+  "Code": "DATA",
+  "Version": "V7",
+  "ID_Quiz": "DATA-BASE-V7",
+  "Titre_Quiz": "Interprétation et analyse des données - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Interprétation et analyse des données",
+  "Niveau": "BASE",
+  "Compétences": "Organiser des données dans des tableaux structurés",
+  "Code": "DATA",
+  "Version": "V8",
+  "ID_Quiz": "DATA-BASE-V8",
+  "Titre_Quiz": "Interprétation et analyse des données - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Interprétation et analyse des données",
+  "Niveau": "INTER",
+  "Compétences": "Appliquer des méthodes statistiques d'analyse de données",
+  "Code": "DATA",
+  "Version": "V1",
+  "ID_Quiz": "DATA-INTER-V1",
+  "Titre_Quiz": "Interprétation et analyse des données - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Interprétation et analyse des données",
+  "Niveau": "INTER",
+  "Compétences": "Utiliser des logiciels de traitement de données",
+  "Code": "DATA",
+  "Version": "V2",
+  "ID_Quiz": "DATA-INTER-V2",
+  "Titre_Quiz": "Interprétation et analyse des données - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Interprétation et analyse des données",
+  "Niveau": "INTER",
+  "Compétences": "Interpréter des intervalles de confiance",
+  "Code": "DATA",
+  "Version": "V3",
+  "ID_Quiz": "DATA-INTER-V3",
+  "Titre_Quiz": "Interprétation et analyse des données - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Interprétation et analyse des données",
+  "Niveau": "INTER",
+  "Compétences": "Évaluer la signification statistique de résultats",
+  "Code": "DATA",
+  "Version": "V4",
+  "ID_Quiz": "DATA-INTER-V4",
+  "Titre_Quiz": "Interprétation et analyse des données - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Interprétation et analyse des données",
+  "Niveau": "INTER",
+  "Compétences": "Construire des modèles prédictifs simples",
+  "Code": "DATA",
+  "Version": "V5",
+  "ID_Quiz": "DATA-INTER-V5",
+  "Titre_Quiz": "Interprétation et analyse des données - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Interprétation et analyse des données",
+  "Niveau": "INTER",
+  "Compétences": "Analyser des séries temporelles",
+  "Code": "DATA",
+  "Version": "V6",
+  "ID_Quiz": "DATA-INTER-V6",
+  "Titre_Quiz": "Interprétation et analyse des données - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Interprétation et analyse des données",
+  "Niveau": "INTER",
+  "Compétences": "Réaliser des analyses multivariées basiques",
+  "Code": "DATA",
+  "Version": "V7",
+  "ID_Quiz": "DATA-INTER-V7",
+  "Titre_Quiz": "Interprétation et analyse des données - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Interprétation et analyse des données",
+  "Niveau": "INTER",
+  "Compétences": "Détecter des valeurs aberrantes et en déterminer les causes",
+  "Code": "DATA",
+  "Version": "V8",
+  "ID_Quiz": "DATA-INTER-V8",
+  "Titre_Quiz": "Interprétation et analyse des données - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Interprétation et analyse des données",
+  "Niveau": "EXPERT",
+  "Compétences": "Concevoir des plans d'expérience optimisés",
+  "Code": "DATA",
+  "Version": "V1",
+  "ID_Quiz": "DATA-EXPERT-V1",
+  "Titre_Quiz": "Interprétation et analyse des données - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Interprétation et analyse des données",
+  "Niveau": "EXPERT",
+  "Compétences": "Développer des modèles statistiques avancés",
+  "Code": "DATA",
+  "Version": "V2",
+  "ID_Quiz": "DATA-EXPERT-V2",
+  "Titre_Quiz": "Interprétation et analyse des données - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Interprétation et analyse des données",
+  "Niveau": "EXPERT",
+  "Compétences": "Appliquer des techniques de data mining",
+  "Code": "DATA",
+  "Version": "V3",
+  "ID_Quiz": "DATA-EXPERT-V3",
+  "Titre_Quiz": "Interprétation et analyse des données - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Interprétation et analyse des données",
+  "Niveau": "EXPERT",
+  "Compétences": "Interpréter des résultats d'analyses factorielles",
+  "Code": "DATA",
+  "Version": "V4",
+  "ID_Quiz": "DATA-EXPERT-V4",
+  "Titre_Quiz": "Interprétation et analyse des données - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Interprétation et analyse des données",
+  "Niveau": "EXPERT",
+  "Compétences": "Mettre en œuvre des méthodes de régression multiple",
+  "Code": "DATA",
+  "Version": "V5",
+  "ID_Quiz": "DATA-EXPERT-V5",
+  "Titre_Quiz": "Interprétation et analyse des données - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Interprétation et analyse des données",
+  "Niveau": "EXPERT",
+  "Compétences": "Utiliser des techniques de visualisation avancées",
+  "Code": "DATA",
+  "Version": "V6",
+  "ID_Quiz": "DATA-EXPERT-V6",
+  "Titre_Quiz": "Interprétation et analyse des données - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Interprétation et analyse des données",
+  "Niveau": "EXPERT",
+  "Compétences": "Automatiser l'analyse de grands volumes de données",
+  "Code": "DATA",
+  "Version": "V7",
+  "ID_Quiz": "DATA-EXPERT-V7",
+  "Titre_Quiz": "Interprétation et analyse des données - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Interprétation et analyse des données",
+  "Niveau": "EXPERT",
+  "Compétences": "Valider statistiquement des modèles complexes",
+  "Code": "DATA",
+  "Version": "V8",
+  "ID_Quiz": "DATA-EXPERT-V8",
+  "Titre_Quiz": "Interprétation et analyse des données - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Proportionnalité et relations entre grandeurs",
+  "Niveau": "BASE",
+  "Compétences": "Identifier une situation de proportionnalité dans un contexte technique",
+  "Code": "PROP",
+  "Version": "V1",
+  "ID_Quiz": "PROP-BASE-V1",
+  "Titre_Quiz": "Proportionnalité et relations entre grandeurs - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Proportionnalité et relations entre grandeurs",
+  "Niveau": "BASE",
+  "Compétences": "Calculer une quatrième proportionnelle par produit en croix",
+  "Code": "PROP",
+  "Version": "V2",
+  "ID_Quiz": "PROP-BASE-V2",
+  "Titre_Quiz": "Proportionnalité et relations entre grandeurs - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Proportionnalité et relations entre grandeurs",
+  "Niveau": "BASE",
+  "Compétences": "Appliquer la règle de trois dans des problèmes pratiques",
+  "Code": "PROP",
+  "Version": "V3",
+  "ID_Quiz": "PROP-BASE-V3",
+  "Titre_Quiz": "Proportionnalité et relations entre grandeurs - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Proportionnalité et relations entre grandeurs",
+  "Niveau": "BASE",
+  "Compétences": "Déterminer le coefficient de proportionnalité entre deux séries de valeurs",
+  "Code": "PROP",
+  "Version": "V4",
+  "ID_Quiz": "PROP-BASE-V4",
+  "Titre_Quiz": "Proportionnalité et relations entre grandeurs - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Proportionnalité et relations entre grandeurs",
+  "Niveau": "BASE",
+  "Compétences": "Représenter graphiquement une relation de proportionnalité",
+  "Code": "PROP",
+  "Version": "V5",
+  "ID_Quiz": "PROP-BASE-V5",
+  "Titre_Quiz": "Proportionnalité et relations entre grandeurs - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Proportionnalité et relations entre grandeurs",
+  "Niveau": "BASE",
+  "Compétences": "Vérifier la linéarité d'une relation entre deux grandeurs",
+  "Code": "PROP",
+  "Version": "V6",
+  "ID_Quiz": "PROP-BASE-V6",
+  "Titre_Quiz": "Proportionnalité et relations entre grandeurs - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Proportionnalité et relations entre grandeurs",
+  "Niveau": "BASE",
+  "Compétences": "Convertir des pourcentages en fractions et inversement",
+  "Code": "PROP",
+  "Version": "V7",
+  "ID_Quiz": "PROP-BASE-V7",
+  "Titre_Quiz": "Proportionnalité et relations entre grandeurs - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Proportionnalité et relations entre grandeurs",
+  "Niveau": "INTER",
+  "Compétences": "Résoudre des problèmes d'échelle sur des plans et schémas",
+  "Code": "PROP",
+  "Version": "V1",
+  "ID_Quiz": "PROP-INTER-V1",
+  "Titre_Quiz": "Proportionnalité et relations entre grandeurs - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Proportionnalité et relations entre grandeurs",
+  "Niveau": "INTER",
+  "Compétences": "Distinguer les situations de proportionnalité directe et inverse",
+  "Code": "PROP",
+  "Version": "V2",
+  "ID_Quiz": "PROP-INTER-V2",
+  "Titre_Quiz": "Proportionnalité et relations entre grandeurs - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Proportionnalité et relations entre grandeurs",
+  "Niveau": "INTER",
+  "Compétences": "Modéliser des phénomènes physiques par des relations de proportionnalité",
+  "Code": "PROP",
+  "Version": "V3",
+  "ID_Quiz": "PROP-INTER-V3",
+  "Titre_Quiz": "Proportionnalité et relations entre grandeurs - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Proportionnalité et relations entre grandeurs",
+  "Niveau": "INTER",
+  "Compétences": "Appliquer les relations de proportionnalité dans des formules techniques",
+  "Code": "PROP",
+  "Version": "V4",
+  "ID_Quiz": "PROP-INTER-V4",
+  "Titre_Quiz": "Proportionnalité et relations entre grandeurs - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Proportionnalité et relations entre grandeurs",
+  "Niveau": "INTER",
+  "Compétences": "Interpréter la pente d'une droite comme coefficient de proportionnalité",
+  "Code": "PROP",
+  "Version": "V5",
+  "ID_Quiz": "PROP-INTER-V5",
+  "Titre_Quiz": "Proportionnalité et relations entre grandeurs - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Proportionnalité et relations entre grandeurs",
+  "Niveau": "INTER",
+  "Compétences": "Analyser des relations de proportionnalité dans des systèmes multivariables",
+  "Code": "PROP",
+  "Version": "V6",
+  "ID_Quiz": "PROP-INTER-V6",
+  "Titre_Quiz": "Proportionnalité et relations entre grandeurs - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Proportionnalité et relations entre grandeurs",
+  "Niveau": "INTER",
+  "Compétences": "Déterminer des facteurs de correction proportionnels",
+  "Code": "PROP",
+  "Version": "V7",
+  "ID_Quiz": "PROP-INTER-V7",
+  "Titre_Quiz": "Proportionnalité et relations entre grandeurs - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Proportionnalité et relations entre grandeurs",
+  "Niveau": "INTER",
+  "Compétences": "Calculer des variations proportionnelles dans le temps",
+  "Code": "PROP",
+  "Version": "V8",
+  "ID_Quiz": "PROP-INTER-V8",
+  "Titre_Quiz": "Proportionnalité et relations entre grandeurs - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Proportionnalité et relations entre grandeurs",
+  "Niveau": "INTER",
+  "Compétences": "Utiliser la proportionnalité pour dimensionner des composants",
+  "Code": "PROP",
+  "Version": "V9",
+  "ID_Quiz": "PROP-INTER-V9",
+  "Titre_Quiz": "Proportionnalité et relations entre grandeurs - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Proportionnalité et relations entre grandeurs",
+  "Niveau": "EXPERT",
+  "Compétences": "Identifier les limites d'application des modèles de proportionnalité",
+  "Code": "PROP",
+  "Version": "V1",
+  "ID_Quiz": "PROP-EXPERT-V1",
+  "Titre_Quiz": "Proportionnalité et relations entre grandeurs - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Proportionnalité et relations entre grandeurs",
+  "Niveau": "EXPERT",
+  "Compétences": "Modéliser des comportements non-linéaires par des relations proportionnelles par morceaux",
+  "Code": "PROP",
+  "Version": "V2",
+  "ID_Quiz": "PROP-EXPERT-V2",
+  "Titre_Quiz": "Proportionnalité et relations entre grandeurs - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Proportionnalité et relations entre grandeurs",
+  "Niveau": "EXPERT",
+  "Compétences": "Appliquer les techniques de régression linéaire pour établir des relations proportionnelles",
+  "Code": "PROP",
+  "Version": "V3",
+  "ID_Quiz": "PROP-EXPERT-V3",
+  "Titre_Quiz": "Proportionnalité et relations entre grandeurs - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Proportionnalité et relations entre grandeurs",
+  "Niveau": "EXPERT",
+  "Compétences": "Analyser des systèmes de proportionnalité complexes à plusieurs variables",
+  "Code": "PROP",
+  "Version": "V4",
+  "ID_Quiz": "PROP-EXPERT-V4",
+  "Titre_Quiz": "Proportionnalité et relations entre grandeurs - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Proportionnalité et relations entre grandeurs",
+  "Niveau": "EXPERT",
+  "Compétences": "Évaluer la validité d'un modèle proportionnel par analyse statistique",
+  "Code": "PROP",
+  "Version": "V5",
+  "ID_Quiz": "PROP-EXPERT-V5",
+  "Titre_Quiz": "Proportionnalité et relations entre grandeurs - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Proportionnalité et relations entre grandeurs",
+  "Niveau": "EXPERT",
+  "Compétences": "Optimiser des paramètres dans des systèmes régis par des relations proportionnelles",
+  "Code": "PROP",
+  "Version": "V6",
+  "ID_Quiz": "PROP-EXPERT-V6",
+  "Titre_Quiz": "Proportionnalité et relations entre grandeurs - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Proportionnalité et relations entre grandeurs",
+  "Niveau": "EXPERT",
+  "Compétences": "Développer des modèles prédictifs basés sur des relations de proportionnalité",
+  "Code": "PROP",
+  "Version": "V7",
+  "ID_Quiz": "PROP-EXPERT-V7",
+  "Titre_Quiz": "Proportionnalité et relations entre grandeurs - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Proportionnalité et relations entre grandeurs",
+  "Niveau": "EXPERT",
+  "Compétences": "Concevoir des abaques de dimensionnement basés sur des relations proportionnelles",
+  "Code": "PROP",
+  "Version": "V8",
+  "ID_Quiz": "PROP-EXPERT-V8",
+  "Titre_Quiz": "Proportionnalité et relations entre grandeurs - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "BASE",
+  "Compétences": "Identifier les sources du droit du travail marocain (Code du travail, dahirs, conventions collectives)",
+  "Code": "DROIT",
+  "Version": "V1",
+  "ID_Quiz": "DROIT-BASE-V1",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "BASE",
+  "Compétences": "Distinguer les différents types de contrats de travail (CDI, CDD, contrat temporaire)",
+  "Code": "DROIT",
+  "Version": "V2",
+  "ID_Quiz": "DROIT-BASE-V2",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "BASE",
+  "Compétences": "Connaître les mentions obligatoires d'un contrat de travail au Maroc",
+  "Code": "DROIT",
+  "Version": "V3",
+  "ID_Quiz": "DROIT-BASE-V3",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "BASE",
+  "Compétences": "Appliquer les règles de durée légale du travail (44 heures par semaine) et de repos",
+  "Code": "DROIT",
+  "Version": "V4",
+  "ID_Quiz": "DROIT-BASE-V4",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "BASE",
+  "Compétences": "Calculer correctement les heures supplémentaires selon la législation marocaine",
+  "Code": "DROIT",
+  "Version": "V5",
+  "ID_Quiz": "DROIT-BASE-V5",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "BASE",
+  "Compétences": "Respecter les procédures de congés payés (1,5 jour par mois de travail effectif)",
+  "Code": "DROIT",
+  "Version": "V6",
+  "ID_Quiz": "DROIT-BASE-V6",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "BASE",
+  "Compétences": "Identifier les instances représentatives du personnel (délégués du personnel, comité d'entreprise)",
+  "Code": "DROIT",
+  "Version": "V7",
+  "ID_Quiz": "DROIT-BASE-V7",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "BASE",
+  "Compétences": "Reconnaître les situations de discrimination et de harcèlement selon le droit marocain",
+  "Code": "DROIT",
+  "Version": "V8",
+  "ID_Quiz": "DROIT-BASE-V8",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau BASE"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "INTER",
+  "Compétences": "Interpréter les clauses particulières d'un contrat de travail marocain",
+  "Code": "DROIT",
+  "Version": "V1",
+  "ID_Quiz": "DROIT-INTER-V1",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "INTER",
+  "Compétences": "Appliquer les règles relatives à la période d'essai selon la législation marocaine",
+  "Code": "DROIT",
+  "Version": "V2",
+  "ID_Quiz": "DROIT-INTER-V2",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "INTER",
+  "Compétences": "Distinguer les différents motifs de rupture du contrat de travail au Maroc",
+  "Code": "DROIT",
+  "Version": "V3",
+  "ID_Quiz": "DROIT-INTER-V3",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "INTER",
+  "Compétences": "Respecter les procédures disciplinaires conformément au Code du travail marocain",
+  "Code": "DROIT",
+  "Version": "V4",
+  "ID_Quiz": "DROIT-INTER-V4",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "INTER",
+  "Compétences": "Calculer les indemnités de licenciement selon le barème marocain",
+  "Code": "DROIT",
+  "Version": "V5",
+  "ID_Quiz": "DROIT-INTER-V5",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "INTER",
+  "Compétences": "Mettre en œuvre les obligations de formation professionnelle marocaines",
+  "Code": "DROIT",
+  "Version": "V6",
+  "ID_Quiz": "DROIT-INTER-V6",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "INTER",
+  "Compétences": "Analyser les dispositions d'une convention collective dans le contexte marocain",
+  "Code": "DROIT",
+  "Version": "V7",
+  "ID_Quiz": "DROIT-INTER-V7",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "INTER",
+  "Compétences": "Gérer les spécificités du temps de travail marocain (Ramadan, jours fériés nationaux)",
+  "Code": "DROIT",
+  "Version": "V8",
+  "ID_Quiz": "DROIT-INTER-V8",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau INTER"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "EXPERT",
+  "Compétences": "Évaluer la conformité d'une situation de travail avec le droit marocain",
+  "Code": "DROIT",
+  "Version": "V1",
+  "ID_Quiz": "DROIT-EXPERT-V1",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "EXPERT",
+  "Compétences": "Mettre en œuvre les obligations en matière de santé et sécurité au travail au Maroc",
+  "Code": "DROIT",
+  "Version": "V2",
+  "ID_Quiz": "DROIT-EXPERT-V2",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "EXPERT",
+  "Compétences": "Appliquer les règles spécifiques aux travailleurs étrangers au Maroc",
+  "Code": "DROIT",
+  "Version": "V3",
+  "ID_Quiz": "DROIT-EXPERT-V3",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "EXPERT",
+  "Compétences": "Analyser les risques juridiques d'une décision de gestion du personnel selon la législation marocaine",
+  "Code": "DROIT",
+  "Version": "V4",
+  "ID_Quiz": "DROIT-EXPERT-V4",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "EXPERT",
+  "Compétences": "Accompagner juridiquement les évolutions de l'organisation du travail",
+  "Code": "DROIT",
+  "Version": "V5",
+  "ID_Quiz": "DROIT-EXPERT-V5",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "EXPERT",
+  "Compétences": "Interpréter les jurisprudences récentes des tribunaux du travail marocains",
+  "Code": "DROIT",
+  "Version": "V6",
+  "ID_Quiz": "DROIT-EXPERT-V6",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "EXPERT",
+  "Compétences": "Coordonner les relations avec l'inspection du travail et la médecine du travail marocaines",
+  "Code": "DROIT",
+  "Version": "V7",
+  "ID_Quiz": "DROIT-EXPERT-V7",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "EXPERT",
+  "Compétences": "Négocier des accords d'entreprise conformément à la législation marocaine",
+  "Code": "DROIT",
+  "Version": "V8",
+  "ID_Quiz": "DROIT-EXPERT-V8",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau EXPERT"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "BASE bis (BASE - Protection sociale)",
+  "Compétences": "Distinguer les différentes branches de la CNSS (Caisse Nationale de Sécurité Sociale)",
+  "Code": "DROIT",
+  "Version": "V1",
+  "ID_Quiz": "DROIT-BASE bis (BASE - Protection sociale)-V1",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau BASE bis (BASE - Protection sociale)"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "BASE bis (BASE - Protection sociale)",
+  "Compétences": "Calculer les cotisations sociales selon les taux marocains (part employeur et salarié)",
+  "Code": "DROIT",
+  "Version": "V2",
+  "ID_Quiz": "DROIT-BASE bis (BASE - Protection sociale)-V2",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau BASE bis (BASE - Protection sociale)"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "BASE bis (BASE - Protection sociale)",
+  "Compétences": "Identifier les droits aux prestations sociales marocaines",
+  "Code": "DROIT",
+  "Version": "V3",
+  "ID_Quiz": "DROIT-BASE bis (BASE - Protection sociale)-V3",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau BASE bis (BASE - Protection sociale)"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "BASE bis (BASE - Protection sociale)",
+  "Compétences": "Suivre les procédures de déclaration d'accident du travail au Maroc",
+  "Code": "DROIT",
+  "Version": "V4",
+  "ID_Quiz": "DROIT-BASE bis (BASE - Protection sociale)-V4",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau BASE bis (BASE - Protection sociale)"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "BASE bis (BASE - Protection sociale)",
+  "Compétences": "Appliquer les règles concernant les arrêts maladie selon la législation marocaine",
+  "Code": "DROIT",
+  "Version": "V5",
+  "ID_Quiz": "DROIT-BASE bis (BASE - Protection sociale)-V5",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau BASE bis (BASE - Protection sociale)"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "BASE bis (BASE - Protection sociale)",
+  "Compétences": "Connaître les bases de l'AMO (Assurance Maladie Obligatoire)",
+  "Code": "DROIT",
+  "Version": "V6",
+  "ID_Quiz": "DROIT-BASE bis (BASE - Protection sociale)-V6",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau BASE bis (BASE - Protection sociale)"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "BASE bis (BASE - Protection sociale)",
+  "Compétences": "Identifier les obligations d'affiliation à la CNSS et à la CIMR",
+  "Code": "DROIT",
+  "Version": "V7",
+  "ID_Quiz": "DROIT-BASE bis (BASE - Protection sociale)-V7",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau BASE bis (BASE - Protection sociale)"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "BASE bis (BASE - Protection sociale)",
+  "Compétences": "Respecter les obligations de déclaration sociale au Maroc",
+  "Code": "DROIT",
+  "Version": "V8",
+  "ID_Quiz": "DROIT-BASE bis (BASE - Protection sociale)-V8",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau BASE bis (BASE - Protection sociale)"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "INTER bis (INTER - Protection sociale)",
+  "Compétences": "Analyser l'impact des charges sociales sur le coût du travail au Maroc",
+  "Code": "DROIT",
+  "Version": "V1",
+  "ID_Quiz": "DROIT-INTER bis (INTER - Protection sociale)-V1",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau INTER bis (INTER - Protection sociale)"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "INTER bis (INTER - Protection sociale)",
+  "Compétences": "Appliquer les règles spécifiques du régime de retraite marocain (CNSS, CIMR)",
+  "Code": "DROIT",
+  "Version": "V2",
+  "ID_Quiz": "DROIT-INTER bis (INTER - Protection sociale)-V2",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau INTER bis (INTER - Protection sociale)"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "INTER bis (INTER - Protection sociale)",
+  "Compétences": "Gérer les dossiers d'invalidité et d'inaptitude au travail selon le droit marocain",
+  "Code": "DROIT",
+  "Version": "V3",
+  "ID_Quiz": "DROIT-INTER bis (INTER - Protection sociale)-V3",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau INTER bis (INTER - Protection sociale)"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "INTER bis (INTER - Protection sociale)",
+  "Compétences": "Calculer les droits à indemnisation pour perte d'emploi",
+  "Code": "DROIT",
+  "Version": "V4",
+  "ID_Quiz": "DROIT-INTER bis (INTER - Protection sociale)-V4",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau INTER bis (INTER - Protection sociale)"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "INTER bis (INTER - Protection sociale)",
+  "Compétences": "Mettre en œuvre les dispositifs de prévoyance complémentaire au Maroc",
+  "Code": "DROIT",
+  "Version": "V5",
+  "ID_Quiz": "DROIT-INTER bis (INTER - Protection sociale)-V5",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau INTER bis (INTER - Protection sociale)"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "INTER bis (INTER - Protection sociale)",
+  "Compétences": "Interpréter les règles relatives aux congés spécifiques marocains (maternité, événements familiaux)",
+  "Code": "DROIT",
+  "Version": "V6",
+  "ID_Quiz": "DROIT-INTER bis (INTER - Protection sociale)-V6",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau INTER bis (INTER - Protection sociale)"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "INTER bis (INTER - Protection sociale)",
+  "Compétences": "Appliquer les spécificités du RAMED pour les employés éligibles",
+  "Code": "DROIT",
+  "Version": "V7",
+  "ID_Quiz": "DROIT-INTER bis (INTER - Protection sociale)-V7",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau INTER bis (INTER - Protection sociale)"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "INTER bis (INTER - Protection sociale)",
+  "Compétences": "Optimiser la protection sociale dans le respect de la législation marocaine",
+  "Code": "DROIT",
+  "Version": "V8",
+  "ID_Quiz": "DROIT-INTER bis (INTER - Protection sociale)-V8",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau INTER bis (INTER - Protection sociale)"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "EXPERT bis (EXPERT - Protection sociale et international)",
+  "Compétences": "Mettre en place des dispositifs d'épargne salariale conformes au droit marocain",
+  "Code": "DROIT",
+  "Version": "V1",
+  "ID_Quiz": "DROIT-EXPERT bis (EXPERT - Protection sociale et international)-V1",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau EXPERT bis (EXPERT - Protection sociale et international)"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "EXPERT bis (EXPERT - Protection sociale et international)",
+  "Compétences": "Coordonner les régimes de protection sociale pour les expatriés au Maroc",
+  "Code": "DROIT",
+  "Version": "V2",
+  "ID_Quiz": "DROIT-EXPERT bis (EXPERT - Protection sociale et international)-V2",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau EXPERT bis (EXPERT - Protection sociale et international)"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "EXPERT bis (EXPERT - Protection sociale et international)",
+  "Compétences": "Analyser les impacts des réformes sociales marocaines sur l'entreprise",
+  "Code": "DROIT",
+  "Version": "V3",
+  "ID_Quiz": "DROIT-EXPERT bis (EXPERT - Protection sociale et international)-V3",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau EXPERT bis (EXPERT - Protection sociale et international)"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "EXPERT bis (EXPERT - Protection sociale et international)",
+  "Compétences": "Élaborer des stratégies de rémunération globale conformes au droit marocain",
+  "Code": "DROIT",
+  "Version": "V4",
+  "ID_Quiz": "DROIT-EXPERT bis (EXPERT - Protection sociale et international)-V4",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau EXPERT bis (EXPERT - Protection sociale et international)"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "EXPERT bis (EXPERT - Protection sociale et international)",
+  "Compétences": "Mettre en œuvre des politiques de qualité de vie au travail adaptées au contexte marocain",
+  "Code": "DROIT",
+  "Version": "V5",
+  "ID_Quiz": "DROIT-EXPERT bis (EXPERT - Protection sociale et international)-V5",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau EXPERT bis (EXPERT - Protection sociale et international)"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "EXPERT bis (EXPERT - Protection sociale et international)",
+  "Compétences": "Négocier des accords sur la protection sociale complémentaire",
+  "Code": "DROIT",
+  "Version": "V6",
+  "ID_Quiz": "DROIT-EXPERT bis (EXPERT - Protection sociale et international)-V6",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau EXPERT bis (EXPERT - Protection sociale et international)"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "EXPERT bis (EXPERT - Protection sociale et international)",
+  "Compétences": "Développer des solutions pour la prévention des risques professionnels selon les normes marocaines",
+  "Code": "DROIT",
+  "Version": "V7",
+  "ID_Quiz": "DROIT-EXPERT bis (EXPERT - Protection sociale et international)-V7",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau EXPERT bis (EXPERT - Protection sociale et international)"
+ },
+ {
+  "Catégorie": "Code du travail et droit social marocain",
+  "Niveau": "EXPERT bis (EXPERT - Protection sociale et international)",
+  "Compétences": "Accompagner juridiquement les restructurations d'entreprise selon le droit marocain",
+  "Code": "DROIT",
+  "Version": "V8",
+  "ID_Quiz": "DROIT-EXPERT bis (EXPERT - Protection sociale et international)-V8",
+  "Titre_Quiz": "Code du travail et droit social marocain - Quiz Niveau EXPERT bis (EXPERT - Protection sociale et international)"
+ }
+],
+"groups":[
+ {
+  "id": 1,
+  "nom": "EE201",
+  "nbrEtudiants": 24,
+  "moyenne": 0,
+  "classement": 1
+ },
+ {
+  "id": 2,
+  "nom": "SES201",
+  "nbrEtudiants": 24,
+  "moyenne": 0,
+  "classement": 1
+ }
+],
+"questions":[
+ {
+  "ID_Quiz": "MATH-BASE-V1",
+  "ID_Question": "MATH-BASE-V1-0001",
+  "Num Question": 1,
+  "Question": "Convertir 2,5 km en mètres :",
+  "Type": "QCM",
+  "Option1": "25 m",
+  "Option2": "2500 m",
+  "Option3": "250 m",
+  "Option4": "25000 m",
+  "Réponse": "B",
+  "Points": 1
+ },
+ {
+  "ID_Quiz": "MATH-BASE-V1",
+  "ID_Question": "MATH-BASE-V1-0002",
+  "Num Question": 2,
+  "Question": "500 g = ___ kg",
+  "Type": "QCM",
+  "Option1": "0,05 kg",
+  "Option2": "5 kg",
+  "Option3": "0,5 kg",
+  "Option4": "50 kg",
+  "Réponse": "C",
+  "Points": 1
+ },
+ {
+  "ID_Quiz": "MATH-BASE-V1",
+  "ID_Question": "MATH-BASE-V1-0003",
+  "Num Question": 3,
+  "Question": "3 heures = ___ secondes",
+  "Type": "QCM",
+  "Option1": "180 s",
+  "Option2": "3600 s",
+  "Option3": "10800 s",
+  "Option4": "7200 s",
+  "Réponse": "C",
+  "Points": 1
+ },
+ {
+  "ID_Quiz": "MATH-BASE-V1",
+  "ID_Question": "MATH-BASE-V1-0004",
+  "Num Question": 4,
+  "Question": "1 L = ___ cm³",
+  "Type": "QCM",
+  "Option1": "10 cm³",
+  "Option2": "100 cm³",
+  "Option3": "1000 cm³",
+  "Option4": "10000 cm³",
+  "Réponse": "C",
+  "Points": 1
+ },
+ {
+  "ID_Quiz": "MATH-BASE-V1",
+  "ID_Question": "MATH-BASE-V1-0005",
+  "Num Question": 5,
+  "Question": "1 bar = ___ kPa",
+  "Type": "QCM",
+  "Option1": "10 kPa",
+  "Option2": "100 kPa",
+  "Option3": "1000 kPa",
+  "Option4": "0,1 kPa",
+  "Réponse": "B",
+  "Points": 1
+ },
+ {
+  "ID_Quiz": "MATH-BASE-V1",
+  "ID_Question": "MATH-BASE-V1-0006",
+  "Num Question": 6,
+  "Question": "1 kWh = ___ joules",
+  "Type": "QCM",
+  "Option1": "360 J",
+  "Option2": "3600 J",
+  "Option3": "3,6×10⁶ J",
+  "Option4": "3,6×10⁹ J",
+  "Réponse": "C",
+  "Points": 1
+ },
+ {
+  "ID_Quiz": "MATH-BASE-V1",
+  "ID_Question": "MATH-BASE-V1-0007",
+  "Num Question": 7,
+  "Question": "25°C = ___ K",
+  "Type": "QCM",
+  "Option1": "248,15 K",
+  "Option2": "298,15 K",
+  "Option3": "273,15 K",
+  "Option4": "25 K",
+  "Réponse": "B",
+  "Points": 1
+ }
+],
+"users":[
+ {
+  "username": "elkarroumy_anas_ee201",
+  "nom": "ELKARROUMY",
+  "prenom": "Anas",
+  "Groupe": "EE201",
+  "password": "Anas@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "naciri_sara_ee201",
+  "nom": "NACIRI",
+  "prenom": "Sara",
+  "Groupe": "EE201",
+  "password": "Sara@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "tayi_fatimazahra_ee201",
+  "nom": "TAYI",
+  "prenom": "Fatima zahra",
+  "Groupe": "EE201",
+  "password": "Fatima zahra@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "hamidi_abderrazak_ee201",
+  "nom": "HAMIDI",
+  "prenom": "Abderrazak",
+  "Groupe": "EE201",
+  "password": "Abderrazak@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "essady_yassine_ee201",
+  "nom": "ESSADY",
+  "prenom": "Yassine",
+  "Groupe": "EE201",
+  "password": "Yassine@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "erradi_hiba_ee201",
+  "nom": "ERRADI",
+  "prenom": "Hiba",
+  "Groupe": "EE201",
+  "password": "Hiba@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "faouzi_hajar_ee201",
+  "nom": "FAOUZI",
+  "prenom": "Hajar",
+  "Groupe": "EE201",
+  "password": "Hajar@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "bendoumah_anasse_ee201",
+  "nom": "BENDOUMAH",
+  "prenom": "Anasse",
+  "Groupe": "EE201",
+  "password": "Anasse@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "ouchhi_fatima_ee201",
+  "nom": "OUCHHI",
+  "prenom": "Fatima ",
+  "Groupe": "EE201",
+  "password": "Fatima @123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "himmi_fatimazahra_ee201",
+  "nom": "HIMMI",
+  "prenom": "Fatima Zahra",
+  "Groupe": "EE201",
+  "password": "Fatima Zahra@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "rachidi_yassmin_ee201",
+  "nom": "RACHIDI",
+  "prenom": "Yassmin ",
+  "Groupe": "EE201",
+  "password": "Yassmin @123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "elhamid_khadija_ee201",
+  "nom": "EL HAMID",
+  "prenom": "Khadija",
+  "Groupe": "EE201",
+  "password": "Khadija@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "aoutoul_sara_ee201",
+  "nom": "AOUTOUL",
+  "prenom": "Sara",
+  "Groupe": "EE201",
+  "password": "Sara@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "id-aala_azeddine_ee201",
+  "nom": "ID-AALA",
+  "prenom": "Azeddine",
+  "Groupe": "EE201",
+  "password": "Azeddine@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "elabdellaoui_mouaad_ee201",
+  "nom": "EL ABDELLAOUI",
+  "prenom": "Mouaad",
+  "Groupe": "EE201",
+  "password": "Mouaad@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "ouhanda_abdellatyf_ee201",
+  "nom": "OUHANDA",
+  "prenom": "Abdellatyf",
+  "Groupe": "EE201",
+  "password": "Abdellatyf@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "haddouch_maryam_ee201",
+  "nom": "HADDOUCH",
+  "prenom": "Maryam",
+  "Groupe": "EE201",
+  "password": "Maryam@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "elouiza_halima_ee201",
+  "nom": "ELOUIZA",
+  "prenom": "Halima",
+  "Groupe": "EE201",
+  "password": "Halima@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "outkhamouyt_hanane_ee201",
+  "nom": "OUTKHAMOUYT",
+  "prenom": "Hanane",
+  "Groupe": "EE201",
+  "password": "Hanane@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "tanfalte_abdessamad_ee201",
+  "nom": "TANFALTE",
+  "prenom": "Abdessamad",
+  "Groupe": "EE201",
+  "password": "Abdessamad@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "bakas_aya_ee201",
+  "nom": "BAKAS",
+  "prenom": "Aya",
+  "Groupe": "EE201",
+  "password": "Aya@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "hachimialaoui_aya_ee201",
+  "nom": "HACHIMI ALAOUI ",
+  "prenom": "Aya",
+  "Groupe": "EE201",
+  "password": "Aya@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "naciri_manal_ee201",
+  "nom": "NACIRI",
+  "prenom": "Manal",
+  "Groupe": "EE201",
+  "password": "Manal@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "salfi_amina_ee201",
+  "nom": "SALFI ",
+  "prenom": "Amina",
+  "Groupe": "EE201",
+  "password": "Amina@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "berrakouch_mohamed_ses201",
+  "nom": "BERRAKOUCH",
+  "prenom": "Mohamed",
+  "Groupe": "SES201",
+  "password": "Mohamed@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "aitlahssaine_elhoussine_ses201",
+  "nom": "AIT LAHSSAINE",
+  "prenom": "Elhoussine",
+  "Groupe": "SES201",
+  "password": "Elhoussine@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "aitelmouden_hiba_ses201",
+  "nom": "AIT ELMOUDEN",
+  "prenom": "Hiba",
+  "Groupe": "SES201",
+  "password": "Hiba@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "mennaa_douae_ses201",
+  "nom": "MENNAA",
+  "prenom": "Douae",
+  "Groupe": "SES201",
+  "password": "Douae@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "oussayi_mohamed_ses201",
+  "nom": "OUSSAYI",
+  "prenom": "Mohamed",
+  "Groupe": "SES201",
+  "password": "Mohamed@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "najah_hiba_ses201",
+  "nom": "NAJAH",
+  "prenom": "Hiba",
+  "Groupe": "SES201",
+  "password": "Hiba@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "benelahmar_mohamed_ses201",
+  "nom": "BEN ELAHMAR",
+  "prenom": "Mohamed",
+  "Groupe": "SES201",
+  "password": "Mohamed@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "aznag_aziza_ses201",
+  "nom": "AZNAG",
+  "prenom": "Aziza",
+  "Groupe": "SES201",
+  "password": "Aziza@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "mouddou_salma_ses201",
+  "nom": "MOUDDOU",
+  "prenom": "Salma",
+  "Groupe": "SES201",
+  "password": "Salma@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "moumni_iliyass_ses201",
+  "nom": "MOUMNI",
+  "prenom": "Iliyass",
+  "Groupe": "SES201",
+  "password": "Iliyass@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "oukais_mohamed_ses201",
+  "nom": "OUKAIS",
+  "prenom": "Mohamed",
+  "Groupe": "SES201",
+  "password": "Mohamed@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "manssour_abderrahman_ses201",
+  "nom": "MANSSOUR",
+  "prenom": "Abderrahman",
+  "Groupe": "SES201",
+  "password": "Abderrahman@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "elmansouri_mohsine_ses201",
+  "nom": "EL MANSOURI",
+  "prenom": "Mohsine",
+  "Groupe": "SES201",
+  "password": "Mohsine@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "mortabit_oumaima_ses201",
+  "nom": "MORTABIT",
+  "prenom": "Oumaima",
+  "Groupe": "SES201",
+  "password": "Oumaima@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "ait-elhadj_ayoub_ses201",
+  "nom": "AIT- EL HADJ",
+  "prenom": "Ayoub",
+  "Groupe": "SES201",
+  "password": "Ayoub@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "elgouniguef_tarik_ses201",
+  "nom": "ELGOUNIGUEF",
+  "prenom": "Tarik",
+  "Groupe": "SES201",
+  "password": "Tarik@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "elamal_kaoutar_ses201",
+  "nom": "EL AMAL",
+  "prenom": "Kaoutar",
+  "Groupe": "SES201",
+  "password": "Kaoutar@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "bamoussa_lahcene_ses201",
+  "nom": "BAMOUSSA",
+  "prenom": "Lahcene",
+  "Groupe": "SES201",
+  "password": "Lahcene@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "kaldy_abdelhadi_ses201",
+  "nom": "KALDY",
+  "prenom": "Abdelhadi",
+  "Groupe": "SES201",
+  "password": "Abdelhadi@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "abboud_kamal_ses201",
+  "nom": "ABBOUD",
+  "prenom": "Kamal",
+  "Groupe": "SES201",
+  "password": "Kamal@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "ouhakou_amine_ses201",
+  "nom": "OUHAKOU",
+  "prenom": "Amine",
+  "Groupe": "SES201",
+  "password": "Amine@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "ougour_manal_ses201",
+  "nom": "OUGOUR",
+  "prenom": "Manal",
+  "Groupe": "SES201",
+  "password": "Manal@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "aitaliouhmad_zaina_ses201",
+  "nom": "AIT ALIOUHMAD",
+  "prenom": "Zaina",
+  "Groupe": "SES201",
+  "password": "Zaina@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "hmimid_salma_ses201",
+  "nom": "HMIMID",
+  "prenom": "Salma",
+  "Groupe": "SES201",
+  "password": "Salma@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "aitchbab_naouar_ses201",
+  "nom": "AIT CHBAB",
+  "prenom": "Naouar",
+  "Groupe": "SES201",
+  "password": "Naouar@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "ouhakki_zakariae_ses201",
+  "nom": "OUHAKKI",
+  "prenom": "Zakariae",
+  "Groupe": "SES201",
+  "password": "Zakariae@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "aitbrahim_brahim_ses201",
+  "nom": "AIT BRAHIM",
+  "prenom": "Brahim",
+  "Groupe": "SES201",
+  "password": "Brahim@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "fahmi_majda_ses201",
+  "nom": "FAHMI",
+  "prenom": "Majda",
+  "Groupe": "SES201",
+  "password": "Majda@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "eddiouan_mohamed_ses201",
+  "nom": "EDDIOUAN",
+  "prenom": "Mohamed",
+  "Groupe": "SES201",
+  "password": "Mohamed@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "mtahaf_adam_ses205",
+  "nom": "MTAHAF",
+  "prenom": "Adam",
+  "Groupe": "SES205",
+  "password": "Adam@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "cherbou_mounssif_ses205",
+  "nom": "CHERBOU",
+  "prenom": "Mounssif",
+  "Groupe": "SES205",
+  "password": "Mounssif@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "elmaachy_abdellah_ses205",
+  "nom": "EL MAACHY",
+  "prenom": "Abdellah",
+  "Groupe": "SES205",
+  "password": "Abdellah@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "outaleb_khadija_ses205",
+  "nom": "OUTALEB",
+  "prenom": "Khadija",
+  "Groupe": "SES205",
+  "password": "Khadija@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "bougrine_mohamedamine_ses205",
+  "nom": "BOUGRINE",
+  "prenom": "Mohamed Amine",
+  "Groupe": "SES205",
+  "password": "Mohamed Amine@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "astaoui_asmae_ses205",
+  "nom": "ASTAOUI",
+  "prenom": "Asmae",
+  "Groupe": "SES205",
+  "password": "Asmae@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "belgharbi_chaimae_ses205",
+  "nom": "BELGHARBI",
+  "prenom": "Chaimae",
+  "Groupe": "SES205",
+  "password": "Chaimae@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "benhaida_laila_ses205",
+  "nom": "BEN HAIDA",
+  "prenom": "Laila",
+  "Groupe": "SES205",
+  "password": "Laila@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "ez-zaria_ibrahim_ses205",
+  "nom": "EZ-ZARIA",
+  "prenom": "Ibrahim",
+  "Groupe": "SES205",
+  "password": "Ibrahim@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "laasri_oussama_ses205",
+  "nom": "LAASRI",
+  "prenom": "Oussama",
+  "Groupe": "SES205",
+  "password": "Oussama@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "elmardi_nouaman_ses205",
+  "nom": "EL MARDI",
+  "prenom": "Nouaman",
+  "Groupe": "SES205",
+  "password": "Nouaman@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "oudaha_nouhayla_ses205",
+  "nom": "OUDAHA",
+  "prenom": "Nouhayla",
+  "Groupe": "SES205",
+  "password": "Nouhayla@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "aitmouhou_salma_ses205",
+  "nom": "AIT MOUHOU",
+  "prenom": "Salma",
+  "Groupe": "SES205",
+  "password": "Salma@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "bougayou_mohamed_ses205",
+  "nom": "BOUGAYOU",
+  "prenom": "Mohamed",
+  "Groupe": "SES205",
+  "password": "Mohamed@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "ait-si_badr_ses205",
+  "nom": "AIT-SI",
+  "prenom": "Badr",
+  "Groupe": "SES205",
+  "password": "Badr@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "nourani_salma_ses205",
+  "nom": "NOURANI",
+  "prenom": "Salma",
+  "Groupe": "SES205",
+  "password": "Salma@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "aitbaami_imane_ses205",
+  "nom": "AIT BAAMI",
+  "prenom": "Imane",
+  "Groupe": "SES205",
+  "password": "Imane@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "belghazi_ahlam_ses205",
+  "nom": "BELGHAZI",
+  "prenom": "Ahlam",
+  "Groupe": "SES205",
+  "password": "Ahlam@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "elmahjouby_abdelghani_ses205",
+  "nom": "EL MAHJOUBY",
+  "prenom": "Abdelghani",
+  "Groupe": "SES205",
+  "password": "Abdelghani@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "aitm'hamed_nouhaila_ses205",
+  "nom": "AIT M'HAMED",
+  "prenom": "Nouhaila",
+  "Groupe": "SES205",
+  "password": "Nouhaila@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "driki_safa_ses205",
+  "nom": "DRIKI",
+  "prenom": "Safa",
+  "Groupe": "SES205",
+  "password": "Safa@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "mezane_salahedddine_ses205",
+  "nom": "MEZANE",
+  "prenom": "Salah Edddine",
+  "Groupe": "SES205",
+  "password": "Salah Edddine@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "oudahman_khalid_ses205",
+  "nom": "OUDAHMAN",
+  "prenom": "Khalid",
+  "Groupe": "SES205",
+  "password": "Khalid@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "stih_choaib_ses205",
+  "nom": "STIH",
+  "prenom": "Choaib",
+  "Groupe": "SES205",
+  "password": "Choaib@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "chaouki_ayoub_ses205",
+  "nom": "CHAOUKI",
+  "prenom": "Ayoub",
+  "Groupe": "SES205",
+  "password": "Ayoub@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "laouine_wissal_ses205",
+  "nom": "LAOUINE",
+  "prenom": "Wissal",
+  "Groupe": "SES205",
+  "password": "Wissal@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "essalhi_yahya_ses205",
+  "nom": "ESSALHI",
+  "prenom": "Yahya",
+  "Groupe": "SES205",
+  "password": "Yahya@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "finti_abderrazak_ses205",
+  "nom": "FINTI",
+  "prenom": "Abderrazak",
+  "Groupe": "SES205",
+  "password": "Abderrazak@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "oulaidi_majda_ses205",
+  "nom": "OULAIDI",
+  "prenom": "Majda",
+  "Groupe": "SES205",
+  "password": "Majda@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ },
+ {
+  "username": "test_test_test",
+  "nom": "test",
+  "prenom": "test",
+  "Groupe": "test",
+  "password": "test@123",
+  "role": "student",
+  "avatar": "\/assets\/img\/user.png",
+  "isActive": "false"
+ }
+]
+}

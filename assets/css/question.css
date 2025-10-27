@@ -1,0 +1,218 @@
+/* ======================== */
+/* question.css             */
+/* Kahoot-inspired Quiz Styles */
+/* ======================== */
+
+body.quiz-page {
+  background-color: #f0f2f5; /* Light grey background */
+  font-family: 'Inter', sans-serif;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+    flex-grow: 1;
+}
+
+/* --- Quiz Header --- */
+.quiz-header {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+.quiz-header #quizTitle {
+    color: #343a40;
+}
+
+.quiz-progress {
+    max-width: 600px; /* Limit progress bar width */
+    margin-top: 1rem;
+    height: 12px !important; /* Slightly thicker bar */
+    border-radius: 6px;
+}
+
+/* --- Questions Area --- */
+.questions-area {
+  min-height: 400px; /* Ensure minimum height */
+  position: relative;
+}
+
+/* --- Individual Question Card --- */
+.card-question {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 0.75rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08) !important;
+  padding: 2rem !important;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: questionFadeIn 0.5s ease-out forwards;
+}
+
+@keyframes questionFadeIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Question Header (Number/Points) */
+.card-question .d-flex.justify-content-between.align-items-center {
+    margin-bottom: 1rem !important;
+}
+.card-question h5 { color: #6c757d; font-weight: 500; }
+.card-question .badge.bg-info {
+    font-size: 0.9rem; font-weight: 600;
+    background-color: #e0e7ff !important; color: #4338ca !important;
+}
+
+/* Question Text */
+.card-question p.lead {
+  font-size: 1.5rem; font-weight: 600; color: #1f2937;
+  margin-bottom: 2rem !important; min-height: 60px; text-align: center;
+}
+
+/* --- Options Container --- */
+.options-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+/* --- Option Buttons (QCM & Vrai/Faux) --- */
+.option-btn {
+  display: flex; align-items: center; justify-content: flex-start;
+  padding: 1rem 1.5rem; font-size: 1.1rem; font-weight: 600;
+  border-radius: 0.5rem; border: none; color: #ffffff; text-align: left;
+  transition: all 0.2s ease; /* Transition all properties */
+  cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.1); min-height: 70px;
+}
+
+/* Hover effect only for ACTIVE buttons */
+.option-btn:not(.option-inactive):hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  opacity: 0.95;
+}
+/* Active state only for ACTIVE buttons */
+.option-btn:not(.option-inactive):active {
+  transform: translateY(0px);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Kahoot-like Colors */
+.options-container .option-btn:nth-child(4n+1) { background-color: #dc3545; } /* Red */
+.options-container .option-btn:nth-child(4n+2) { background-color: #0d6efd; } /* Blue */
+.options-container .option-btn:nth-child(4n+3) { background-color: #ffc107; color: #333; } /* Yellow */
+.options-container .option-btn:nth-child(4n+4) { background-color: #198754; } /* Green */
+/* Vrai/Faux Colors */
+.options-container button[data-value="true"] { background-color: #0d6efd; }
+.options-container button[data-value="false"] { background-color: #dc3545; }
+
+/* --- Style for Non-Selected/Inactive Options (MODIFIED with !important) --- */
+.option-btn.option-inactive {
+  opacity: 0.6 !important; /* Increased opacity slightly, forced */
+  filter: grayscale(80%) !important; /* Forced grayscale */
+  cursor: pointer !important; /* Still allow pointer cursor */
+  pointer-events: auto !important; /* Ensure clicks are allowed */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important; /* Reduced shadow, forced */
+  transform: none !important; /* Prevent hover/active transform */
+}
+/* Subtle hover for inactive to show it's clickable */
+.option-btn.option-inactive:hover {
+    opacity: 0.7 !important;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important;
+    /* No transform */
+}
+
+
+/* --- Selected State (Ensure it overrides inactive) --- */
+.option-btn.selected {
+  opacity: 1 !important;
+  filter: none !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  transform: scale(1.03) !important;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25) !important;
+  border: 4px solid #ffffff !important;
+  padding: calc(1rem - 4px) calc(1.5rem - 4px) !important;
+}
+
+/* --- Focus Styles --- */
+/* Focus on SELECTED button */
+.option-btn.selected:focus {
+    outline: none;
+    /* Styles are already defined in .selected, !important ensures they apply */
+}
+/* Focus on ACTIVE (not selected, not inactive) button */
+.option-btn:not(.selected):not(.option-inactive):focus {
+     outline: none;
+     box-shadow: 0 6px 15px rgba(0,0,0,0.15) !important; /* Hover shadow */
+     border: none !important;
+     padding: 1rem 1.5rem !important; /* Original padding */
+     opacity: 1 !important;
+     filter: none !important;
+     transform: translateY(-3px); /* Add hover transform */
+}
+/* Focus on INACTIVE button */
+.option-btn.option-inactive:focus {
+    outline: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important; /* Inactive hover shadow */
+    border: none !important;
+    padding: 1rem 1.5rem !important; /* Original padding */
+    opacity: 0.7 !important; /* Inactive hover opacity */
+    filter: grayscale(70%) !important;
+    transform: none !important;
+}
+
+
+/* --- Calcul Input --- */
+.options-container input[type="text"].form-control {
+    font-size: 1.2rem; padding: 1rem 1.5rem; border-radius: 0.5rem;
+    border: 2px solid #ced4da; text-align: center;
+}
+.options-container input[type="text"].form-control:focus {
+    border-color: #86b7fe; box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, .25);
+}
+
+/* --- Navigation Buttons --- */
+.card-question .d-flex.justify-content-between.mt-4 {
+    border-top: 1px solid #e9ecef; padding-top: 1.5rem !important;
+}
+.btn-prev, .btn-next { font-weight: 500; padding: 0.5rem 1.5rem; border-radius: 0.5rem; }
+.btn-prev:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* --- Submit Button --- */
+.btn-submit-quiz {
+    font-weight: 600; font-size: 1.1rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-submit-quiz:hover {
+     transform: translateY(-3px); box-shadow: 0 6px 15px rgba(220, 53, 69, 0.3);
+}
+.btn-submit-quiz:disabled { opacity: 0.65; }
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .card-question p.lead { font-size: 1.3rem; }
+    .options-container { grid-template-columns: 1fr; } /* Stack options */
+    .option-btn { font-size: 1rem; padding: 0.8rem 1rem; }
+
+    /* Adjust selected/focus padding for mobile */
+    .option-btn.selected,
+    .option-btn.selected:focus {
+        padding: calc(0.8rem - 4px) calc(1rem - 4px) !important;
+    }
+    /* Original padding for non-selected/non-disabled focused */
+    .option-btn:not(.selected):not(.option-inactive):focus {
+        padding: 0.8rem 1rem !important;
+    }
+    /* Original padding for inactive (focused or not) */
+    .option-btn.option-inactive,
+    .option-btn.option-inactive:focus {
+        padding: 0.8rem 1rem !important;
+    }
+}

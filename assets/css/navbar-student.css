@@ -1,0 +1,167 @@
+/* ======================== */
+/* navbar-student.css       */
+/* Modern Student Navbar    */
+/* ======================== */
+
+.modern-navbar-student {
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  backdrop-filter: blur(10px);              /* Blur effect */
+  -webkit-backdrop-filter: blur(10px);       /* Safari blur */
+  /* box-shadow is added via Bootstrap class `shadow-sm` */
+  padding-top: 0.6rem;                       /* Adjust vertical padding */
+  padding-bottom: 0.6rem;
+  transition: background-color 0.3s ease;
+}
+
+/* Navbar Brand */
+.modern-navbar-student .navbar-brand {
+  color: #343a40;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+.modern-navbar-student .navbar-brand:hover {
+  color: #0d6efd; /* Primary blue */
+}
+.modern-navbar-student .navbar-brand img {
+  transition: transform 0.3s ease;
+}
+.modern-navbar-student .navbar-brand:hover img {
+  transform: rotate(5deg); /* Subtle rotation */
+}
+
+/* General Navbar Links (if you add more later) */
+.modern-navbar-student .nav-link {
+  color: #495057;
+  font-weight: 500;
+  padding: 0.5rem 0.8rem; /* Standard link padding */
+  position: relative;
+  transition: color 0.3s ease;
+}
+.modern-navbar-student .nav-link:hover,
+.modern-navbar-student .nav-link.active {
+  color: #0d6efd;
+}
+
+/* User Dropdown Toggle */
+.modern-navbar-student .dropdown-toggle {
+  color: #495057; /* Match nav-link color */
+  cursor: pointer;
+}
+.modern-navbar-student .dropdown-toggle::after {
+  /* Optional: Style or hide the default dropdown arrow */
+  /* display: none; */ /* Uncomment to hide */
+   margin-left: 0.4em; /* Space before arrow */
+   vertical-align: 0.1em; /* Align arrow better */
+}
+.modern-navbar-student .dropdown-toggle:hover {
+    color: #0d6efd; /* Highlight on hover */
+}
+
+
+/* Navbar Avatar */
+.nav-avatar-img {
+  width: 38px;  /* Slightly larger */
+  height: 38px;
+  object-fit: cover; /* Ensure image covers space */
+  border: 2px solid #dee2e6; /* Light border */
+}
+
+/* Username Display */
+#usernameDisplay {
+    color: #343a40; /* Darker text for name */
+}
+
+/* Dropdown Menu */
+.modern-navbar-student .dropdown-menu {
+  border-radius: 0.5rem; /* Rounded corners */
+  padding: 0.5rem 0; /* Vertical padding */
+  margin-top: 0.5rem !important; /* Ensure spacing below toggle */
+}
+
+.modern-navbar-student .dropdown-item {
+  padding: 0.5rem 1.2rem; /* Item padding */
+  font-size: 0.95rem;
+  color: #495057;
+  display: flex; /* Align icon and text */
+  align-items: center;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.modern-navbar-student .dropdown-item i {
+    width: 20px; /* Fixed width for icons */
+    text-align: center;
+    color: #6c757d; /* Grey icon color */
+    margin-right: 0.75rem; /* Space after icon */
+    font-size: 1.1em; /* Slightly larger icon */
+}
+
+.modern-navbar-student .dropdown-item:hover,
+.modern-navbar-student .dropdown-item:focus {
+  background-color: #e9ecef; /* Light grey hover */
+  color: #1e2125;
+}
+.modern-navbar-student .dropdown-item:active {
+    background-color: #0d6efd; /* Blue on click */
+    color: #fff;
+}
+.modern-navbar-student .dropdown-item.text-danger:hover,
+.modern-navbar-student .dropdown-item.text-danger:focus {
+    background-color: #f8d7da; /* Light red hover for logout */
+    color: #58151c;
+}
+.modern-navbar-student .dropdown-item.text-danger:active {
+    background-color: #dc3545; /* Red on click */
+    color: #fff;
+}
+
+
+/* Navbar Toggler (Mobile Button) */
+.modern-navbar-student .navbar-toggler {
+  border: none;
+  padding: 0.25rem 0.5rem;
+}
+.modern-navbar-student .navbar-toggler:focus {
+  box-shadow: none;
+}
+.modern-navbar-student .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.7)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Collapsed Navbar adjustments */
+@media (max-width: 991.98px) {
+  .modern-navbar-student .navbar-collapse {
+    background-color: rgba(255, 255, 255, 0.98);
+    margin-top: 0.75rem; /* More space */
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+   .modern-navbar-student .navbar-nav {
+      align-items: flex-start !important; /* Align items left on mobile */
+   }
+   /* Make dropdown toggle full width */
+   .modern-navbar-student .dropdown { width: 100%; }
+   .modern-navbar-student .dropdown-toggle {
+       display: flex;
+       justify-content: space-between; /* Arrow at the end */
+       padding: 0.75rem 1rem; /* More padding */
+   }
+   /* Ensure dropdown menu is static and full width */
+   .modern-navbar-student .dropdown-menu {
+        position: static !important;
+        float: none !important;
+        width: 100% !important;
+        margin-top: 0.5rem !important;
+        border: none !important;
+        box-shadow: none !important;
+        background-color: transparent !important; /* Transparent background */
+        padding: 0 !important;
+   }
+    .modern-navbar-student .dropdown-item {
+        padding: 0.75rem 1.5rem; /* Adjust padding */
+        border-radius: 0.25rem;
+    }
+    .modern-navbar-student .dropdown-item:hover {
+         background-color: #e9ecef;
+    }
+    .modern-navbar-student .dropdown-divider { margin: 0.5rem 1rem; }
+}

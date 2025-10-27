@@ -1,0 +1,99 @@
+/* ======================== */
+/* group-ranking.css        */
+/* Styles for Group Ranking */
+/* ======================== */
+
+body.group-ranking-page {
+  font-family: 'Inter', sans-serif;
+  background-color: #f8f9fa; /* Light background */
+  color: #343a40;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+    flex-grow: 1; /* Push footer down */
+}
+
+/* Page Title */
+.group-ranking-page h1 {
+    color: #0d6efd; /* Primary blue */
+}
+#groupNameDisplay {
+    color: #6c757d; /* Secondary grey */
+}
+
+/* Ranking Card */
+.ranking-card {
+    overflow: hidden; /* Clip table corners */
+}
+
+/* Ranking Table */
+.ranking-table thead th {
+    background-color: #e9ecef; /* Light grey header */
+    color: #495057;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom-width: 2px;
+    vertical-align: middle;
+}
+
+.ranking-table tbody td {
+    vertical-align: middle;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #f1f3f5; /* Lighter row separators */
+    padding-top: 0.75rem; /* Adjust vertical padding */
+    padding-bottom: 0.75rem;
+}
+.ranking-table tbody tr:last-child td {
+    border-bottom: none; /* Remove border on last row */
+}
+
+/* Specific Column Styles */
+.rank-col { width: 50px; } /* Fixed width for Rank */
+.avatar-col { width: 60px; } /* Fixed width for Avatar */
+.points-col { width: 100px; font-weight: 600; color: #198754; } /* Points style */
+
+/* Avatar in Table */
+.ranking-table .avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #dee2e6; /* Subtle border */
+}
+
+/* Highlight Current User Row */
+.ranking-table tbody tr.current-user-row {
+  background-color: #d1e7dd !important; /* Light green background (Bootstrap success bg subtle) */
+  font-weight: 600;
+}
+.ranking-table tbody tr.current-user-row td {
+    color: #0f5132; /* Darker green text */
+}
+
+/* Table Hover Effect (uses Bootstrap .table-hover) */
+.ranking-table tbody tr:hover {
+    background-color: #f1f3f5; /* Light hover */
+}
+
+/* Make rank bold */
+.ranking-table td:first-child {
+    font-weight: 700;
+}
+
+/* Skeleton Placeholder styles */
+.placeholder {
+    display: inline-block;
+    min-height: 1em;
+    vertical-align: middle;
+    cursor: wait;
+    background-color: currentColor;
+    opacity: 0.15; /* Make placeholders lighter */
+}
+.placeholder.rounded-circle {
+     border-radius: 50% !important;
+}

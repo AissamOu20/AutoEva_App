@@ -1,0 +1,196 @@
+/* ===============================
+   🎨 Style Import / Export Section
+   =============================== */
+
+#importExport {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+#importExport h2 i {
+  color: var(--bs-primary);
+}
+
+/* --- Cards --- */
+#importExport .card {
+  transition: all 0.3s ease;
+  border-radius: 1.5rem !important;
+  background: #fff;
+}
+
+#importExport .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* --- Dropzone (zone de glisser-déposer) --- */
+.import-dropzone {
+  background: #fafafa;
+  border: 2px dashed #ccc;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.import-dropzone:hover {
+  background: #f0f8ff;
+  border-color: var(--bs-primary);
+}
+
+.import-dropzone.border-primary {
+  background: #e8f0fe;
+  border-color: var(--bs-primary) !important;
+}
+
+/* --- Buttons --- */
+.btn-gradient {
+  background: linear-gradient(45deg, var(--bs-primary), #00b4d8);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  transition: 0.3s;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(45deg, #0077b6, var(--bs-primary));
+  transform: translateY(-2px);
+}
+
+.btn-success,
+.btn-primary {
+  border-radius: 50px !important;
+  font-weight: 500;
+}
+
+/* --- Form elements --- */
+#importExport select {
+  border-radius: 50px;
+  padding: 10px 15px;
+  transition: 0.2s;
+}
+
+#importExport select:focus {
+  border-color: var(--bs-primary);
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+}
+
+/* --- Table historique --- */
+#importExport table {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+#importExport thead {
+  background-color: #f8f9fa;
+  color: #6c757d;
+  font-weight: 600;
+}
+
+#importExport tbody tr:hover {
+  background-color: #f2f6ff;
+  transition: 0.2s;
+}
+
+/* --- Toast notification --- */
+.toast {
+  z-index: 9999;
+  opacity: 0.95;
+  font-weight: 500;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+
+/* --- Bouton Effacer --- */
+#importExport #clearFileBtn {
+  background: linear-gradient(45deg, #f44336, #e53935);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-weight: 500;
+  padding: 10px 20px;
+  transition: all 0.3s ease;
+}
+
+#importExport #clearFileBtn:hover {
+  background: linear-gradient(45deg, #d32f2f, #b71c1c);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(244, 67, 54, 0.3);
+}
+
+#importExport #clearFileBtn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(244, 67, 54, 0.2);
+}
+
+/* 🌫️ Overlay pleine page */
+#importOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  backdrop-filter: blur(3px);
+}
+
+/* 🌀 Contenu centré */
+.overlay-content {
+  background: white;
+  padding: 30px 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  text-align: center;
+  width: 320px;
+  max-width: 90%;
+}
+
+/* 🔄 Loader circulaire animé */
+.loader {
+  border: 5px solid #e0e0e0;
+  border-top: 5px solid #007bff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 15px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+/* 📊 Barre de progression */
+.progress-bar-container {
+  width: 100%;
+  background: #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+#progressBar {
+  height: 10px;
+  width: 0%;
+  background: linear-gradient(90deg, #007bff, #00c6ff);
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+#progressText {
+  font-weight: 600;
+  color: #333;
+}
+
+
+
+/* --- Animation d’apparition --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,137 @@
+/* ======================== */
+/* 🎨 student.css          */
+/* Styles for student table */
+/* and related elements     */
+/* ======================== */
+
+/* 👁‍🗨 Avatar Styling */
+.avatar {
+  width: 35px;         /* Avatar size */
+  height: 35px;
+  border-radius: 50%;  /* Makes it circular */
+  object-fit: cover;   /* Ensures image covers the area nicely */
+  border: 2px solid #e9ecef; /* Light grey border */
+}
+
+/* 🔹 Round Action Buttons (Edit, Delete, Reset) */
+.btn-action {
+  border: none;                     /* Remove default border */
+  border-radius: 50%;             /* Make buttons circular */
+  width: 36px;                      /* Fixed width */
+  height: 36px;                     /* Fixed height */
+  display: inline-flex;             /* Use flexbox for centering icon */
+  align-items: center;              /* Vertically center icon */
+  justify-content: center;          /* Horizontally center icon */
+  margin: 0 3px;                    /* Small space between buttons */
+  color: #fff;                      /* White icon color */
+  transition: all 0.3s ease;        /* Smooth transition for hover effects */
+  font-size: 1rem;                  /* Icon size */
+  cursor: pointer;                  /* Pointer cursor on hover */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
+/* Custom Background Colors */
+.btn-edit { background-color: #0d6efd; } /* Blue */
+.btn-delete { background-color: #dc3545; } /* Red */
+.btn-reset { background-color: #ffc107; color: #000; } /* Yellow, black icon */
+
+/* Hover & Focus Effects for Action Buttons */
+.btn-action:hover,
+.btn-action:focus {
+  transform: scale(1.15);              /* Slightly enlarge on hover/focus */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Stronger shadow */
+  outline: none;                       /* Remove default focus outline */
+}
+.btn-edit:hover, .btn-edit:focus { background-color: #0b5ed7; } /* Darker blue */
+.btn-delete:hover, .btn-delete:focus { background-color: #bb2d3b; } /* Darker red */
+.btn-reset:hover, .btn-reset:focus { background-color: #e0a800; } /* Darker yellow */
+
+
+/* Status Badge Styling (Active/Inactive) */
+.badge {
+  padding: 0.45em 0.75em;    /* Comfortable padding */
+  font-size: 0.8rem;         /* Slightly smaller font */
+  border-radius: 0.5rem;     /* Rounded corners */
+  font-weight: 600;          /* Bolder text */
+  text-transform: uppercase; /* Uppercase text */
+}
+
+/* Modern Gradient Button (e.g., "Add Student") */
+.btn-gradient {
+  background: linear-gradient(90deg, #0d6efd, #6f42c1); /* Blue to Purple gradient */
+  color: #fff;                     /* White text */
+  border: none;                    /* No border */
+  border-radius: 30px;             /* Pill shape */
+  padding: 8px 18px;               /* Padding */
+  font-weight: 500;                /* Medium font weight */
+  transition: all 0.3s ease;       /* Smooth transition */
+  cursor: pointer;                 /* Pointer cursor */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15); /* Subtle shadow */
+}
+.btn-gradient:hover,
+.btn-gradient:focus {
+  opacity: 0.9;                     /* Slightly transparent on hover */
+  transform: translateY(-2px);    /* Lift effect */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Stronger shadow */
+  color: #fff;                     /* Ensure text remains white */
+  outline: none;                    /* Remove focus outline */
+}
+
+/* Gradient Modal Header Background */
+.bg-gradient {
+  background: linear-gradient(135deg, #0d6efd, #6f42c1); /* Diagonal gradient */
+  color: #fff; /* White text for contrast */
+}
+
+/* Table Styling */
+/* Soft hover effect for table rows */
+table.table-hover tbody tr {
+  transition: background-color 0.2s ease; /* Smooth background transition */
+}
+table.table-hover tbody tr:hover {
+  background-color: #e9ecef; /* Light grey hover */
+  cursor: pointer;            /* Indicate clickable row (for dblclick) */
+}
+
+/* Style for table headers */
+thead th {
+  text-transform: uppercase;   /* Uppercase headers */
+  font-size: 0.8rem;           /* Smaller header font */
+  letter-spacing: 0.5px;       /* Spacing between letters */
+  color: #6c757d;              /* Grey text color */
+  font-weight: 600;            /* Bolder headers */
+  vertical-align: middle;      /* Vertically align text */
+}
+
+/* Style for selected/active table row */
+tr.selected, tr:active { /* Use :active for brief highlight on click */
+  background-color: #cfe2ff !important; /* Light blue highlight */
+  font-weight: 500; /* Slightly bolder text */
+}
+
+/* Ensure toast container is above other elements */
+.toast-container {
+  z-index: 2000; /* High z-index */
+}
+
+/* Basic Toast Animations (Optional - Bootstrap handles some) */
+.toast {
+  /* Example slide-in/fade-out - Adjust timing/effects as needed */
+  animation: slideInRight 0.5s ease forwards, fadeOut 0.5s ease 3s forwards;
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(100%); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(100%); }
+}
+
+/* Checkbox Column Width */
+th.select-all,
+td:first-child .form-check-input {
+  width: 40px; /* Adjust as needed for checkbox alignment */
+}

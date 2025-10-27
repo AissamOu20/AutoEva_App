@@ -1,0 +1,207 @@
+/* ======================== */
+/* all-quiz.css             */
+/* Styles for Quiz List Page*/
+/* ======================== */
+
+body {
+  background-color: #f8f9fa; /* Light background */
+  font-family: "Inter", sans-serif;
+  display: flex; /* For footer positioning */
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+    flex-grow: 1; /* Allow content to fill space */
+}
+
+h1.display-5 {
+  color: #0d6efd; /* Bootstrap primary */
+}
+
+/* --- Filter Bar --- */
+.filter-bar .form-control-sm,
+.filter-bar .form-select-sm {
+    font-size: 0.9rem;
+    border-radius: 0.5rem; /* Slightly more rounded */
+}
+.filter-bar .input-group-text {
+    border-radius: 0.5rem 0 0 0.5rem; /* Match input rounding */
+}
+.filter-bar input.form-control-sm {
+     border-radius: 0 0.5rem 0.5rem 0;
+}
+
+
+/* --- Quiz Card Styling --- */
+.quiz-card {
+  border: none;
+  border-radius: 0.75rem; /* More rounded */
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07); /* Softer shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex; /* Required for h-100 cards */
+  flex-direction: column;
+}
+
+.quiz-card:hover {
+  transform: translateY(-6px); /* Lift higher */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12); /* Slightly stronger shadow */
+}
+
+.quiz-card-img {
+  height: 180px; /* Increased image height */
+  background-size: cover;
+  background-position: center center;
+  border-bottom: 1px solid #f1f3f5; /* Subtle separator */
+}
+
+/* Ensure card body allows footer to stick to bottom */
+.quiz-card .card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Take remaining space */
+    padding: 1.25rem; /* Standard padding */
+}
+
+.quiz-title {
+  font-size: 1.15rem; /* Slightly larger title */
+  font-weight: 600;
+  color: #343a40; /* Darker title */
+  margin-bottom: 0.75rem; /* Space below title */
+}
+
+/* Badges styling */
+.quiz-card .badge {
+    font-size: 0.75rem;
+    padding: 0.3em 0.6em;
+    font-weight: 600;
+}
+.quiz-card .badge.bg-warning { /* Ensure text is dark on yellow */
+    color: #333 !important;
+}
+
+/* Card Text (Description & Question Count) */
+.quiz-card .card-text {
+    font-size: 0.9rem;
+    color: #6c757d; /* Grey text */
+    line-height: 1.5;
+}
+.quiz-card .card-text.quiz-description { /* Specific class for description if needed */
+    margin-bottom: 1rem; /* Space below description */
+    /* Add text-wrap: balance; for potential future browser support */
+}
+.quiz-card .card-text.question-count {
+    font-size: 0.85rem;
+}
+
+
+/* Card Footer (Button & Date) */
+.quiz-card .card-footer-custom { /* Use a custom class or style the mt-auto div */
+    margin-top: auto; /* Push to bottom */
+    padding-top: 1rem; /* Space above footer elements */
+    border-top: 1px solid #f1f3f5; /* Subtle separator */
+}
+
+.quiz-card .btn-sm {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.8rem;
+    font-weight: 500;
+    border-radius: 0.5rem; /* Match other rounding */
+}
+.quiz-card small.text-body-secondary {
+    font-size: 0.8rem;
+}
+
+/* --- Styles for Disabled Quiz Card --- */
+.quiz-disabled {
+    opacity: 0.7; /* Slightly less opaque */
+    filter: grayscale(90%); /* More grayscale */
+    background-color: #f8f9fa;
+    cursor: not-allowed; /* Indicate it's not clickable */
+    transition: none; /* Disable hover transitions */
+}
+.quiz-disabled:hover {
+    transform: none; /* No lift on hover */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07); /* Keep base shadow */
+}
+.quiz-disabled .quiz-title {
+    color: #6c757d;
+}
+.quiz-disabled .quiz-card-img {
+    filter: grayscale(70%);
+}
+.quiz-disabled .btn {
+    pointer-events: none; /* Make button truly unclickable */
+}
+
+/* --- Skeleton Loader Styles (Shimmer) --- */
+.skeleton-card {
+  border: none;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background-color: #ffffff; /* Match card background */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+  padding: 0; /* No padding on the outer container */
+}
+
+/* Base Skeleton Element with Shimmer */
+.skeleton-img, .skeleton-line {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite linear;
+    border-radius: 4px;
+    color: transparent !important;
+    user-select: none;
+    -webkit-user-select: none;
+}
+@keyframes skeleton-loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Specific Skeleton Shapes */
+.skeleton-card .skeleton-img {
+  height: 180px; /* Match image height */
+  border-radius: 0; /* No rounding for image part */
+  margin-bottom: 0;
+}
+.skeleton-card .skeleton-content { /* Container for text lines */
+    padding: 1.25rem;
+}
+.skeleton-line {
+  height: 16px;
+  margin-bottom: 0.75rem; /* Space between lines */
+}
+.skeleton-line.title {
+    height: 22px; /* Taller for title */
+    width: 70%;
+    margin-bottom: 1rem;
+}
+.skeleton-line.badge-line {
+    width: 40%;
+    height: 18px; /* Approx badge height */
+}
+.skeleton-line.text-short { width: 50%; height: 14px; }
+.skeleton-line.text-medium { width: 80%; height: 14px; }
+.skeleton-line.text-long { width: 95%; height: 14px; }
+
+.skeleton-card .skeleton-footer {
+    padding: 0.75rem 1.25rem; /* Match card footer padding */
+    border-top: 1px solid #f1f3f5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.skeleton-line.button {
+    height: 31px; /* Match btn-sm approx height */
+    width: 80px; /* Approx button width */
+    margin-bottom: 0;
+    border-radius: 0.5rem;
+}
+.skeleton-line.date {
+     height: 14px;
+     width: 70px; /* Approx date width */
+     margin-bottom: 0;
+}

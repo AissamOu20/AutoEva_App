@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tableau de Bord - AutoEva</title> 
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/dashboard.css">
+
+<style>
+  body { padding-top: 75px; } /* Adjust for fixed navbar height */
+</style>
+
+</head>
+<body>
+
+  <header id="navbar"></header>
+
+  <section class="welcome-hero container text-center my-5 py-5"> 
+    <h1 class="display-5 fw-bold mb-3 animate-fade-in">
+        Bienvenue <span id="usernameDisplayWelcome" class="text-primary">Utilisateur</span> 
+    </h1>
+    <p class="fs-4 text-muted mb-4 animate-fade-in animate-delay-1">
+        Améliorez vos <span id="changingWord" class="typed-text fw-semibold"></span>
+    </p>
+    <div class="animate-fade-in animate-delay-2">
+      <a href="./all-quiz.html" class="btn btn-primary btn-lg px-4 rounded-pill btn-start-quiz">
+            <i class="bi bi-play-circle-fill me-2"></i>Commencer un Quiz
+      </a>
+    </div>
+  </section>
+
+  <section class="leaderboard-section container my-5"> 
+      <h2 class="display-6 fw-bold text-center mb-5 animate-slide-up">
+        <i class="bi bi-person-fill-check me-2 text-secondary"></i>Classement Étudiants
+      </h2>
+      
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4" id="leaderboardContainer">
+         
+          <p class="text-center text-muted w-100 placeholder-glow"><span class="placeholder col-6"></span></p> {/* Basic loading text */}
+      </div>
+  </section>
+
+  <section class="leaderboard-section container my-5 pt-4 border-top"> 
+      <h2 class="display-6 fw-bold text-center mb-5 animate-slide-up animate-delay-1">
+        <i class="bi bi-trophy-fill me-2 text-warning"></i>Top Groupes
+      </h2>
+     
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4" id="groupsLeaderboard">
+          
+          <p class="text-center text-muted w-100 placeholder-glow"><span class="placeholder col-5"></span></p> {/* Basic loading text */}
+      </div>
+  </section>
+
+  <footer id="footer"></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+        if(document.getElementById('changingWord')) {
+            var typed = new Typed('#changingWord', {
+            strings: ["connaissances.", "compétences.", "aptitudes.", "savoirs.", "expertises."], // Added punctuation
+            typeSpeed: 80,   // Slightly faster
+            backSpeed: 40,
+            backDelay: 1200,
+            loop: true,
+            cursorChar: '|',
+            smartBackspace: true // Improved backspacing
+            });
+        }
+    });
+  </script>
+
+  <script type="module" src="/assets/js/navbar-student.js"></script>
+  <script type="module" src="/assets/js/footer.js"></script>
+  <script type="module" src="/assets/js/student/student-dashboard.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+/* ======================== */
+/* navbar.css (Modern Public) */
+/* ======================== */
+
+.modern-navbar {
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+  backdrop-filter: blur(10px);              /* Blur effect for browsers that support it */
+  -webkit-backdrop-filter: blur(10px);       /* Safari blur */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+  padding-top: 0.75rem;                       /* Adjust vertical padding */
+  padding-bottom: 0.75rem;
+  transition: background-color 0.3s ease;    /* Smooth transition if background changes */
+}
+
+/* Navbar Brand (Logo + Name) */
+.modern-navbar .navbar-brand {
+  color: #343a40; /* Darker text */
+  font-weight: 700; /* Bolder */
+  transition: color 0.3s ease;
+}
+.modern-navbar .navbar-brand:hover {
+  color: #0d6efd; /* Primary color on hover */
+}
+.modern-navbar .navbar-brand img {
+  transition: transform 0.3s ease;
+}
+.modern-navbar .navbar-brand:hover img {
+  transform: rotate(10deg); /* Slight rotation on hover */
+}
+
+/* Navbar Links */
+.modern-navbar .nav-link {
+  color: #495057; /* Slightly darker grey links */
+  font-weight: 500;
+  padding: 0.5rem 1rem; /* Adjust padding */
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Hover effect with underline */
+.modern-navbar .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%; /* Start underline from center */
+  transform: translateX(-50%);
+  width: 0; /* Start with no width */
+  height: 2px;
+  background-color: #0d6efd; /* Primary color */
+  transition: width 0.3s ease;
+}
+
+.modern-navbar .nav-link:hover,
+.modern-navbar .nav-link.active { /* Style for active link */
+  color: #0d6efd; /* Primary color on hover/active */
+}
+
+.modern-navbar .nav-link:hover::after,
+.modern-navbar .nav-link.active::after {
+  width: 60%; /* Expand underline width on hover/active */
+}
+
+/* Connexion Button Styling */
+.modern-navbar .navbar-nav .btn {
+  font-weight: 500;
+  padding: 0.3rem 1.2rem; /* Button padding */
+  transition: all 0.3s ease;
+}
+
+/* Navbar Toggler (Mobile Button) */
+.modern-navbar .navbar-toggler {
+  border: none; /* Remove border */
+  padding: 0.25rem 0.5rem;
+}
+.modern-navbar .navbar-toggler:focus {
+  box-shadow: none; /* Remove focus ring */
+}
+.modern-navbar .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.7)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); /* Custom darker icon */
+}
+
+/* Collapsed Navbar background */
+@media (max-width: 991.98px) {
+  .modern-navbar .navbar-collapse {
+    background-color: rgba(255, 255, 255, 0.98); /* Slightly more opaque when collapsed */
+    margin-top: 0.5rem;
+    padding: 1rem;
+    border-radius: 0.375rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  .modern-navbar .navbar-nav .nav-link,
+  .modern-navbar .navbar-nav .btn {
+    width: 100%; /* Make items full width */
+    text-align: center;
+    margin-bottom: 0.5rem; /* Space between items */
+  }
+   .modern-navbar .nav-link::after {
+      display: none; /* Hide underline effect on mobile */
+   }
+   .modern-navbar .navbar-nav .btn {
+        margin-top: 0.5rem; /* Space above button */
+   }
+}

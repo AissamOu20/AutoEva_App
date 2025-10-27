@@ -1,0 +1,170 @@
+/* ======================== */
+/* quiz-results.css         */
+/* Modern Styles            */
+/* ======================== */
+
+body.results-page {
+  background-color: #f8f9fa; /* Fond clair */
+  font-family: 'Inter', sans-serif;
+  color: #343a40;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+    flex-grow: 1; /* Pousse le footer vers le bas */
+}
+
+/* --- Carte de Résultat (Base) --- */
+.result-card {
+  /* Utilise les classes Bootstrap .card, .shadow-sm, .border-0, .rounded-4 */
+  margin-bottom: 2rem; /* Espacement constant */
+}
+
+/* --- Cercle du Score --- */
+.score-circle {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column; /* Empile le % et le label */
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem auto 2.5rem auto; /* Marges ajustées */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  color: white; /* Couleur de texte par défaut (sera sur le fond coloré) */
+  font-weight: 700; /* Texte en gras */
+}
+.score-circle span {
+    line-height: 1.1; /* Ajuste l'interligne si nécessaire */
+}
+/* Label "Votre Score" à l'intérieur du cercle */
+.score-circle::after {
+    content: 'Votre Score';
+    font-size: 0.8rem;
+    font-weight: 500;
+    opacity: 0.8;
+    margin-top: 5px;
+}
+
+/* Couleurs Succès/Échec pour le cercle */
+.score-pass { background: linear-gradient(135deg, #198754 0%, #20c997 100%); } /* Dégradé vert */
+.score-fail { background: linear-gradient(135deg, #dc3545 0%, #fd7e14 100%); } /* Dégradé rouge/orange */
+
+
+/* --- Ligne des Statistiques (Score, Correctes, %) --- */
+.score-stats h5 {
+    font-size: 0.8rem; /* Petit label */
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    text-transform: uppercase; /* Majuscules pour les labels */
+}
+.score-stats p {
+    color: #212529; /* Chiffres plus foncés */
+    font-weight: 600; /* Chiffres semi-gras */
+}
+/* Bordures verticales pour séparer (sur écrans moyens et plus) */
+@media (min-width: 768px) {
+    .score-stats .border-start { border-left: 1px solid #dee2e6 !important; }
+    .score-stats .border-end { border-right: 1px solid #dee2e6 !important; }
+}
+
+/* --- Boutons d'Action --- */
+.action-buttons .btn {
+    font-weight: 500;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.action-buttons .btn:hover {
+    transform: translateY(-2px); /* Effet de soulèvement */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Carte des Résultats Détaillés --- */
+#detailedResults .result-item {
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    border-left: 5px solid transparent; /* Base pour la bordure colorée */
+    position: relative; /* Pour l'icône */
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+#detailedResults .result-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Style Réponse Correcte */
+.result-item.correct-answer {
+  background-color: #f0fdf4; /* Vert très clair */
+  border-left-color: #22c55e; /* Bordure verte */
+}
+.result-item.correct-answer .result-icon { color: #16a34a; } /* Icône vert foncé */
+
+/* Style Réponse Incorrecte */
+.result-item.incorrect-answer {
+  background-color: #fff1f2; /* Rouge très clair */
+  border-left-color: #f43f5e; /* Bordure rouge */
+}
+.result-item.incorrect-answer .result-icon { color: #e11d48; } /* Icône rouge foncé */
+
+/* Styles communs pour les détails de réponse */
+.result-item strong { color: #343a40; }
+.result-item .user-answer,
+.result-item .correct-answer-text {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.95rem;
+}
+.result-item .user-answer {
+    color: #495057; /* Réponse utilisateur en gris */
+}
+.result-item.incorrect-answer .correct-answer-text {
+    color: #16a34a; /* Bonne réponse affichée en vert */
+    font-weight: 500;
+}
+
+/* Icône Correct/Incorrect */
+.result-icon {
+    position: absolute;
+    top: 50%;
+    right: 1.25rem;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+}
+
+/* --- Animations d'entrée --- */
+.animate-fade-in { opacity: 0; animation: fadeInAnimation 0.6s ease-out forwards; }
+@keyframes fadeInAnimation { to { opacity: 1; } }
+.animate-delay-1 { animation-delay: 0.2s; } /* Pour la deuxième carte */
+
+/* --- Ajustements Responsives --- */
+@media (max-width: 767.98px) {
+    /* Empile les stats et ajoute des bordures horizontales */
+    .score-stats .border-start,
+    .score-stats .border-end {
+        border-left: none !important;
+        border-right: none !important;
+        border-top: 1px solid #dee2e6;
+        border-bottom: 1px solid #dee2e6;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    .score-stats .col-md-4:first-child { border-top: none; margin-top: 0;}
+    .score-stats .col-md-4:last-child { border-bottom: none; margin-bottom: 0;}
+
+    /* Empile les boutons d'action */
+    .action-buttons .btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 0.75rem;
+    }
+     .action-buttons .btn.me-2 { margin-right: 0 !important; } /* Annule la marge droite */
+     .action-buttons .btn:last-child { margin-bottom: 0; }
+
+     /* Ajuste le padding et l'icône pour les détails */
+     .result-item { padding: 0.8rem 1rem; }
+     .result-icon { font-size: 1.2rem; right: 1rem; }
+}

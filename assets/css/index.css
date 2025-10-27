@@ -1,0 +1,175 @@
+/* ======================== */
+/* index.css (Wave Animation) */
+/* ======================== */
+
+body {
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #eef2f7; /* Light grey/blue background */
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* --- Wave Background --- */
+.wave-background {
+  position: fixed; /* Fixed background */
+  bottom: 0;        /* Attached to the bottom */
+  left: 0;
+  height: 200px;     /* Height of the wave area */
+  width: 100%;
+  z-index: -1;       /* Behind everything */
+}
+
+/* Individual Wave Styling */
+.wave {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 88.7'%3E%3Cpath d='M800 56.9c-155.5 0-204.9-50-405.5-49.9-200 0-250 49.9-394.5 49.9v31.8h800v-.2-31.6z' fill='%23FFFFFF'/%3E%3C/svg%3E"); /* White Wave SVG */
+  background-size: cover; /* Stretch wave */
+  position: absolute;
+  width: 200%; /* Wider than screen for horizontal movement */
+  height: 100%;
+  animation: wave-move 10s linear infinite; /* Base animation */
+  opacity: 1;
+  bottom: 0;
+  left: 0;
+}
+/* Variations for layered effect */
+.wave.wave1 {
+  animation-duration: 15s;
+  opacity: 0.15;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 88.7'%3E%3Cpath d='M800 56.9c-155.5 0-204.9-50-405.5-49.9-200 0-250 49.9-394.5 49.9v31.8h800v-.2-31.6z' fill='%23004F9F'/%3E%3C/svg%3E"); /* Blue Wave */
+}
+.wave.wave2 {
+  animation-duration: 12s;
+  animation-direction: reverse; /* Move opposite direction */
+  opacity: 0.1;
+   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 88.7'%3E%3Cpath d='M800 56.9c-155.5 0-204.9-50-405.5-49.9-200 0-250 49.9-394.5 49.9v31.8h800v-.2-31.6z' fill='%238BC53F'/%3E%3C/svg%3E"); /* Green Wave */
+}
+.wave.wave3 {
+  animation-duration: 18s;
+  opacity: 0.2;
+   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 88.7'%3E%3Cpath d='M800 56.9c-155.5 0-204.9-50-405.5-49.9-200 0-250 49.9-394.5 49.9v31.8h800v-.2-31.6z' fill='%23FFFFFF'/%3E%3C/svg%3E"); /* White Wave */
+}
+.wave.wave4 {
+    animation-duration: 8s;
+    animation-direction: reverse;
+    opacity: 0.08;
+     background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 88.7'%3E%3Cpath d='M800 56.9c-155.5 0-204.9-50-405.5-49.9-200 0-250 49.9-394.5 49.9v31.8h800v-.2-31.6z' fill='%23004F9F'/%3E%3C/svg%3E"); /* Blue Wave */
+}
+
+/* Wave Animation Keyframes */
+@keyframes wave-move {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* Moves wave horizontally by half its width */
+}
+
+/* --- Hero Section --- */
+#hero {
+  height: 70vh; /* Adjust height as needed */
+  min-height: 500px;
+  background: none; /* Make hero background transparent */
+  padding: 0; /* Remove padding if using flex alignment */
+  position: relative;
+  z-index: 1; /* Above waves */
+  display: flex; /* Use flexbox to center content vertically */
+  align-items: center;
+}
+#hero .container {
+  position: relative;
+  z-index: 2;
+}
+#hero h1 {
+  font-weight: 700;
+  color: #1f2337; /* Dark blue/grey title */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Subtle text shadow */
+}
+#hero p.lead {
+  color: #495057;
+  margin-bottom: 2.5rem; /* More space before button */
+}
+#hero .btn-primary {
+  padding: 0.8rem 2.5rem; /* Slightly wider button */
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
+  transition: all 0.3s ease;
+}
+#hero .btn-primary:hover {
+  transform: translateY(-3px) scale(1.03); /* Lift and scale effect */
+  box-shadow: 0 6px 20px rgba(13, 110, 253, 0.4);
+}
+
+/* --- Features Section --- */
+#features {
+  padding: 5rem 0; /* More padding */
+  background-color: #ffffff; /* White background for this section */
+  position: relative;
+  z-index: 1;
+}
+#features h2 {
+  color: #343a40;
+}
+.feature-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.1) !important; /* Enhanced shadow on hover */
+}
+.feature-icon i {
+  transition: transform 0.3s ease;
+}
+.feature-card:hover .feature-icon i {
+    transform: scale(1.1);
+}
+.feature-card h5 { font-weight: 600; margin-bottom: 0.75rem; color: #343a40; }
+.feature-card p { font-size: 0.9rem; }
+
+/* --- Info Callout Section --- */
+#info-callout {
+    padding: 4rem 0;
+    position: relative;
+    z-index: 1;
+    background-color: #f8f9fa; /* Light background */
+}
+#info-callout .alert {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    background-color: #ffffff; /* White background */
+    border-left: 5px solid #0dcaf0; /* Info color border */
+    color: #343a40;
+}
+#info-callout .alert i { color: #0dcaf0; } /* Icon color */
+
+/* --- Footer --- */
+footer {
+    background-color: #212529; /* Dark footer */
+    color: #adb5bd;
+    padding: 2rem 0; /* More padding */
+    margin-top: auto;
+    position: relative;
+    z-index: 1;
+ }
+
+/* --- Content Entrance Animations --- */
+.animate-fade-in {
+  opacity: 0;
+  animation: fadeInAnimation 1s ease-out forwards;
+}
+.animate-slide-up {
+  opacity: 0;
+  transform: translateY(40px); /* Start further down */
+  animation: slideInUpAnimation 0.8s ease-out forwards;
+}
+@keyframes fadeInAnimation { to { opacity: 1; } }
+@keyframes slideInUpAnimation { to { opacity: 1; transform: translateY(0); } }
+
+/* Stagger animation delays */
+.animate-delay-1 { animation-delay: 0.2s; }
+.animate-delay-2 { animation-delay: 0.4s; }
+.animate-delay-3 { animation-delay: 0.6s; }
+.animate-delay-4 { animation-delay: 0.8s; }
+/* Apply base delays */
+#hero h1 { animation-delay: 0.1s; }
+#hero p.lead { animation-delay: 0.3s; }
+#hero .btn-primary { animation-delay: 0.5s; }
+#features h2 { animation-delay: 0.1s; } /* Animate the title too */

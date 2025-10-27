@@ -1,0 +1,118 @@
+/* ======================== */
+/* 📊 stats.css             */
+/* ======================== */
+
+/* General Section Styling */
+.section h2 {
+    margin-bottom: 1.5rem; /* Space below section titles */
+    color: #333; /* Darker heading color */
+}
+
+/* Stat Cards Row */
+.stats-row {
+    margin-bottom: 2rem; /* Space below the main stat cards */
+}
+
+/* Individual Stat Card Styling */
+.stat-card {
+    border: none; /* Remove default card border */
+    border-radius: 0.5rem; /* Slightly rounded corners */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    overflow: hidden; /* Ensure border-start doesn't overflow */
+}
+
+.stat-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1) !important; /* Softer shadow on hover */
+}
+
+.stat-card .card-body {
+    padding: 1.25rem;
+}
+
+.stat-card .text-xs {
+    font-size: 0.75rem; /* Smaller font for labels */
+    letter-spacing: 0.05em;
+}
+
+.stat-card .h5 {
+    font-size: 1.75rem; /* Larger font for the stat value */
+}
+
+.stat-card .text-gray-300 {
+    color: #dddfeb !important; /* Light gray for icons */
+}
+
+.stat-card .text-gray-800 {
+    color: #5a5c69 !important; /* Dark gray for stat values */
+}
+
+/* Border styles (can be customized) */
+.border-start {
+    border-left-width: 0.25rem !important; /* Thicker colored border */
+}
+.border-primary { border-color: #0d6efd !important; }
+.border-success { border-color: #198754 !important; }
+.border-info   { border-color: #0dcaf0 !important; }
+.border-warning { border-color: #ffc107 !important; }
+
+/* Chart and Ranking Row */
+.chart-row {
+    margin-bottom: 2rem; /* Space between rows of charts/tables */
+}
+
+/* Chart Card Styling */
+.chart-card {
+    border-radius: 0.5rem;
+}
+
+.chart-card .card-header {
+    background-color: #f8f9fc; /* Light background for headers */
+    border-bottom: 1px solid #e3e6f0;
+    padding: 0.75rem 1.25rem;
+}
+
+.chart-card .card-body {
+    position: relative; /* Needed for Chart.js responsiveness */
+    padding: 1rem;
+}
+
+/* Ranking Table Styling */
+#groupRankingTable thead th,
+#studentRankingTable thead th {
+    background-color: #f8f9fc;
+    border-bottom-width: 1px;
+    font-size: 0.85rem;
+    color: #5a5c69;
+    text-align: center;
+}
+#groupRankingTable td,
+#studentRankingTable td {
+    vertical-align: middle;
+    font-size: 0.9rem;
+    text-align: center;
+}
+#groupRankingTable td:nth-child(2), /* Align Group/Name left */
+#studentRankingTable td:nth-child(2) {
+    text-align: left;
+}
+
+
+/* Popular Quiz Stat Styling */
+#popularQuizStat h5 {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem !important;
+}
+
+/* General Info Styling */
+#activeQuizCount,
+#totalQuestionCount {
+    font-weight: bold;
+    color: #5a5c69;
+}
+
+/* Ensure canvas elements resize properly */
+canvas {
+    max-width: 100%;
+    height: auto !important; /* Override potential fixed height issues */
+}

@@ -1,0 +1,127 @@
+/* ======================== */
+/* footer.css               */
+/* Modern Footer Styles     */
+/* ======================== */
+
+.app-footer {
+  background-color: #212529; /* Dark background */
+  color: #adb5bd;        /* Light grey text color */
+  padding-top: 3rem;       /* Top padding */
+  font-size: 0.9rem;       /* Slightly smaller base font size */
+  margin-top: auto;        /* Pushes footer to bottom if content is short */
+  line-height: 1.6;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;       /* Allow sections to wrap on smaller screens */
+  justify-content: space-between; /* Space out sections */
+  gap: 2rem;             /* Space between sections */
+  padding-bottom: 2rem;   /* Space before the bottom bar */
+}
+
+.footer-section {
+  flex: 1;               /* Allow sections to grow */
+  min-width: 200px;      /* Minimum width before wrapping */
+}
+
+.footer-section h4 {
+  color: #ffffff;        /* White heading */
+  font-weight: 600;      /* Bolder heading */
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+/* Optional: Underline effect for headings */
+.footer-section h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px; /* Width of the underline */
+  height: 2px;
+  background-color: #0d6efd; /* Accent color (Bootstrap primary) */
+}
+
+/* Styling for the links section */
+.footer-section.links ul {
+  list-style: none;      /* Remove default bullet points */
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section.links li {
+  margin-bottom: 0.6rem; /* Space between links */
+}
+
+.footer-section.links a {
+  color: #adb5bd;        /* Inherit base text color */
+  text-decoration: none; /* Remove underline */
+  transition: color 0.3s ease, padding-left 0.3s ease; /* Smooth transition */
+}
+
+.footer-section.links a:hover {
+  color: #ffffff;        /* White on hover */
+  padding-left: 5px;     /* Slight indent on hover */
+}
+
+/* Styling for the contact section */
+.footer-section.contact p {
+  margin-bottom: 0.5rem;
+  display: flex; /* Align icon and text */
+  align-items: center;
+}
+.footer-section.contact p i {
+  color: #6c757d; /* Slightly darker icon color */
+  font-size: 1.1em; /* Make icon slightly larger */
+}
+
+
+/* Social Icons */
+.social-icons {
+  display: flex;
+  gap: 1rem;           /* Space between icons */
+}
+
+.social-icon {
+  color: #adb5bd;        /* Icon color */
+  font-size: 1.5rem;     /* Icon size */
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #ffffff;        /* White on hover */
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+/* Footer Bottom Bar */
+.footer-bottom {
+  background-color: #1a1e21; /* Slightly darker background for the bottom bar */
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 0.8rem;
+  margin-top: 2rem; /* Space above the bottom bar */
+  border-top: 1px solid #343a40; /* Subtle top border */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column; /* Stack sections vertically */
+    text-align: center;     /* Center text in sections */
+    gap: 2.5rem;          /* Increase gap when stacked */
+  }
+  .footer-section h4::after {
+    left: 50%; /* Center the underline */
+    transform: translateX(-50%);
+  }
+  .social-icons {
+    justify-content: center; /* Center social icons */
+  }
+  .footer-section.contact p {
+     justify-content: center; /* Center icon+text */
+  }
+}

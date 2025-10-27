@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Admin - AutoEva</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/css/stats.css">     <link rel="stylesheet" href="/assets/css/student.css">   <link rel="stylesheet" href="/assets/css/groups.css">    <link rel="stylesheet" href="/assets/css/import_export.css"> <style>
+    body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #f8f9fa; } /* Added background color */
+
+    /* Sidebar Styles */
+    .sidebar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 100%;
+      width: 220px; /* Default width */
+      background-color: #1f2337;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      padding-top: 1rem;
+      transition: width 0.3s ease; /* Smooth transition */
+      z-index: 1030; /* Ensure sidebar is above main content */
+    }
+    .sidebar.collapsed { width: 60px; } /* Collapsed width */
+
+    .sidebar a {
+      padding: 15px 20px;
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap; /* Prevent text wrapping */
+      overflow: hidden; /* Hide overflowing text */
+      transition: background 0.2s ease;
+    }
+    .sidebar a:hover { background-color: #374151; }
+    .sidebar a.active { background-color: #0d6efd; font-weight: bold; }
+
+    .sidebar .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      text-align: center;
+      padding: 0 10px; /* Add padding */
+    }
+    .sidebar .logo img { width: 120px; height: auto; transition: width 0.3s ease; }
+    .sidebar.collapsed .logo img { width: 40px; }
+
+    /* Main Content Styles */
+    .main-content {
+      margin-left: 220px; /* Match sidebar width */
+      padding: 2rem;
+      transition: margin-left 0.3s ease; /* Smooth transition */
+    }
+    .sidebar.collapsed + .main-content { margin-left: 60px; } /* Adjust margin when collapsed */
+
+    /* Sidebar Collapse Button */
+    .collapse-btn {
+      /* Removed margin-top: auto; - placed logout below */
+      padding: 15px 20px;
+      cursor: pointer;
+      background-color: #111827;
+      text-align: center;
+      border-top: 1px solid #374151; /* Separator */
+    }
+
+    /* Text hiding in collapsed sidebar */
+    .sidebar.collapsed a .link-text { display: none; }
+    .sidebar.collapsed a { justify-content: center; } /* Center icon */
+
+    /* Logout Button Styles */
+    #logoutBtn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 15px 20px; /* Consistent padding */
+      color: #fff;
+      text-decoration: none;
+      background-color: rgba(220, 53, 69, 0.1); /* Slight red background */
+      border-top: 1px solid #374151; /* Separator */
+      margin-top: auto; /* Push to bottom */
+    }
+    #logoutBtn:hover { background-color: rgba(220, 53, 69, 0.3); }
+    .sidebar.collapsed #logoutBtn span { display: none; }
+    .sidebar.collapsed #logoutBtn i { margin: 0; font-size: 1.2rem; }
+
+    /* General Card & Table Styles */
+    .card { margin-bottom: 20px; border: none; } /* Remove default border */
+    .table { background: #fff; }
+
+    /* Specific Styles for Group Cards */
+    .group-card { display: flex; flex-direction: column; height: 100%; }
+    .group-card .card-body { flex-grow: 1; }
+    .group-info { display: flex; flex-direction: column; gap: 5px; font-size: 0.9rem; margin-top: 15px; }
+    .group-buttons { display: flex; gap: 10px; justify-content: flex-end; background: #f8f9fa; padding: 0.75rem 1.25rem; border-top: 1px solid #dee2e6; }
+    .btn-gradient { /* Example gradient button */
+        background: linear-gradient(90deg, #0d6efd, #6f42c1);
+        border: none;
+        color: white;
+    }
+    .btn-gradient:hover {
+        opacity: 0.9;
+        color: white;
+    }
+
+    /* Style for sections */
+    .section { display: none; } /* Hide all sections by default */
+    .section.active { display: block; } /* Show only the active section */
+
+  </style>
+</head>
+<body>
+
+  <div class="sidebar" id="sidebar">
+    <div class="logo">
+      <img src="/assets/img/logo.png" alt="AutoEva Logo">
+    </div>
+
+    <a href="#" class="active" data-section="dashboard"><i class="bi bi-speedometer2"></i> <span class="link-text">Dashboard</span></a>
+    <a href="#" data-section="students"><i class="bi bi-people"></i> <span class="link-text">Étudiants</span></a>
+    <a href="#" data-section="groups"><i class="bi bi-grid-1x2"></i> <span class="link-text">Groupes</span></a>
+    <a href="#" data-section="quizzes"><i class="bi bi-journal-text"></i> <span class="link-text">Quiz</span></a>
+    <a href="#" data-section="admins"><i class="bi bi-person-shield"></i> <span class="link-text">Admins</span></a>
+    <a href="#" data-section="avatars"><i class="bi bi-person-bounding-box"></i> <span class="link-text">Avatars</span></a>
+    <a href="#" data-section="importExport"><i class="bi bi-cloud-arrow-up-fill "></i> <span class="link-text">Import / Export</span></a>
+
+    <a href="/" id="logoutBtn"><i class="bi bi-box-arrow-right"></i> <span class="link-text">Se déconnecter</span></a>
+
+    <div class="collapse-btn" id="collapseBtn"><i class="bi bi-chevron-left"></i></div>
+  </div> <div class="main-content" id="mainContent">
+
+    <div id="dashboard" class="section active"> <h2 class="fw-bold text-primary mb-4"><i class="bi bi-speedometer2 me-2"></i>Tableau de bord Analytique</h2>
+
+      <div class="row stats-row mb-4">
+        <div class="col-xl-3 col-md-6 mb-4">
+          <div class="card stat-card h-100 shadow border-start border-primary border-4"> <div class="card-body"> <div class="row no-gutters align-items-center"> <div class="col mr-2"> <div class="text-xs fw-bold text-primary text-uppercase mb-1">Étudiants Actifs</div> <div class="h5 mb-0 fw-bold text-gray-800" id="studentCount">0</div> </div> <div class="col-auto"> <i class="bi bi-people-fill fs-2 text-gray-300"></i> </div> </div> </div> </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+          <div class="card stat-card h-100 shadow border-start border-success border-4"> <div class="card-body"> <div class="row no-gutters align-items-center"> <div class="col mr-2"> <div class="text-xs fw-bold text-success text-uppercase mb-1">Groupes</div> <div class="h5 mb-0 fw-bold text-gray-800" id="groupCount">0</div> </div> <div class="col-auto"> <i class="bi bi-grid-1x2-fill fs-2 text-gray-300"></i> </div> </div> </div> </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mb-4">
+          <div class="card stat-card h-100 shadow border-start border-info border-4"> <div class="card-body"> <div class="row no-gutters align-items-center"> <div class="col mr-2"> <div class="text-xs fw-bold text-info text-uppercase mb-1">Tentatives (Total)</div> <div class="h5 mb-0 fw-bold text-gray-800" id="totalAttemptsStat">0</div> </div> <div class="col-auto"> <i class="bi bi-play-circle-fill fs-2 text-gray-300"></i> </div> </div> </div> </div>
+        </div>
+         <div class="col-xl-3 col-md-6 mb-4">
+          <div class="card stat-card h-100 shadow border-start border-warning border-4"> <div class="card-body"> <div class="row no-gutters align-items-center"> <div class="col mr-2"> <div class="text-xs fw-bold text-warning text-uppercase mb-1">Score Moyen (%)</div> <div class="h5 mb-0 fw-bold text-gray-800" id="averageScoreStat">0%</div> </div> <div class="col-auto"> <i class="bi bi-percent fs-2 text-gray-300"></i> </div> </div> </div> </div>
+        </div>
+      </div>
+
+      <div class="row mb-4">
+         <div class="col-lg-6 mb-4">
+            <div class="card shadow h-100"> <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"> <h6 class="m-0 fw-bold text-primary"><i class="bi bi-star-fill me-2"></i>Quiz le plus Populaire</h6> </div> <div class="card-body" id="popularQuizStat"> <p class="text-center text-muted">Chargement...</p> </div> </div>
+         </div>
+         <div class="col-lg-6 mb-4">
+            <div class="card shadow h-100"> <div class="card-header py-3"> <h6 class="m-0 fw-bold text-primary"><i class="bi bi-info-circle-fill me-2"></i>Infos Générales</h6> </div> <div class="card-body"> <p><strong>Quiz Actifs :</strong> <span id="activeQuizCount">0</span></p> <p><strong>Questions Totales :</strong> <span id="totalQuestionCount">0</span></p> </div> </div>
+         </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col-lg-6 mb-4">
+          <div class="card shadow"> <div class="card-header py-3"> <h6 class="m-0 fw-bold text-primary"><i class="bi bi-trophy-fill me-2"></i>Classement des Groupes</h6> </div> <div class="card-body"> <div class="table-responsive"> <table class="table table-sm table-hover" id="groupRankingTable"> <thead> <tr> <th>#</th> <th>Groupe</th> <th>Points</th> <th>Étud.</th> </tr> </thead> <tbody></tbody> </table> </div> </div> </div>
+        </div>
+        <div class="col-lg-6 mb-4">
+          <div class="card shadow"> <div class="card-header py-3"> <h6 class="m-0 fw-bold text-primary"><i class="bi bi-person-fill-check me-2"></i>Top 10 Étudiants</h6> </div> <div class="card-body"> <div class="table-responsive"> <table class="table table-sm table-hover" id="studentRankingTable"> <thead> <tr> <th>#</th> <th>Nom</th> <th>Points</th> <th>Groupe</th> </tr> </thead> <tbody></tbody> </table> </div> </div> </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6 mb-4">
+          <div class="card shadow"> <div class="card-header py-3"> <h6 class="m-0 fw-bold text-primary">Points par Groupe</h6> </div> <div class="card-body"> <canvas id="groupChart"></canvas> </div> </div>
+        </div>
+        <div class="col-lg-6 mb-4">
+          <div class="card shadow"> <div class="card-header py-3"> <h6 class="m-0 fw-bold text-primary">Tentatives par Catégorie</h6> </div> <div class="card-body"> <canvas id="categoryChart"></canvas> </div> </div>
+        </div>
+      </div>
+    </div> <div id="students" class="section">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold mb-0 text-primary"> <i class="bi bi-mortarboard-fill me-2"></i> Gestion des étudiants </h2>
+        <div> <button class="btn btn-gradient me-2" id="addStudentBtn"> <i class="bi bi-person-plus-fill me-1"></i> Ajouter </button>
+          <button id="deleteSelectedBtn" class="btn btn-danger"> <i class="bi bi-trash3-fill me-1"></i> Supprimer Sélection </button>
+        </div>
+      </div>
+      <div class="input-group mb-4 w-50 shadow-sm">
+        <span class="input-group-text bg-white border-end-0"> <i class="bi bi-search text-muted"></i> </span>
+        <input type="text" id="searchStudent" class="form-control border-start-0" placeholder="Rechercher par nom, prénom, username, groupe...">
+      </div>
+      <div class="table-responsive shadow rounded-4 overflow-hidden">
+        <table class="table table-hover align-middle mb-0" id="studentsTable">
+          <thead class="bg-light text-secondary">
+            <tr>
+              <th>ID</th>
+              <th>Username</th>
+              <th>Nom complet</th>
+              <th>Groupe</th>
+              <th>Statut</th>
+              <th class="text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <nav class="mt-4 d-flex justify-content-center">
+        <ul class="pagination shadow-sm" id="studentsPagination"></ul>
+      </nav>
+    </div> <div id="quizzes" class="section">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-primary mb-0"> <i class="bi bi-question-circle-fill me-2"></i> Gestion des Quiz </h2>
+        <div class="d-flex gap-2">
+          <input type="text" id="searchQuiz" class="form-control form-control-sm w-auto" placeholder="🔍 Rechercher un quiz...">
+          <button class="btn btn-primary d-flex align-items-center gap-1" id="addQuizBtn"> <i class="bi bi-plus-circle"></i> Ajouter </button>
+        </div>
+      </div>
+      <div class="card shadow-sm border-0">
+        <div class="card-body p-0"> <div class="table-responsive">
+            <table class="table table-hover align-middle text-center mb-0">
+              <thead class="table-primary">
+                  <tr>
+                    <th>Titre</th>
+                    <th>Questions</th>
+                    <th>Catégorie</th>
+                    <th>Niveau</th>
+                    <th>Version</th>
+                    <th>Points Totaux</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+              <tbody id="quizzesTable"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer bg-light text-center border-0">
+          <nav>
+            <ul class="pagination pagination-sm justify-content-center mb-0" id="quizPagination"></ul>
+          </nav>
+        </div>
+      </div>
+    </div> <div id="groups" class="section">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-primary mb-0"> <i class="bi bi-grid-1x2 me-2"></i> Gestion des groupes </h2>
+        </div>
+      <div class="mb-4 shadow-sm">
+          <input type="text" class="form-control form-control-lg" id="searchGroupInput" placeholder="Rechercher un groupe par nom...">
+      </div>
+      <div class="row" id="groupsContainer">
+        </div>
+    </div>
+     <div id="importExport" class="section">
+      <h2 class="fw-bold text-primary mb-4"> <i class="bi bi-cloud-arrow-up-fill me-2"></i> Import / Export des données </h2>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="card shadow-sm border-0 rounded-4 p-4 h-100">
+            <div class="d-flex align-items-center mb-3"> <i class="bi bi-upload text-primary fs-3 me-2"></i> <h4 class="mb-0">Importer des données</h4> </div>
+            <p class="text-muted mb-3"> Téléversez un fichier Excel, CSV ou JSON pour ajouter/mettre à jour des données. </p>
+            <div class="mb-3"> <label class="form-label fw-semibold">Type de données</label> <select id="importType" class="form-select rounded-pill"> <option value="">-- Choisir --</option> <option value="quizzs">Quiz</option> <option value="questions">Questions</option> <option value="users">Étudiants</option> <option value="groups">Groupes</option> </select> </div>
+            <div class="import-dropzone text-center p-4 border rounded-4 mb-3"> <i class="bi bi-file-earmark-arrow-up fs-1 text-secondary"></i> <p id="fileNameDisplay" class="mt-2 text-muted">Glissez votre fichier ici ou cliquez pour choisir</p> <input type="file" id="importFile" class="d-none" accept=".xlsx,.xls,.csv,.json"> <button class="btn btn-gradient mt-2 me-2" id="chooseFileBtn">Choisir Fichier</button> <button class="btn btn-outline-danger mt-2" id="clearFileBtn">Effacer</button> </div>
+            <div class="text-end mt-auto"> <button class="btn btn-success rounded-pill px-4" id="importConfirmBtn"> <i class="bi bi-check-circle me-2"></i> Confirmer l’import </button> </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card shadow-sm border-0 rounded-4 p-4 h-100">
+            <div class="d-flex align-items-center mb-3"> <i class="bi bi-download text-success fs-3 me-2"></i> <h4 class="mb-0">Exporter des données</h4> </div>
+            <p class="text-muted mb-3"> Téléchargez les données de la base au format de votre choix. </p>
+            <div class="mb-3"> <label class="form-label fw-semibold">Type de données</label> <select id="exportType" class="form-select rounded-pill"> <option value="">-- Choisir --</option> <option value="quizzs">Quiz</option> <option value="questions">Questions</option> <option value="users">Étudiants</option> <option value="groups">Groupes</option> </select> </div>
+            <div class="mb-3"> <label class="form-label fw-semibold">Format du fichier</label> <select id="exportFormat" class="form-select rounded-pill"> <option value="xlsx">Excel (.xlsx)</option> <option value="csv">CSV (.csv)</option> <option value="json">JSON (.json)</option> </select> </div>
+            <div class="text-end mt-auto"> <button class="btn btn-primary rounded-pill px-4" id="exportBtn"> <i class="bi bi-download me-2"></i> Télécharger </button> </div>
+          </div>
+        </div>
+      </div>
+      <div class="card shadow-sm border-0 rounded-4 p-4 mt-5">
+        <div class="d-flex align-items-center mb-3"> <i class="bi bi-clock-history text-secondary fs-4 me-2"></i> <h4 class="mb-0">Historique des actions</h4> </div>
+        <div class="table-responsive">
+          <table class="table table-striped align-middle mb-0">
+            <thead class="bg-light text-secondary"> <tr> <th>Date</th> <th>Type</th> <th>Action</th> <th>Fichier</th> <th>Utilisateur</th> </tr> </thead>
+            <tbody id="importExportHistory"> <tr> <td colspan="5" class="text-center text-muted">Aucune action récente</td> </tr> </tbody>
+          </table>
+        </div>
+      </div>
+    </div> 
+
+
+
+
+    <section id="admins" class="section">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold mb-0 text-primary">
+          <i class="bi bi-person-shield me-2"></i> Gestion des Administrateurs
+        </h2>
+        <div>
+          <button class="btn btn-gradient me-2" id="addAdminBtn" data-bs-toggle="modal" data-bs-target="#addAdminModal">
+            <i class="bi bi-person-plus-fill me-1"></i> Ajouter un Admin
+          </button>
+        </div>
+      </div>
+      
+      <div class="table-responsive shadow rounded-4 overflow-hidden">
+        <table class="table table-hover align-middle mb-0" id="adminsTable">
+          <thead class="bg-light text-secondary">
+            <tr>
+              <th>Username</th>
+              <th>Nom complet</th>
+              <th>Statut</th>
+              <th class="text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="adminListBody">
+            <tr>
+              <td colspan="4" class="text-center text-muted">Chargement...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+ <section id="avatars" class="section">
+      <h2 class="fw-bold text-primary mb-4"><i class="bi bi-person-bounding-box me-2"></i> Gestion des Avatars (Manuel)</h2>
+
+      <div class="card shadow-sm mb-4 border-0 rounded-4">
+        <div class="card-header bg-light border-0 fw-semibold">Ajouter un avatar manuellement</div>
+        <div class="card-body p-4">
+          <form id="addAvatarForm" class="row g-3 align-items-end">
+            <div class="col-md-4">
+              <label for="avatarKey" class="form-label">Clé/Nom (unique)</label>
+              <input type="text" class="form-control" id="avatarKey" placeholder="Ex: avatar_1, blue_icon" required>
+              <div class="form-text small">Identifiant unique pour cet avatar.</div>
+            </div>
+           
+            <div class="col-md-6">
+              <label for="avatarPath" class="form-label">Chemin d'accès au fichier</label>
+              <input type="text" class="form-control" id="avatarPath" placeholder="/assets/avatars/avatar_1.png" required>
+               <div class="form-text small">Chemin exact vers l'image dans votre projet.</div>
+            </div>
+           
+            <div class="col-md-2">
+              <button type="submit" class="btn btn-primary w-100" id="addAvatarSubmitBtn">
+                <i class="bi bi-plus-lg me-1"></i> Ajouter
+              </button>
+            </div>
+            
+          </form>
+           <p class="mt-3 mb-0 text-muted small">
+             <i class="bi bi-info-circle me-1"></i> Rappel : Vous devez placer manuellement le fichier image dans le dossier <code>/assets/avatars/</code> de votre projet avant d'ajouter son chemin ici.
+           </p>
+        </div>
+      </div>
+
+      
+      <div class="card shadow-sm border-0 rounded-4">
+        <div class="card-header bg-light border-0 fw-semibold">Avatars existants</div>
+        <div class="card-body p-4">
+          <div id="avatarGridDisplay" class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-3">
+             <div class="col-12 text-center text-muted"> <div class="spinner-border spinner-border-sm" role="status"> <span class="visually-hidden">Loading...</span> </div> Chargement... </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+  
+  
+  </div> <div class="modal fade" id="editStudentModal" tabindex="-1" aria-labelledby="editStudentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow">
+        <form id="editStudentForm">
+          <div class="modal-header bg-gradient text-white"> <h5 class="modal-title" id="editStudentModalLabel"> <i class="bi bi-pencil-square me-2"></i> Modifier l'étudiant </h5> <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button> </div>
+          <div class="modal-body">
+            <input type="hidden" id="editStudentId">
+            <div class="row g-3">
+              <div class="col-md-6"> <label class="form-label">Username</label> <input type="text" id="editUsername" class="form-control" required> </div>
+              <div class="col-md-6"> <label class="form-label">Groupe</label> <input type="text" id="editGroup" class="form-control" required> </div>
+              <div class="col-md-6"> <label class="form-label">Nom</label> <input type="text" id="editNom" class="form-control" required> </div>
+              <div class="col-md-6"> <label class="form-label">Prénom</label> <input type="text" id="editPrenom" class="form-control" required> </div>
+            </div>
+          </div>
+          <div class="modal-footer bg-light"> <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Annuler</button> <button type="submit" class="btn btn-success rounded-pill px-4"> <i class="bi bi-check-circle me-1"></i> Enregistrer </button> </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="addStudentModal" tabindex="-1" aria-labelledby="addStudentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow">
+        <form id="addStudentForm">
+          <div class="modal-header bg-gradient text-white"> <h5 class="modal-title" id="addStudentModalLabel"> <i class="bi bi-person-plus-fill me-2"></i> Ajouter un étudiant </h5> <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button> </div>
+          <div class="modal-body">
+            <div class="row g-3">
+              <div class="col-md-6"> <label for="addNom" class="form-label">Nom</label> <input type="text" id="addNom" class="form-control" required> </div>
+              <div class="col-md-6"> <label for="addPrenom" class="form-label">Prénom</label> <input type="text" id="addPrenom" class="form-control" required> </div>
+              <div class="col-12"> <label for="addGroup" class="form-label">Groupe</label> <input type="text" id="addGroup" class="form-control" required> </div>
+              </div>
+          </div>
+          <div class="modal-footer bg-light"> <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Annuler</button> <button type="submit" class="btn btn-primary rounded-pill px-4"> <i class="bi bi-check-circle me-1"></i> Ajouter </button> </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="editQuizModal" tabindex="-1" aria-labelledby="editQuizModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow">
+      <form id="editQuizForm">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title" id="editQuizModalLabel">Modifier le Quiz</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="editQuizId">
+
+          <div class="mb-3">
+            <label for="editQuizTitle" class="form-label">Titre du Quiz</label>
+            <input type="text" id="editQuizTitle" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="editQuizCategory" class="form-label">Catégorie</label>
+            <input type="text" id="editQuizCategory" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="editQuizLevel" class="form-label">Niveau</label>
+            <input type="text" id="editQuizLevel" class="form-control">
+          </div>
+           <div class="mb-3">
+            <label for="editQuizVersion" class="form-label">Version</label>
+            <input type="text" id="editQuizVersion" class="form-control">
+          </div>
+        </div>
+        <div class="modal-footer bg-light">
+          <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Annuler</button>
+          <button type="submit" class="btn btn-primary rounded-pill px-4">Enregistrer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+  <div class="modal fade" id="questionFormModal" tabindex="-1" aria-labelledby="questionFormModalLabel" aria-hidden="true" style="z-index: 1060;"> <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <form id="questionForm">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title" id="questionFormModalLabel">Ajouter/Modifier Question</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" id="formQuestionId">
+            <input type="hidden" id="formQuizId">
+
+            <div class="mb-3">
+              <label for="formQuestionText" class="form-label">Question</label>
+              <textarea id="formQuestionText" class="form-control" rows="3" required></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="formQuestionType" class="form-label">Type</label>
+              <select id="formQuestionType" class="form-select">
+                <option value="QCM">QCM</option>
+                <option value="Vrai/Faux">Vrai/Faux</option>
+                <option value="Calcul">Calcul</option>
+              </select>
+            </div>
+
+            <div class="mb-3" id="formOptionsContainer">
+              <label for="formQuestionOptions" class="form-label">Options (séparées par une virgule)</label>
+              <input type="text" id="formQuestionOptions" class="form-control" placeholder="Option A, Option B, Option C">
+            </div>
+
+            <div class="mb-3" id="formAnswerContainer">
+              <label for="formQuestionAnswer" class="form-label">Réponse Correcte</label>
+              </div>
+
+            <div class="mb-3">
+              <label for="formQuestionPoints" class="form-label">Points</label>
+              <input type="number" id="formQuestionPoints" class="form-control" value="1" min="0" required>
+            </div>
+          </div>
+          <div class="modal-footer bg-light">
+            <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Annuler</button>
+            <button type="submit" class="btn btn-primary rounded-pill px-4">Enregistrer Question</button>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="questionsModal" tabindex="-1" aria-labelledby="questionsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered"> <div class="modal-content">
+        <div class="modal-header bg-primary text-white"> <h5 class="modal-title" id="questionsModalLabel">Questions du Quiz</h5> <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button> </div>
+        <div class="modal-body">
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover align-middle text-center table-sm"> <thead class="table-dark"> <tr> <th>#</th> <th>Question</th> <th>Type</th> <th>Options</th> <th>Réponse</th> <th>Points</th> <th>Actions</th> </tr> </thead>
+              <tbody id="questionsTable"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="modal-footer bg-light d-flex justify-content-between">
+            <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
+            <button type="button" class="btn btn-success rounded-pill px-4" id="addQuestionFromListBtn"> <i class="bi bi-plus-circle me-1"></i> Ajouter Question </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="groupModal" tabindex="-1" aria-labelledby="groupModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header"> <h5 class="modal-title" id="groupModalLabel">Modifier le groupe</h5> <button type="button" class="btn-close" data-bs-dismiss="modal"></button> </div>
+        <form id="groupForm">
+          <div class="modal-body">
+            <input type="hidden" id="groupId">
+            <div class="mb-3"> <label for="groupName" class="form-label">Nom du groupe</label> <input type="text" class="form-control" id="groupName" required disabled> </div>
+            <div class="mb-3"> <label for="groupDescription" class="form-label">Description</label> <textarea class="form-control" id="groupDescription" rows="3"></textarea> </div>
+          </div>
+          <div class="modal-footer"> <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Annuler</button> <button type="submit" class="btn btn-primary rounded-pill px-4">Enregistrer</button> </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="addQuizModal" tabindex="-1" aria-labelledby="addQuizModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow">
+      <form id="addQuizForm">
+        <div class="modal-header bg-gradient text-white">
+          <h5 class="modal-title" id="addQuizModalLabel">
+            <i class="bi bi-plus-circle-fill me-2"></i> Ajouter un Nouveau Quiz
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="addQuizId" class="form-label">ID Unique du Quiz</label>
+            <input type="text" id="addQuizId" class="form-control" placeholder="Ex: ELEC-BASE-V1" required>
+            <div class="form-text">Cet ID sera utilisé pour générer les ID des questions (Ex: ELEC-BASE-V1-0001). Il ne pourra plus être modifié.</div>
+          </div>
+          <div class="mb-3">
+            <label for="addQuizTitle" class="form-label">Titre du Quiz</label>
+            <input type="text" id="addQuizTitle" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="addQuizCategory" class="form-label">Catégorie</label>
+            <input type="text" id="addQuizCategory" class="form-control" placeholder="Ex: Électricité / Électronique">
+          </div>
+          <div class="mb-3">
+            <label for="addQuizLevel" class="form-label">Niveau</label>
+            <input type="text" id="addQuizLevel" class="form-control" placeholder="Ex: Base, Intermédiaire, Expert">
+          </div>
+           <div class="mb-3">
+            <label for="addQuizVersion" class="form-label">Version</label>
+            <input type="text" id="addQuizVersion" class="form-control" value="1.0">
+          </div>
+        </div>
+        <div class="modal-footer bg-light">
+          <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Annuler</button>
+          <button type="submit" class="btn btn-primary rounded-pill px-4">Créer le Quiz</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+  <div class="modal fade" id="manageStudentsModal" tabindex="-1" aria-labelledby="manageStudentsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header"> <h5 class="modal-title" id="manageStudentsModalLabel">Étudiants du groupe</h5> <button type="button" class="btn-close" data-bs-dismiss="modal"></button> </div>
+        <div class="modal-body">
+          <div class="d-flex justify-content-end mb-3"> <button class="btn btn-sm btn-primary" id="addStudentToGroupBtn"> <i class="bi bi-person-plus-fill me-1"></i> Ajouter Étudiant </button> </div>
+          <div class="table-responsive">
+            <table class="table table-sm table-hover align-middle">
+              <thead> <tr> <th>ID</th> <th>Nom</th> <th>Username</th> <th>Total Points</th> <th class="text-center">Actions</th> </tr> </thead>
+              <tbody id="groupStudentsTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+         <div class="modal-footer bg-light"> <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Fermer</button> </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="studentFromGroupModal" tabindex="-1" aria-labelledby="studentFromGroupModalLabel" aria-hidden="true" style="z-index: 1060;"> <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <form id="studentFromGroupForm">
+          <div class="modal-header"> <h5 class="modal-title" id="studentFromGroupModalLabel">Ajouter/Modifier Étudiant</h5> <button type="button" class="btn-close" data-bs-dismiss="modal"></button> </div>
+          <div class="modal-body">
+            <input type="hidden" id="studentFromGroupId">
+            <div class="mb-3"> <label class="form-label">Nom</label> <input type="text" id="studentFromGroupName" class="form-control" required> </div>
+            <div class="mb-3"> <label class="form-label">Prénom</label> <input type="text" id="studentFromGroupFirstName" class="form-control" required> </div>
+            <div class="mb-3"> <label class="form-label">Username</label> <input type="text" id="studentFromGroupUsername" class="form-control" required> </div>
+            <div class="mb-3"> <label class="form-label">Mot de passe</label> <input type="password" id="studentFromGroupPassword" class="form-control" placeholder="(Obligatoire si ajout, laisser vide si modif.)"> </div>
+          </div>
+          <div class="modal-footer"> <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Annuler</button> <button type="submit" class="btn btn-primary rounded-pill px-4">Enregistrer</button> </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="addAdminModal" tabindex="-1" aria-labelledby="addAdminModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow">
+        <form id="addAdminForm">
+          <div class="modal-header bg-gradient text-white">
+            <h5 class="modal-title" id="addAdminModalLabel"> <i class="bi bi-person-plus-fill me-2"></i> Ajouter un Administrateur </h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="addAdminNom" class="form-label">Nom</label>
+                <input type="text" id="addAdminNom" class="form-control" required>
+              </div>
+              <div class="col-md-6">
+                <label for="addAdminPrenom" class="form-label">Prénom</label>
+                <input type="text" id="addAdminPrenom" class="form-control" required>
+              </div>
+              <div class="col-12">
+                <label for="addAdminUsername" class="form-label">Username</label>
+                <input type="text" id="addAdminUsername" class="form-control" required>
+              </div>
+              <div class="col-12">
+                <label for="addAdminPassword" class="form-label">Mot de passe (provisoire)</label>
+                <input type="password" id="addAdminPassword" class="form-control" required>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer bg-light">
+            <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Annuler</button>
+            <button type="submit" class="btn btn-primary rounded-pill px-4"> <i class="bi bi-check-circle me-1"></i> Ajouter </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1100;"></div>
+
+  <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100;">
+    <div id="deleteToast" class="toast align-items-center text-bg-danger border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex"> <div class="toast-body"> <strong>Suppression réussie !</strong> <div class="progress mt-2" style="height: 4px;"> <div id="deleteToastProgress" class="progress-bar bg-light" style="width: 100%;"></div> </div> </div> <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button> </div>
+    </div>
+     </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <script  type="module" src="/assets/js/admin/admin-settings.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bcryptjs@2.4.3/dist/bcrypt.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script> <script type="module" src="/assets/js/admin/admin-dashboard.js"></script> <script type="module" src="/assets/js/admin/stats.js"></script>          <script type="module" src="/assets/js/admin/student.js"></script>       <script type="module" src="/assets/js/admin/quizz.js"></script>          <script type="module" src="/assets/js/admin/group.js"></script>          <script type="module" src="/assets/js/admin/importExport.js"></script> <script type="module" src="/assets/js/admin/admin-avatars.js"></script>    </body>
+</html> 

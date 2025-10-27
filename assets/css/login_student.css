@@ -1,0 +1,117 @@
+/* ======================== */
+/* login_student.css        */
+/* ======================== */
+
+body {
+  font-family: 'Inter', sans-serif;
+  /* Soft Gradient Background + Subtle Pattern */
+  background-color: #eef2f7; /* Fallback */
+  background-image:
+    linear-gradient(135deg, rgba(9, 86, 148, 0.1) 0%, rgba(85, 131, 25, 0.1) 100%),
+    /* Optional subtle pattern */
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23dce4f0' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* --- Login Main Section --- */
+.login-main {
+  flex-grow: 1; /* Takes remaining vertical space */
+  padding-top: 2rem; /* Space below navbar */
+  padding-bottom: 2rem;
+}
+
+/* --- Login Card --- */
+.login-card {
+  background-color: #ffffff;
+  border: none;
+  /* animation handled by class below */
+}
+.login-card .card-body {
+  padding: 2.5rem; /* More padding inside card */
+}
+
+/* Logo and Title */
+.login-card h3 {
+  color: #004F9F; /* Logo Blue */
+}
+
+/* --- Form Elements --- */
+
+/* Floating labels adjustments */
+.form-floating > .form-control {
+  height: calc(3.5rem + 2px); /* Taller input */
+  line-height: 1.25;
+}
+.form-floating > label {
+  padding: 1rem 1.25rem; /* Adjust label padding */
+  color: #6c757d; /* Lighter label text */
+}
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+  opacity: .65;
+  transform: scale(.85) translateY(-.5rem) translateX(.15rem);
+  color: #0d6efd; /* Blue label when focused/filled */
+}
+.form-floating > .form-control:focus {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, .25);
+}
+
+/* Input icons */
+.form-floating > label i {
+  opacity: 0.6;
+  transition: opacity 0.2s ease-in-out;
+}
+.form-floating > .form-control:focus ~ label i,
+.form-floating > .form-control:not(:placeholder-shown) ~ label i {
+  opacity: 1;
+}
+
+/* Checkbox */
+.form-check-label {
+  color: #495057;
+}
+.form-check-input:checked {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+/* Submit Button */
+.login-card .btn-primary {
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+.login-card .btn-primary:hover {
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
+}
+/* Spinner inside button */
+.btn .spinner-border {
+    width: 1em;
+    height: 1em;
+    border-width: .2em;
+}
+
+/* --- Animation --- */
+.animate-fade-in {
+  opacity: 0;
+  animation: fadeInAnimation 0.8s ease-out 0.2s forwards; /* Add slight delay */
+}
+@keyframes fadeInAnimation {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Alert Container --- */
+/* Ensure alerts appear above content */
+#alertContainer {
+    z-index: 1060; /* Higher than modals if needed */
+}
