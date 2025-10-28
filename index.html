@@ -4,13 +4,15 @@
 <head>
   
    <meta charset="UTF-8">
+  
   <meta http-equiv="Content-Security-Policy" content="
-  default-src 'self'; 
-  style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; 
-  script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; 
-  font-src 'self' https://fonts.gstatic.com; 
-  img-src 'self' data:;
-">
+    default-src 'self'; 
+    style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; 
+    script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; 
+    font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; 
+    connect-src 'self' https://cdn.jsdelivr.net;
+    img-src 'self' data:;
+  ">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AutoEva - Évaluez et Progressez</title>
 
