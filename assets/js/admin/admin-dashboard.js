@@ -1,33 +1,30 @@
 // =================================
-// TEST DU CHARGEMENT (STATS + STUDENTS)
+// IMPORTS (TOUS ACTIFS, AVEC VOS CHEMINS)
 // =================================
 
 console.log("--- admin-dashboard.js : Le fichier est lu (Niveau 0) ---");
 
 // --- Imports partagés (vérifiés) ---
-import { database } from '../db/firebase-config.js';
-console.log("--- IMPORT 1/x (firebase-config) : SUCCÈS ---");
+import { 
+    database, ref, set, push, get, remove, query, orderByChild, equalTo
+} from '../db/firebase-config.js';
+console.log("--- IMPORT (firebase-config) : SUCCÈS ---");
+
 import { checkAuth, logout } from '../user.js';
-console.log("--- IMPORT 2/x (user.js) : SUCCÈS ---");
+console.log("--- IMPORT (user.js) : SUCCÈS ---");
+
 import { showAlert } from '../alerts.js';
-console.log("--- IMPORT 3/x (alerts.js) : SUCCÈS ---");
+console.log("--- IMPORT (alerts.js) : SUCCÈS ---");
 
-// --- Imports locaux (testés) ---
+// --- Imports locaux (Tous actifs, avec vos chemins) ---
 import { initDashboard } from '../admin/dashboard-stats.js'; 
-console.log("--- IMPORT 4/x (dashboard-stats.js) : SUCCÈS ---");
-
-// ✅ ÉTAPE 2 : On décommente l'import pour 'students'
 import { initStudentSettings } from '../admin/student-settings.js'; 
-console.log("--- IMPORT 5/x (student-settings.js) : SUCCÈS ---");
-
-// (On laisse les autres imports commentés pour l'instant)
-/*
 import { initGroupSettings } from '../admin/group-settings.js'; 
 import { initQuizSettings } from '../admin/quiz-settings.js'; 
 import { initAvatarSettings } from '../admin/avatar-settings.js'; 
 import { initAdminSettings } from '../admin/admin-settings.js'; 
 import { initImportExport } from '../admin/import-export.js';
-*/ 
+console.log("--- Tous les imports locaux sont activés ---");
 
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -68,21 +65,22 @@ document.addEventListener("DOMContentLoaded", async () => {
           if (!targetSection.dataset.loaded) {
               console.log(`Chargement du module pour : ${targetId}`);
               try {
+                  // ✅ TOUTES LES SECTIONS SONT ACTIVES
                   if (targetId === 'dashboard') {
                        initDashboard(user); 
-                  }
-                  
-                  // ✅ ÉTAPE 2 : On décommente le 'else if' pour 'students'
-                  else if (targetId === 'students') {
+                  } else if (targetId === 'admins') {
+                      initAdminSettings(user);
+                  } else if (targetId === 'students') {
                       initStudentSettings(user);
-                  }
-                  
-                  /* --- TEST : Reste commenté ---
-                  else if (targetId === 'groups') {
+                  } else if (targetId === 'groups') {
                       initGroupSettings(user);
-                  } 
-                  // ... etc ...
-                  */
+                  } else if (targetId === 'quizzes') {
+                      initQuizSettings(user);
+                  } else if (targetId === 'avatars') {
+                      initAvatarSettings(user);
+                  } else if (targetId === 'importExport') {
+                      initImportExport(user);
+                  }
               } catch (err) {
                   console.error(`Erreur lors du chargement de la section ${targetId}:`, err);
                   showAlert(`Erreur au chargement de la section ${targetId}.`, 'danger');
