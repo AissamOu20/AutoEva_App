@@ -1,5 +1,5 @@
 // =================================
-// TEST (STATS + STUDENTS + GROUPS)
+// TEST DU CHARGEMENT (STATS + STUDENTS)
 // =================================
 
 console.log("--- admin-dashboard.js : Le fichier est lu (Niveau 0) ---");
@@ -15,15 +15,14 @@ console.log("--- IMPORT 3/x (alerts.js) : SUCCÈS ---");
 // --- Imports locaux (testés) ---
 import { initDashboard } from '../admin/dashboard-stats.js'; 
 console.log("--- IMPORT 4/x (dashboard-stats.js) : SUCCÈS ---");
+
+// ✅ ÉTAPE 2 : On décommente l'import pour 'students'
 import { initStudentSettings } from '../admin/student-settings.js'; 
 console.log("--- IMPORT 5/x (student-settings.js) : SUCCÈS ---");
 
-// ✅ ÉTAPE 3 : On décommente l'import pour 'groups'
-import { initGroupSettings } from '../admin/group-settings.js'; 
-console.log("--- IMPORT 6/x (group-settings.js) : SUCCÈS ---");
-
 // (On laisse les autres imports commentés pour l'instant)
 /*
+import { initGroupSettings } from '../admin/group-settings.js'; 
 import { initQuizSettings } from '../admin/quiz-settings.js'; 
 import { initAvatarSettings } from '../admin/avatar-settings.js'; 
 import { initAdminSettings } from '../admin/admin-settings.js'; 
@@ -73,18 +72,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                        initDashboard(user); 
                   }
                   
+                  // ✅ ÉTAPE 2 : On décommente le 'else if' pour 'students'
                   else if (targetId === 'students') {
                       initStudentSettings(user);
                   }
                   
-                  // ✅ ÉTAPE 3 : On décommente le 'else if' pour 'groups'
+                  /* --- TEST : Reste commenté ---
                   else if (targetId === 'groups') {
                       initGroupSettings(user);
-                  } 
-                  
-                  /* --- TEST : Reste commenté ---
-                  else if (targetId === 'quizzes') {
-                      initQuizSettings(user);
                   } 
                   // ... etc ...
                   */
