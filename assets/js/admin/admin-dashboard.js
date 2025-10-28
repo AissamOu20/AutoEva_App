@@ -1,16 +1,18 @@
 // =================================
-// TEST DES IMPORTS (ÉTAPE 2)
+// TEST DES IMPORTS (ÉTAPE 3)
 // =================================
 
 console.log("--- admin-dashboard.js : Le fichier est lu (Niveau 0) ---");
 
-// --- On teste le premier import ---
+// --- On teste les imports 1 et 2 ---
 import { database } from '../db/firebase-config.js';
 console.log("--- IMPORT 1/4 (firebase-config) : SUCCÈS ---");
 
+import { checkAuth } from '../user.js';
+console.log("--- IMPORT 2/4 (user.js) : SUCCÈS ---");
+
 
 /* --- Imports commentés pour l'instant ---
-import { checkAuth, logout } from '../student/user.js';
 import { showAlert } from '../alerts.js'; 
 import { initDashboard } from './dashboard-stats.js'; 
 import { initStudentSettings } from './student-settings.js'; 
