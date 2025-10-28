@@ -16,8 +16,38 @@ import {
 import { checkAuth, logout } from '/assets/js/user.js';
 import { showAlert } from '/assets/js/alerts.js';
 
-// ✅ IMPORTATION DU MODULE DE GESTION DES ADMINS
-import { initAdminSettings } from './admin-settings.js';
+// =================================
+// ✅ IMPORTATION DE TOUS LES MODULES DE SECTION
+// =================================
+//
+// ❗️ IMPORTANT : 
+// Assurez-vous que les chemins (ex: './student-settings.js') 
+// et les noms de fonctions (ex: initStudentSettings) 
+// correspondent EXACTEMENT à vos fichiers.
+//
+// -------------------------------------------------
+
+// Logique pour l'onglet "Dashboard"
+import { initDashboard } from './dashboard-stats.js'; 
+
+// Logique pour l'onglet "Étudiants"
+import { initStudentSettings } from './student-settings.js'; 
+
+// Logique pour l'onglet "Groupes"
+import { initGroupSettings } from './group-settings.js'; 
+
+// Logique pour l'onglet "Quiz"
+import { initQuizSettings } from './quiz-settings.js'; 
+
+// Logique pour l'onglet "Avatars"
+import { initAvatarSettings } from './avatar-settings.js'; 
+
+// Logique pour l'onglet "Admins"
+import { initAdminSettings } from './admin-settings.js'; 
+
+// Logique pour l'onglet "Import/Export"
+import { initImportExport } from './import-export.js'; 
+
 
 // =================================
 // LOGIQUE PRINCIPALE DU DASHBOARD
@@ -44,11 +74,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   const sidebar = document.getElementById('sidebar');
   const collapseBtn = document.getElementById('collapseBtn');
   
-
-  // 3. --- LOGIQUE DE NAVIGATION (VOS SNIPPETS INTÉGRÉS) ---
-  // -------------------------------------------------------
-
-  // ✅ VOTRE SNIPPET : Navigation dans la Sidebar (modifié pour lazy-loading)
+  // 3. --- LOGIQUE DE NAVIGATION ---
+  // -------------------------------
   sidebarLinks.forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
@@ -65,24 +92,33 @@ document.addEventListener("DOMContentLoaded", async () => {
           sidebarLinks.forEach(l => l.classList.remove('active'));
           link.classList.add('active');
 
-          // --- ⭐️ Logique de "Lazy Loading" (Chargement à la demande) ---
-          // On ne charge les données d'une section que la première fois qu'on clique dessus
+          // --- ⭐️ Logique de "Lazy Loading" (Appel des modules importés) ---
           if (!targetSection.dataset.loaded) {
               console.log(`Chargement de la section : ${targetId}`);
               
-              if (targetId === 'admins') {
-                  initAdminSettings(user); // Appelle le module admin
-              } else if (targetId === 'students') {
-                  initStudents();
-              } else if (targetId === 'groups') {
-                  initGroups();
-              } else if (targetId === 'quizzes') {
-                  initQuizzes();
-              } else if (targetId === 'avatars') {
-                  initAvatars();
-              } else if (targetId === 'importExport') {
-                  initImportExport();
+              // ✅ APPEL DES FONCTIONS IMPORTÉES
+              try {
+                  // On passe 'user' à chaque module au cas où ils en auraient besoin
+                  if (targetId === 'dashboard') {
+                       initDashboard(user); 
+                  } else if (targetId === 'admins') {
+                      initAdminSettings(user);
+                  } else if (targetId === 'students') {
+                      initStudentSettings(user);
+                  } else if (targetId === 'groups') {
+                      initGroupSettings(user);
+                  } else if (targetId === 'quizzes') {
+                      initQuizSettings(user);
+                  } else if (targetId === 'avatars') {
+                      initAvatarSettings(user);
+                  } else if (targetId === 'importExport') {
+                      initImportExport(user);
+                  }
+              } catch (err) {
+                  console.error(`Erreur lors du chargement de la section ${targetId}:`, err);
+                  showAlert(`Erreur au chargement de la section ${targetId}.`, 'danger');
               }
+              
               // Marquer comme chargé pour ne pas re-charger
               targetSection.dataset.loaded = 'true'; 
           }
@@ -90,7 +126,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   });
 
-  // ✅ VOTRE SNIPPET : "Collapse" de la sidebar
+  // "Collapse" de la sidebar
   collapseBtn.addEventListener('click', () => {
     sidebar.classList.toggle('collapsed');
     // Gère l'icône de chevron
@@ -106,55 +142,21 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
 
-  // 4. --- FONCTIONS D'INITIALISATION DES SECTIONS ---
-  // (La logique "admin" est dans admin-settings.js)
+  // 4. --- FONCTIONS D'INITIALISATION (SUPPRIMÉES) ---
   // -------------------------------------------------
-  
-  function initDashboard() {
-      console.log("Chargement section Dashboard...");
-      // Mettez ici le code pour charger vos stats (studentCount, groupCount, etc.)
-      // Exemple : 
-      // document.getElementById('studentCount').textContent = '123';
-      // document.getElementById('groupCount').textContent = '10';
-  }
-  
-  function initStudents() {
-      console.log("Chargement section Étudiants...");
-      // Mettez ici le code de gestion des étudiants (loadStudents, pagination, etc.)
-      // (Ce code sera sûrement dans un module séparé comme 'student-settings.js')
-      const studentTableBody = document.getElementById('studentsTable')?.querySelector('tbody');
-      if (studentTableBody) studentTableBody.innerHTML = '<tr><td colspan="6" class="text-center">Logique étudiants à implémenter.</td></tr>';
-  }
+  // ❌ Les fonctions function initStudents() { ... }, etc.
+  // ❌ ont été supprimées car elles sont maintenant importées.
 
-  function initGroups() {
-      console.log("Chargement section Groupes...");
-      const groupsContainer = document.getElementById('groupsContainer');
-      if (groupsContainer) groupsContainer.innerHTML = '<p class="text-center">Logique groupes à implémenter.</p>';
-  }
   
-  function initQuizzes() {
-      console.log("Chargement section Quiz...");
-      const quizzesTableBody = document.getElementById('quizzesTable');
-      if (quizzesTableBody) quizzesTableBody.innerHTML = '<tr><td colspan="7" class="text-center">Logique quiz à implémenter.</td></tr>';
-  }
-  
-  function initAvatars() {
-      console.log("Chargement section Avatars...");
-      const avatarGrid = document.getElementById('avatarGridDisplay');
-      if (avatarGrid) avatarGrid.innerHTML = '<p class="text-center">Logique avatars à implémenter.</p>';
-  }
-  
-  function initImportExport() {
-      console.log("Chargement section Import/Export...");
-      // Mettez ici le code pour gérer les imports/exports
-  }
-
-
   // 5. --- CHARGEMENT INITIAL ---
   // -----------------------------
-  // Chargez la logique de la première section active (Dashboard)
-  // (elle a la classe 'active' dans le HTML par défaut)
-  initDashboard();
-  document.getElementById('dashboard').dataset.loaded = 'true';
+  // Charge la logique de la première section active (Dashboard)
+  try {
+      initDashboard(user); 
+      document.getElementById('dashboard').dataset.loaded = 'true';
+  } catch(err) {
+      console.error("Erreur au chargement du dashboard initial:", err);
+      showAlert('Erreur au chargement des statistiques.', 'danger');
+  }
   
 });

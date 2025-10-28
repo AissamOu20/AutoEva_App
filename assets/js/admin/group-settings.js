@@ -6,27 +6,25 @@
 import { database, ref, onValue, set, remove, update, query, orderByChild, equalTo, get } from "../db/firebase-config.js";
 
 // -----------------------------------------------------------------
-// ⬇️ AJOUT : Fonction pour charger bcryptjs dynamiquement ⬇️
+// ⬇️ Fonction pour charger bcryptjs dynamiquement (Votre code - Inchangé) ⬇️
 // -----------------------------------------------------------------
 async function loadBcrypt() {
   if (window.dcodeIO && window.dcodeIO.bcrypt) return window.dcodeIO.bcrypt;
   return new Promise((resolve, reject) => {
     // Vérifier si le script existe déjà pour éviter de le charger plusieurs fois
     if (document.querySelector('script[src*="bcrypt.min.js"]')) {
-        // Attendre que bcrypt soit prêt s'il est déjà en cours de chargement
         const checkBcrypt = setInterval(() => {
             if (window.dcodeIO && window.dcodeIO.bcrypt) {
                 clearInterval(checkBcrypt);
                 resolve(window.dcodeIO.bcrypt);
             }
         }, 100);
-        // Ajouter un timeout au cas où
         setTimeout(() => {
             clearInterval(checkBcrypt);
             if (!window.dcodeIO || !window.dcodeIO.bcrypt) {
                reject(new Error("Timeout: bcrypt n'a pas pu être chargé."));
             }
-        }, 5000); // 5 secondes timeout
+        }, 5000);
         return;
     }
 
@@ -34,7 +32,7 @@ async function loadBcrypt() {
     const url = "https://cdn.jsdelivr.net/npm/bcryptjs@2.4.3/dist/bcrypt.min.js";
     const s = document.createElement("script");
     s.src = url;
-    s.async = true; // Charger de manière asynchrone
+    s.async = true; 
     s.onload = () => {
       if (window.dcodeIO && window.dcodeIO.bcrypt) {
           resolve(window.dcodeIO.bcrypt);
@@ -47,7 +45,7 @@ async function loadBcrypt() {
   });
 }
 // -----------------------------------------------------------------
-// ⬆️ FIN AJOUT ⬆️
+// ⬆️ FIN BCRYPT ⬆️
 // -----------------------------------------------------------------
 
 
@@ -68,19 +66,22 @@ const groupDescriptionInput = document.getElementById("groupDescription");
 const manageStudentsModalEl = document.getElementById("manageStudentsModal");
 const manageStudentsModal = manageStudentsModalEl ? new bootstrap.Modal(manageStudentsModalEl) : null;
 const manageStudentsModalLabel = document.getElementById("manageStudentsModalLabel");
-const groupStudentsTableBody = document.getElementById("groupStudentsTableBody");
+// ❗️ Correction : Votre HTML a 'groupStudentsTable' mais votre JS a 'groupStudentsTableBody'. 
+// J'utilise 'groupStudentsTableBody' en supposant que votre HTML a <tbody>
+const groupStudentsTableBody = document.getElementById("groupStudentsTable")?.querySelector('tbody'); 
 const addStudentToGroupBtn = document.getElementById("addStudentToGroupBtn");
 
 // 🔹 DOM (Nouveau Modal d'édition d'Étudiant)
-const studentFromGroupModalEl = document.getElementById("studentFromGroupModal");
+// (Vous devez ajouter ce modal à votre HTML si ce n'est pas déjà fait)
+const studentFromGroupModalEl = document.getElementById("studentFromGroupModal"); // Assurez-vous que cet ID existe
 const studentFromGroupModal = studentFromGroupModalEl ? new bootstrap.Modal(studentFromGroupModalEl) : null;
-const studentFromGroupForm = document.getElementById("studentFromGroupForm");
-const studentFromGroupModalLabel = document.getElementById("studentFromGroupModalLabel");
-const studentFromGroupId = document.getElementById("studentFromGroupId");
-const studentFromGroupName = document.getElementById("studentFromGroupName");
-const studentFromGroupFirstName = document.getElementById("studentFromGroupFirstName");
-const studentFromGroupUsername = document.getElementById("studentFromGroupUsername");
-const studentFromGroupPassword = document.getElementById("studentFromGroupPassword");
+const studentFromGroupForm = document.getElementById("studentFromGroupForm"); // Assurez-vous que cet ID existe
+const studentFromGroupModalLabel = document.getElementById("studentFromGroupModalLabel"); // Assurez-vous que cet ID existe
+const studentFromGroupId = document.getElementById("studentFromGroupId"); // Assurez-vous que cet ID existe
+const studentFromGroupName = document.getElementById("studentFromGroupName"); // Assurez-vous que cet ID existe
+const studentFromGroupFirstName = document.getElementById("studentFromGroupFirstName"); // Assurez-vous que cet ID existe
+const studentFromGroupUsername = document.getElementById("studentFromGroupUsername"); // Assurez-vous que cet ID existe
+const studentFromGroupPassword = document.getElementById("studentFromGroupPassword"); // Assurez-vous que cet ID existe
 
 // 🔹 Variables globales
 let allGroups = {};
@@ -90,6 +91,7 @@ let currentGroupIdForModal = null; // Pour savoir quel groupe on gère
 // 🔹 1. Gestion des Groupes (Chargement et Affichage)
 // -----------------------------------------------------------------
 function loadGroups() {
+  if (!groupsContainer) return;
   groupsContainer.innerHTML = '<p class="text-center">Chargement des groupes...</p>';
   const groupsRef = ref(database, "groups");
 
@@ -108,6 +110,7 @@ function loadGroups() {
 
 function renderGroups() {
   const searchTerm = searchInput ? searchInput.value.toLowerCase() : "";
+  if (!groupsContainer) return;
   groupsContainer.innerHTML = "";
 
   const filteredGroups = Object.entries(allGroups).filter(([id, group]) =>
@@ -154,6 +157,7 @@ function renderGroups() {
       </div>
     `;
 
+    // ❗️ Ces écouteurs sont attachés à chaque rendu. C'est votre design original.
     card.querySelector(".btn-edit").addEventListener("click", () => openEditModal(groupId, group));
     card.querySelector(".btn-delete").addEventListener("click", () => deleteGroup(groupId));
     card.querySelector(".btn-info").addEventListener("click", () => manageStudents(groupId));
@@ -233,6 +237,7 @@ function manageStudents(id) {
 }
 
 async function loadStudentsForGroup(groupId) {
+  if (!groupStudentsTableBody) return;
   groupStudentsTableBody.innerHTML = '<tr><td colspan="5">Chargement...</td></tr>';
 
   try {
@@ -248,9 +253,13 @@ async function loadStudentsForGroup(groupId) {
     const students = snapshot.val();
 
     Object.entries(students).forEach(([id, student]) => {
-      if (student.role !== 'student') return;
+      // S'assurer qu'on n'affiche que les étudiants
+      if (student.role !== 'student') return; 
 
       const row = document.createElement("tr");
+      // Ajout de data-id pour une référence future (si nécessaire)
+      row.dataset.studentId = student.id; 
+      
       row.innerHTML = `
         <td>${student.id}</td>
         <td>${student.nom || ''} ${student.prenom || ''}</td>
@@ -281,17 +290,18 @@ async function loadStudentsForGroup(groupId) {
 // 🔹 5. CRUD Étudiants (depuis le Modal)
 // -----------------------------------------------------------------
 function openStudentAddModal() {
-  if (!studentFromGroupModal) return;
+  if (!studentFromGroupModal) return alert("Modal d'ajout d'étudiant introuvable.");
 
   studentFromGroupForm.reset();
   studentFromGroupId.value = "";
   studentFromGroupModalLabel.textContent = `Ajouter au groupe : ${currentGroupIdForModal}`;
   studentFromGroupPassword.placeholder = "Mot de passe obligatoire";
+  studentFromGroupPassword.required = true; // Assure que c'est obligatoire
   studentFromGroupModal.show();
 }
 
 function openStudentEditModal(student) {
-  if (!studentFromGroupModal) return;
+  if (!studentFromGroupModal) return alert("Modal d'édition d'étudiant introuvable.");
 
   studentFromGroupForm.reset();
   studentFromGroupModalLabel.textContent = `Modifier : ${student.nom} ${student.prenom}`;
@@ -301,6 +311,7 @@ function openStudentEditModal(student) {
   studentFromGroupFirstName.value = student.prenom;
   studentFromGroupUsername.value = student.username;
   studentFromGroupPassword.placeholder = "Laisser vide pour ne pas changer";
+  studentFromGroupPassword.required = false; // N'est pas obligatoire à l'édition
 
   studentFromGroupModal.show();
 }
@@ -309,36 +320,34 @@ function openStudentEditModal(student) {
 async function saveStudentFromGroup(event) {
   event.preventDefault();
 
-  const studentId = studentFromGroupId.value;
+  const studentId = studentFromGroupId.value; // Vide si Ajout, rempli si Édition
   const nom = studentFromGroupName.value;
   const prenom = studentFromGroupFirstName.value;
   const username = studentFromGroupUsername.value;
-  const passwordInput = studentFromGroupPassword.value; // Mot de passe en clair
+  const passwordInput = studentFromGroupPassword.value;
 
-  let bcrypt; // <-- AJOUT: variable pour bcrypt
+  let bcrypt; 
 
   try {
-    // Tenter de charger bcryptjs
-    bcrypt = await loadBcrypt(); // <-- AJOUT
+    bcrypt = await loadBcrypt();
   } catch (bcryptErr) {
       console.error("Impossible de charger bcrypt :", bcryptErr);
       alert("Erreur critique: impossible de charger le module de hachage.");
-      return; // Bloquer la sauvegarde si bcrypt n'est pas dispo
+      return; 
   }
 
   try {
     let finalId = studentId;
     let isNewUser = false;
-    let hashedPassword = null; // <-- AJOUT: pour stocker le mdp haché
+    let hashedPassword = null; 
 
-    // Hacher le mot de passe s'il est fourni
     if (passwordInput) {
         try {
-            hashedPassword = await bcrypt.hash(passwordInput, 10); // 10 = salt rounds <-- AJOUT
+            hashedPassword = await bcrypt.hash(passwordInput, 10); 
         } catch (hashErr) {
             console.error("Erreur de hachage:", hashErr);
             alert("Erreur lors du hachage du mot de passe.");
-            return; // Bloquer si le hachage échoue
+            return;
         }
     }
 
@@ -346,43 +355,44 @@ async function saveStudentFromGroup(event) {
       // --- Mode Édition ---
       const studentRef = ref(database, `users/${studentId}`);
       const updates = { nom, prenom, username };
-      if (hashedPassword) { // <-- MODIFIÉ: utiliser hashedPassword
+      if (hashedPassword) { 
         updates.password = hashedPassword;
       }
       await update(studentRef, updates);
 
     } else {
       // --- Mode Ajout ---
-      if (!hashedPassword) { // <-- MODIFIÉ: vérifier hashedPassword
+      if (!hashedPassword) { 
         alert("Le mot de passe est obligatoire pour un nouvel étudiant.");
         return;
       }
       isNewUser = true;
-      const usersSnap = await get(ref(database, "users"));
-      const maxId = Object.keys(usersSnap.val() || {}).reduce((max, id) => Math.max(max, parseInt(id) || 0), 0);
-      finalId = maxId + 1;
+      
+      // ❗️ Logique d'ID améliorée : Utiliser la clé unique de Firebase
+      const usersRef = ref(database, "users");
+      const newUserRef = push(usersRef); // Génère une clé unique
+      finalId = newUserRef.key; // La clé Firebase
 
       const newStudentData = {
-        id: finalId,
+        id: finalId, // Stocke la clé unique aussi comme 'id'
         nom,
         prenom,
         username,
-        password: hashedPassword, // <-- MODIFIÉ: utiliser hashedPassword
+        password: hashedPassword, 
         group: currentGroupIdForModal,
         role: "student",
         avatar: '/assets/img/user.png',
-        isActive: true,
+        isActive: "active", // changé en string pour correspondre aux admins
         quizzes: {},
         totalPoints: 0
       };
-      await set(ref(database, `users/${finalId}`), newStudentData);
+      await set(newUserRef, newStudentData); // Utilise set sur la nouvelle référence
     }
 
     studentFromGroupModal.hide();
     loadStudentsForGroup(currentGroupIdForModal);
 
-    // Mettre à jour les stats UNIQUEMENT si un nouvel user a été ajouté ou si mdp a changé (impact potentiel futur?)
-    if (isNewUser) { // Simplifié: on recalcule juste si c'est un nouvel user
+    if (isNewUser) {
         await updateGroupsCalculations();
     }
 
@@ -393,14 +403,14 @@ async function saveStudentFromGroup(event) {
 }
 
 
-// (NOUVEAU) Supprime un étudiant
-async function deleteStudentFromGroup(studentId) {
-  if (!confirm(`Voulez-vous vraiment supprimer cet étudiant (ID: ${studentId}) ?`)) {
+// (MODIFIÉ) Supprime un étudiant par sa clé Firebase
+async function deleteStudentFromGroup(studentKey) { // 'studentKey' est la clé Firebase (student.id)
+  if (!confirm(`Voulez-vous vraiment supprimer cet étudiant (ID: ${studentKey}) ?`)) {
     return;
   }
 
   try {
-    await remove(ref(database, `users/${studentId}`));
+    await remove(ref(database, `users/${studentKey}`));
     loadStudentsForGroup(currentGroupIdForModal);
     await updateGroupsCalculations();
 
@@ -428,32 +438,30 @@ async function updateGroupsCalculations() {
     const allGroups = groupsSnap.val();
     const allUsers = usersSnap.val();
 
+    // Réinitialiser les stats
     for (const groupId in allGroups) {
       allGroups[groupId].total_points = 0;
-      allGroups[groupId].etudiants = [];
+      allGroups[groupId].etudiants = []; // Utiliser un tableau pour les ID d'étudiants
     }
 
-    for (const userId in allUsers) {
-      const user = allUsers[userId];
+    // Calculer les stats
+    for (const userIdKey in allUsers) {
+      const user = allUsers[userIdKey];
       if (user.role === 'student' && user.group && allGroups[user.group]) {
         allGroups[user.group].total_points += (user.totalPoints || 0);
-        allGroups[user.group].etudiants.push(user.id); // Stocker l'ID de l'étudiant
+        allGroups[user.group].etudiants.push(user.id); // Stocker l'ID (clé) de l'étudiant
       }
     }
 
+    // Calculer le rang
     const groupList = Object.values(allGroups);
     groupList.sort((a, b) => b.total_points - a.total_points);
     groupList.forEach((group, index) => {
-      group.rang = index + 1;
+      allGroups[group.nom].rang = index + 1; // Mettre à jour le rang dans l'objet original
     });
 
-    // Recréer l'objet pour la mise à jour
-    const updatedGroups = {};
-    groupList.forEach(group => {
-        updatedGroups[group.nom] = group; // Utiliser le nom comme clé
-    });
-
-    await update(ref(database, 'groups'), updatedGroups); // Utiliser l'objet recréé
+    // Mettre à jour Firebase avec l'objet complet
+    await update(ref(database, 'groups'), allGroups); 
     console.log("Statistiques des groupes mises à jour.");
 
   } catch (error) {
@@ -463,22 +471,40 @@ async function updateGroupsCalculations() {
 
 
 // -----------------------------------------------------------------
-// 🔹 7. Écouteurs d'événements
+// 🔹 7. Écouteurs d'événements & Initialisation (EXPORTÉE)
 // -----------------------------------------------------------------
-if (searchInput) {
-    searchInput.addEventListener("input", renderGroups);
-}
-if (groupForm) {
-    groupForm.addEventListener("submit", saveGroup);
-}
-if (addStudentToGroupBtn) {
-    addStudentToGroupBtn.addEventListener("click", openStudentAddModal);
-}
-if (studentFromGroupForm) {
-    studentFromGroupForm.addEventListener("submit", saveStudentFromGroup);
-}
 
-// -----------------------------------------------------------------
-// 🔹 Démarrage
-// -----------------------------------------------------------------
-loadGroups();
+/**
+ * Initialise la section de gestion des Groupes.
+ * (Appelée par dashboard.js)
+ * @param {Object} user L'objet utilisateur admin (au cas où)
+ */
+export function initGroupSettings(user) {
+    console.log("Initialisation du module Groupes...");
+    
+    // Attache les écouteurs "globaux" de cette section
+    // (en utilisant removeEventListener pour éviter les doublons si 'init' est appelé plusieurs fois)
+    if (searchInput) {
+        searchInput.removeEventListener("input", renderGroups);
+        searchInput.addEventListener("input", renderGroups);
+    }
+    if (groupForm) {
+        groupForm.removeEventListener("submit", saveGroup);
+        groupForm.addEventListener("submit", saveGroup);
+    }
+    if (addStudentToGroupBtn) {
+        addStudentToGroupBtn.removeEventListener("click", openStudentAddModal);
+        addStudentToGroupBtn.addEventListener("click", openStudentAddModal);
+    }
+    if (studentFromGroupForm) {
+        studentFromGroupForm.removeEventListener("submit", saveStudentFromGroup);
+        studentFromGroupForm.addEventListener("submit", saveStudentFromGroup);
+    }
+    
+    // Les autres écouteurs (btn-edit, btn-delete, etc.) sont attachés 
+    // dynamiquement dans `renderGroups` et `loadStudentsForGroup`, 
+    // ce qui est correct pour votre design.
+
+    // Lance le premier chargement des groupes
+    loadGroups();
+}

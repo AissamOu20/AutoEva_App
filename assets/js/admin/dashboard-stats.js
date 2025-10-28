@@ -1,6 +1,5 @@
-
 // ===============================
-// 📊 stats.js (Version Améliorée)
+// 📊 dashboard-stats.js
 // ===============================
 
 import { database, ref, get } from "../db/firebase-config.js";
@@ -44,10 +43,11 @@ async function loadAndDisplayStats() {
 
     try {
         // 1. Récupérer toutes les données nécessaires en parallèle
+        // ❗️ Assurez-vous que les chemins sont corrects (ex: 'quizzes' ou 'quizzs')
         const [usersSnap, groupsSnap, quizzesSnap, resultsSnap, questionsSnap] = await Promise.all([
             get(ref(database, 'users')),
             get(ref(database, 'groups')),
-            get(ref(database, 'quizzes')), // Attention 'quizzs' vs 'quizzes'
+            get(ref(database, 'quizzes')), // Vérifiez ce chemin
             get(ref(database, 'results')),
             get(ref(database, 'questions'))
         ]);
@@ -97,7 +97,7 @@ async function loadAndDisplayStats() {
 
         // Calculer les tentatives par catégorie
         const attemptsPerCategory = {};
-        const quizCategoryMap = {}; // Pour éviter de chercher dans quizzesData à chaque fois
+        const quizCategoryMap = {}; // Cache pour les catégories de quiz
         Object.entries(quizzesData).forEach(([id, quiz]) => {
             quizCategoryMap[id] = quiz.categorie || 'Non catégorisé';
         });
@@ -140,8 +140,10 @@ async function loadAndDisplayStats() {
         console.error("Erreur lors du chargement/affichage des stats:", error);
         // Afficher des messages d'erreur dans l'UI
         if (studentCountEl) studentCountEl.textContent = 'Erreur';
-        // ... (faire de même pour les autres éléments)
-         groupsContainer.innerHTML = '<p class="text-center text-danger">Erreur de chargement des statistiques.</p>'; // Exemple
+        if (groupCountEl) groupCountEl.textContent = 'Erreur';
+        if (totalAttemptsStatEl) totalAttemptsStatEl.textContent = 'Erreur';
+        if (popularQuizStatEl) popularQuizStatEl.innerHTML = '<p class="text-danger">Erreur</p>';
+        // (La ligne 'groupsContainer.innerHTML' a été supprimée car elle n'appartient pas à ce module)
     }
 }
 
@@ -150,7 +152,7 @@ async function loadAndDisplayStats() {
 // ===============================
 function renderGroupRanking(groups) {
     if (!groupRankingTableBody) return;
-    // Trier par rang (déjà fait dans groupsData si `updateGroups` est exécuté) ou par points
+    // Trier par rang ou par points
     groups.sort((a, b) => (a.rang || 999) - (b.rang || 999) || (b.total_points || 0) - (a.total_points || 0));
     
     groupRankingTableBody.innerHTML = ""; // Vider
@@ -195,62 +197,58 @@ function renderStudentRanking(students) {
 // ===============================
 function updateGroupChart(groups) {
     if (!groupChartCtx) return;
+    // S'assurer que Chart.js est chargé
+    if (typeof Chart === 'undefined') {
+        console.error("Chart.js n'est pas chargé.");
+        return;
+    }
 
-    // Trier les groupes par points pour le graphique
     groups.sort((a, b) => (b.total_points || 0) - (a.total_points || 0));
 
     const labels = groups.map(g => g.nom);
     const dataPoints = groups.map(g => g.total_points || 0);
 
-    // Détruire l'ancien graphique s'il existe
     if (groupChartInstance) {
         groupChartInstance.destroy();
     }
 
-    // Créer le nouveau graphique
     groupChartInstance = new Chart(groupChartCtx, {
-        type: 'bar', // ou 'doughnut', 'pie'
+        type: 'bar',
         data: {
             labels: labels,
             datasets: [{
                 label: 'Total des Points',
                 data: dataPoints,
-                backgroundColor: generateColors(groups.length), // Générer des couleurs
-                borderColor: generateColors(groups.length, true), // Couleurs de bordure
+                backgroundColor: generateColors(groups.length),
+                borderColor: generateColors(groups.length, true),
                 borderWidth: 1
             }]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            },
-            plugins: {
-                legend: {
-                    display: false // Masquer la légende si beaucoup de groupes
-                }
-            }
+            scales: { y: { beginAtZero: true } },
+            plugins: { legend: { display: false } }
         }
     });
 }
 
 function updateCategoryChart(attemptsPerCategory) {
     if (!categoryChartCtx) return;
+    if (typeof Chart === 'undefined') {
+        console.error("Chart.js n'est pas chargé.");
+        return;
+    }
 
     const labels = Object.keys(attemptsPerCategory);
     const dataCounts = Object.values(attemptsPerCategory);
 
-    // Détruire l'ancien graphique
     if (categoryChartInstance) {
         categoryChartInstance.destroy();
     }
 
-    // Créer le nouveau graphique
     categoryChartInstance = new Chart(categoryChartCtx, {
-        type: 'doughnut', // ou 'pie', 'bar'
+        type: 'doughnut',
         data: {
             labels: labels,
             datasets: [{
@@ -264,13 +262,8 @@ function updateCategoryChart(attemptsPerCategory) {
             responsive: true,
             maintainAspectRatio: false,
              plugins: {
-                legend: {
-                    position: 'top', // Ou 'bottom', 'left', 'right'
-                },
-                 title: {
-                    display: true,
-                    text: 'Répartition des tentatives par catégorie'
-                }
+                legend: { position: 'top' },
+                 title: { display: true, text: 'Répartition des tentatives par catégorie' }
             }
         }
     });
@@ -279,7 +272,6 @@ function updateCategoryChart(attemptsPerCategory) {
 // ===============================
 // UTILITAIRES
 // ===============================
-// Génère un tableau de couleurs pour les graphiques
 function generateColors(count, border = false) {
     const colors = [
         'rgba(54, 162, 235, 0.8)', 'rgba(255, 99, 132, 0.8)', 'rgba(255, 206, 86, 0.8)',
@@ -297,16 +289,27 @@ function generateColors(count, border = false) {
     const palette = border ? borderColors : colors;
     const result = [];
     for (let i = 0; i < count; i++) {
-        result.push(palette[i % palette.length]); // Boucle sur la palette si besoin
+        result.push(palette[i % palette.length]);
     }
     return result;
 }
 
 
 // ===============================
-// DÉMARRAGE : Lancer le chargement au chargement de la page
+// ✅ POINT D'ENTRÉE EXPORTÉ
 // ===============================
-document.addEventListener('DOMContentLoaded', loadAndDisplayStats);
 
-// Optionnel: Recharger les stats périodiquement (si on n'utilise pas onValue)
-// setInterval(loadAndDisplayStats, 60000); // Toutes les minutes
+/**
+ * Initialise la section Dashboard (Statistiques).
+ * (Appelée par dashboard.js)
+ * @param {Object} user L'objet utilisateur admin (au cas où)
+ */
+export function initDashboard(user) {
+    console.log("Initialisation du module Dashboard Stats...");
+    
+    // Charger les statistiques
+    loadAndDisplayStats();
+    
+    // Vous pourriez ajouter un bouton de "rafraîchissement" manuel
+    // qui appellerait à nouveau loadAndDisplayStats()
+}

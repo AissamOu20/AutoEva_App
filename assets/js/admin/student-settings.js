@@ -1,15 +1,15 @@
 // ===============================
-// 🔹 admin-students.js (Génération auto username/password + Hachage)
+// 🔹 student-settings.js (Génération auto username/password + Hachage)
 // ===============================
 
 // 🔹 Import Firebase
 import { database, ref, onValue, set, remove, update, get } from "../db/firebase-config.js";
+// (Bootstrap est supposé être global)
 
 // -----------------------------------------------------------------
 // ⬇️ Fonction pour charger bcryptjs dynamiquement ⬇️
 // -----------------------------------------------------------------
 async function loadBcrypt() {
-  // ... (Code de loadBcrypt - INCHANGÉ) ...
   if (window.dcodeIO && window.dcodeIO.bcrypt) return window.dcodeIO.bcrypt;
   return new Promise((resolve, reject) => {
     if (document.querySelector('script[src*="bcrypt.min.js"]')) {
@@ -43,7 +43,7 @@ async function loadBcrypt() {
   });
 }
 // -----------------------------------------------------------------
-// ⬆️ FIN AJOUT ⬆️
+// ⬆️ FIN BCRYPT ⬆️
 // -----------------------------------------------------------------
 
 // 🔹 DOM (Tableau et recherche)
@@ -63,37 +63,26 @@ const editNom = document.getElementById("editNom");
 const editPrenom = document.getElementById("editPrenom");
 const editGroup = document.getElementById("editGroup");
 
-// ⭐️ DOM (Modal d'Ajout - Champs username/password ignorés mais existent pour l'instant) ⭐️
+// ⭐️ DOM (Modal d'Ajout)
 const addStudentModalEl = document.getElementById("addStudentModal");
 const addStudentModal = addStudentModalEl ? new bootstrap.Modal(addStudentModalEl) : null;
 const addStudentForm = document.getElementById("addStudentForm");
 const addNomInput = document.getElementById("addNom");
 const addPrenomInput = document.getElementById("addPrenom");
-// const addUsernameInput = document.getElementById("addUsername"); // On ne le lit plus
 const addGroupInput = document.getElementById("addGroup");
-// const addPasswordInput = document.getElementById("addPassword"); // On ne le lit plus
 
 // 🔹 Variables
 let studentsData = [];
 let selectedStudents = [];
 let currentPage = 1;
 const pageSize = 20;
-
-// 🔹 Listener Firebase
+let isInitialized = false; // ✅ Pour s'assurer que l'init ne se fait qu'une fois
 const studentsRef = ref(database, "users");
-onValue(studentsRef, snapshot => {
-  const users = snapshot.val() || {};
-  studentsData = Object.entries(users)
-    .map(([id, u]) => ({ id, ...u }))
-    .filter(u => u.role === "student");
-  renderTable(); // Re-render quand les données changent
-});
 
 // ===============================
-// 🔹 Table + pagination (Inchangé)
+// 🔹 Table + pagination
 // ===============================
 function renderTable() {
-    // ... (Code de renderTable - INCHANGÉ) ...
     const searchTerm = searchInput?.value.toLowerCase() || "";
     const filtered = studentsData.filter(s =>
         (s.nom?.toLowerCase().includes(searchTerm) ||
@@ -108,6 +97,7 @@ function renderTable() {
     const end = start + pageSize;
     const pageData = filtered.slice(start, end);
 
+    if (!studentsTable) return;
     studentsTable.innerHTML = ""; // Clear table body
 
     // Select All Checkbox Logic
@@ -119,17 +109,13 @@ function renderTable() {
         th.classList.add("text-center", "select-all");
         tableHead.prepend(th);
         selectAllCheckbox = document.getElementById("selectAllStudents");
-        if (selectAllCheckbox) {
-            selectAllCheckbox.addEventListener("change", e => {
-                const checked = e.target.checked;
-                // Select only currently filtered students shown on all pages
-                selectedStudents = checked ? filtered.map(s => s.id) : [];
-                renderTable(); // Re-render to update checkboxes on the current page
-            });
-        }
+        selectAllCheckbox?.addEventListener("change", e => {
+            const checked = e.target.checked;
+            selectedStudents = checked ? filtered.map(s => s.id) : [];
+            renderTable(); 
+        });
     }
 
-    // Update main checkbox state based on currently filtered list
     if (selectAllCheckbox) {
         const allFilteredSelected = filtered.length > 0 && filtered.every(s => selectedStudents.includes(s.id));
         selectAllCheckbox.checked = allFilteredSelected;
@@ -137,7 +123,7 @@ function renderTable() {
     }
 
 
-    // Render table rows for the current page
+    // Render table rows
     pageData.forEach(student => {
         const isChecked = selectedStudents.includes(student.id);
         const row = document.createElement("tr");
@@ -168,36 +154,33 @@ function renderTable() {
         </td>
         `;
 
-        // Add event listeners for buttons and checkbox
         row.querySelector(".btn-edit")?.addEventListener("click", () => openEditModal(student));
         row.querySelector(".btn-delete")?.addEventListener("click", () => deleteStudent(student.id));
         row.querySelector(".btn-reset")?.addEventListener("click", () => resetPassword(student.id));
         row.querySelector(".select-student")?.addEventListener("change", e => {
-        const id = e.target.dataset.id;
-        if (e.target.checked) {
-            if (!selectedStudents.includes(id)) selectedStudents.push(id);
-        } else {
-            selectedStudents = selectedStudents.filter(x => x !== id);
-        }
-        // Update main checkbox state after individual change
-        if (selectAllCheckbox) {
-            const allFilteredSelected = filtered.length > 0 && filtered.every(s => selectedStudents.includes(s.id));
-            selectAllCheckbox.checked = allFilteredSelected;
-            selectAllCheckbox.indeterminate = !allFilteredSelected && filtered.some(s => selectedStudents.includes(s.id));
-        }
+            const id = e.target.dataset.id;
+            if (e.target.checked) {
+                if (!selectedStudents.includes(id)) selectedStudents.push(id);
+            } else {
+                selectedStudents = selectedStudents.filter(x => x !== id);
+            }
+            if (selectAllCheckbox) {
+                const allFilteredSelected = filtered.length > 0 && filtered.every(s => selectedStudents.includes(s.id));
+                selectAllCheckbox.checked = allFilteredSelected;
+                selectAllCheckbox.indeterminate = !allFilteredSelected && filtered.some(s => selectedStudents.includes(s.id));
+            }
         });
 
         row.addEventListener("dblclick", () => window.location.href = `../student/profile.html?id=${student.id}`);
         studentsTable.appendChild(row);
     });
 
-    renderPagination(totalPages, filtered.length); // Pass total filtered items count
+    renderPagination(totalPages, filtered.length); 
 }
 
 function renderPagination(totalPages, totalItems) {
-    // ... (Code de renderPagination - INCHANGÉ) ...
+    if (!paginationContainer) return;
     paginationContainer.innerHTML = "";
-
     if (totalPages <= 1) return;
 
     // Previous Button
@@ -210,7 +193,6 @@ function renderPagination(totalPages, totalItems) {
     paginationContainer.appendChild(prevLi);
 
     // Page Numbers
-    // Add logic for ellipsis if too many pages
     const maxPagesToShow = 5;
     let startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
     let endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
@@ -231,7 +213,6 @@ function renderPagination(totalPages, totalItems) {
              paginationContainer.appendChild(ellipsisLi);
         }
     }
-
 
     for (let i = startPage; i <= endPage; i++) {
         const li = document.createElement("li");
@@ -255,7 +236,6 @@ function renderPagination(totalPages, totalItems) {
         paginationContainer.appendChild(lastLi);
     }
 
-
     // Next Button
     const nextLi = document.createElement("li");
     nextLi.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
@@ -266,31 +246,11 @@ function renderPagination(totalPages, totalItems) {
     paginationContainer.appendChild(nextLi);
 }
 
-
 // ===============================
-// 🔹 Recherche (Inchangé)
-// ===============================
-searchInput?.addEventListener("input", () => {
-  currentPage = 1;
-  renderTable();
-});
-
-// ===============================
-// 🔹 Ajouter Étudiant (Ouvre le Modal) - (Inchangé)
-// ===============================
-addStudentBtn?.addEventListener("click", () => {
-  if (!addStudentModal) return alert("Le modal d'ajout n'est pas configuré !");
-  addStudentForm.reset();
-  addStudentModal.show();
-});
-
-// ===============================
-// ⭐️ SAUVEGARDER NOUVEL ÉTUDIANT (MODIFIÉ pour Génération Auto) ⭐️
+// ⭐️ SAUVEGARDER NOUVEL ÉTUDIANT (Génération Auto)
 // ===============================
 async function saveNewStudent(event) {
     event.preventDefault();
-
-    // Lire SEULEMENT nom, prenom, group du formulaire
     const nom = addNomInput.value.trim();
     const prenom = addPrenomInput.value.trim();
     const group = addGroupInput.value.trim();
@@ -300,12 +260,10 @@ async function saveNewStudent(event) {
         return;
     }
 
-    // --- Génération Automatique ---
-    const generatedUsername = `${nom.toLowerCase()}_${prenom.toLowerCase()}_${group.toLowerCase()}`.replace(/\s+/g, ''); // nom_prenom_groupe sans espaces
-    const generatedPassword = `${prenom.toLowerCase()}@123`.replace(/\s+/g, ''); // prenom@123 sans espaces
-    console.log(`Généré Username: ${generatedUsername}, Password: ${generatedPassword}`); // Pour débogage
+    const generatedUsername = `${nom.toLowerCase()}_${prenom.toLowerCase()}_${group.toLowerCase()}`.replace(/\s+/g, '');
+    const generatedPassword = `${prenom.toLowerCase()}@123`.replace(/\s+/g, '');
+    console.log(`Généré Username: ${generatedUsername}, Password: ${generatedPassword}`); 
 
-    // --- Hachage du mot de passe généré ---
     let bcrypt;
     try {
         bcrypt = await loadBcrypt();
@@ -319,7 +277,7 @@ async function saveNewStudent(event) {
     try {
         showCenterToast("Hachage du mot de passe...", true);
         updateCenterToastProgress(0.5);
-        hashedPassword = await bcrypt.hash(generatedPassword, 10); // Hacher le mot de passe GÉNÉRÉ
+        hashedPassword = await bcrypt.hash(generatedPassword, 10); 
         updateCenterToastProgress(1);
         hideCenterToastAfter(500);
     } catch (hashErr) {
@@ -329,7 +287,6 @@ async function saveNewStudent(event) {
         return;
     }
 
-    // --- Trouver le nouvel ID ---
     let newId = 1;
     if (studentsData.length) {
         const maxId = Math.max(...studentsData.map(s => parseInt(s.id) || 0));
@@ -337,23 +294,22 @@ async function saveNewStudent(event) {
     }
 
     try {
-        // --- Sauvegarder avec les données générées ---
         await set(ref(database, "users/" + newId), {
             id: newId,
             nom,
             prenom,
             group,
-            username: generatedUsername, // Utiliser le username généré
-            password: hashedPassword,    // Utiliser le mot de passe haché généré
+            username: generatedUsername, 
+            password: hashedPassword,    
             role: "student",
             avatar: '/assets/img/user.png',
-            isActive: false,
+            isActive: false, // Inactif par défaut
             quizzes: {},
             totalPoints: 0
         });
 
-        addStudentModal.hide(); // Fermer le modal
-        await updateGroups(); // Mettre à jour les groupes
+        addStudentModal.hide(); 
+        await updateGroups(); 
 
     } catch (dbError) {
         console.error("Erreur sauvegarde Firebase:", dbError);
@@ -363,31 +319,30 @@ async function saveNewStudent(event) {
 }
 
 // ===============================
-// 🔹 Modifier étudiant (Inchangé)
+// 🔹 Modifier étudiant
 // ===============================
-editStudentForm?.addEventListener("submit", async e => {
-  e.preventDefault();
-  const id = editStudentId.value;
-  try {
-      await update(ref(database, "users/" + id), {
-        username: editUsername.value,
-        nom: editNom.value,
-        prenom: editPrenom.value,
-        group: editGroup.value
-      });
-      editStudentModal.hide();
-      await updateGroups();
-  } catch (error) {
-      console.error("Erreur modification étudiant:", error);
-      alert("Erreur lors de la modification.");
-  }
-});
+async function saveEditedStudent(event) {
+    event.preventDefault();
+    const id = editStudentId.value;
+    try {
+        await update(ref(database, "users/" + id), {
+            username: editUsername.value,
+            nom: editNom.value,
+            prenom: editPrenom.value,
+            group: editGroup.value
+        });
+        editStudentModal.hide();
+        await updateGroups();
+    } catch (error) {
+        console.error("Erreur modification étudiant:", error);
+        alert("Erreur lors de la modification.");
+    }
+}
 
 // ===============================
-// 🔹 Supprimer étudiant(s) (Inchangé)
+// 🔹 Supprimer étudiant(s)
 // ===============================
 async function deleteStudent(id) {
-    // ... (Code de deleteStudent - INCHANGÉ) ...
     if (!confirm("Supprimer cet étudiant ?")) return;
     try {
         await remove(ref(database, "users/" + id));
@@ -399,8 +354,7 @@ async function deleteStudent(id) {
     }
 }
 
-deleteSelectedBtn?.addEventListener("click", async () => {
-    // ... (Code de deleteSelectedBtn - INCHANGÉ) ...
+async function deleteSelectedStudents() {
     if (selectedStudents.length === 0) return showCenterToast("Aucun étudiant sélectionné !", false, 1500);
     if (!confirm(`Supprimer ${selectedStudents.length} étudiant(s) ?`)) return;
 
@@ -413,20 +367,19 @@ deleteSelectedBtn?.addEventListener("click", async () => {
         });
         await update(ref(database), updates);
         selectedStudents = [];
-        await updateGroups(); // Handles final toast
+        await updateGroups(); // Gère le toast final
 
     } catch (error) {
         console.error("Erreur suppression multiple:", error);
         hideCenterToastAfter(2000, "Erreur lors de la suppression ❌");
     }
-});
+}
 
 
 // ===============================
-// 🔹 Réinitialiser mot de passe (Avec Hachage - Inchangé)
+// 🔹 Réinitialiser mot de passe
 // ===============================
 async function resetPassword(id) {
-    // ... (Code de resetPassword avec hachage - INCHANGÉ) ...
     const newPassword = prompt("Nouveau mot de passe (sera haché):");
     if (!newPassword) return;
 
@@ -464,10 +417,9 @@ async function resetPassword(id) {
 
 
 // ===============================
-// 🔹 Ouvrir modal édition (Inchangé)
+// 🔹 Ouvrir modal édition
 // ===============================
 function openEditModal(student) {
-    // ... (Code de openEditModal - INCHANGÉ) ...
     if (!editStudentModal) return;
     editStudentId.value = student.id;
     editUsername.value = student.username || '';
@@ -478,10 +430,9 @@ function openEditModal(student) {
 }
 
 // =================================
-// 🔹 Fonction updateGroups (Inchangée)
+// 🔹 Fonction updateGroups
 // =================================
 async function updateGroups() {
-    // ... (Code de updateGroups - INCHANGÉ) ...
     console.log("Mise à jour des groupes lancée...");
     showCenterToast("Mise à jour des groupes...", true);
 
@@ -514,7 +465,7 @@ async function updateGroups() {
         const groupList = Object.values(newGroupsData);
         groupList.sort((a, b) => b.total_points - a.total_points);
         groupList.forEach((group, index) => {
-        group.rang = index + 1;
+            group.rang = index + 1;
         });
 
         const finalGroupData = {};
@@ -534,10 +485,10 @@ async function updateGroups() {
 }
 
 // ===============================
-// 🔹 Toast central bloquant (Inchangé)
+// 🔹 Toast central bloquant
 // ===============================
+let toastHideTimeout = null;
 function showCenterToast(message, withProgress = false, duration = null) {
-    // ... (Code de showCenterToast - INCHANGÉ) ...
     let toast = document.getElementById("centerToast");
     if (!toast) {
         toast = document.createElement("div");
@@ -553,7 +504,7 @@ function showCenterToast(message, withProgress = false, duration = null) {
         position:fixed; top:0; left:0; width:100%; height:100%;
         display:flex; justify-content:center; align-items:center;
         background:rgba(0,0,0,0.4); z-index:99999;
-        pointer-events:auto; /* Allow interaction if needed, or set to none */
+        pointer-events:none;
         `;
         document.body.appendChild(toast);
     } else {
@@ -562,13 +513,15 @@ function showCenterToast(message, withProgress = false, duration = null) {
         document.getElementById("toastProgress").style.width = withProgress ? "0%" : "100%";
         toast.style.display = "flex";
     }
+
+    if (toastHideTimeout) clearTimeout(toastHideTimeout);
+    
     if (duration !== null) {
         hideCenterToastAfter(duration);
     }
 }
 
 function updateCenterToastProgress(percent) {
-    // ... (Code de updateCenterToastProgress - INCHANGÉ) ...
     const progress = document.getElementById("toastProgress");
     if (progress) {
         const clampedPercent = Math.max(0, Math.min(1, percent));
@@ -577,7 +530,6 @@ function updateCenterToastProgress(percent) {
 }
 
 function hideCenterToastAfter(ms = 1500, finalMsg = "") {
-    // ... (Code de hideCenterToastAfter - INCHANGÉ) ...
     const toast = document.getElementById("centerToast");
     const messageEl = document.getElementById("toastMessage");
     const progressEl = document.getElementById("toastProgress");
@@ -591,82 +543,59 @@ function hideCenterToastAfter(ms = 1500, finalMsg = "") {
         progressEl.style.width = "100%";
     }
 
-    if (toast.hideTimeout) {
-        clearTimeout(toast.hideTimeout);
-    }
+    if (toastHideTimeout) clearTimeout(toastHideTimeout);
 
-    toast.hideTimeout = setTimeout(() => {
+    toastHideTimeout = setTimeout(() => {
         if (toast) {
             toast.style.display = "none";
         }
-        toast.hideTimeout = null;
+        toastHideTimeout = null;
     }, ms);
 }
 
+
 // ===============================
-// ⭐️ ÉCOUTEURS D'ÉVÉNEMENTS (MODIFIÉ) ⭐️
+// 🚀 POINT D'ENTRÉE (EXPORTÉ)
 // ===============================
-if (addStudentForm) {
-    // Écouteur pour la soumission du formulaire d'ajout
-    addStudentForm.addEventListener('submit', saveNewStudent);
-}
-if (editStudentForm) {
-    // Écouteur pour la soumission du formulaire d'édition
-    editStudentForm.addEventListener('submit', async (e) => {
-         e.preventDefault();
-          const id = editStudentId.value;
-          try {
-              await update(ref(database, "users/" + id), {
-                username: editUsername.value,
-                nom: editNom.value,
-                prenom: editPrenom.value,
-                group: editGroup.value
-              });
-              editStudentModal.hide();
-              await updateGroups();
-          } catch (error) {
-              console.error("Erreur modification étudiant:", error);
-              alert("Erreur lors de la modification.");
-          }
+/**
+ * Initialise la section de gestion des étudiants.
+ * (Appelée par dashboard.js)
+ * @param {Object} user L'objet utilisateur admin (au cas où)
+ */
+export function initStudentSettings(user) {
+    if (isInitialized) return; // Ne s'exécute qu'une fois
+    console.log("Initialisation du module Étudiants...");
+
+    // 1. Attacher les écouteurs d'événements
+    if (addStudentForm) {
+        addStudentForm.addEventListener('submit', saveNewStudent);
+    }
+    if (editStudentForm) {
+        editStudentForm.addEventListener('submit', saveEditedStudent);
+    }
+    if (searchInput) {
+        searchInput.addEventListener('input', () => { currentPage = 1; renderTable(); });
+    }
+    if (addStudentBtn) {
+        addStudentBtn.addEventListener('click', () => {
+            if (!addStudentModal) return alert("Le modal d'ajout n'est pas configuré !");
+            addStudentForm.reset();
+            addStudentModal.show();
+        });
+    }
+    if (deleteSelectedBtn) {
+        deleteSelectedBtn.addEventListener('click', deleteSelectedStudents);
+    }
+
+    // 2. Démarrer le listener Firebase
+    // (Cela déclenche le premier appel à renderTable)
+    onValue(studentsRef, snapshot => {
+        const users = snapshot.val() || {};
+        studentsData = Object.entries(users)
+            .map(([id, u]) => ({ id, ...u })) // S'assurer que l'ID (clé) est inclus
+            .filter(u => u.role === "student");
+        renderTable(); 
     });
-}
-if (searchInput) {
-    // Écouteur pour la recherche
-    searchInput.addEventListener('input', () => { currentPage = 1; renderTable(); });
-}
-if (addStudentBtn) {
-    // Écouteur pour le bouton "Ajouter" (ouvre le modal)
-    addStudentBtn.addEventListener('click', () => {
-        if (!addStudentModal) return alert("Le modal d'ajout n'est pas configuré !");
-        addStudentForm.reset();
-        addStudentModal.show();
-    });
-}
-if (deleteSelectedBtn) {
-    // Écouteur pour le bouton "Supprimer la sélection"
-    deleteSelectedBtn.addEventListener('click', async () => {
-          if (selectedStudents.length === 0) return showCenterToast("Aucun étudiant sélectionné !", false, 1500);
-          if (!confirm(`Supprimer ${selectedStudents.length} étudiant(s) ?`)) return;
 
-          showCenterToast("Suppression en cours...", true);
-
-          try {
-              const updates = {};
-              selectedStudents.forEach(id => {
-                  updates[`users/${id}`] = null;
-              });
-              await update(ref(database), updates);
-              selectedStudents = [];
-              await updateGroups();
-
-          } catch (error) {
-              console.error("Erreur suppression multiple:", error);
-              hideCenterToastAfter(2000, "Erreur lors de la suppression ❌");
-          }
-    });
+    isInitialized = true;
 }
-
-// ===============================
-// 🚀 DÉMARRAGE
-// ===============================
-// Le listener onValue démarre le rendu initial

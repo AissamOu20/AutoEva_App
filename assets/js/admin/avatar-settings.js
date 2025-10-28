@@ -1,24 +1,26 @@
 // ===============================
-// 🖼️ admin-avatars.js (Version Manuelle - Sans Storage)
+// 🖼️ admin-avatars.js (Version Manuelle)
 // ===============================
 
 // 🔹 Import Firebase Database
 import { database, ref, onValue, set, remove, get } from "../db/firebase-config.js";
-// ❌ PAS D'IMPORT DE STORAGE ICI
+// (Bootstrap est supposé être global pour le Toast)
+// import { showAlert } from '/assets/js/alerts.js'; // Alternative si vous préférez
 
 // 🔹 DOM Elements
 const addAvatarForm = document.getElementById('addAvatarForm');
 const avatarKeyInput = document.getElementById('avatarKey');
-const avatarPathInput = document.getElementById('avatarPath'); // ⭐️ Nouveau sélecteur pour le chemin
+const avatarPathInput = document.getElementById('avatarPath');
 const avatarGridDisplay = document.getElementById('avatarGridDisplay');
 const addAvatarSubmitBtn = document.getElementById('addAvatarSubmitBtn');
 
 // ------------------------------------
-// Charger et Afficher les Avatars (Inchangé)
+// Charger et Afficher les Avatars
 // ------------------------------------
 function loadAndDisplayAvatars() {
     const avatarsRef = ref(database, 'avatars');
     onValue(avatarsRef, (snapshot) => {
+        if (!avatarGridDisplay) return;
         avatarGridDisplay.innerHTML = "";
         if (!snapshot.exists() || !snapshot.hasChildren()) {
             avatarGridDisplay.innerHTML = '<p class="text-center text-muted w-100">Aucun avatar.</p>'; return;
@@ -36,7 +38,10 @@ function loadAndDisplayAvatars() {
             const deleteBtn = document.createElement('button'); deleteBtn.className = 'btn btn-danger btn-sm delete-avatar-btn position-absolute top-0 end-0 m-1';
             deleteBtn.innerHTML = '<i class="bi bi-x-lg"></i>'; deleteBtn.title = `Supprimer "${key}"`;
             deleteBtn.style.cssText = 'width: 24px; height: 24px; line-height: 1; padding: 0; border-radius: 50%;';
-            deleteBtn.addEventListener('click', () => deleteAvatar(key)); // Supprime seulement de la DB
+            
+            // ✅ Modifié pour utiliser un listener délégué dans init()
+            deleteBtn.dataset.key = key; 
+            
             itemDiv.appendChild(img); itemDiv.appendChild(keyP); itemDiv.appendChild(deleteBtn);
             col.appendChild(itemDiv); avatarGridDisplay.appendChild(col);
         });
@@ -47,7 +52,7 @@ function loadAndDisplayAvatars() {
 }
 
 // ------------------------------------
-// Ajouter un Avatar (⭐️ MODIFIÉ pour Processus Manuel)
+// Ajouter un Avatar (Processus Manuel)
 // ------------------------------------
 async function addAvatar(event) {
     event.preventDefault();
@@ -59,35 +64,38 @@ async function addAvatar(event) {
     if (!key || !path) {
         showToast("La clé et le chemin sont obligatoires.", "warning"); return;
     }
-    // Vérifier si le chemin commence bien par / (simple vérification)
     if (!path.startsWith('/')) {
          showToast("Le chemin doit commencer par '/' (ex: /assets/avatars/image.png).", "warning"); return;
     }
 
     const dbRef = ref(database, `avatars/${key}`);
 
+    // Désactiver le bouton
+    if(addAvatarSubmitBtn) addAvatarSubmitBtn.disabled = true;
+
     try {
-        // Vérifier si la clé existe déjà
         const snapshot = await get(dbRef);
         if (snapshot.exists()) {
             showToast(`La clé "${key}" existe déjà.`, "danger");
             return;
         }
 
-        // Sauvegarder le chemin dans la Realtime Database
         await set(dbRef, path);
 
         showToast(`Avatar "${key}" ajouté (chemin: ${path})!`, "success");
-        addAvatarForm.reset(); // Vider le formulaire
+        addAvatarForm.reset(); 
 
     } catch (error) {
         console.error("Erreur ajout avatar DB:", error);
         showToast("Erreur lors de l'ajout à la base de données.", "danger");
+    } finally {
+        // Réactiver le bouton
+        if(addAvatarSubmitBtn) addAvatarSubmitBtn.disabled = false;
     }
 }
 
 // ------------------------------------
-// Supprimer un Avatar (⭐️ MODIFIÉ - Supprime seulement de la DB)
+// Supprimer un Avatar (Seulement de la DB)
 // ------------------------------------
 async function deleteAvatar(key) {
     if (!confirm(`Supprimer l'avatar "${key}" de la liste ?\n(Le fichier image ne sera PAS supprimé du dossier /assets/avatars/)`)) {
@@ -97,7 +105,6 @@ async function deleteAvatar(key) {
     const dbRef = ref(database, `avatars/${key}`);
 
     try {
-        // Supprimer seulement de la Realtime Database
         await remove(dbRef);
         showToast(`Avatar "${key}" supprimé de la liste.`, "success");
         // L'affichage se met à jour via onValue
@@ -109,18 +116,58 @@ async function deleteAvatar(key) {
 }
 
 // ------------------------------------
-// Initialisation & Event Listeners
-// ------------------------------------
-loadAndDisplayAvatars(); // Charger au démarrage
-
-if (addAvatarForm) {
-    addAvatarForm.addEventListener('submit', addAvatar); // Listener pour le formulaire
-}
-
-// ------------------------------------
-// Simple Toast Function (Inchangé)
+// Simple Toast Function
 // ------------------------------------
 function showToast(message, type = "info") {
-    // ... (Code de showToast - INCHANGÉ) ...
-    const cont = document.querySelector(".toast-container.position-fixed.top-0"); if (!cont) return; const el=document.createElement("div"); el.className=`toast align-items-center text-bg-${type} border-0 show`; el.role="alert"; el.ariaLive="assertive"; el.ariaAtomic="true"; el.innerHTML=`<div class="d-flex"><div class="toast-body">${message}</div><button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button></div>`; cont.appendChild(el); const t=new bootstrap.Toast(el,{delay:3000}); t.show(); el.addEventListener('hidden.bs.toast',()=>el.remove());
+    // S'assurer que le conteneur existe (sinon le créer)
+    let toastContainer = document.querySelector(".toast-container.position-fixed.top-0.end-0.p-3");
+    if (!toastContainer) {
+        toastContainer = document.createElement('div');
+        toastContainer.className = "toast-container position-fixed top-0 end-0 p-3";
+        toastContainer.style.zIndex = "1100";
+        document.body.appendChild(toastContainer);
+    }
+    const el=document.createElement("div"); 
+    el.className=`toast align-items-center text-bg-${type} border-0 show`; 
+    el.role="alert"; el.ariaLive="assertive"; el.ariaAtomic="true"; 
+    el.innerHTML=`<div class="d-flex"><div class="toast-body">${message}</div><button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button></div>`; 
+    toastContainer.appendChild(el); 
+    const t=new bootstrap.Toast(el,{delay:3000}); 
+    t.show(); 
+    el.addEventListener('hidden.bs.toast',()=>el.remove());
+}
+
+
+// ------------------------------------
+// ✅ FONCTION D'INITIALISATION (Exportée)
+// ------------------------------------
+/**
+ * Initialise la section de gestion des avatars.
+ * (Appelée par dashboard.js)
+ */
+export function initAvatarSettings(user) {
+    console.log("Initialisation du module Avatars...");
+
+    // 1. Attacher les écouteurs d'événements
+    // (On utilise .removeEventListener d'abord pour éviter les doublons)
+    
+    if (addAvatarForm) {
+        addAvatarForm.removeEventListener('submit', addAvatar);
+        addAvatarForm.addEventListener('submit', addAvatar);
+    }
+
+    // Utiliser la délégation d'événement pour les boutons de suppression
+    if (avatarGridDisplay) {
+        const deleteHandler = (e) => {
+            const btn = e.target.closest('.delete-avatar-btn');
+            if (btn && btn.dataset.key) {
+                deleteAvatar(btn.dataset.key);
+            }
+        };
+        avatarGridDisplay.removeEventListener('click', deleteHandler);
+        avatarGridDisplay.addEventListener('click', deleteHandler);
+    }
+
+    // 2. Charger les données initiales
+    loadAndDisplayAvatars();
 }
