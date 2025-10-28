@@ -8,7 +8,7 @@ console.log("--- admin-dashboard.js : Le fichier est lu (Niveau 0) ---");
 import { database } from '../db/firebase-config.js';
 console.log("--- IMPORT 1/4 (firebase-config) : SUCCÈS ---");
 
-import { checkAuth } from '../student/user.js';
+import { checkAuth } from '../user.js';
 console.log("--- IMPORT 2/4 (user.js) : SUCCÈS ---");
 
 import { showAlert } from '../alerts.js';
