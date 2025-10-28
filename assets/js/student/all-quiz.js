@@ -4,22 +4,22 @@ import { checkAuth } from "../user.js";
 // ✅ Image selon la catégorie (Inchangé)
 function getCategoryImage(category) {
   switch (category) {
-    case "Mécanique / Pneumatique / Hydraulique": return "/assets/img/hydro.jpg";
-    case "Électricité / Électronique": return "/assets/img/elect.jpg";
-    case "Mathématiques et sciences fondamentales": return "/assets/img/math.jpg";
-    case "Informatique et automatismes": return "/assets/img/info.jpg";
-    case "Maintenance et dépannage": return "/assets/img/main.jpg";
+    case "Mécanique / Pneumatique / Hydraulique": return "../assets/img/hydro.jpg";
+    case "Électricité / Électronique": return "../assets/img/elect.jpg";
+    case "Mathématiques et sciences fondamentales": return "../assets/img/math.jpg";
+    case "Informatique et automatismes": return "../assets/img/info.jpg";
+    case "Maintenance et dépannage": return "../assets/img/main.jpg";
     case "Qualité, sécurité et environnement": return "/assets/img/envo.jpg";
-    case "Compétences transversales": return "/assets/img/comp.jpg";
+    case "Compétences transversales": return "../assets/img/comp.jpg";
     case "Savoirs technologiques spécifiques": return "/assets/img/tech.jpg";
-    case "Unités et grandeurs physiques": return "/assets/img/unite.jpg";
-    case "Logique et raisonnement": return "/assets/img/logic.jpg";
-    case "Métrologie et instrumentation": return "/assets/img/intru.jpg";
-    case "Analyse et résolution de problèmes": return "/assets/img/problm.jpg";
-    case "Interprétation et analyse des données": return "/assets/img/inter.jpg";
-    case "Proportionnalité et relations entre grandeurs": return "/assets/img/propo.jpg";
-    case "Code du travail et droit social marocain": return "/assets/img/cdt.jpg";
-    default: return "/assets/img/quiz.png";
+    case "Unités et grandeurs physiques": return "../assets/img/unite.jpg";
+    case "Logique et raisonnement": return "../assets/img/logic.jpg";
+    case "Métrologie et instrumentation": return "../assets/img/intru.jpg";
+    case "Analyse et résolution de problèmes": return "../assets/img/problm.jpg";
+    case "Interprétation et analyse des données": return "../assets/img/inter.jpg";
+    case "Proportionnalité et relations entre grandeurs": return "../assets/img/propo.jpg";
+    case "Code du travail et droit social marocain": return "../assets/img/cdt.jpg";
+    default: return "../assets/img/quiz.png";
   }
 }
 
