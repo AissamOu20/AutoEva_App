@@ -2,10 +2,27 @@
 // IMPORTS
 // =================================
 
+// ✅ CHEMIN CORRIGÉ : Remonte de 'admin/' à 'js/' puis entre 'db/'
+import { 
+    database, 
+    ref, 
+    set, 
+    push, 
+    get,
+    remove,
+    query,
+    orderByChild,
+    equalTo
+} from '../db/firebase-config.js';
 
+// ✅ CHEMIN CORRIGÉ : Remonte de 'admin/' à 'js/' puis entre 'student/'
 import { checkAuth, logout } from '../student/user.js';
 import { showAlert } from '../student/alerts.js';
 
+
+// =================================
+// IMPORTS LOCAUX (Ceux-ci étaient déjà corrects)
+// =================================
 
 // Logique pour l'onglet "Dashboard"
 import { initDashboard } from './dashboard-stats.js'; 
