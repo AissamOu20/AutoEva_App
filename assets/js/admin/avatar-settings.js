@@ -33,7 +33,7 @@ function loadAndDisplayAvatars() {
             img.src = path; // Utilise le chemin directement
             img.alt = key;
             img.style.cssText = 'width: 70px; height: 70px; object-fit: cover; border-radius: 50%; margin-bottom: 8px; border: 2px solid #f8f9fa;';
-            img.onerror = () => { img.src = './assets/img/user.png'; }; // Fallback
+            img.onerror = () => { img.src = '../assets/img/user.png'; }; // Fallback
             const keyP = document.createElement('p'); keyP.className = 'avatar-key small text-muted mb-0 mt-auto'; keyP.textContent = key; keyP.style.wordBreak = 'break-all';
             const deleteBtn = document.createElement('button'); deleteBtn.className = 'btn btn-danger btn-sm delete-avatar-btn position-absolute top-0 end-0 m-1';
             deleteBtn.innerHTML = '<i class="bi bi-x-lg"></i>'; deleteBtn.title = `Supprimer "${key}"`;

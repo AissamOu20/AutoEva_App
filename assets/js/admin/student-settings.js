@@ -134,7 +134,7 @@ function renderTable() {
         <td>${student.id}</td>
         <td>
             <div class="d-flex align-items-center">
-            <img src="${student.avatar || './assets/img/user.png'}" class="avatar me-2" alt="Avatar">
+            <img src="${student.avatar || '../assets/img/user.png'}" class="avatar me-2" alt="Avatar">
             <span>${student.username || ''}</span>
             </div>
         </td>
@@ -302,7 +302,7 @@ async function saveNewStudent(event) {
             username: generatedUsername, 
             password: hashedPassword,    
             role: "student",
-            avatar: './assets/img/user.png',
+            avatar: '../assets/img/user.png',
             isActive: false, // Inactif par défaut
             quizzes: {},
             totalPoints: 0
