@@ -10,7 +10,8 @@ import {
     orderByChild, 
     equalTo, 
     get, 
-    remove } from '/assets/js/db/firebase-config.js';
+    remove 
+} from '/assets/js/db/firebase-config.js';
 import { showAlert } from '/assets/js/alerts.js';
 
 // =================================
@@ -215,5 +216,43 @@ async function handleDeleteAdmin(e) {
     }
 }
 
-// ==========
-loadAdmins();
+// =================================
+// FONCTION D'INITIALISATION (Exportée)
+// =================================
+
+/**
+ * Initialise la section de gestion des admins.
+ * @param {Object} currentUser L'objet utilisateur de l'admin connecté.
+ */
+export async function initAdminSettings(currentUser) {
+    if (!currentUser || currentUser.role !== 'admin') {
+        console.error("Accès non autorisé à initAdminSettings.");
+        return;
+    }
+    
+    currentUserId = currentUser.id; // Stocke l'ID pour la vérification (anti-suppression)
+
+    // Charge bcrypt une seule fois
+    if (!bcrypt) {
+        try {
+            bcrypt = await loadBcrypt();
+        } catch(e) {
+            console.error(e);
+            showAlert(e.message, 'danger');
+            // On peut continuer, mais l'ajout sera bloqué
+        }
+    }
+
+    // Attache les écouteurs d'événements
+    if (addAdminForm) {
+        addAdminForm.removeEventListener('submit', handleAddAdmin); // Évite les doublons
+        addAdminForm.addEventListener('submit', handleAddAdmin);
+    }
+    if (adminListBody) {
+        adminListBody.removeEventListener('click', handleDeleteAdmin); // Évite les doublons
+        adminListBody.addEventListener('click', handleDeleteAdmin);
+    }
+
+    // Charge la liste des admins
+    await loadAdmins();
+}
