@@ -1,31 +1,11 @@
 // =================================
 // IMPORTS
 // =================================
-import { 
-    database, 
-    ref, 
-    set, 
-    push, 
-    get,
-    remove,
-    query,
-    orderByChild,
-    equalTo
-} from '/assets/js/db/firebase-config.js';
 
-import { checkAuth, logout } from '/assets/js/user.js';
-import { showAlert } from '/assets/js/alerts.js';
 
-// =================================
-// ✅ IMPORTATION DE TOUS LES MODULES DE SECTION
-// =================================
-//
-// ❗️ IMPORTANT : 
-// Assurez-vous que les chemins (ex: './student-settings.js') 
-// et les noms de fonctions (ex: initStudentSettings) 
-// correspondent EXACTEMENT à vos fichiers.
-//
-// -------------------------------------------------
+import { checkAuth, logout } from '../student/user.js';
+import { showAlert } from '../student/alerts.js';
+
 
 // Logique pour l'onglet "Dashboard"
 import { initDashboard } from './dashboard-stats.js'; 
