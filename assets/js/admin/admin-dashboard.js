@@ -16,7 +16,7 @@ console.log("--- IMPORT 3/4 (alerts.js) : SUCCÈS ---");
 
 
 // --- On teste TOUS les imports locaux ---
-import { initDashboard } from './dashboard-stats.js'; 
+import { initDashboard } from '../admin/dashboard-stats.js'; 
 console.log("--- IMPORT 4/x (dashboard-stats.js) : SUCCÈS ---");
 
 
