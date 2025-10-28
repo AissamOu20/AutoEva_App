@@ -27,7 +27,7 @@ export async function checkAuth(redirectToLogin = true, forceRefresh = false) {
     const user = await getCurrentUser(forceRefresh);
     if (!user && redirectToLogin) {
         // Si l'utilisateur n'est pas trouvé ET qu'on demande la redirection
-        window.location.href = "/"; // Redirige vers la page de login (index.html)
+        window.location.href = "./"; // Redirige vers la page de login (index.html)
         return null;
     }
     return user;
@@ -95,5 +95,5 @@ export async function logout() {
 
     // Ensuite, vider le localStorage et rediriger
     localStorage.removeItem("currentUser");
-    window.location.href = "AutoEva_App/";
+    window.location.href = "/";
 }
