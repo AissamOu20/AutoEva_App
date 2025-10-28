@@ -1,6 +1,8 @@
 // =================================
 // IMPORTS
 // =================================
+console.log("Admin Dashboard JS chargé");
+
 
 // ✅ CHEMIN CORRIGÉ : Remonte de 'admin/' à 'js/' puis entre 'db/'
 import { 
