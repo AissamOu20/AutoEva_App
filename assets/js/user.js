@@ -1,5 +1,5 @@
 // ✅ AJOUT: 'update' est nécessaire pour changer le statut 'isActive'
-import { database, ref, get, update, set } from "../db/firebase-config.js"; // Chemin corrigé pour remonter de 'student/'
+import { database, ref, get, update, set } from "./db/firebase-config.js"; // Chemin corrigé pour remonter de 'student/'
 
 export async function getCurrentUser(forceRefresh = false) {
     const user = localStorage.getItem("currentUser");
