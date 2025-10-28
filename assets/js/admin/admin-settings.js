@@ -11,8 +11,8 @@ import {
     equalTo, 
     get, 
     remove 
-} from '/assets/js/db/firebase-config.js';
-import { showAlert } from '/assets/js/alerts.js';
+} from '../db/firebase-config.js';
+import { showAlert } from '../alerts.js';
 
 // =================================
 // SÉLECTEURS DOM ET VARIABLES
