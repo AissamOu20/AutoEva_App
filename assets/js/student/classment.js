@@ -97,7 +97,7 @@ async function loadFullLeaderboard() {
             col.innerHTML = `
                 <div class="${cardClasses}"> 
                     <span class="rank-badge">${rank}</span>
-                    <img src="${user.avatar || '/assets/img/user.png'}" class="avatar" alt="Avatar">
+                    <img src="${user.avatar || '../assets/img/user.png'}" class="avatar" alt="Avatar">
                     <div class="name">${user.nom || ''} ${user.prenom || ''}</div>
                     <div class="details">Groupe: ${user.group || "N/A"}</div>
                     <div class="points">

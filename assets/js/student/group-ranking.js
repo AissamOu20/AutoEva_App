@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             currentUserId = currentUser.id;
         } else {
              // Redirect or handle unauthenticated access if needed
-             window.location.href = '/student/login.html';
+             window.location.href = '../student/login.html';
              return;
         }
     } catch (error) {
@@ -94,7 +94,7 @@ async function loadGroupRanking(groupName) {
             row.innerHTML = `
                 <td class="text-center rank-col">${rank}</td>
                 <td class="avatar-col text-center">
-                    <img src="${student.avatar || '/assets/img/user.png'}" class="avatar" alt="Avatar">
+                    <img src="${student.avatar || '../assets/img/user.png'}" class="avatar" alt="Avatar">
                 </td>
                 <td>${student.nom || ''} ${student.prenom || ''}</td>
                 <td class="text-end points-col">${student.totalPoints || 0}</td>
