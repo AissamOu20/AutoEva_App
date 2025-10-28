@@ -1,7 +1,10 @@
 // ✅ AJOUT : 'update', 'query', 'orderByChild', 'equalTo' pour une recherche efficace
 import { ref, get, child, update, query, orderByChild, equalTo } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+
 // ⭐️ Imports Auth depuis la config ⭐️
+// ✅ MODIFIÉ : Le chemin remonte de 3 niveaux (student -> js -> assets -> racine) pour trouver /db/
 import { database, auth, signInAnonymously, signOut } from "../db/firebase-config.js";
+// ✅ MODIFIÉ : Le chemin remonte de 1 niveau (student -> js) pour trouver alerts.js
 import { showAlert } from "../alerts.js";
 
 // DOM
@@ -181,10 +184,12 @@ form.addEventListener("submit", async (e) => {
 
     switch (foundUser.role) {
       case "admin":
-        window.location.href = "/admin/dashboard.html";
+        // ✅ MODIFIÉ : Chemin relatif depuis /student/login.html
+        window.location.href = "../admin/dashboard.html";
         break;
       case "student":
-        window.location.href = "/student/dashboard.html"; // ou all-quiz.html
+        // ✅ MODIFIÉ : Chemin relatif depuis /student/login.html
+        window.location.href = "dashboard.html"; // ou all-quiz.html
         break;
       default:
         // Si le rôle n'est pas géré, déconnectez l'utilisateur anonyme
