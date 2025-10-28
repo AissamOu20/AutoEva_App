@@ -6,8 +6,8 @@
 import { 
     database, ref, set, push, get, remove, query, orderByChild, equalTo
 } from '../db/firebase-config.js';
-import { checkAuth, logout } from '../student/user.js';
-import { showAlert } from '../student/alerts.js';
+import { checkAuth, logout } from '../user.js';
+import { showAlert } from '../alerts.js';
 
 // Imports locaux (corrects)
 import { initDashboard } from './dashboard-stats.js'; 
