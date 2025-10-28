@@ -95,5 +95,5 @@ export async function logout() {
 
     // Ensuite, vider le localStorage et rediriger
     localStorage.removeItem("currentUser");
-    window.location.href = "/";
+    window.location.href = "AutoEva_App/";
 }
