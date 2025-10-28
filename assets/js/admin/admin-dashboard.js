@@ -11,6 +11,9 @@ console.log("--- IMPORT 1/4 (firebase-config) : SUCCÈS ---");
 import { checkAuth } from '../user.js';
 console.log("--- IMPORT 2/4 (user.js) : SUCCÈS ---");
 
+import { showAlert } from '../alerts.js';
+console.log("--- IMPORT 3/4 (alerts.js) : SUCCÈS ---");
+
 
 /* --- Imports commentés pour l'instant ---
 import { showAlert } from '../alerts.js'; 
