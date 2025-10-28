@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const quizzes = snapshot.val();
       // Filtre les quiz (doivent avoir des questions) et stocke [key, data]
       const filteredQuizzes = Object.entries(quizzes).filter(([id, quiz]) =>
-         (quiz.totalQuestions || (Array.isArray(quiz.questionsIds) ? quiz.questionsIds.length : 0)) > -1
+         (quiz.totalQuestions || (Array.isArray(quiz.questionsIds) ? quiz.questionsIds.length : 0)) > 0
       );
 
       allQuizzes = filteredQuizzes;
