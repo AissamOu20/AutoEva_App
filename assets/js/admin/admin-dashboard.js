@@ -17,13 +17,8 @@ console.log("--- IMPORT 3/4 (alerts.js) : SUCCÈS ---");
 
 // --- On teste TOUS les imports locaux ---
 import { initDashboard } from './dashboard-stats.js'; 
-import { initStudentSettings } from './student-settings.js'; 
-import { initGroupSettings } from './group-settings.js'; 
-import { initQuizSettings } from './quiz-settings.js'; 
-import { initAvatarSettings } from './avatar-settings.js'; 
-import { initAdminSettings } from './admin-settings.js'; 
-import { initImportExport } from './import-export.js'; 
-console.log("--- IMPORT 4/4 (Imports locaux) : SUCCÈS ---");
+
+console.log("--- IMPORT 4/x (Imports locaux) : SUCCÈS ---");
 
 
 document.addEventListener("DOMContentLoaded", async () => {
