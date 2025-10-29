@@ -13,39 +13,137 @@
   border: 2px solid #e9ecef; /* Light grey border */
 }
 
-/* 🔹 Round Action Buttons (Edit, Delete, Reset) */
-.btn-action {
-  border: none;                     /* Remove default border */
-  border-radius: 50%;             /* Make buttons circular */
-  width: 36px;                      /* Fixed width */
-  height: 36px;                     /* Fixed height */
-  display: inline-flex;             /* Use flexbox for centering icon */
-  align-items: center;              /* Vertically center icon */
-  justify-content: center;          /* Horizontally center icon */
-  margin: 0 3px;                    /* Small space between buttons */
-  color: #fff;                      /* White icon color */
-  transition: all 0.3s ease;        /* Smooth transition for hover effects */
-  font-size: 1rem;                  /* Icon size */
-  cursor: pointer;                  /* Pointer cursor on hover */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
+/* ================================ */
+/* 🎨 Style Table Amélioré (Votre code) */
+/* ================================ */
+
+/* Classe principale de la table */
+.custom-table {
+  border: none; /* Supprime la bordure extérieure */
+  
+  /* Sépare les lignes pour un look "aéré" */
+  border-collapse: separate; 
+  border-spacing: 0 4px; /* Espace vertical entre les lignes */
 }
 
-/* Custom Background Colors */
-.btn-edit { background-color: #0d6efd; } /* Blue */
-.btn-delete { background-color: #dc3545; } /* Red */
-.btn-reset { background-color: #ffc107; color: #000; } /* Yellow, black icon */
-
-/* Hover & Focus Effects for Action Buttons */
-.btn-action:hover,
-.btn-action:focus {
-  transform: scale(1.15);              /* Slightly enlarge on hover/focus */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Stronger shadow */
-  outline: none;                       /* Remove default focus outline */
+/* Cellules (header et body) */
+.custom-table th,
+.custom-table td {
+    vertical-align: middle; /* Aligne tout au centre verticalement */
+    padding: 0.9rem;        /* Augmente un peu le padding */
+    border: none;           /* Supprime les bordures par défaut */
 }
-.btn-edit:hover, .btn-edit:focus { background-color: #0b5ed7; } /* Darker blue */
-.btn-delete:hover, .btn-delete:focus { background-color: #bb2d3b; } /* Darker red */
-.btn-reset:hover, .btn-reset:focus { background-color: #e0a800; } /* Darker yellow */
 
+/* En-tête */
+.custom-table thead th {
+    border-bottom: 2px solid #dee2e6; /* Ligne de fond plus épaisse pour l'en-tête */
+}
+
+/* Lignes du corps */
+.custom-table tbody tr {
+    /* Donne un fond blanc et une ombre légère à chaque ligne */
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    transition: all 0.2s ease;
+}
+
+/* S'assure que la 1ère et dernière cellule ont des coins arrondis */
+.custom-table tbody tr td:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+.custom-table tbody tr td:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+/* Effet de survol sur la ligne */
+.custom-table tbody tr:hover {
+    transform: translateY(-2px); /* Léger "lift" */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* Ombre plus prononcée */
+    background-color: #fff; /* Garde le fond blanc au survol */
+    cursor: pointer;
+}
+
+/* S'assurer que les icônes de tri sont bien alignées */
+#studentsTable thead th.sortable::after {
+    right: 0.9rem; /* Aligne la flèche avec le nouveau padding */
+}
+
+/* ================================== */
+/* 🎨 Boutons d'Action (CORRIGÉ)      */
+/* Cible les classes Bootstrap du JS  */
+/* ================================== */
+
+/* 1. Rendre TOUS les boutons .btn dans la table circulaires
+     (Cible les classes .btn .btn-sm etc. de votre JS)
+*/
+.custom-table td .btn {
+  border-radius: 50% !important; /* Force le cercle */
+  width: 36px;
+  height: 36px;
+  padding: 0; /* Enlève padding pour centrer icône */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 3px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-size: 0.9rem; /* Taille de l'icône */
+}
+
+/* 2. MODIFICATION CLÉ :
+     Forcer les styles 'outline' à avoir un fond plein 
+     et une icône visible TOUT LE TEMPS.
+*/
+
+/* --- Bouton Modifier (Bleu) --- */
+.custom-table .btn-edit.btn-outline-primary {
+  background-color: #0d6efd !important;
+  color: #fff !important; /* Icône blanche */
+  border-color: #0d6efd !important;
+}
+/* Hover */
+.custom-table .btn-edit.btn-outline-primary:hover {
+  background-color: #0b5ed7 !important;
+  border-color: #0a58ca !important;
+  transform: scale(1.15);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* --- Bouton Supprimer (Rouge) --- */
+.custom-table .btn-delete.btn-outline-danger {
+  background-color: #dc3545 !important;
+  color: #fff !important; /* Icône blanche */
+  border-color: #dc3545 !important;
+}
+/* Hover */
+.custom-table .btn-delete.btn-outline-danger:hover {
+  background-color: #bb2d3b !important;
+  border-color: #b02a37 !important;
+  transform: scale(1.15);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* --- Bouton Réinitialiser (Jaune) --- */
+.custom-table .btn-reset.btn-outline-warning {
+  background-color: #ffc107 !important;
+  color: #000 !important; /* Icône noire */
+  border-color: #ffc107 !important;
+}
+/* Hover */
+.custom-table .btn-reset.btn-outline-warning:hover {
+  background-color: #e0a800 !important;
+  border-color: #d39e00 !important;
+  color: #000 !important;
+  transform: scale(1.15);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+
+/* ======================== */
+/* 🎨 Reste du CSS          */
+/* ======================== */
 
 /* Status Badge Styling (Active/Inactive) */
 .badge {
@@ -81,16 +179,6 @@
 .bg-gradient {
   background: linear-gradient(135deg, #0d6efd, #6f42c1); /* Diagonal gradient */
   color: #fff; /* White text for contrast */
-}
-
-/* Table Styling */
-/* Soft hover effect for table rows */
-table.table-hover tbody tr {
-  transition: background-color 0.2s ease; /* Smooth background transition */
-}
-table.table-hover tbody tr:hover {
-  background-color: #e9ecef; /* Light grey hover */
-  cursor: pointer;            /* Indicate clickable row (for dblclick) */
 }
 
 /* Style for table headers */
@@ -134,4 +222,102 @@ tr.selected, tr:active { /* Use :active for brief highlight on click */
 th.select-all,
 td:first-child .form-check-input {
   width: 40px; /* Adjust as needed for checkbox alignment */
+}
+/* ===============================
+   Styles pour le tri des tables
+   =============================== */
+#studentsTable thead th.sortable {
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    padding-right: 25px; /* Espace pour la flèche */
+}
+
+#studentsTable thead th.sortable:hover {
+    background-color: #e9ecef; /* Un léger surlignage */
+}
+
+/* Flèche par défaut (non trié) */
+#studentsTable thead th.sortable::after {
+    content: '\2195'; /* Flèche haut/bas */
+    font-size: 0.9em;
+    color: #aaa;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: color 0.2s;
+}
+
+/* Flèche tri ASC */
+#studentsTable thead th.sortable.sort-asc::after {
+    content: '\25B2'; /* Flèche vers le haut */
+    color: #333;
+}
+
+/* Flèche tri DESC */
+#studentsTable thead th.sortable.sort-desc::after {
+    content: '\25BC'; /* Flèche vers le haut */
+    color: #333;
+}
+
+/* ================================== */
+/* 🎨 ⭐️ AJOUT: Style Checkbox       */
+/* ================================== */
+.custom-table .form-check-input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 1.25em;
+  height: 1.25em;
+  border: 2px solid #adb5bd;
+  border-radius: 0.25rem;
+  background-color: #fff;
+  margin: 0;
+  vertical-align: middle;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.custom-table .form-check-input:hover {
+  border-color: #0d6efd;
+}
+.custom-table .form-check-input:checked {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+  background-size: 65%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.custom-table .form-check-input:indeterminate {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M5 10h10'/%3e%3c/svg%3e");
+  background-size: 65%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.custom-table th.select-all .form-check-input {
+  margin: 0 auto;
+  display: block;
+}
+
+/* ================================== */
+/* 🎨 ⭐️ AJOUT: Responsive Table     */
+/* ================================== */
+@media (max-width: 768px) {
+  /* Ce style s'applique au wrapper .table-responsive
+     uniquement sur les petits écrans (tablettes et mobiles) */
+  .table-responsive {
+    border: 1px solid #eee;
+    border-radius: 8px;
+  }
+
+  /* Force le tableau à avoir une largeur minimale,
+     ce qui active le défilement horizontal (overflow-x: auto)
+     du .table-responsive. */
+  .table-responsive .custom-table {
+    min-width: 800px;
+  }
 }

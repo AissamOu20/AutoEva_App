@@ -1,5 +1,5 @@
 // ===============================
-// 🔹 student-settings.js (Génération auto username/password + Hachage)
+// 🔹 student-settings.js (Avec Tri de Table)
 // ===============================
 
 // 🔹 Import Firebase
@@ -79,18 +79,60 @@ const pageSize = 20;
 let isInitialized = false; // ✅ Pour s'assurer que l'init ne se fait qu'une fois
 const studentsRef = ref(database, "users");
 
+// ⭐️ MODIFIÉ : Variables pour le tri
+let sortColumn = 'id';
+let sortDirection = 'asc';
+
+
 // ===============================
 // 🔹 Table + pagination
 // ===============================
 function renderTable() {
+    
+    // ⭐️ 1. LOGIQUE DE TRI
+    const sortedData = [...studentsData].sort((a, b) => {
+        let aVal, bVal;
+
+        // Gérer les clés spéciales
+        switch (sortColumn) {
+            case 'nom':
+                aVal = `${a.nom || ''} ${a.prenom || ''}`.trim().toLowerCase();
+                bVal = `${b.nom || ''} ${b.prenom || ''}`.trim().toLowerCase();
+                break;
+            case 'group':
+                aVal = (a.Groupe || a.group || '').toLowerCase();
+                bVal = (b.Groupe || b.group || '').toLowerCase();
+                break;
+            case 'id':
+                // Tri numérique pour l'ID
+                return sortDirection === 'asc' ? (a.id - b.id) : (b.id - a.id);
+            case 'isActive':
+                 // Tri booléen
+                 return sortDirection === 'asc' 
+                    ? (a.isActive === b.isActive ? 0 : a.isActive ? -1 : 1) 
+                    : (a.isActive === b.isActive ? 0 : a.isActive ? 1 : -1);
+            default:
+                // Tri par défaut (string)
+                aVal = (a[sortColumn] || '').toLowerCase();
+                bVal = (b[sortColumn] || '').toLowerCase();
+        }
+
+        // Comparaison
+        if (aVal < bVal) return sortDirection === 'asc' ? -1 : 1;
+        if (aVal > bVal) return sortDirection === 'asc' ? 1 : -1;
+        return 0;
+    });
+
+    // ⭐️ 2. LOGIQUE DE FILTRAGE (utilise sortedData)
     const searchTerm = searchInput?.value.toLowerCase() || "";
-    const filtered = studentsData.filter(s =>
+    const filtered = sortedData.filter(s =>
         (s.nom?.toLowerCase().includes(searchTerm) ||
         s.prenom?.toLowerCase().includes(searchTerm) ||
         s.username?.toLowerCase().includes(searchTerm) ||
         (s.Groupe || s.group || "").toLowerCase().includes(searchTerm))
     );
 
+    // 3. LOGIQUE DE PAGINATION (utilise filtered)
     const totalPages = Math.ceil(filtered.length / pageSize);
     if (currentPage > totalPages) currentPage = totalPages || 1;
     const start = (currentPage - 1) * pageSize;
@@ -100,7 +142,7 @@ function renderTable() {
     if (!studentsTable) return;
     studentsTable.innerHTML = ""; // Clear table body
 
-    // Select All Checkbox Logic
+    // 4. LOGIQUE "SELECT ALL"
     const tableHead = document.querySelector("#studentsTable thead tr");
     let selectAllCheckbox = tableHead?.querySelector("#selectAllStudents");
     if (tableHead && !selectAllCheckbox) {
@@ -111,6 +153,7 @@ function renderTable() {
         selectAllCheckbox = document.getElementById("selectAllStudents");
         selectAllCheckbox?.addEventListener("change", e => {
             const checked = e.target.checked;
+            // ⭐️ MODIFIÉ : Utilise 'filtered' pour la sélection de la page actuelle
             selectedStudents = checked ? filtered.map(s => s.id) : [];
             renderTable(); 
         });
@@ -123,7 +166,7 @@ function renderTable() {
     }
 
 
-    // Render table rows
+    // 5. Rendu des lignes (utilise pageData)
     pageData.forEach(student => {
         const isChecked = selectedStudents.includes(student.id);
         const row = document.createElement("tr");
@@ -174,9 +217,27 @@ function renderTable() {
         row.addEventListener("dblclick", () => window.location.href = `../student/profile.html?id=${student.id}`);
         studentsTable.appendChild(row);
     });
-
+    
+    // 6. Mettre à jour les icônes de tri
+    updateSortHeaders();
+    
+    // 7. Rendu de la pagination
     renderPagination(totalPages, filtered.length); 
 }
+
+// ⭐️ NOUVELLE FONCTION : Mettre à jour visuellement les en-têtes
+function updateSortHeaders() {
+    const headers = document.querySelectorAll("#studentsTable thead th.sortable[data-sort]");
+    headers.forEach(th => {
+        th.classList.remove('sort-asc', 'sort-desc'); // Enlève les classes
+        
+        if (th.dataset.sort === sortColumn) {
+            // Ajoute la bonne classe (asc ou desc) à la colonne active
+            th.classList.add(sortDirection === 'asc' ? 'sort-asc' : 'sort-desc');
+        }
+    });
+}
+
 
 function renderPagination(totalPages, totalItems) {
     if (!paginationContainer) return;
@@ -586,6 +647,31 @@ export function initStudentSettings(user) {
     if (deleteSelectedBtn) {
         deleteSelectedBtn.addEventListener('click', deleteSelectedStudents);
     }
+
+    // ⭐️ MODIFIÉ : Ajout du listener pour le tri
+    const tableHeader = document.querySelector("#studentsTable thead");
+    if (tableHeader) {
+        tableHeader.addEventListener('click', e => {
+            // Cible l'en-tête cliquable (qui a data-sort)
+            const th = e.target.closest('th.sortable[data-sort]');
+            if (!th) return; // Clique ailleurs (ex: "Actions" ou case à cocher)
+
+            const newSortColumn = th.dataset.sort;
+
+            if (sortColumn === newSortColumn) {
+                // Si on clique sur la même colonne, inverser la direction
+                sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
+            } else {
+                // Si on clique sur une nouvelle colonne, trier par défaut en asc
+                sortColumn = newSortColumn;
+                sortDirection = 'asc';
+            }
+            
+            currentPage = 1; // Revenir à la première page
+            renderTable(); // Re-dessiner le tableau
+        });
+    }
+
 
     // 2. Démarrer le listener Firebase
     // (Cela déclenche le premier appel à renderTable)

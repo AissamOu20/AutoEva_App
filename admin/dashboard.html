@@ -131,14 +131,15 @@
     <a href="#" data-section="students"><i class="bi bi-people"></i> <span class="link-text">Étudiants</span></a>
     <a href="#" data-section="groups"><i class="bi bi-grid-1x2"></i> <span class="link-text">Groupes</span></a>
     <a href="#" data-section="quizzes"><i class="bi bi-journal-text"></i> <span class="link-text">Quiz</span></a>
-    <a href="#" data-section="admins"><i class="bi bi-person-shield"></i> <span class="link-text">Admins</span></a>
+    <a href="#" data-section="admins"><i class="bi bi-person-vcard"></i> <span class="link-text">Admins</span></a>
     <a href="#" data-section="avatars"><i class="bi bi-person-bounding-box"></i> <span class="link-text">Avatars</span></a>
     <a href="#" data-section="importExport"><i class="bi bi-cloud-arrow-up-fill "></i> <span class="link-text">Import / Export</span></a>
 
     <a href="/" id="logoutBtn"><i class="bi bi-box-arrow-right"></i> <span class="link-text">Se déconnecter</span></a>
 
     <div class="collapse-btn" id="collapseBtn"><i class="bi bi-chevron-left"></i></div>
-  </div> <div class="main-content" id="mainContent">
+  </div> 
+  <div class="main-content" id="mainContent">
 
     <div id="dashboard" class="section active"> <h2 class="fw-bold text-primary mb-4"><i class="bi bi-speedometer2 me-2"></i>Tableau de bord Analytique</h2>
 
@@ -182,37 +183,93 @@
         <div class="col-lg-6 mb-4">
           <div class="card shadow"> <div class="card-header py-3"> <h6 class="m-0 fw-bold text-primary">Tentatives par Catégorie</h6> </div> <div class="card-body"> <canvas id="categoryChart"></canvas> </div> </div>
         </div>
+      
+      
+      
+      
       </div>
-    </div> <div id="students" class="section">
-      <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="fw-bold mb-0 text-primary"> <i class="bi bi-mortarboard-fill me-2"></i> Gestion des étudiants </h2>
-        <div> <button class="btn btn-gradient me-2" id="addStudentBtn"> <i class="bi bi-person-plus-fill me-1"></i> Ajouter </button>
-          <button id="deleteSelectedBtn" class="btn btn-danger"> <i class="bi bi-trash3-fill me-1"></i> Supprimer Sélection </button>
+    
+    </div> 
+
+
+    <div id="students" class="section">
+     <div class="card shadow-sm border-0 rounded-4">
+    <div class="card-header bg-white border-0 p-4 pb-0">
+      <div class="d-flex justify-content-between align-items-center">
+        <h4 class="fw-bold mb-0 text-primary">
+          <i class="bi bi-people-fill me-2"></i> Gestion des Étudiants
+        </h4>
+        <div class="col-md-5 col-lg-4">
+          <input type="search" class="form-control" id="searchStudent" placeholder="Rechercher (Nom, Prénom, Groupe...)">
         </div>
       </div>
-      <div class="input-group mb-4 w-50 shadow-sm">
-        <span class="input-group-text bg-white border-end-0"> <i class="bi bi-search text-muted"></i> </span>
-        <input type="text" id="searchStudent" class="form-control border-start-0" placeholder="Rechercher par nom, prénom, username, groupe...">
+    </div>
+    
+    <div class="card-body p-4">
+
+      <!-- =========================================== -->
+      <!-- ⭐️ MODIFIÉ : Barre d'outils avec les boutons -->
+      <!-- =========================================== -->
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <!-- Bouton "Ajouter" avec votre style gradient -->
+        <button class="btn btn-gradient" id="addStudentBtn">
+          <i class="bi bi-person-plus-fill me-1"></i> Ajouter un étudiant
+        </button>
+        <!-- Bouton "Supprimer" avec un style pilule -->
+        <button class="btn btn-danger rounded-pill px-3" id="deleteSelectedBtn">
+          <i class="bi bi-trash-fill me-1"></i> Supprimer la sélection
+        </button>
       </div>
-      <div class="table-responsive shadow rounded-4 overflow-hidden">
-        <table class="table table-hover align-middle mb-0" id="studentsTable">
-          <thead class="bg-light text-secondary">
+
+      <!-- =========================================== -->
+      <!-- ⭐️ MODIFIÉ : Wrapper pour la responsivité   -->
+      <!-- =========================================== -->
+      <div class="table-responsive">
+        
+        <table class="table align-middle custom-table" id="studentsTable">
+          <thead class="table-light">
             <tr>
-              <th>ID</th>
-              <th>Username</th>
-              <th>Nom complet</th>
-              <th>Groupe</th>
-              <th>Statut</th>
-              <th class="text-center">Actions</th>
+              <!-- Le JS ajoutera la case à cocher "Select All" ici -->
+              <th scope="col" class="sortable" data-sort="id">ID</th>
+              <th scope="col" class="sortable" data-sort="username">Utilisateur</th>
+              <th scope="col" class="sortable" data-sort="nom">Nom Complet</th>
+              <th scope="col" class="sortable" data-sort="group">Groupe</th>
+              <th scope="col" class="sortable" data-sort="isActive">Statut</th>
+              <th scope="col" class="text-center">Actions</th>
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody>
+            <!-- Les étudiants seront chargés ici -->
+            <tr>
+              <td colspan="7" class="text-center p-5">
+                <div class="spinner-border text-primary" role="status">
+                  <span class="visually-hidden">Chargement...</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
         </table>
-      </div>
-      <nav class="mt-4 d-flex justify-content-center">
-        <ul class="pagination shadow-sm" id="studentsPagination"></ul>
+        
+      </div> <!-- Fin de .table-responsive -->
+
+      <!-- Pagination (ne bouge pas) -->
+      <nav aria-label="Pagination des étudiants" class="mt-4">
+        <ul class="pagination justify-content-center" id="studentsPagination">
+          <!-- La pagination sera générée ici -->
+        </ul>
       </nav>
-    </div> <div id="quizzes" class="section">
+
+    </div><!-- Fin de card-body -->
+  </div><!-- Fin de card -->
+
+
+    </div> 
+    
+
+
+
+
+    <div id="quizzes" class="section">
       <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="fw-bold text-primary mb-0"> <i class="bi bi-question-circle-fill me-2"></i> Gestion des Quiz </h2>
         <div class="d-flex gap-2">
@@ -293,7 +350,7 @@
     <section id="admins" class="section">
       <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="fw-bold mb-0 text-primary">
-          <i class="bi bi-person-shield me-2"></i> Gestion des Administrateurs
+          <i class="bi bi-person-vcard me-2"></i> Gestion des Administrateurs
         </h2>
         <div>
           <button class="btn btn-gradient me-2" id="addAdminBtn" data-bs-toggle="modal" data-bs-target="#addAdminModal">
@@ -319,59 +376,49 @@
           </tbody>
         </table>
       </div>
-    </div>
-  </section>
-
-
-
-
-
-
- <section id="avatars" class="section">
-      <h2 class="fw-bold text-primary mb-4"><i class="bi bi-person-bounding-box me-2"></i> Gestion des Avatars (Manuel)</h2>
-
-      <div class="card shadow-sm mb-4 border-0 rounded-4">
-        <div class="card-header bg-light border-0 fw-semibold">Ajouter un avatar manuellement</div>
-        <div class="card-body p-4">
-          <form id="addAvatarForm" class="row g-3 align-items-end">
-            <div class="col-md-4">
-              <label for="avatarKey" class="form-label">Clé/Nom (unique)</label>
-              <input type="text" class="form-control" id="avatarKey" placeholder="Ex: avatar_1, blue_icon" required>
-              <div class="form-text small">Identifiant unique pour cet avatar.</div>
-            </div>
-           
-            <div class="col-md-6">
-              <label for="avatarPath" class="form-label">Chemin d'accès au fichier</label>
-              <input type="text" class="form-control" id="avatarPath" placeholder="/assets/avatars/avatar_1.png" required>
-               <div class="form-text small">Chemin exact vers l'image dans votre projet.</div>
-            </div>
-           
-            <div class="col-md-2">
-              <button type="submit" class="btn btn-primary w-100" id="addAvatarSubmitBtn">
-                <i class="bi bi-plus-lg me-1"></i> Ajouter
-              </button>
-            </div>
-            
-          </form>
-           <p class="mt-3 mb-0 text-muted small">
-             <i class="bi bi-info-circle me-1"></i> Rappel : Vous devez placer manuellement le fichier image dans le dossier <code>/assets/avatars/</code> de votre projet avant d'ajouter son chemin ici.
-           </p>
-        </div>
-      </div>
-
-      
-      <div class="card shadow-sm border-0 rounded-4">
-        <div class="card-header bg-light border-0 fw-semibold">Avatars existants</div>
-        <div class="card-body p-4">
-          <div id="avatarGridDisplay" class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-3">
-             <div class="col-12 text-center text-muted"> <div class="spinner-border spinner-border-sm" role="status"> <span class="visually-hidden">Loading...</span> </div> Chargement... </div>
-          </div>
-        </div>
-      </div>
     </section>
-  
-  
-  
+
+    <section id="avatars" class="section">
+    
+    <h2 class="fw-bold text-primary mb-4"><i class="bi bi-person-bounding-box me-2"></i> Gestion des Avatars</h2>
+
+    <div class="card shadow-sm mb-4 border-0 rounded-4">
+        <div class="card-header bg-light border-0 fw-semibold">Ajouter un nouvel avatar (Automatique)</div>
+        <div class="card-body p-4">
+            
+            <form id="addAvatarForm">
+                <button type="submit" class="btn btn-primary" id="addAvatarSubmitBtn">
+                    <i class="bi bi-plus-lg me-1"></i> Ajouter le prochain avatar
+                </button>
+            </form>
+            
+            <p class="mt-3 mb-0 text-muted small">
+                <i class="bi bi-info-circle me-1"></i> <strong>Fonctionnement :</strong> Cliquer sur ce bouton va automatiquement :
+                <br>
+                1. Trouver le numéro d'avatar le plus élevé existant (ex: <code>avatar7</code>).
+                <br>
+                2. Ajouter la référence pour le suivant (ex: <code>avatar8</code>) dans la base de données.
+            </p>
+            <p class="mt-2 mb-0 text-danger small">
+                <i class="bi bi-exclamation-triangle-fill me-1"></i> <strong>Action requise :</strong> Vous devez ensuite manuellement téléverser le fichier image correspondant (ex: <code>avatar8.png</code>) dans le dossier <code>/assets/avatars/img/</code> pour qu'il s'affiche correctement.
+            </p>
+        </div>
+    </div>
+
+    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-3" id="avatarGridDisplay">
+        </div>
+
+</section>
+    
+    </div>
+    
+ 
+
+
+
+
+
+
   </div> <div class="modal fade" id="editStudentModal" tabindex="-1" aria-labelledby="editStudentModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content border-0 shadow">

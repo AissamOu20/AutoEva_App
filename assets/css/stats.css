@@ -74,7 +74,8 @@
 
 .chart-card .card-body {
     position: relative; /* Needed for Chart.js responsiveness */
-    padding: 1rem;
+    /* ⭐️ MODIFIÉ : Retiré le padding: 1rem; pour que le p-0 du HTML fonctionne */
+    /* padding: 1rem; */
 }
 
 /* Ranking Table Styling */
@@ -85,12 +86,16 @@
     font-size: 0.85rem;
     color: #5a5c69;
     text-align: center;
+    padding: 0.75rem; /* Ajout d'un padding pour l'en-tête */
+    white-space: nowrap; /* Empêche le retour à la ligne */
 }
 #groupRankingTable td,
 #studentRankingTable td {
     vertical-align: middle;
     font-size: 0.9rem;
     text-align: center;
+    padding: 0.75rem; /* Ajout d'un padding pour les cellules */
+    white-space: nowrap; /* Empêche le retour à la ligne */
 }
 #groupRankingTable td:nth-child(2), /* Align Group/Name left */
 #studentRankingTable td:nth-child(2) {
@@ -115,4 +120,30 @@
 canvas {
     max-width: 100%;
     height: auto !important; /* Override potential fixed height issues */
+    padding: 1rem; /* Ajout d'un padding pour le graphique */
+}
+
+
+/* ================================== */
+/* 🎨 ⭐️ AJOUT: Responsive Tables     */
+/* ================================== */
+@media (max-width: 768px) {
+  /* Applique une bordure au wrapper sur petit écran */
+  .table-responsive {
+    border: 1px solid #eee;
+    border-radius: 8px;
+  }
+
+  /* Force les tables de classement à avoir une largeur minimale,
+     ce qui active le défilement horizontal. */
+  .table-responsive #groupRankingTable,
+  .table-responsive #studentRankingTable {
+    min-width: 500px; /* Moins large que la table étudiant */
+  }
+
+  /* Rétablit le padding pour le corps de la carte
+     (pour que le graphique respire sur mobile) */
+  .chart-card .card-body {
+    padding: 0.5rem;
+  }
 }

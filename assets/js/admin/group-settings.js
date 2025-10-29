@@ -3,7 +3,7 @@
 // ===============================
 
 // 🔹 Import Firebase
-import { database, ref, onValue, set, remove, update, query, orderByChild, equalTo, get } from "../db/firebase-config.js";
+import { database, ref, onValue, set, remove, update, query, orderByChild, equalTo, get,push} from "../db/firebase-config.js";
 
 // -----------------------------------------------------------------
 // ⬇️ Fonction pour charger bcryptjs dynamiquement (Votre code - Inchangé) ⬇️
@@ -68,7 +68,7 @@ const manageStudentsModal = manageStudentsModalEl ? new bootstrap.Modal(manageSt
 const manageStudentsModalLabel = document.getElementById("manageStudentsModalLabel");
 // ❗️ Correction : Votre HTML a 'groupStudentsTable' mais votre JS a 'groupStudentsTableBody'. 
 // J'utilise 'groupStudentsTableBody' en supposant que votre HTML a <tbody>
-const groupStudentsTableBody = document.getElementById("groupStudentsTable")?.querySelector('tbody'); 
+const groupStudentsTableBody = document.getElementById("groupStudentsTableBody");
 const addStudentToGroupBtn = document.getElementById("addStudentToGroupBtn");
 
 // 🔹 DOM (Nouveau Modal d'édition d'Étudiant)
@@ -237,12 +237,15 @@ function manageStudents(id) {
 }
 
 async function loadStudentsForGroup(groupId) {
+  console.log(`Chargement des étudiants pour le groupe : ${groupId}`);
+  console.log("Référence de la table des étudiants :", groupStudentsTableBody);
   if (!groupStudentsTableBody) return;
   groupStudentsTableBody.innerHTML = '<tr><td colspan="5">Chargement...</td></tr>';
 
   try {
     const usersQuery = query(ref(database, "users"), orderByChild("group"), equalTo(groupId));
     const snapshot = await get(usersQuery);
+    console.log("Données des étudiants chargées pour le groupe", groupId, snapshot.val());
 
     if (!snapshot.exists()) {
       groupStudentsTableBody.innerHTML = '<tr><td colspan="5">Aucun étudiant dans ce groupe.</td></tr>';

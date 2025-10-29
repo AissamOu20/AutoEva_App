@@ -1,16 +1,16 @@
 // ===============================
-// 🖼️ admin-avatars.js (Version Manuelle)
+// 🖼️ admin-avatars.js (Version Corrigée)
 // ===============================
 
 // 🔹 Import Firebase Database
 import { database, ref, onValue, set, remove, get } from "../db/firebase-config.js";
 // (Bootstrap est supposé être global pour le Toast)
-// import { showAlert } from '/assets/js/alerts.js'; // Alternative si vous préférez
 
 // 🔹 DOM Elements
 const addAvatarForm = document.getElementById('addAvatarForm');
-const avatarKeyInput = document.getElementById('avatarKey');
-const avatarPathInput = document.getElementById('avatarPath');
+// NOTE: Les champs 'avatarKeyInput' et 'avatarPathInput' ne sont plus utilisés
+// const avatarKeyInput = document.getElementById('avatarKey');
+// const avatarPathInput = document.getElementById('avatarPath');
 const avatarGridDisplay = document.getElementById('avatarGridDisplay');
 const addAvatarSubmitBtn = document.getElementById('addAvatarSubmitBtn');
 
@@ -27,7 +27,12 @@ function loadAndDisplayAvatars() {
         }
         const avatarsData = snapshot.val();
         Object.entries(avatarsData).forEach(([key, path]) => { // 'path' au lieu de 'url'
-            const col = document.createElement('div'); col.className = 'col';
+            
+            // MODIFIÉ : Ajout de classes responsives Bootstrap (ex: 2 par ligne sur mobile, 4 sur medium, 6 sur large)
+            // Ajout aussi d'un margin-bottom (mb-3) pour l'espacement vertical
+            const col = document.createElement('div'); 
+            col.className = 'col-6 col-sm-4 col-md-3 col-lg-2 mb-3';
+            
             const itemDiv = document.createElement('div'); itemDiv.className = 'avatar-item text-center p-2 border rounded h-100 d-flex flex-column align-items-center position-relative';
             const img = document.createElement('img');
             img.src = path; // Utilise le chemin directement
@@ -39,7 +44,6 @@ function loadAndDisplayAvatars() {
             deleteBtn.innerHTML = '<i class="bi bi-x-lg"></i>'; deleteBtn.title = `Supprimer "${key}"`;
             deleteBtn.style.cssText = 'width: 24px; height: 24px; line-height: 1; padding: 0; border-radius: 50%;';
             
-            // ✅ Modifié pour utiliser un listener délégué dans init()
             deleteBtn.dataset.key = key; 
             
             itemDiv.appendChild(img); itemDiv.appendChild(keyP); itemDiv.appendChild(deleteBtn);
@@ -52,42 +56,55 @@ function loadAndDisplayAvatars() {
 }
 
 // ------------------------------------
-// Ajouter un Avatar (Processus Manuel)
+// MODIFIÉ : Ajouter un Avatar (Processus Automatisé)
 // ------------------------------------
 async function addAvatar(event) {
     event.preventDefault();
 
-    const key = avatarKeyInput.value.trim().replace(/[^a-zA-Z0-9_]/g, '_'); // Nettoyer la clé
-    const path = avatarPathInput.value.trim(); // Obtenir le chemin
-
-    // --- Validation ---
-    if (!key || !path) {
-        showToast("La clé et le chemin sont obligatoires.", "warning"); return;
-    }
-    if (!path.startsWith('/')) {
-         showToast("Le chemin doit commencer par '/' (ex: /assets/avatars/image.png).", "warning"); return;
-    }
-
-    const dbRef = ref(database, `avatars/${key}`);
-
     // Désactiver le bouton
     if(addAvatarSubmitBtn) addAvatarSubmitBtn.disabled = true;
 
+    const avatarsRef = ref(database, 'avatars');
+
     try {
-        const snapshot = await get(dbRef);
+        const snapshot = await get(avatarsRef);
+        let nextAvatarNum = 1; // Commence à 1 si la base est vide
+
         if (snapshot.exists()) {
-            showToast(`La clé "${key}" existe déjà.`, "danger");
-            return;
+            const avatarsData = snapshot.val();
+            const avatarKeys = Object.keys(avatarsData);
+            
+            // Trouver le numéro le plus élevé parmi les clés (ex: "avatar1", "avatar12")
+            const maxNum = avatarKeys
+                .map(key => {
+                    // Utilise regex pour extraire le numéro de "avatarXX"
+                    const match = key.match(/^avatar(\d+)$/i);
+                    // Si ça matche, retourne le numéro, sinon 0
+                    return match ? parseInt(match[1], 10) : 0;
+                })
+                .reduce((max, current) => Math.max(max, current), 0); // Garde seulement le plus grand
+            
+            nextAvatarNum = maxNum + 1;
         }
 
-        await set(dbRef, path);
+        // --- Générer la nouvelle clé et le nouveau chemin ---
+        const newKey = `avatar${nextAvatarNum}`;
+        // Basé sur votre exemple: /assets/avatars/img/avatar8.png
+        const newPath = `/assets/avatars/img/${newKey}.png`;
 
-        showToast(`Avatar "${key}" ajouté (chemin: ${path})!`, "success");
-        addAvatarForm.reset(); 
+        const newAvatarRef = ref(database, `avatars/${newKey}`);
+
+        // Écrire la nouvelle donnée dans la base de données
+        await set(newAvatarRef, newPath);
+
+        showToast(`Avatar "${newKey}" ajouté (chemin: ${newPath})!`, "success");
+        
+        // Les champs de formulaire ne sont plus utilisés, mais on peut les vider s'ils sont visibles
+        if(addAvatarForm) addAvatarForm.reset(); 
 
     } catch (error) {
         console.error("Erreur ajout avatar DB:", error);
-        showToast("Erreur lors de l'ajout à la base de données.", "danger");
+        showToast("Erreur lors de l'ajout automatique de l'avatar.", "danger");
     } finally {
         // Réactiver le bouton
         if(addAvatarSubmitBtn) addAvatarSubmitBtn.disabled = false;
@@ -169,5 +186,5 @@ export function initAvatarSettings(user) {
     }
 
     // 2. Charger les données initiales
-    loadAndDisplayAvatars();
+    loadAndDisplayAvatars ();
 }
