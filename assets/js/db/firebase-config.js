@@ -19,7 +19,8 @@ import {
     orderByChild, 
     equalTo,
     onValue ,
-    serverTimestamp 
+    serverTimestamp,
+    limitToLast
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
 
 // 🔹 Importations Authentication (NÉCESSAIRE pour la connexion)
@@ -83,6 +84,7 @@ export {
     equalTo, 
     onValue, 
     serverTimestamp,
+    limitToLast,
     
     // Auth Functions
     signInAnonymously,

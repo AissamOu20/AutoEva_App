@@ -3,7 +3,8 @@
 // ===============================
 
 // ✅ Import Firebase (Realtime Database)
-import { database, ref, get, set, update, push } from "../db/firebase-config.js";
+// ⭐️ AJOUTÉ: serverTimestamp pour l'historique
+import { database, ref, get, set, update, push, serverTimestamp, query, onValue, orderByChild, limitToLast } from "../db/firebase-config.js";
 // (On suppose que XLSX et bootstrap sont chargés globalement ou via d'autres scripts)
 
 // ------------------------------------
@@ -60,6 +61,11 @@ export function initImportExport(user) {
     let selectedFile = null;
     let bcryptInstance = null; // Stocke l'instance bcrypt
 
+    // ⭐️ NOUVEAU: Chargement de l'historique depuis Firebase
+    if (importExportHistory) {
+        loadHistory();
+    }
+    
     // ======== Util: charger bcryptjs dynamiquement (une seule fois) ========
     async function getBcrypt() {
         if (bcryptInstance) return bcryptInstance; // Déjà chargé
@@ -144,7 +150,6 @@ export function initImportExport(user) {
                 if (ext === "json") {
                     data = JSON.parse(e.target.result);
                 } else if (["xls", "xlsx"].includes(ext)) {
-                    // Assurez-vous que XLSX est chargé globalement
                     if (typeof XLSX === 'undefined') throw new Error("La librairie XLSX n'est pas chargée.");
                     const wb = XLSX.read(e.target.result, { type: "binary" });
                     const sheetName = wb.SheetNames[0];
@@ -158,8 +163,9 @@ export function initImportExport(user) {
                 // 🔍 Vérification des colonnes
                 const expectedColumnsMap = {
                     questions: ["id_question", "id_quiz", "question", "type", "options", "reponse", "points"],
-                    users: ["id", "username", "nom", "prenom", "group", "role", "password"], // 'password' est clé
-                    quizzes: ["id_quiz", "titre_quiz", "categorie", "niveau", "questionsIds"]
+                    users: ["id", "username", "nom", "prenom", "group", "role", "password"],
+                    // ⭐️ CORRIGÉ: Colonnes cohérentes avec quiz-settings.js
+                    quizzes: ["id_quiz", "titre_quiz", "categorie", "niveau", "version" ]
                 };
                 const expectedColumns = expectedColumnsMap[type] || [];
                 
@@ -170,15 +176,19 @@ export function initImportExport(user) {
                 const columns = Object.keys(data[0] || {});
                 const missing = expectedColumns.filter(c => !columns.includes(c));
                 
+                // =================================================================
+                // ⭐️ MODIFIÉ: L'importation est bloquée si UNE SEULE colonne est manquante
+                // =================================================================
                 if (missing.length > 0) {
-                    showToast(`Avertissement: Colonnes manquantes : ${missing.join(", ")}`, "warning");
-                    const criticalMissing = (type === "quizzes" && !columns.includes("id_quiz")) ||
-                                            (type === "users" && !columns.includes("id")) ||
-                                            (type === "questions" && !columns.includes("id_question"));
-                    if (criticalMissing) {
-                        return showToast(`Erreur: Colonne ID critique manquante.`, "danger");
-                    }
+                    // Fini l'avertissement, c'est une erreur bloquante.
+                    console.error("Importation bloquée. Colonnes manquantes:", missing);
+                    return showToast(`Erreur: Importation bloquée. Colonnes manquantes : ${missing.join(", ")}`, "danger");
+                    
+                    // L'ancienne logique de "criticalMissing" est supprimée
                 }
+                // =================================================================
+                // ⭐️ FIN DE LA MODIFICATION
+                // =================================================================
 
                 // 🧱 Loader
                 overlay.style.display = "flex";
@@ -187,41 +197,45 @@ export function initImportExport(user) {
                 progressBar.style.width = "0%";
                 progressText.textContent = "Importation en cours... 0%";
 
-                // ⚙️ Récupération données existantes (pour 'questions')
-                let compteur = 1;
+                // ⚙️ Récupération données existantes (pour 'questions' ET 'quizzes')
                 let existingQuestions = {};
+                let existingQuizzes = {}; 
+
                 if (type === "questions") {
                     const snapshot = await get(ref(database, "questions"));
                     if (snapshot.exists()) {
                         existingQuestions = snapshot.val();
-                        // Utiliser push() key est mieux, mais on suit votre logique de compteur
-                        const ids = Object.keys(existingQuestions).map(id => parseInt(id.replace('q_','')));
-                        if (ids.length > 0) compteur = Math.max(...ids.filter(Number.isFinite)) + 1;
+                    }
+                }
+                if (type === "quizzes") {
+                    const snapshot = await get(ref(database, "quizzes"));
+                    if (snapshot.exists()) {
+                        existingQuizzes = snapshot.val();
                     }
                 }
             
                 // ===== Hachage des mots de passe (si type="users") =====
                 if (type === "users") {
+                    // ... (Logique de hachage inchangée) ...
                     try {
-                        const bcrypt = await getBcrypt(); // Utilise la fonction wrapper
+                        const bcrypt = await getBcrypt(); 
                         for (let i = 0; i < data.length; i++) {
                             const user = data[i];
-                            if (!user.password && user.motdepasse) user.password = user.motdepasse; // Alias
+                            if (!user.password && user.motdepasse) user.password = user.motdepasse; 
                             
                             if (user.password && user.password.toString().trim() !== "") {
                                 const pwStr = user.password.toString();
-                                // Ne hache que si ce n'est pas déjà un hash bcrypt
                                 if (!/^\$2[abyx]\$/.test(pwStr)) { 
                                     progressText.textContent = `Hachage des mots de passe... ${i + 1}/${data.length}`;
                                     try {
                                         user.password = await bcrypt.hash(pwStr, 10);
                                     } catch (hashErr) {
                                         console.error("Erreur hash:", hashErr);
-                                        user.password = ""; // Sécurité: ne pas importer un mdp clair échoué
+                                        user.password = ""; 
                                     }
                                 }
                             }
-                            const hashPercent = Math.round(((i + 1) / data.length) * 40); // 0% -> 40%
+                            const hashPercent = Math.round(((i + 1) / data.length) * 40); 
                             progressBar.style.width = hashPercent + "%";
                         }
                     } catch (bcryptErr) {
@@ -231,7 +245,8 @@ export function initImportExport(user) {
                     }
                 }
 
-                // 📥 Importation des données
+                // 📥 Préparation de l'importation
+                const updates = {}; 
                 let importedCount = 0;
                 let skippedCount = 0;
 
@@ -239,6 +254,9 @@ export function initImportExport(user) {
                     const item = data[i];
 
                     // Nettoyage et calculs
+                    // ⭐️ Note: Ce 'forEach' n'est plus nécessaire car on a déjà validé
+                    // que toutes les colonnes sont présentes. On le garde pour
+                    // initialiser les valeurs 'undefined' ou 'null' en ""
                     (expectedColumns).forEach(key => {
                         if (item[key] === undefined || item[key] === null) item[key] = "";
                     });
@@ -261,54 +279,74 @@ export function initImportExport(user) {
                             item.totalQuestions = 0;
                             if (item.questionsIds === "") item.questionsIds = [];
                         }
+                        // Le totalPoints sera calculé par updateNombreQuestion après l'import
                     }
                     
-                    // --- Vérification doublons (si questions) ---
+                    // --- Logique d'enregistrement de l'ID ---
+                    let id; // La clé du document
+                    let path; // Le chemin dans la DB
+
                     if (type === "questions") {
+                        // (Logique de push() ID inchangée)
                         const exists = Object.values(existingQuestions).some(q =>
                             q.id_question === item.id_question || (item.question && q.question && q.question.trim() === item.question.trim())
                         );
                         if (exists) {
                             skippedCount++;
-                            continue; // ⛔ Doublon
+                            continue; // ⛔ Doublon Question
                         }
-                    }
-
-                    // --- Logique d'enregistrement de l'ID ---
-                    let id;
-                    if (type === "questions") {
-                        // Préférer l'ID du fichier s'il est unique, sinon le compteur
-                        const fileQId = item.id_question;
-                        if(fileQId && !existingQuestions[fileQId]) {
-                             id = fileQId;
-                             existingQuestions[fileQId] = item; // Ajoute au cache
-                        } else {
-                             id = `q_${compteur}`; // Préfixe pour éviter collisions
-                             item.id_question = id; // Met à jour l'item
-                             compteur++;
-                        }
+                        
+                        id = push(ref(database, "questions")).key;
+                        path = `questions/${id}`;
+                        existingQuestions[id] = item; 
+                    
                     } else if (type === "quizzes") {
                         id = item.id_quiz || item.quiz_id;
+                        if (!id || id.toString().trim() === "") {
+                            console.warn(`Item quiz ignoré: ID non trouvé.`, item);
+                            skippedCount++;
+                            continue; // ⛔ ID Manquant
+                        }
+
+                        // (Logique de non-écrasement des doublons inchangée)
+                        if (existingQuizzes[id]) {
+                            console.warn(`Quiz ignoré (doublon): ${id}`);
+                            skippedCount++;
+                            continue; // ⛔ Doublon Quiz
+                        }
+                        
+                        path = `quizzes/${id}`;
+                    
                     } else if (type === "users") {
                         id = item.id;
+                         if (!id || id.toString().trim() === "") {
+                            console.warn(`Item user ignoré: ID non trouvé.`, item);
+                            skippedCount++;
+                            continue; // ⛔ ID Manquant
+                        }
+                        path = `users/${id}`;
+                    
                     } else {
-                        id = item.id || push(ref(database, type)).key; // Fallback sécurisé
-                    }
-
-                    if (!id || id.toString().trim() === "") {
-                        console.warn(`Item ignoré: ID non trouvé ou invalide pour le type '${type}'.`, item);
                         skippedCount++;
-                        continue; // ⛔ ID Manquant
+                        continue;
                     }
                     
-                    // 🗂️ Enregistrement Firebase
-                    await set(ref(database, `${type}/${id}`), item);
+                    updates[path] = item; 
                     importedCount++;
 
                     // 🔄 Progression (40% -> 100%)
                     const savePercent = 40 + Math.round(((i + 1) / data.length) * 60);
                     progressBar.style.width = savePercent + "%";
                     progressText.textContent = `Importation en cours... ${Math.round(savePercent)}%`;
+                }
+                
+                // 📥 Importation des données (en une seule fois)
+                if (Object.keys(updates).length > 0) {
+                    progressText.textContent = "Finalisation...";
+                    progressBar.style.width = "95%";
+                    await update(ref(database), updates); 
+                } else {
+                    progressText.textContent = "Aucune nouvelle donnée à importer.";
                 }
 
                 // ✅ Terminé
@@ -323,7 +361,7 @@ export function initImportExport(user) {
                 if (type === "questions") await updateNombreQuestion(data); 
 
                 showToast(`Importation réussie : ${importedCount} ajoutées, ${skippedCount} ignorées.`, "success");
-                addHistory("Import", type, selectedFile.name);
+                await addHistory("Import", type, selectedFile.name);
 
             } catch (err) {
                 overlay.style.display = "none";
@@ -339,15 +377,13 @@ export function initImportExport(user) {
 
     // ======== Écouteur Principal: EXPORTATION ========
     exportBtn.addEventListener("click", async () => {
+        // ... (Logique d'exportation inchangée) ...
         if (!exportType.value) return showToast("Veuillez sélectionner un type de données à exporter.", "warning");
-
         const type = exportType.value;
         const format = exportFormat.value;
-
         try {
             const snapshot = await get(ref(database, type));
             if (!snapshot.exists()) return showToast("Aucune donnée disponible pour ce type.", "info");
-
             const dataObj = snapshot.val();
             const data = Object.values(dataObj);
             const fileName = `${type}_${new Date().toISOString().split("T")[0]}.${format}`;
@@ -363,10 +399,8 @@ export function initImportExport(user) {
                 XLSX.utils.book_append_sheet(wb, ws, "Données");
                 XLSX.writeFile(wb, fileName);
             }
-
             showToast(`Exportation réussie : ${fileName}`, "success");
-            addHistory("Export", type, fileName);
-
+            await addHistory("Export", type, fileName);
         } catch (err) {
             showToast("Erreur lors de l'export : " + err.message, "danger");
         }
@@ -374,16 +408,61 @@ export function initImportExport(user) {
 
     // ======== OUTILS (Fonctions imbriquées) ========
     
+    // (Fonction loadHistory inchangée)
+    function loadHistory() {
+        const historyRef = query(ref(database, 'importExportHistory'), orderByChild('timestamp'), limitToLast(50));
+        onValue(historyRef, (snapshot) => {
+            if (!importExportHistory) return;
+            importExportHistory.innerHTML = ""; 
+            if (!snapshot.exists()) {
+                importExportHistory.innerHTML = `<tr><td colspan="5" class="text-center text-muted">Aucun historique.</td></tr>`;
+                return;
+            }
+            const rows = [];
+            snapshot.forEach((child) => {
+                const data = child.val();
+                const date = data.timestamp ? new Date(data.timestamp).toLocaleString('fr-FR') : 'Date inconnue';
+                const row = `
+                <tr>
+                    <td>${date}</td>
+                    <td>${data.type || 'N/A'}</td>
+                    <td>${data.action || 'N/A'}</td>
+                    <td>${data.file || 'N/A'}</td>
+                    <td>${data.user || 'N/A'}</td> 
+                </tr>`;
+                rows.push(row); 
+            });
+            importExportHistory.innerHTML = rows.reverse().join('');
+        });
+    }
+    
+    // (Fonction addHistory inchangée)
+    async function addHistory(action, type, file) {
+        try {
+            const historyRef = ref(database, 'importExportHistory');
+            const newHistoryEntry = {
+                action: action,
+                type: type,
+                file: file,
+                user: user.username || 'Admin',
+                timestamp: serverTimestamp() 
+            };
+            await push(historyRef, newHistoryEntry); 
+        } catch (error) {
+            console.error("Erreur sauvegarde historique:", error);
+            showToast("Erreur sauvegarde historique", "danger");
+        }
+    }
+
+    // (Fonction parseCSV inchangée)
     function parseCSV(text) {
         const lines = text.split("\n").map(l => l.trim()).filter(l => l);
         if(lines.length < 2) return [];
         const headers = lines[0].split(",").map(h => h.trim());
         return lines.slice(1).map(line => {
-            // Gère les virgules dans les champs entre guillemets (basique)
             const values = line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
             return headers.reduce((obj, key, i) => {
                 let val = (values[i] || "").trim();
-                // Nettoie les guillemets
                 if (val.startsWith('"') && val.endsWith('"')) val = val.substring(1, val.length - 1);
                 obj[key] = val;
                 return obj;
@@ -391,21 +470,22 @@ export function initImportExport(user) {
         });
     }
 
+    // (Fonction convertToCSV inchangée)
     function convertToCSV(data) {
         const flatData = flattenData(data);
         if(flatData.length === 0) return "";
-        
         const headers = Object.keys(flatData[0]).join(",");
         const rows = flatData.map(obj => 
             Object.values(obj).map(val => {
-                let str = String(val).replace(/"/g, '""'); // Échappe les guillemets
-                if (str.includes(',')) str = `"${str}"`; // Met entre guillemets si contient une virgule
+                let str = String(val).replace(/"/g, '""');
+                if (str.includes(',')) str = `"${str}"`;
                 return str;
             }).join(",")
         );
         return [headers, ...rows].join("\n");
     }
 
+    // (Fonction downloadFile inchangée)
     function downloadFile(content, filename, type) {
         const blob = new Blob([content], { type });
         const url = URL.createObjectURL(blob);
@@ -416,40 +496,16 @@ export function initImportExport(user) {
         URL.revokeObjectURL(url);
     }
 
-    function addHistory(action, type, file) {
-        const now = new Date().toLocaleString('fr-FR');
-        const row = `
-        <tr>
-            <td>${now}</td>
-            <td>${type}</td>
-            <td>${action}</td>
-            <td>${file}</td>
-            <td>${user.username || 'Admin'}</td> 
-        </tr>`;
-        if (importExportHistory.querySelector("td[colspan='5']")) {
-            importExportHistory.innerHTML = row;
-        } else {
-            importExportHistory.insertAdjacentHTML('afterbegin', row); // Ajoute en haut
-        }
-    }
-
-    // (Votre fonction showToast est déjà définie dans le HTML, 
-    // mais la redéfinir ici est plus robuste si elle n'est pas globale)
+    // (Fonction showToast inchangée)
     function showToast(message, type = "info") {
-        // Simple fallback au cas où le toast global n'existe pas
         console.log(`[${type}] ${message}`);
-        // Idéalement, utilisez votre 'showAlerts' importé s'il est standardisé
-        // showAlert(message, type);
-        
-        // --- Utilisation de votre code de Toast (adapté) ---
         let toastContainer = document.querySelector(".toast-container.position-fixed");
         if (!toastContainer) {
              toastContainer = document.createElement('div');
              toastContainer.className = "toast-container position-fixed top-0 end-0 p-3";
-             toastContainer.style.zIndex = "2100"; // Au-dessus du loader
+             toastContainer.style.zIndex = "2100"; 
              document.body.appendChild(toastContainer);
         }
-        
         const colors = { success: "#4CAF50", danger: "#E53935", warning: "#FBC02D", info: "#2196F3" };
         const toast = document.createElement("div");
         toast.className = "toast-message shadow-lg text-white p-3 mb-2 rounded-4 text-center fw-semibold show";
@@ -457,15 +513,14 @@ export function initImportExport(user) {
         toast.style.transition = "opacity 0.4s ease";
         toast.style.opacity = "1";
         toast.innerText = message;
-        
         toastContainer.appendChild(toast);
-        
         setTimeout(() => { 
             toast.style.opacity = "0"; 
             setTimeout(() => toast.remove(), 400); 
         }, 3000);
     }
 
+    // (Fonction flattenData inchangée)
     function flattenData(data) {
         return data.map(item => {
             const flatItem = {};
@@ -480,46 +535,29 @@ export function initImportExport(user) {
         });
     }
 
+    // (Fonction updateGroups inchangée)
     async function updateGroups(data) {
-        // 1️⃣ Mettre à jour / créer les groupes
         const groupsRef = ref(database, "groups");
         const groupsSnapshot = await get(groupsRef);
         const groups = groupsSnapshot.exists() ? groupsSnapshot.val() : {};
-
         for (let student of data) {
             if (!student.group) continue;
-            
             const groupName = student.group;
             if (!groups[groupName]) {
-                // Créer un nouveau groupe s'il n'existe pas
-                groups[groupName] = {
-                    nom: groupName,
-                    total_points: 0,
-                    etudiants: []
-                };
+                groups[groupName] = { nom: groupName, total_points: 0, etudiants: [] };
             }
-            
-            // Mettre à jour les infos du groupe
             if (!Array.isArray(groups[groupName].etudiants)) groups[groupName].etudiants = [];
             if (!groups[groupName].etudiants.includes(student.id)) {
                 groups[groupName].etudiants.push(student.id);
             }
-            // (Note: La logique de points est mieux gérée par un recalcul total)
         }
-
-        // 2️⃣ Recalculer les points et le classement (plus fiable)
         const usersSnapshot = await get(ref(database, "users"));
-        if (!usersSnapshot.exists()) return; // Ne peut pas calculer sans utilisateurs
-        
+        if (!usersSnapshot.exists()) return; 
         const allUsers = usersSnapshot.val();
-        
-        // Réinitialiser les points/étudiants avant de recalculer
         for (let groupName in groups) {
             groups[groupName].total_points = 0;
             groups[groupName].etudiants = [];
         }
-
-        // Recalculer
         for (let userId in allUsers) {
             const user = allUsers[userId];
             if (user.role === 'student' && user.group && groups[user.group]) {
@@ -527,72 +565,71 @@ export function initImportExport(user) {
                 groups[user.group].etudiants.push(user.id);
             }
         }
-        
         const groupList = Object.values(groups);
         groupList.sort((a, b) => (b.total_points || 0) - (a.total_points || 0));
-
-        // Appliquer le rang
         groupList.forEach((group, index) => {
             groups[group.nom].rang = index + 1;
         });
-
-        // 💾 Enregistrer tous les groupes mis à jour
         await set(groupsRef, groups);
     }
 
+    // (Fonction updateNombreQuestion inchangée)
     async function updateNombreQuestion(data) {
         try {
-            const quizQuestionsMap = {};
-
-            // 1️⃣ Organiser les id_question par id_quiz (nouvelles données)
+            const quizIdsToUpdate = new Set();
             for (const question of data) {
-                if (!question.id_quiz || !question.id_question) continue;
-                const quizId = question.id_quiz.toString();
-                if (!quizQuestionsMap[quizId]) quizQuestionsMap[quizId] = [];
-                quizQuestionsMap[quizId].push(question.id_question);
+                if (question.id_quiz) {
+                    quizIdsToUpdate.add(question.id_quiz.toString());
+                }
             }
-
-            // 2️⃣ Récupérer tous les quizz existants
-            const quizzesRef = ref(database, "quizzes");
-            const snapshot = await get(quizzesRef);
-            if (!snapshot.exists()) {
-                console.warn("Aucun quiz trouvé pour mise à jour.");
+            if (quizIdsToUpdate.size === 0) {
+                console.log("updateNombreQuestion: Aucune question importée, pas de recalcul.");
                 return;
             }
-            const quizzes = snapshot.val();
-            const updates = {}; // Pour mise à jour groupée
-
-            // 3️⃣ Parcourir chaque quiz concerné
-            for (const quizId in quizQuestionsMap) {
-                const quizData = quizzes[quizId];
-                if (!quizData) {
-                    console.warn(`⚠️ Quiz ${quizId} introuvable dans la base.`);
+            const quizzesRef = ref(database, "quizzes");
+            const questionsRef = ref(database, "questions");
+            const [quizzesSnapshot, questionsSnapshot] = await Promise.all([
+                get(quizzesRef),
+                get(questionsRef)
+            ]);
+            if (!quizzesSnapshot.exists() || !questionsSnapshot.exists()) {
+                console.warn("Quizzes ou Questions introuvables. Recalcul annulé.");
+                return;
+            }
+            const allQuizzes = quizzesSnapshot.val();
+            const allQuestions = questionsSnapshot.val();
+            const updates = {}; 
+            for (const quizId of quizIdsToUpdate) {
+                if (!allQuizzes[quizId]) {
+                    console.warn(`⚠️ Quiz ${quizId} introuvable lors du recalcul.`);
                     continue;
                 }
-
-                // 🧩 Fusionner les IDs (anciens + nouveaux)
-                const existingIds = Array.isArray(quizData.questionsIds) ? quizData.questionsIds : [];
-                const newIds = quizQuestionsMap[quizId];
-                const mergedIds = Array.from(new Set([...existingIds, ...newIds]));
-                const totalQuestions = mergedIds.length;
-
-                // 💾 Préparer les changements
-                updates[`quizzes/${quizId}/questionsIds`] = mergedIds;
+                let totalPoints = 0;
+                let totalQuestions = 0;
+                const questionsIds = [];
+                for (const questionKey in allQuestions) { 
+                    const q = allQuestions[questionKey];
+                    if (q.id_quiz === quizId) {
+                        totalPoints += Number(q.points) || 0;
+                        totalQuestions++;
+                        if (q.id_question) { 
+                            questionsIds.push(q.id_question);
+                        }
+                    }
+                }
+                updates[`quizzes/${quizId}/totalPoints`] = totalPoints;
                 updates[`quizzes/${quizId}/totalQuestions`] = totalQuestions;
-                
-                console.log(`✅ Quiz ${quizId} préparé (${totalQuestions} questions).`);
+                updates[`quizzes/${quizId}/questionsIds`] = questionsIds; 
+                console.log(`✅ Quiz ${quizId} recalculé: ${totalQuestions} Qs, ${totalPoints} Pts.`);
             }
-
-            // 4. Appliquer toutes les mises à jour en une fois
             if(Object.keys(updates).length > 0) {
                  await update(ref(database), updates);
-                 showToast("Mise à jour des quiz terminée ✅", "success");
+                 showToast("Mise à jour des quiz (points/comptes) terminée ✅", "success");
             }
-
         } catch (error) {
             console.error("❌ Erreur updateNombreQuestion:", error);
             showToast("Erreur lors de la mise à jour des quiz : " + error.message, "danger");
         }
     }
-
+    
 } // ====== Fin de initImportExport ======

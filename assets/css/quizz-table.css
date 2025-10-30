@@ -1,0 +1,228 @@
+/* ===================================================
+ * 🔹 Thème "Surprise" - Dégradé & Arrondi
+ * =================================================== */
+
+/* Définition des couleurs principales */
+:root {
+    /* 🎨 Vous pouvez changer le dégradé ici */
+    --vibrant-gradient: linear-gradient(90deg, #0d6efd 0%, #0d6efd 100%);
+    --vibrant-primary: #0d6efd; /* Une couleur unie pour les icônes */
+    
+    --bg-page: #f9fafb; /* Fond de page très clair */
+    --bg-card: #ffffff; /* Fond de carte blanc pur */
+    --text-header: #ffffff;
+    --text-body: #374151;
+    --border-color: #e5e7eb;
+}
+
+/* --- STYLES GLOBAUX --- */
+body {
+    background-color: var(--bg-page) !important;
+}
+
+/* Appliquer le style au conteneur principal de la table */
+.card {
+    border: none !important; /* Supprimer les bordures par défaut */
+    border-radius: 0.75rem !important; /* Coins très arrondis (12px) */
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+    /* TRÈS IMPORTANT: Masque tout ce qui dépasse pour garder les coins arrondis */
+    overflow: hidden;
+}
+
+/* S'assurer que le corps de la carte n'a pas de padding */
+.card-body.p-0 {
+    padding: 0 !important;
+}
+
+/* --- STYLES DU TABLEAU --- */
+.table {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    vertical-align: middle;
+    color: var(--text-body);
+}
+
+.table th, .table td {
+    padding: 0.85rem 1rem;
+    border-color: var(--border-color); /* Bordure subtile */
+}
+
+.table thead th {
+    /* L'ÉLÉMENT PRINCIPAL : Le dégradé ! */
+    background: var(--vibrant-gradient);
+    color: var(--text-header);
+    border-bottom: none; /* Pas de bordure sous le dégradé */
+    font-weight: 600;
+}
+
+/* Gérer les coins arrondis de l'en-tête */
+.table thead th:first-child {
+    border-top-left-radius: 0.75rem;
+}
+.table thead th:last-child {
+    border-top-right-radius: 0.75rem;
+}
+
+/* Effet de "zébrure" (lignes alternées) */
+/* Recommandation : Ajoutez class="table-striped" à votre <table ...> */
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: rgba(249, 250, 251, 0.5); /* Zébrure très légère */
+}
+
+/* Effet de survol (hover) "Pop" */
+.table-hover > tbody > tr {
+    transition: all 0.2s ease-out;
+}
+.table-hover > tbody > tr:hover {
+    position: relative; /* Nécessaire pour z-index et box-shadow */
+    z-index: 10;
+    /* Soulève la ligne et ajoute une ombre */
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.07);
+    /* Couleur de fond au survol */
+    background-color: #ffffff;
+}
+.table-hover > tbody > tr:hover > * {
+    color: var(--vibrant-primary);
+}
+
+
+/* --- STYLES DE TRI (ADAPTÉS AU THÈME) --- */
+.table th[data-column-key] {
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+}
+
+.sort-icon {
+    opacity: 0.7; /* Icônes sur l'en-tête */
+    transition: all 0.2s;
+}
+.table th[data-column-key]:hover .sort-icon {
+     opacity: 1;
+}
+.table th[data-column-key][data-sort-dir="asc"] .sort-icon,
+.table th[data-column-key][data-sort-dir="desc"] .sort-icon {
+    opacity: 1;
+    transform: scale(1.1); /* Léger zoom sur l'icône active */
+}
+
+/* --- ALIGNEMENT (INCHANGÉ) --- */
+#quizzesTable td:nth-child(1),
+#quizzesTable td:nth-child(3) {
+    text-align: left;
+}
+.table th[data-column-key="Titre_Quiz"],
+.table th[data-column-key="Catégorie"] {
+    text-align: left;
+    padding-left: 1.5rem; 
+}
+#quizzesTable td:nth-child(1),
+#quizzesTable td:nth-child(3) {
+    padding-left: 1.5rem;
+}
+
+/* --- BOUTONS D'ACTION (INCHANGÉ) --- */
+#quizzesTable .btn-group .btn {
+    border-radius: 0.25rem;
+    transition: all 0.2s ease-in-out;
+}
+#quizzesTable .btn-group .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* ===================================================
+ * 📱 SECTION RESPONSIVE (LA VRAIE SURPRISE)
+ * =================================================== */
+@media (max-width: 767px) {
+    
+    .table thead {
+        display: none;
+    }
+
+    .table tbody,
+    .table tr {
+        display: block;
+        width: 100%;
+    }
+    
+    .table tr {
+        /* Style de la carte */
+        margin-bottom: 1rem;
+        border: none; /* Les bordures sont gérées par l'ombre */
+        border-radius: 0.75rem; /* Coins arrondis pour chaque carte */
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+        overflow: hidden; /* TRÈS IMPORTANT */
+        background-color: var(--bg-card); /* Fond blanc */
+    }
+
+    .table td {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        text-align: right !important;
+        padding: 0.75rem 1rem;
+        padding-left: 45% !important;
+        position: relative;
+        min-height: 48px;
+        border: none;
+        border-bottom: 1px solid var(--border-color);
+        background-color: var(--bg-card);
+    }
+    
+    /* --- 🎨 LA SURPRISE MOBILE --- */
+    /* Le premier champ (Titre) devient l'en-tête de la carte */
+    #quizzesTable td:nth-child(1) {
+        background: var(--vibrant-gradient);
+        color: var(--text-header);
+        font-weight: 600;
+        font-size: 1rem; /* Plus grand */
+        min-height: 56px;
+        justify-content: flex-end; /* S'assurer que le texte est à droite */
+    }
+    
+    .table tr td:last-child {
+        border-bottom: none; /* Pas de bordure sur le dernier item */
+    }
+
+    /* Labels */
+    .table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40%;
+        
+        text-align: left !important;
+        font-weight: 600;
+        color: #555;
+        font-size: 0.85rem;
+    }
+    
+    /* Le label du Titre (sur fond dégradé) doit être blanc */
+    #quizzesTable td:nth-child(1)::before {
+        content: "Titre";
+        color: var(--text-header);
+        opacity: 0.8;
+    }
+    
+    /* Définition des autres labels (inchangé) */
+    #quizzesTable td:nth-child(2)::before { content: "Questions"; }
+    #quizzesTable td:nth-child(3)::before { content: "Catégorie"; }
+    #quizzesTable td:nth-child(4)::before { content: "Niveau"; }
+    #quizzesTable td:nth-child(5)::before { content: "Version"; }
+    #quizzesTable td:nth-child(6)::before { content: "Points"; }
+    
+    /* Actions (inchangé) */
+    #quizzesTable td:nth-child(7) {
+        justify-content: center;
+        padding-left: 1rem !important;
+    }
+    
+    #quizzesTable td:nth-child(7)::before {
+        display: none;
+    }
+}

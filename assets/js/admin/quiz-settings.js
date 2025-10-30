@@ -11,6 +11,7 @@ const searchQuizInput = document.getElementById("searchQuiz");
 const paginationContainer = document.getElementById("quizPagination");
 const addQuizBtn = document.getElementById("addQuizBtn");
 
+// (Le reste de vos variables DOM est inchangé...)
 // ---------------- Variables DOM (Add Quiz Modal) ----------------
 const addQuizModalEl = document.getElementById("addQuizModal");
 const addQuizModal = addQuizModalEl ? new bootstrap.Modal(addQuizModalEl) : null;
@@ -62,6 +63,19 @@ let currentFirebaseKeyForQuestionModal = null;
 let tempQuestionDataForEdit = null; 
 let isInitialized = false; // ✅ Pour l'initialisation unique
 
+// --- AJOUT POUR LE TRI ---
+// État du tri actuel
+let currentSort = {
+  // ======================================================
+  // ⭐️ MODIFICATION: Tri par défaut par nombre de questions
+  // ======================================================
+  columnKey: "totalQuestions", // Clé pour le nombre de questions
+  direction: "desc",     // 'desc' (plus grand nombre en premier)
+  type: "numeric"          // 'numeric'
+  // ======================================================
+};
+// --- FIN AJOUT ---
+
 // ---------------- Load Quizzes (Real-time) ----------------
 function loadQuizzes() {
   console.log("Mise en place du listener de quiz...");
@@ -70,10 +84,9 @@ function loadQuizzes() {
   onValue(quizRef, (snapshot) => {
     if (snapshot.exists()) {
       quizzesData = snapshot.val();
-      // Convertit l'objet en tableau et stocke la clé Firebase
       quizzesArray = Object.entries(quizzesData).map(([key, quiz]) => ({
           ...quiz,
-          firebaseId: key // Stocke la clé unique (ex: "-M...abc")
+          firebaseId: key 
       }));
     } else {
       quizzesData = {};
@@ -95,13 +108,45 @@ function renderTable() {
       return;
   }
 
+  // 1. Filtrage (inchangé)
   const searchTerm = searchQuizInput?.value.toLowerCase() || "";
   let filtered = quizzesArray.filter(q =>
     (q.Titre_Quiz || q.titre_quiz || "").toLowerCase().includes(searchTerm) ||
     (q.Catégorie || q.categorie || "").toLowerCase().includes(searchTerm)
   );
-  filtered.sort((a, b) => (a.Titre_Quiz || a.titre_quiz || "").localeCompare(b.Titre_Quiz || b.titre_quiz || ""));
+  
+  // --- MODIFICATION POUR LE TRI ---
+  // 2. Tri (basé sur l'état currentSort)
+  filtered.sort((a, b) => {
+      const key = currentSort.columnKey;
+      
+      // Gère les clés alternatives (ex: Titre_Quiz vs titre_quiz) et les valeurs nulles
+      let valA = a[key] || a[key.toLowerCase()] || null;
+      let valB = b[key] || b[key.toLowerCase()] || null;
 
+      if (currentSort.type === 'numeric') {
+        // Pour les nombres (questions, points, version)
+        valA = Number(valA) || 0;
+        valB = Number(valB) || 0;
+      } else {
+        // Pour le texte (Titre, Catégorie, Niveau)
+        valA = String(valA || "").toLowerCase();
+        valB = String(valB || "").toLowerCase();
+      }
+      
+      let comparison = 0;
+      if (valA > valB) {
+        comparison = 1;
+      } else if (valA < valB) {
+        comparison = -1;
+      }
+      
+      // Inverse la comparaison si la direction est 'desc'
+      return (currentSort.direction === 'asc' ? comparison : -comparison);
+  });
+  // --- FIN MODIFICATION ---
+
+  // 3. Pagination (inchangé)
   const totalItems = filtered.length;
   const totalPages = Math.ceil(totalItems / pageSize);
   currentPage = Math.max(1, Math.min(currentPage, totalPages || 1));
@@ -109,14 +154,16 @@ function renderTable() {
   const end = start + pageSize;
   const pageData = filtered.slice(start, end);
 
+  // 4. Rendu (inchangé)
   quizzesTableBody.innerHTML = ""; 
 
   if (pageData.length === 0) {
     quizzesTableBody.innerHTML = `<tr><td colspan="7" class="text-center text-muted">Aucun quiz trouvé ${searchTerm ? 'pour "' + searchTerm + '"' : ''}</td></tr>`;
   } else {
       pageData.forEach((quiz) => {
-        const firebaseKey = quiz.firebaseId; // Clé Firebase
-        const quizId = quiz.id_quiz; // ID défini (ex: "ELEC-V1")
+        // ... (votre code de création de row est parfait et reste inchangé) ...
+        const firebaseKey = quiz.firebaseId; 
+        const quizId = quiz.id_quiz; 
         const row = document.createElement("tr");
         row.dataset.quizFirebaseKey = firebaseKey;
 
@@ -125,11 +172,11 @@ function renderTable() {
 
         row.innerHTML = `
           <td>${quiz.Titre_Quiz || quiz.titre_quiz || "Sans titre"}</td>
-          <td>${totalQuestions}</td>
+          <td class="text-center">${totalQuestions}</td>
           <td>${quiz.Catégorie || quiz.categorie || "N/A"}</td>
-          <td>${quiz.Niveau || quiz.niveau || "N/A"}</td>
-          <td>${quiz.version || "1.0"}</td>
-          <td>${totalPoints}</td>
+          <td class="text-center">${quiz.Niveau || quiz.niveau || "N/A"}</td>
+          <td class="text-center">${quiz.version || "1.0"}</td>
+          <td class="text-center">${totalPoints}</td>
           <td>
             <div class="btn-group" role="group">
               <button class="btn btn-outline-primary btn-sm edit-btn" title="Modifier Quiz"><i class="bi bi-pencil"></i></button>
@@ -148,10 +195,16 @@ function renderTable() {
   }
 
   renderPagination(totalPages); 
+  
+  // --- AJOUT POUR LE TRI ---
+  // Met à jour les icônes sur les en-têtes après le rendu
+  updateSortIcons();
+  // --- FIN AJOUT ---
 }
 
 // ---------------- Pagination Rendering (Votre code - Inchangé) ----------------
 function renderPagination(totalPages) {
+    // ... (Votre code de pagination est parfait et reste inchangé) ...
     if (!paginationContainer) {
         console.error("Pagination container #quizPagination not found in the DOM!");
         return;
@@ -228,7 +281,37 @@ function renderPagination(totalPages) {
 }
 
 
+// --- AJOUT POUR LE TRI ---
+/**
+ * Met à jour les icônes de tri sur les en-têtes du tableau.
+ */
+function updateSortIcons() {
+  document.querySelectorAll("#quizTableElement th[data-column-key]").forEach(header => {
+    const icon = header.querySelector('.sort-icon');
+    if (!icon) return;
+    
+    const columnKey = header.dataset.columnKey;
+    
+    if (columnKey === currentSort.columnKey) {
+      // Cette colonne est active
+      header.setAttribute('data-sort-dir', currentSort.direction);
+      if (currentSort.direction === 'asc') {
+        icon.className = 'sort-icon ms-1 bi bi-sort-up';
+      } else {
+        icon.className = 'sort-icon ms-1 bi bi-sort-down';
+      }
+    } else {
+      // Colonne inactive
+      header.removeAttribute('data-sort-dir');
+      icon.className = 'sort-icon ms-1 bi bi-arrow-down-up'; // Icône par défaut
+    }
+  });
+}
+// --- FIN AJOUT ---
+
+
 // ---------------- Add Quiz (Using Modal) ----------------
+// ... (Votre code pour openAddQuizModal et saveNewQuiz est parfait et reste inchangé) ...
 function openAddQuizModal() {
     if (!addQuizModal) return alert("Modal d'ajout de quiz introuvable.");
     addQuizForm.reset();
@@ -246,7 +329,6 @@ async function saveNewQuiz(event) {
     const version = addQuizVersionInput.value.trim() || "1.0";
     if (!quizId || !titre) { alert("ID et Titre obligatoires."); return; }
 
-    // Utilise l'ID comme clé
     const newQuizRef = ref(database, "quizzes/" + quizId); 
     try {
         const snapshot = await get(newQuizRef);
@@ -268,10 +350,10 @@ async function saveNewQuiz(event) {
 }
 
 // ---------------- Edit Quiz (Using Modal) ----------------
+// ... (Votre code pour openEditQuizModal et saveQuizChanges est parfait et reste inchangé) ...
 function openEditQuizModal(firebaseKey, quiz) {
     if (!editQuizModal) return;
     editQuizForm.reset();
-    // Utilise la clé Firebase (l'ID du quiz ne peut pas être modifié)
     editQuizIdInput.value = firebaseKey; 
     editQuizTitleInput.value = quiz.Titre_Quiz || quiz.titre_quiz || "";
     editQuizCategoryInput.value = quiz.Catégorie || quiz.categorie || "";
@@ -283,7 +365,7 @@ function openEditQuizModal(firebaseKey, quiz) {
 async function saveQuizChanges(event) {
     event.preventDefault();
     if (!editQuizModal) return;
-    const firebaseKey = editQuizIdInput.value; // Clé Firebase
+    const firebaseKey = editQuizIdInput.value; 
     const updatedData = { 
         Titre_Quiz: editQuizTitleInput.value.trim(), 
         Catégorie: editQuizCategoryInput.value.trim(), 
@@ -299,14 +381,13 @@ async function saveQuizChanges(event) {
 }
 
 // ---------------- Delete Quiz ----------------
+// ... (Votre code pour deleteQuiz est parfait et reste inchangé) ...
 async function deleteQuiz(firebaseKey, quizId) {
     if (confirm(`Supprimer ce quiz (${quizId}) ET toutes ses questions associées ?`)) {
         try {
             const updates = {};
-            // 1. Supprimer le quiz
             updates[`quizzes/${firebaseKey}`] = null;
             
-            // 2. Trouver et supprimer les questions associées
             const questionsQuery = query(ref(database, "questions"), orderByChild("id_quiz"), equalTo(quizId));
             const questionsSnapshot = await get(questionsQuery);
             if (questionsSnapshot.exists()) {
@@ -315,15 +396,14 @@ async function deleteQuiz(firebaseKey, quizId) {
                 });
             }
             
-            // 3. Exécuter la suppression groupée
             await update(ref(database), updates);
             showToast("Quiz et ses questions supprimés.", "success");
-            // onValue s'occupera de rafraîchir la table
         } catch (error) { console.error("Erreur suppression quiz:", error); alert("Erreur suppression."); }
     }
 }
 
 // ---------------- Manage Questions Modal ----------------
+// ⭐️ MODIFIÉ (Appel à deleteQuestionAndRecalculate)
 async function openQuestionsModal(firebaseKey, quizId, quizTitle) {
     if (!questionsModal) return;
     currentQuizIdForQuestionModal = quizId;
@@ -334,13 +414,13 @@ async function openQuestionsModal(firebaseKey, quizId, quizTitle) {
     try {
         const questionsQuery = query(ref(database, "questions"), orderByChild("id_quiz"), equalTo(quizId));
         const snapshot = await get(questionsQuery);
-        questionsTableBody.innerHTML = ""; // Clear
+        questionsTableBody.innerHTML = ""; 
         if (!snapshot.exists()) {
             questionsTableBody.innerHTML = `<tr><td colspan="7" class="text-center text-muted">Aucune question.</td></tr>`;
         } else {
             let idx = 0;
             snapshot.forEach((child) => {
-                const key = child.key; // Clé Firebase de la question
+                const key = child.key; 
                 const q = child.val(); 
                 idx++;
                 
@@ -362,8 +442,8 @@ async function openQuestionsModal(firebaseKey, quizId, quizTitle) {
                 row.querySelector(".edit-question-btn").addEventListener("click", () => openQuestionForm(q, quizId, true, key));
                 row.querySelector(".delete-question-btn").addEventListener("click", async () => { 
                     if (confirm("Supprimer cette question ?")) { 
-                        // Doit aussi mettre à jour le quiz (totalQuestions, questionsIds)
-                        await deleteQuestionAndUpdateQuiz(firebaseKey, quizId, key); 
+                        // ⭐️ MODIFIÉ: Appel de la fonction de suppression/recalcul
+                        await deleteQuestionAndRecalculate(firebaseKey, quizId, key); 
                         // Re-ouvre le modal pour rafraîchir la liste
                         openQuestionsModal(firebaseKey, quizId, quizTitle); 
                     } 
@@ -375,12 +455,13 @@ async function openQuestionsModal(firebaseKey, quizId, quizTitle) {
 
 
 // ---------------- Add/Edit Question Form ----------------
+// ... (Votre code pour openQuestionForm et updateQuestionFormUI est parfait et reste inchangé) ...
 function openQuestionForm(questionData, quizId, isEdit, questionKey = null) {
      if (!questionFormModal) return;
     questionForm.reset();
     questionFormModalLabel.textContent = isEdit ? `Modifier question` : `Ajouter question (${quizId})`;
     formQuizIdInput.value = quizId;
-    formQuestionIdInput.value = isEdit ? questionKey : ""; // Clé Firebase de la question
+    formQuestionIdInput.value = isEdit ? questionKey : ""; 
     tempQuestionDataForEdit = isEdit ? questionData : null; 
     
     if (isEdit && questionData) { 
@@ -418,7 +499,7 @@ function updateQuestionFormUI() {
         formQuestionOptionsInput.value = "";
         const isTrue = (isEdit && questionData && (questionData.reponse === true || String(questionData.reponse).toLowerCase() === 'true'));
         formAnswerContainer.innerHTML += `<select id="formQuestionAnswer" class="form-select" required><option value="true" ${isTrue ? 'selected' : ''}>Vrai</option><option value="false" ${!isTrue ? 'selected' : ''}>Faux</option></select>`;
-    } else { // Calcul ou autre
+    } else { 
         formOptionsContainer.style.display = "none"; 
         formQuestionOptionsInput.required = false; 
         formQuestionOptionsInput.value = "";
@@ -427,6 +508,7 @@ function updateQuestionFormUI() {
 }
 
 // ---------------- Save Question (Add/Edit) ----------------
+// ⭐️ MODIFIÉ: Cette fonction appelle maintenant recalculateQuizTotals
 async function saveQuestion(event) {
     event.preventDefault();
     const questionKey = formQuestionIdInput.value; // Clé Firebase (vide si ajout)
@@ -464,7 +546,7 @@ async function saveQuestion(event) {
     }
     
     try {
-        let path, msg, finalKey = questionKey;
+        let path, msg;
         
         if (isEdit) { 
             path = `questions/${questionKey}`; 
@@ -475,8 +557,7 @@ async function saveQuestion(event) {
         } else { 
             // ❗️ Logique d'ID améliorée : Utiliser push() pour la clé Firebase
             const newQuestionRef = push(ref(database, "questions")); // Génère une clé unique
-            finalKey = newQuestionRef.key; // Clé Firebase
-            path = `questions/${finalKey}`;
+            path = `questions/${newQuestionRef.key}`;
             
             // Générer l'id_question formaté (ex: "ELEC-V1-0005")
             const quizQSnap = await get(query(ref(database,'questions'), orderByChild('id_quiz'), equalTo(quizId)));
@@ -485,10 +566,13 @@ async function saveQuestion(event) {
             
             await set(newQuestionRef, payload); 
             msg = "Ajoutée!";
-            // Mettre à jour le quiz (total, ids)
-            await addQuestionIdToQuiz(currentFirebaseKeyForQuestionModal, payload.id_question, payload.points); 
         }
         
+        // ⭐️⭐️⭐️ MODIFICATION DEMANDÉE ⭐️⭐️⭐️
+        // Que ce soit un ajout ou une modif, on recalcule les totaux du quiz parent.
+        await recalculateQuizTotals(currentFirebaseKeyForQuestionModal, quizId);
+        // ⭐️⭐️⭐️ FIN MODIFICATION ⭐️⭐️⭐️
+
         questionFormModal.hide();
         showToast(`Question ${msg}`, "success");
         const title = questionsModalLabel.textContent.replace(/^Questions : /,'').replace(/ \(ID: .*\)$/,'');
@@ -498,68 +582,95 @@ async function saveQuestion(event) {
 }
 
 
-// ---------------- Helper: deleteQuestionAndUpdateQuiz ----------------
-async function deleteQuestionAndUpdateQuiz(firebaseQuizKey, quizId, questionKey) {
+// =================================================================
+// ⭐️ NOUVELLE FONCTION HELPER (POUR RECALCULER LES TOTAUX) ⭐️
+// =================================================================
+/**
+ * Recalcule le total des points, le nombre de questions, et la liste des IDs pour un quiz donné.
+ * C'est la méthode la plus sûre pour garantir la cohérence des données.
+ * @param {string} firebaseQuizKey - La clé du document quiz à Mettre à Jour (ex: "ELEC-V1" ou "-Nq...abc")
+ * @param {string} quizId - L'ID du quiz à Rechercher (ex: "ELEC-V1")
+ */
+async function recalculateQuizTotals(firebaseQuizKey, quizId) {
+    if (!firebaseQuizKey || !quizId) {
+        console.error("recalculateQuizTotals: IDs manquants.");
+        return;
+    }
+
+    try {
+        // 1. Trouver toutes les questions pour ce quizId
+        const questionsQuery = query(ref(database, "questions"), orderByChild("id_quiz"), equalTo(quizId));
+        const snapshot = await get(questionsQuery);
+
+        let totalPoints = 0;
+        let totalQuestions = 0;
+        const questionsIds = [];
+
+        if (snapshot.exists()) {
+            snapshot.forEach((child) => {
+                const q = child.val();
+                totalPoints += Number(q.points) || 0;
+                totalQuestions++;
+                if (q.id_question) {
+                    questionsIds.push(q.id_question);
+                }
+            });
+        }
+
+        // 2. Mettre à jour le quiz avec les totaux recalculés
+        const quizRef = ref(database, `quizzes/${firebaseQuizKey}`);
+        await update(quizRef, {
+            totalPoints: totalPoints,
+            totalQuestions: totalQuestions,
+            questionsIds: questionsIds.sort() // Tri pour la cohérence
+        });
+
+        console.log(`Quiz ${quizId} recalculé: ${totalQuestions} Qs, ${totalPoints} Pts.`);
+        
+    } catch (error) {
+        console.error(`Erreur recalcul quiz ${quizId}:`, error);
+        // Ne pas bloquer l'utilisateur, mais le notifier
+        showToast(`Erreur recalcul totaux quiz ${quizId}`, "danger");
+    }
+}
+// =================================================================
+// ⭐️ FIN DE LA NOUVELLE FONCTION ⭐️
+// =================================================================
+
+
+// ---------------- Helper: deleteQuestionAndRecalculate ----------------
+// ⭐️ MODIFIÉ: Cette fonction s'appelle maintenant "deleteQuestionAndRecalculate"
+// et utilise la nouvelle fonction de recalcul.
+async function deleteQuestionAndRecalculate(firebaseQuizKey, quizId, questionKey) {
     try { 
         const updates = {};
         // 1. Marquer la question pour suppression
         updates[`questions/${questionKey}`] = null; 
         
-        // 2. Récupérer les infos de la question (pour son id_question et points)
-        const qSnap = await get(ref(database,`questions/${questionKey}`));
-        const questionData = qSnap.val();
-        const idVal = questionData?.id_question;
-        const points = questionData?.points || 0;
-        
-        // 3. Mettre à jour le quiz parent
-        const quizRef = ref(database,`quizzes/${firebaseQuizKey}`); 
-        const quizSnap = await get(quizRef); 
-        if(quizSnap.exists()){ 
-            const d = quizSnap.val(); 
-            const c = d.totalQuestions || 0; 
-            const p = d.totalPoints || 0;
-            let ids = Array.isArray(d.questionsIds) ? d.questionsIds : []; 
-            
-            updates[`quizzes/${firebaseQuizKey}/totalQuestions`] = Math.max(0, c - 1);
-            updates[`quizzes/${firebaseQuizKey}/totalPoints`] = Math.max(0, p - points); // ✅ Met à jour les points
-            if(idVal){ ids = ids.filter(id => id !== idVal); } // Retire l'id_question
-            updates[`quizzes/${firebaseQuizKey}/questionsIds`] = ids; 
-        } 
-        
-        // 4. Exécuter la suppression groupée
+        // 2. Exécuter la suppression de la question
         await update(ref(database), updates); 
+
+        // ⭐️⭐️⭐️ MODIFICATION DEMANDÉE ⭐️⭐️⭐️
+        // 3. Recalculer les totaux du quiz parent APRES la suppression
+        await recalculateQuizTotals(firebaseQuizKey, quizId);
+        // ⭐️⭐️⭐️ FIN MODIFICATION ⭐️⭐️⭐️
+        
         showToast("Question supprimée.", "success"); 
     } catch(e){ console.error(e); alert("Erreur suppression."); }
 }
 
 // ---------------- Helper: addQuestionIdToQuiz ----------------
+// ⭐️ SUPPRIMÉ: Cette fonction n'est plus nécessaire
+// car recalculateQuizTotals fait son travail de manière plus sûre.
+/*
 async function addQuestionIdToQuiz(firebaseQuizKey, newIdQuestionFormatted, newPoints) {
-     const quizRef = ref(database, `quizzes/${firebaseQuizKey}`); 
-     try { 
-         const snap = await get(quizRef); 
-         if(snap.exists()){ 
-             const d = snap.val(); 
-             const c = d.totalQuestions || 0; 
-             const p = d.totalPoints || 0;
-             const ids = Array.isArray(d.questionsIds) ? d.questionsIds : []; 
-             
-             if(newIdQuestionFormatted && !ids.includes(newIdQuestionFormatted)){
-                 ids.push(newIdQuestionFormatted);
-             } 
-             
-             await update(quizRef, {
-                 totalQuestions: c + 1, 
-                 totalPoints: p + (newPoints || 0), // ✅ Met à jour les points
-                 questionsIds: ids
-             }); 
-         } 
-     } catch(e){ console.error(e); }
+     // ... (ANCIEN CODE) ...
 }
+*/
 
 // ---------------- Simple Toast Function ----------------
+// ... (Votre code pour showToast est parfait et reste inchangé) ...
 function showToast(message, type = "info") {
-    // (Utilise le toast de 'alerts.js' ou un toast local)
-    // S'assurer que le conteneur existe (sinon le créer)
     let toastContainer = document.querySelector(".toast-container.position-fixed.top-0.end-0.p-3");
     if (!toastContainer) {
         toastContainer = document.createElement('div');
@@ -583,14 +694,12 @@ function showToast(message, type = "info") {
 
 /**
  * Initialise la section de gestion des Quiz.
- * (Appelée par dashboard.js)
- * @param {Object} user L'objet utilisateur admin (au cas où)
  */
 export function initQuizSettings(user) {
-    if (isInitialized) return; // Ne s'exécute qu'une fois
+    if (isInitialized) return; 
     console.log("Initialisation du module Quiz...");
 
-    // 1. Attacher les écouteurs d'événements
+    // 1. Attacher les écouteurs d'événements (inchangés)
     searchQuizInput?.addEventListener("input", () => { currentPage = 1; renderTable(); });
     addQuizBtn?.addEventListener("click", openAddQuizModal);
     addQuizForm?.addEventListener("submit", saveNewQuiz);
@@ -599,14 +708,37 @@ export function initQuizSettings(user) {
     questionForm?.addEventListener("submit", saveQuestion);
     formQuestionTypeSelect?.addEventListener("change", updateQuestionFormUI);
     
-    // Listeners pour nettoyer les variables d'état quand les modaux se ferment
     questionFormModalEl?.addEventListener('hidden.bs.modal', () => { tempQuestionDataForEdit = null; });
     questionsModalEl?.addEventListener('hidden.bs.modal', () => { 
         currentQuizIdForQuestionModal = null; 
         currentFirebaseKeyForQuestionModal = null; 
     });
 
-    // 2. Démarrer le chargement des données
+    // --- AJOUT POUR LE TRI ---
+    // 2. Attacher les écouteurs de tri aux en-têtes
+    document.querySelectorAll("#quizTableElement th[data-column-key]").forEach(header => {
+      header.addEventListener("click", () => {
+        const columnKey = header.dataset.columnKey;
+        const type = header.dataset.type || 'text';
+
+        if (currentSort.columnKey === columnKey) {
+          // Si on clique sur la même colonne, on inverse la direction
+          currentSort.direction = (currentSort.direction === 'asc') ? 'desc' : 'asc';
+        } else {
+          // Si on clique sur une nouvelle colonne
+          currentSort.columnKey = columnKey;
+          currentSort.type = type;
+          currentSort.direction = 'asc'; // Par défaut 'asc'
+        }
+        
+        // Redessine la table avec le nouveau tri
+        // (Pas besoin de changer de page, le tri s'applique avant la pagination)
+        renderTable(); 
+      });
+    });
+    // --- FIN AJOUT ---
+
+    // 3. Démarrer le chargement des données
     loadQuizzes(); // Attache le listener onValue
 
     isInitialized = true;

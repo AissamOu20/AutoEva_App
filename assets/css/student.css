@@ -12,6 +12,13 @@
   object-fit: cover;   /* Ensures image covers the area nicely */
   border: 2px solid #e9ecef; /* Light grey border */
 }
+/* Style pour le grand avatar dans le modal profil */
+.avatar-lg {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 3px solid #eee;
+}
 
 /* ================================ */
 /* 🎨 Style Table Amélioré (Votre code) */

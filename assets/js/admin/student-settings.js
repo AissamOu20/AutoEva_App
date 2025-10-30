@@ -1,5 +1,5 @@
 // ===============================
-// 🔹 student-settings.js (Avec Tri de Table)
+// 🔹 student-settings.js (Avec Tri et Modal Profil)
 // ===============================
 
 // 🔹 Import Firebase
@@ -71,12 +71,27 @@ const addNomInput = document.getElementById("addNom");
 const addPrenomInput = document.getElementById("addPrenom");
 const addGroupInput = document.getElementById("addGroup");
 
+// ======================================================
+// ⭐️ RÉFÉRENCES À VOTRE MODAL DE PROFIL
+// ======================================================
+const profileModalEl = document.getElementById("studentProfileModal");
+const profileModal = profileModalEl ? new bootstrap.Modal(profileModalEl) : null;
+const profileAvatar = document.getElementById("profileAvatar");
+const profileName = document.getElementById("profileName");
+const profileUsername = document.getElementById("profileUsername");
+const profileId = document.getElementById("profileId");
+const profileGroup = document.getElementById("profileGroup");
+const profileStatus = document.getElementById("profileStatus");
+const profilePoints = document.getElementById("profilePoints");
+const profileEditBtn = document.getElementById("profileEditBtn"); // Bouton "Modifier" dans le modal
+// ======================================================
+
 // 🔹 Variables
 let studentsData = [];
 let selectedStudents = [];
 let currentPage = 1;
 const pageSize = 20;
-let isInitialized = false; // ✅ Pour s'assurer que l'init ne se fait qu'une fois
+let isInitialized = false; 
 const studentsRef = ref(database, "users");
 
 // ⭐️ MODIFIÉ : Variables pour le tri
@@ -89,11 +104,9 @@ let sortDirection = 'asc';
 // ===============================
 function renderTable() {
     
-    // ⭐️ 1. LOGIQUE DE TRI
+    // ⭐️ 1. LOGIQUE DE TRI (Inchangée)
     const sortedData = [...studentsData].sort((a, b) => {
         let aVal, bVal;
-
-        // Gérer les clés spéciales
         switch (sortColumn) {
             case 'nom':
                 aVal = `${a.nom || ''} ${a.prenom || ''}`.trim().toLowerCase();
@@ -104,26 +117,21 @@ function renderTable() {
                 bVal = (b.Groupe || b.group || '').toLowerCase();
                 break;
             case 'id':
-                // Tri numérique pour l'ID
                 return sortDirection === 'asc' ? (a.id - b.id) : (b.id - a.id);
             case 'isActive':
-                 // Tri booléen
                  return sortDirection === 'asc' 
                     ? (a.isActive === b.isActive ? 0 : a.isActive ? -1 : 1) 
                     : (a.isActive === b.isActive ? 0 : a.isActive ? 1 : -1);
             default:
-                // Tri par défaut (string)
                 aVal = (a[sortColumn] || '').toLowerCase();
                 bVal = (b[sortColumn] || '').toLowerCase();
         }
-
-        // Comparaison
         if (aVal < bVal) return sortDirection === 'asc' ? -1 : 1;
         if (aVal > bVal) return sortDirection === 'asc' ? 1 : -1;
         return 0;
     });
 
-    // ⭐️ 2. LOGIQUE DE FILTRAGE (utilise sortedData)
+    // ⭐️ 2. LOGIQUE DE FILTRAGE (Inchangée)
     const searchTerm = searchInput?.value.toLowerCase() || "";
     const filtered = sortedData.filter(s =>
         (s.nom?.toLowerCase().includes(searchTerm) ||
@@ -132,7 +140,7 @@ function renderTable() {
         (s.Groupe || s.group || "").toLowerCase().includes(searchTerm))
     );
 
-    // 3. LOGIQUE DE PAGINATION (utilise filtered)
+    // 3. LOGIQUE DE PAGINATION (Inchangée)
     const totalPages = Math.ceil(filtered.length / pageSize);
     if (currentPage > totalPages) currentPage = totalPages || 1;
     const start = (currentPage - 1) * pageSize;
@@ -142,7 +150,7 @@ function renderTable() {
     if (!studentsTable) return;
     studentsTable.innerHTML = ""; // Clear table body
 
-    // 4. LOGIQUE "SELECT ALL"
+    // 4. LOGIQUE "SELECT ALL" (Inchangée)
     const tableHead = document.querySelector("#studentsTable thead tr");
     let selectAllCheckbox = tableHead?.querySelector("#selectAllStudents");
     if (tableHead && !selectAllCheckbox) {
@@ -153,7 +161,6 @@ function renderTable() {
         selectAllCheckbox = document.getElementById("selectAllStudents");
         selectAllCheckbox?.addEventListener("change", e => {
             const checked = e.target.checked;
-            // ⭐️ MODIFIÉ : Utilise 'filtered' pour la sélection de la page actuelle
             selectedStudents = checked ? filtered.map(s => s.id) : [];
             renderTable(); 
         });
@@ -214,18 +221,23 @@ function renderTable() {
             }
         });
 
-        row.addEventListener("dblclick", () => window.location.href = `../student/profile.html?id=${student.id}`);
+        // ======================================================
+        // ⭐️ MODIFIÉ: Le double-clic ouvre le modal de profil
+        // ======================================================
+        row.addEventListener("dblclick", () => openProfileModal(student));
+        // ======================================================
+        
         studentsTable.appendChild(row);
     });
     
-    // 6. Mettre à jour les icônes de tri
+    // 6. Mettre à jour les icônes de tri (Inchangé)
     updateSortHeaders();
     
-    // 7. Rendu de la pagination
+    // 7. Rendu de la pagination (Inchangé)
     renderPagination(totalPages, filtered.length); 
 }
 
-// ⭐️ NOUVELLE FONCTION : Mettre à jour visuellement les en-têtes
+// ⭐️ NOUVELLE FONCTION : Mettre à jour visuellement les en-têtes (Inchangée)
 function updateSortHeaders() {
     const headers = document.querySelectorAll("#studentsTable thead th.sortable[data-sort]");
     headers.forEach(th => {
@@ -238,7 +250,7 @@ function updateSortHeaders() {
     });
 }
 
-
+// (La fonction renderPagination est inchangée)
 function renderPagination(totalPages, totalItems) {
     if (!paginationContainer) return;
     paginationContainer.innerHTML = "";
@@ -308,7 +320,7 @@ function renderPagination(totalPages, totalItems) {
 }
 
 // ===============================
-// ⭐️ SAUVEGARDER NOUVEL ÉTUDIANT (Génération Auto)
+// ⭐️ SAUVEGARDER NOUVEL ÉTUDIANT (Inchangé)
 // ===============================
 async function saveNewStudent(event) {
     event.preventDefault();
@@ -380,7 +392,7 @@ async function saveNewStudent(event) {
 }
 
 // ===============================
-// 🔹 Modifier étudiant
+// 🔹 Modifier étudiant (Inchangé)
 // ===============================
 async function saveEditedStudent(event) {
     event.preventDefault();
@@ -401,7 +413,7 @@ async function saveEditedStudent(event) {
 }
 
 // ===============================
-// 🔹 Supprimer étudiant(s)
+// 🔹 Supprimer étudiant(s) (Inchangé)
 // ===============================
 async function deleteStudent(id) {
     if (!confirm("Supprimer cet étudiant ?")) return;
@@ -438,7 +450,7 @@ async function deleteSelectedStudents() {
 
 
 // ===============================
-// 🔹 Réinitialiser mot de passe
+// 🔹 Réinitialiser mot de passe (Inchangé)
 // ===============================
 async function resetPassword(id) {
     const newPassword = prompt("Nouveau mot de passe (sera haché):");
@@ -478,7 +490,7 @@ async function resetPassword(id) {
 
 
 // ===============================
-// 🔹 Ouvrir modal édition
+// 🔹 Ouvrir modal édition (Inchangé)
 // ===============================
 function openEditModal(student) {
     if (!editStudentModal) return;
@@ -490,8 +502,51 @@ function openEditModal(student) {
     editStudentModal.show();
 }
 
+// ======================================================
+// ⭐️ FONCTION POUR OUVRIR LE MODAL DE PROFIL
+// ======================================================
+function openProfileModal(student) {
+    if (!profileModal) {
+        console.error("Le modal de profil (#studentProfileModal) est introuvable.");
+        return;
+    }
+
+    // Remplir les informations du modal
+    if (profileAvatar) profileAvatar.src = student.avatar || '../assets/img/user.png';
+    if (profileName) profileName.textContent = `${student.nom || ''} ${student.prenom || ''}`.trim() || 'N/A';
+    if (profileUsername) profileUsername.textContent = student.username ? `@${student.username}` : 'N/A';
+    if (profileId) profileId.textContent = student.id;
+    if (profileGroup) profileGroup.textContent = student.Groupe || student.group || 'N/A';
+    if (profilePoints) profilePoints.textContent = student.totalPoints || 0;
+
+    // Gérer le badge de statut
+    if (profileStatus) {
+        if (student.isActive) {
+            profileStatus.innerHTML = `<span class="badge bg-success">Actif</span>`;
+        } else {
+            profileStatus.innerHTML = `<span class="badge bg-secondary">Inactif</span>`;
+        }
+    }
+    
+    // Lier le bouton "Modifier" du modal de profil pour ouvrir le modal d'édition
+    if (profileEditBtn) {
+        // Supprime l'ancien listener pour éviter les bugs
+        profileEditBtn.onclick = null; 
+        // Ajoute le nouveau listener
+        profileEditBtn.onclick = () => {
+           profileModal.hide();
+           // Ouvre l'autre modal (le modal d'édition)
+           openEditModal(student); 
+        };
+    }
+
+    profileModal.show();
+}
+// ======================================================
+
+
 // =================================
-// 🔹 Fonction updateGroups
+// 🔹 Fonction updateGroups (Inchangée)
 // =================================
 async function updateGroups() {
     console.log("Mise à jour des groupes lancée...");
@@ -546,7 +601,7 @@ async function updateGroups() {
 }
 
 // ===============================
-// 🔹 Toast central bloquant
+// 🔹 Toast central bloquant (Inchangé)
 // ===============================
 let toastHideTimeout = null;
 function showCenterToast(message, withProgress = false, duration = null) {
@@ -627,7 +682,7 @@ export function initStudentSettings(user) {
     if (isInitialized) return; // Ne s'exécute qu'une fois
     console.log("Initialisation du module Étudiants...");
 
-    // 1. Attacher les écouteurs d'événements
+    // 1. Attacher les écouteurs d'événements (Inchangé)
     if (addStudentForm) {
         addStudentForm.addEventListener('submit', saveNewStudent);
     }
@@ -648,37 +703,31 @@ export function initStudentSettings(user) {
         deleteSelectedBtn.addEventListener('click', deleteSelectedStudents);
     }
 
-    // ⭐️ MODIFIÉ : Ajout du listener pour le tri
+    // ⭐️ MODIFIÉ : Ajout du listener pour le tri (Inchangé)
     const tableHeader = document.querySelector("#studentsTable thead");
     if (tableHeader) {
         tableHeader.addEventListener('click', e => {
-            // Cible l'en-tête cliquable (qui a data-sort)
             const th = e.target.closest('th.sortable[data-sort]');
-            if (!th) return; // Clique ailleurs (ex: "Actions" ou case à cocher)
+            if (!th) return; 
 
             const newSortColumn = th.dataset.sort;
 
             if (sortColumn === newSortColumn) {
-                // Si on clique sur la même colonne, inverser la direction
                 sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
             } else {
-                // Si on clique sur une nouvelle colonne, trier par défaut en asc
                 sortColumn = newSortColumn;
                 sortDirection = 'asc';
             }
             
-            currentPage = 1; // Revenir à la première page
-            renderTable(); // Re-dessiner le tableau
+            currentPage = 1; 
+            renderTable(); 
         });
     }
-
-
-    // 2. Démarrer le listener Firebase
-    // (Cela déclenche le premier appel à renderTable)
+    // 2. Démarrer le listener Firebase (Inchangé)
     onValue(studentsRef, snapshot => {
         const users = snapshot.val() || {};
         studentsData = Object.entries(users)
-            .map(([id, u]) => ({ id, ...u })) // S'assurer que l'ID (clé) est inclus
+            .map(([id, u]) => ({ id, ...u })) 
             .filter(u => u.role === "student");
         renderTable(); 
     });
