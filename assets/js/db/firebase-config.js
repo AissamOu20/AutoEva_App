@@ -28,8 +28,11 @@ import {
     getAuth, 
     signInAnonymously, // Pour la connexion anonyme (corrige Permission Denied)
     signOut,           // Pour la déconnexion
-    onAuthStateChanged // Pour checkAuth.js
-    // Tu peux ajouter ici signInWithEmailAndPassword, updatePassword, etc. si tu changes de méthode
+    onAuthStateChanged, // Pour checkAuth.js
+    // ⭐️ AJOUTÉ: Fonctions de persistance de session
+    setPersistence,
+    browserSessionPersistence,
+    browserLocalPersistence
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 
 // 🔹 Importations Storage (NÉCESSAIRE pour les avatars)
@@ -90,6 +93,10 @@ export {
     signInAnonymously,
     signOut,
     onAuthStateChanged,
+    // ⭐️ AJOUTÉ: Exportations de la persistance
+    setPersistence,
+    browserSessionPersistence,
+    browserLocalPersistence,
     
     // Storage Functions
     storageRef, // Renommé

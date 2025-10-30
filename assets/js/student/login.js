@@ -1,15 +1,22 @@
+// ===============================
+// 🔹 student/login.js
+// ===============================
+
 // ✅ AJOUT : 'update', 'query', 'orderByChild', 'equalTo' pour une recherche efficace
 import { ref, get, child, update, query, orderByChild, equalTo } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
 
 // ⭐️ Imports Auth depuis la config ⭐️
 // ✅ MODIFIÉ : Le chemin remonte de 3 niveaux (student -> js -> assets -> racine) pour trouver /db/
-import { database, auth, signInAnonymously, signOut } from "../db/firebase-config.js";
+// ✅ AJOUT : Fonctions de persistance de session
+import { database, auth, signInAnonymously, signOut, setPersistence, browserSessionPersistence, browserLocalPersistence } from "../db/firebase-config.js";
 // ✅ MODIFIÉ : Le chemin remonte de 1 niveau (student -> js) pour trouver alerts.js
 import { showAlert } from "../alerts.js";
 
 // DOM
 const form = document.getElementById("loginForm");
 const loginBtn = form.querySelector("button[type='submit']");
+// ⭐️ AJOUT: Récupération de la case à cocher
+const rememberMeCheckbox = document.getElementById("rememberMe");
 
 // ===================== Loader Overlay (Inchangé) =====================
 const overlayLoader = document.createElement("div");
@@ -89,7 +96,7 @@ async function loadBcrypt() {
   });
 }
 
-// ===================== Login (✅ MODIFIÉ AVEC QUERY et "isActive" UPDATE) =====================
+// ===================== Login (✅ MODIFIÉ AVEC GESTION DE SESSION) =====================
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -117,13 +124,24 @@ form.addEventListener("submit", async (e) => {
         throw new Error("Module de hachage (bcrypt) n'a pas pu être chargé. Veuillez réessayer.");
     }
 
-    // --- 2. Sign in anonymously first ---
+    // ======================================================
+    // ⭐️ 2. Définir la persistance de la session
+    // ======================================================
+    const persistenceType = rememberMeCheckbox.checked 
+        ? browserLocalPersistence  // "Se souvenir de moi" (persiste après fermeture)
+        : browserSessionPersistence; // "Session" (se termine à la fermeture)
+    
+    // Applique la règle de persistance AVANT de se connecter
+    await setPersistence(auth, persistenceType);
+    console.log(`Persistance de la session réglée sur : ${rememberMeCheckbox.checked ? 'local' : 'session'}`);
+
+    // --- 3. Sign in anonymously first ---
     console.log("Attempting anonymous sign-in...");
     const userCredential = await signInAnonymously(auth);
     tempAuthUser = userCredential.user;
     console.log("Anonymous sign-in successful, UID:", tempAuthUser.uid);
 
-    // --- 3. ✅ AMÉLIORATION : Query la DB au lieu de tout télécharger ---
+    // --- 4. ✅ AMÉLIORATION : Query la DB au lieu de tout télécharger ---
     console.log("Querying user database for:", username);
     const usersRef = ref(database, "users");
     // Crée une requête pour trouver l'utilisateur par 'username'
@@ -150,7 +168,7 @@ form.addEventListener("submit", async (e) => {
        throw new Error("Nom d'utilisateur ou mot de passe incorrect.");
     }
 
-    // --- 4. Find user and compare password ---
+    // --- 5. Find user and compare password ---
     console.log("Username match found. Comparing password...");
     if (!foundUser.password) {
        console.warn("User found but has no password hash:", foundUser.username);
@@ -164,20 +182,14 @@ form.addEventListener("submit", async (e) => {
         throw new Error("Nom d'utilisateur ou mot de passe incorrect.");
     }
     
-    // --- 5. Handle result (MOT DE PASSE CORRECT) ---
+    // --- 6. Handle result (MOT DE PASSE CORRECT) ---
     console.log("Password match! User ID:", userId);
     
-    // ✅ AJOUT : Mise à jour du statut "isActive"
-    try {
-        const userRefToUpdate = ref(database, `users/${userId}`);
-        await update(userRefToUpdate, { isActive: true }); // Ou 'true'
-        console.log("Statut utilisateur mis à jour : 'active'.");
-    } catch (updateErr) {
-        console.warn("Échec de la mise à jour du statut 'isActive'", updateErr);
-        // On continue quand même, la connexion est prioritaire
-    }
+    // ❗️ SUPPRIMÉ : Mise à jour du statut "isActive"
+    // La gestion de la connexion est désormais gérée par la persistance de la session Firebase.
+    // L'attribut 'isActive' reste un statut administratif (activé/désactivé par un admin).
 
-    // --- 6. LOGIN SUCCESS ---
+    // --- 7. LOGIN SUCCESS ---
     foundUser.id = userId; // Ajoute l'ID Firebase à l'objet utilisateur
     localStorage.setItem("currentUser", JSON.stringify(foundUser));
     showAlert(`Connexion réussie : ${foundUser.username}`, "success");

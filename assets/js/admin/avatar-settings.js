@@ -90,7 +90,7 @@ async function addAvatar(event) {
         // --- Générer la nouvelle clé et le nouveau chemin ---
         const newKey = `avatar${nextAvatarNum}`;
         // Basé sur votre exemple: /assets/avatars/img/avatar8.png
-        const newPath = `/assets/avatars/img/${newKey}.png`;
+        const newPath = `../assets/avatars/${newKey}.png`;
 
         const newAvatarRef = ref(database, `avatars/${newKey}`);
 
