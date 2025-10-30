@@ -96,7 +96,7 @@ async function loadBcrypt() {
   });
 }
 
-// ===================== Login (✅ MODIFIÉ AVEC GESTION DE SESSION) =====================
+// ===================== Login (✅ MODIFIÉ AVEC LES DEUX LOGIQUES) =====================
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -125,7 +125,7 @@ form.addEventListener("submit", async (e) => {
     }
 
     // ======================================================
-    // ⭐️ 2. Définir la persistance de la session
+    // ⭐️ LOGIQUE 1: Définir la persistance de la session
     // ======================================================
     const persistenceType = rememberMeCheckbox.checked 
         ? browserLocalPersistence  // "Se souvenir de moi" (persiste après fermeture)
@@ -185,12 +185,26 @@ form.addEventListener("submit", async (e) => {
     // --- 6. Handle result (MOT DE PASSE CORRECT) ---
     console.log("Password match! User ID:", userId);
     
-    // ❗️ SUPPRIMÉ : Mise à jour du statut "isActive"
-    // La gestion de la connexion est désormais gérée par la persistance de la session Firebase.
-    // L'attribut 'isActive' reste un statut administratif (activé/désactivé par un admin).
+    // ======================================================
+    // ⭐️ LOGIQUE 2: Mettre à jour "isActive" (Selon votre demande)
+    // ======================================================
+    try {
+        const userRefToUpdate = ref(database, `users/${userId}`);
+        await update(userRefToUpdate, { isActive: true }); 
+        console.log("Statut utilisateur mis à jour : 'active'.");
+    } catch (updateErr) {
+        console.warn("Échec de la mise à jour du statut 'isActive'", updateErr);
+        // On continue quand même, la connexion est prioritaire
+    }
+    // ======================================================
 
     // --- 7. LOGIN SUCCESS ---
     foundUser.id = userId; // Ajoute l'ID Firebase à l'objet utilisateur
+    
+    // ⭐️ AJOUT: Met à jour l'objet local avant de le sauvegarder
+    // pour que localStorage reflète le statut "isActive: true"
+    foundUser.isActive = true; 
+    
     localStorage.setItem("currentUser", JSON.stringify(foundUser));
     showAlert(`Connexion réussie : ${foundUser.username}`, "success");
 
