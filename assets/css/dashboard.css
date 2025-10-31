@@ -183,8 +183,21 @@ body {
 .leaderboard-card.group-card .btn-sm {
     font-size: 0.8rem; /* Smaller button text */
     padding: 0.3rem 0.8rem;
+
+    /* 🎨 STYLES AJOUTÉS : Thème "Étudiant" (Vert) */
+    background-color: #198754; /* Vert des points étudiant */
+    border-color: #198754;
+    color: #ffffff;
+    font-weight: 500;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
+.leaderboard-card.group-card .btn-sm:hover,
+.leaderboard-card.group-card .btn-sm:focus {
+    background-color: #146c43; /* Vert foncé (du .current-user .name) */
+    border-color: #146c43;
+    color: #ffffff;
+}
 
 /* --- Skeleton Loader Styles --- */
 .skeleton-card { background-color: #e9ecef; border-color: #dee2e6; box-shadow: none; min-height: 250px; } /* Added min-height */

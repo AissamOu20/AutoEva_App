@@ -1,0 +1,197 @@
+/* ======================================= */
+/* groups-ranking.css                      */
+/* Styles pour les cartes de classement    */
+/* (Groupes ET Étudiants)                  */
+/* ======================================= */
+
+/* --- Styles des cartes (Communs) --- */
+.leaderboard-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 1.2rem 1rem;
+    text-align: center;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    min-height: 250px; /* Hauteur minimale */
+}
+.leaderboard-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Badge de Rang --- */
+.rank-badge {
+    position: absolute;
+    top: -1px; left: -1px;
+    background-color: #6c757d; /* Default */
+    color: white;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-bottom-right-radius: 12px;
+    line-height: 1;
+    min-width: 35px;
+    z-index: 2;
+}
+/* Styles Top 3 */
+.leaderboard-card.rank-1 .rank-badge { background-color: #ffc107; color: #343a40; } /* Gold */
+.leaderboard-card.rank-2 .rank-badge { background-color: #adb5bd; color: #343a40; } /* Silver */
+.leaderboard-card.rank-3 .rank-badge { background-color: #cd7f32; color: white; } /* Bronze */
+/* Bordures Top 3 */
+.leaderboard-card.rank-1 { border-top: 4px solid #ffc107; }
+.leaderboard-card.rank-2 { border-top: 4px solid #adb5bd; }
+.leaderboard-card.rank-3 { border-top: 4px solid #cd7f32; }
+
+
+/* ======================================= */
+/* 1. STYLES POUR CARTE GROUPE
+/* ======================================= */
+
+.group-card .group-icon { /* Icône (remplace avatar) */
+    font-size: 3rem;
+    color: #6f42c1; /* Purple */
+    margin-top: 0.8rem;
+    margin-bottom: 0.75rem;
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.group-card .name { /* Group Name */
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #343a40;
+    margin-bottom: 0.25rem;
+}
+.group-card .details { /* Student Count */
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-bottom: 1rem;
+}
+.group-card .points { /* Group Points */
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fd7e14; /* Orange */
+    margin-top: auto;
+}
+/* Style pour le bouton "Voir classement" (Modifié en vert) */
+.group-card .btn-group-details {
+    margin-top: 1rem; /* Espace au-dessus du bouton */
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 20px; /* Pill shape */
+    padding: 0.4rem 1rem;
+    
+    /* --- 🎨 Couleurs Vertes (AJOUTÉES) --- */
+    /* Remplace le 'btn-outline-info' bleu par défaut */
+    background-color: #198754; /* Vert (style étudiant) */
+    border-color: #198754;
+    color: #ffffff;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* 🎨 AJOUT: Style de survol (hover) pour le bouton */
+.group-card .btn-group-details:hover,
+.group-card .btn-group-details:focus {
+    background-color: #146c43; /* Vert foncé (style surlignage) */
+    border-color: #146c43;
+    color: #ffffff;
+}
+
+/* ======================================= */
+/* 2. STYLES POUR CARTE ÉTUDIANT
+/* ======================================= */
+
+.student-card .avatar {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 0.8rem;
+    margin-bottom: 0.5rem;
+    border: 3px solid #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.student-card .name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #343a40;
+    margin-bottom: 0.1rem;
+}
+.student-card .details {
+    font-size: 0.8rem;
+    color: #6c757d;
+    margin-bottom: 0.8rem;
+}
+.student-card .points {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #198754; /* Vert */
+    margin-top: auto;
+}
+
+
+/* ======================================= */
+/* 3. STYLES SPÉCIAUX (Surlignage, Skeleton)
+/* ======================================= */
+
+/* --- Surlignage Groupe Utilisateur --- */
+.leaderboard-card.current-user-group {
+  background-color: #e6f7ec;
+  border-left: 5px solid #198754 !important;
+  box-shadow: 0 6px 20px rgba(25, 135, 84, 0.15);
+}
+.leaderboard-card.current-user-group .rank-badge {
+  background-color: #198754;
+  color: white;
+}
+.leaderboard-card.current-user-group .name {
+  font-weight: 700;
+  color: #146c43;
+}
+.leaderboard-card.current-user-group .group-icon,
+.leaderboard-card.current-user-group .points {
+  color: #198754;
+}
+
+/* --- Surlignage Étudiant Utilisateur --- */
+.leaderboard-card.current-user-student {
+  background-color: #e6f7ec;
+  border-left: 5px solid #198754 !important;
+  box-shadow: 0 6px 20px rgba(25, 135, 84, 0.15);
+}
+.leaderboard-card.current-user-student .rank-badge {
+  background-color: #198754;
+  color: white;
+}
+.leaderboard-card.current-user-student .name {
+  font-weight: 700;
+  color: #146c43;
+}
+
+
+/* --- Styles Skeleton Loader --- */
+.skeleton-card { background-color: #e9ecef; border-color: #dee2e6; box-shadow: none; }
+.skeleton-card:hover { transform: none; box-shadow: none; }
+.skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: skeleton-loading 1.5s infinite linear; border-radius: 4px; color: transparent !important; user-select: none; border: none !important; }
+@keyframes skeleton-loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+/* Tailles des squelettes */
+.skeleton-card .rank-badge.skeleton { width: 35px; height: 26px; border-bottom-right-radius: 12px; background-color: #ced4da !important; animation: none; position: absolute; top: -1px; left: -1px; z-index: 2; border-left: none !important;}
+/* Squelette pour icône groupe (carré) ou avatar (rond) */
+.skeleton-card .avatar.skeleton { width: 65px !important; height: 65px !important; margin-top: 0.8rem !important; margin-bottom: 0.5rem !important; border: 3px solid #e0e0e0 !important; box-shadow: none !important;}
+.skeleton-card .name.skeleton { width: 50% !important; height: 18px !important; margin: 0 auto 0.4rem auto !important; }
+.skeleton-card .details.skeleton { width: 35% !important; height: 12px !important; margin: 0 auto 0.8rem auto !important; }
+.skeleton-card .points.skeleton { width: 25% !important; height: 22px !important; margin: auto auto 0 auto !important; }
+
+/* --- Animations --- */
+.animate-slide-up { opacity: 0; transform: translateY(30px); animation: slideInUpAnimation 0.8s ease-out forwards; }
+@keyframes slideInUpAnimation { to { opacity: 1; transform: translateY(0); } }
+

@@ -38,7 +38,7 @@ function showSkeletons(container, count = 10, type = 'student') {
 // ============================
 document.addEventListener("DOMContentLoaded", async () => {
     showSkeletons(studentLeaderboardContainer, 10);
-    showSkeletons(groupLeaderboardContainer, 6);
+    showSkeletons(groupLeaderboardContainer, 8);
 
     const currentUser = await checkAuth(true);
     if (!currentUser) {
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     currentUserId = currentUser.id; // Store current user ID
 
     if (usernameDisplayWelcome) {
-        usernameDisplayWelcome.textContent = currentUser.prenom || currentUser.username || "Utilisateur";
+        usernameDisplayWelcome.textContent = (currentUser.prenom +" "+currentUser.username).toUpperCase() || "Utilisateur";
     }
 
     await loadStudentLeaderboard();
@@ -128,7 +128,7 @@ async function loadGroupLeaderboard() {
             .sort((a, b) => (a.rang || 999) - (b.rang || 999));
 
         groupLeaderboardContainer.innerHTML = "";
-        const topGroups = groups.slice(0, 6);
+        const topGroups = groups.slice(0, 8);
 
          if (topGroups.length === 0) { groupLeaderboardContainer.innerHTML = "<p>Aucun groupe classé.</p>"; /* Handle removing button */ return; }
 

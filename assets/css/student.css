@@ -1,117 +1,113 @@
-/* ======================== */
-/* 🎨 student.css          */
-/* Styles for student table */
-/* and related elements     */
-/* ======================== */
+/* ===================================================
+ * 🎨 Thème "Surprise" - Corrigé pour 7 Colonnes (Table Étudiants)
+ * =================================================== */
 
-/* 👁‍🗨 Avatar Styling */
-.avatar {
-  width: 35px;         /* Avatar size */
-  height: 35px;
-  border-radius: 50%;  /* Makes it circular */
-  object-fit: cover;   /* Ensures image covers the area nicely */
-  border: 2px solid #e9ecef; /* Light grey border */
-}
-/* Style pour le grand avatar dans le modal profil */
-.avatar-lg {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border: 3px solid #eee;
+/* Définition des couleurs principales */
+:root {
+    --vibrant-gradient: linear-gradient(90deg, #0d6efd 0%, #0d6efd 100%);
+    --vibrant-primary: #0d6efd;
+    
+    --bg-page: #f9fafb; /* Fond de page très clair */
+    --bg-card: #ffffff; /* Fond de carte blanc pur */
+    --text-header: #ffffff;
+    --text-body: #374151;
+    --border-color: #e5e7eb;
 }
 
-/* ================================ */
-/* 🎨 Style Table Amélioré (Votre code) */
-/* ================================ */
-
-/* Classe principale de la table */
-.custom-table {
-  border: none; /* Supprime la bordure extérieure */
-  
-  /* Sépare les lignes pour un look "aéré" */
-  border-collapse: separate; 
-  border-spacing: 0 4px; /* Espace vertical entre les lignes */
+/* --- STYLES GLOBAUX --- */
+body {
+    background-color: var(--bg-page) !important;
 }
 
-/* Cellules (header et body) */
-.custom-table th,
-.custom-table td {
-    vertical-align: middle; /* Aligne tout au centre verticalement */
-    padding: 0.9rem;        /* Augmente un peu le padding */
-    border: none;           /* Supprime les bordures par défaut */
+/* Appliquer le style au conteneur principal de la table */
+.card {
+    border: none !important;
+    border-radius: 0.75rem !important; /* 12px */
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+    overflow: hidden; /* TRÈS IMPORTANT */
 }
 
-/* En-tête */
-.custom-table thead th {
-    border-bottom: 2px solid #dee2e6; /* Ligne de fond plus épaisse pour l'en-tête */
+.card-body.p-0 {
+    padding: 0 !important;
 }
 
-/* Lignes du corps */
-.custom-table tbody tr {
-    /* Donne un fond blanc et une ombre légère à chaque ligne */
-    background-color: #fff;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-    transition: all 0.2s ease;
+/* --- STYLES DU TABLEAU --- */
+/* Cible l'ID de votre table */
+#studentsTable {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    vertical-align: middle;
+    color: var(--text-body);
 }
 
-/* S'assure que la 1ère et dernière cellule ont des coins arrondis */
-.custom-table tbody tr td:first-child {
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-}
-.custom-table tbody tr td:last-child {
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
+#studentsTable th,
+#studentsTable td {
+    padding: 0.85rem 1rem;
+    border-color: var(--border-color); /* Bordure subtile */
+    vertical-align: middle;
 }
 
-/* Effet de survol sur la ligne */
-.custom-table tbody tr:hover {
-    transform: translateY(-2px); /* Léger "lift" */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* Ombre plus prononcée */
-    background-color: #fff; /* Garde le fond blanc au survol */
-    cursor: pointer;
+#studentsTable thead th {
+    background: var(--vibrant-gradient);
+    color: var(--text-header);
+    border-bottom: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
 }
 
-/* S'assurer que les icônes de tri sont bien alignées */
-#studentsTable thead th.sortable::after {
-    right: 0.9rem; /* Aligne la flèche avec le nouveau padding */
+/* Gérer les coins arrondis de l'en-tête */
+#studentsTable thead th:first-child {
+    border-top-left-radius: 0.75rem;
+}
+#studentsTable thead th:last-child {
+    border-top-right-radius: 0.75rem;
 }
 
-/* ================================== */
-/* 🎨 Boutons d'Action (CORRIGÉ)      */
-/* Cible les classes Bootstrap du JS  */
-/* ================================== */
+/* Effet de "zébrure" (lignes alternées) */
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: rgba(249, 250, 251, 0.5);
+}
 
-/* 1. Rendre TOUS les boutons .btn dans la table circulaires
-     (Cible les classes .btn .btn-sm etc. de votre JS)
-*/
-.custom-table td .btn {
-  border-radius: 50% !important; /* Force le cercle */
+/* Effet de survol (hover) "Pop" */
+.table-hover > tbody > tr {
+    transition: all 0.2s ease-out;
+}
+.table-hover > tbody > tr:hover {
+    position: relative;
+    z-index: 10;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.07);
+    background-color: #ffffff;
+}
+.table-hover > tbody > tr:hover > * {
+    color: var(--vibrant-primary);
+}
+
+/* --- 🎨 Boutons d'Action (Style fusionné) --- */
+#studentsTable td .btn {
+  border-radius: 50% !important;
   width: 36px;
   height: 36px;
-  padding: 0; /* Enlève padding pour centrer icône */
+  padding: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   margin: 0 3px;
   transition: all 0.3s ease;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  font-size: 0.9rem; /* Taille de l'icône */
+  font-size: 0.9rem;
 }
 
-/* 2. MODIFICATION CLÉ :
-     Forcer les styles 'outline' à avoir un fond plein 
-     et une icône visible TOUT LE TEMPS.
-*/
-
+/* Cible les classes de votre JS (j'ai deviné les noms, ex: .btn-edit) */
 /* --- Bouton Modifier (Bleu) --- */
-.custom-table .btn-edit.btn-outline-primary {
+#studentsTable .btn-edit.btn-outline-primary {
   background-color: #0d6efd !important;
-  color: #fff !important; /* Icône blanche */
+  color: #fff !important;
   border-color: #0d6efd !important;
 }
-/* Hover */
-.custom-table .btn-edit.btn-outline-primary:hover {
+#studentsTable .btn-edit.btn-outline-primary:hover {
   background-color: #0b5ed7 !important;
   border-color: #0a58ca !important;
   transform: scale(1.15);
@@ -119,13 +115,12 @@
 }
 
 /* --- Bouton Supprimer (Rouge) --- */
-.custom-table .btn-delete.btn-outline-danger {
+#studentsTable .btn-delete.btn-outline-danger {
   background-color: #dc3545 !important;
-  color: #fff !important; /* Icône blanche */
+  color: #fff !important;
   border-color: #dc3545 !important;
 }
-/* Hover */
-.custom-table .btn-delete.btn-outline-danger:hover {
+#studentsTable .btn-delete.btn-outline-danger:hover {
   background-color: #bb2d3b !important;
   border-color: #b02a37 !important;
   transform: scale(1.15);
@@ -133,13 +128,12 @@
 }
 
 /* --- Bouton Réinitialiser (Jaune) --- */
-.custom-table .btn-reset.btn-outline-warning {
+#studentsTable .btn-reset.btn-outline-warning {
   background-color: #ffc107 !important;
-  color: #000 !important; /* Icône noire */
+  color: #000 !important;
   border-color: #ffc107 !important;
 }
-/* Hover */
-.custom-table .btn-reset.btn-outline-warning:hover {
+#studentsTable .btn-reset.btn-outline-warning:hover {
   background-color: #e0a800 !important;
   border-color: #d39e00 !important;
   color: #000 !important;
@@ -148,183 +142,158 @@
 }
 
 
-/* ======================== */
-/* 🎨 Reste du CSS          */
-/* ======================== */
-
-/* Status Badge Styling (Active/Inactive) */
-.badge {
-  padding: 0.45em 0.75em;    /* Comfortable padding */
-  font-size: 0.8rem;         /* Slightly smaller font */
-  border-radius: 0.5rem;     /* Rounded corners */
-  font-weight: 600;          /* Bolder text */
-  text-transform: uppercase; /* Uppercase text */
+/* --- Avatars --- */
+.avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e9ecef;
 }
 
-/* Modern Gradient Button (e.g., "Add Student") */
-.btn-gradient {
-  background: linear-gradient(90deg, #0d6efd, #6f42c1); /* Blue to Purple gradient */
-  color: #fff;                     /* White text */
-  border: none;                    /* No border */
-  border-radius: 30px;             /* Pill shape */
-  padding: 8px 18px;               /* Padding */
-  font-weight: 500;                /* Medium font weight */
-  transition: all 0.3s ease;       /* Smooth transition */
-  cursor: pointer;                 /* Pointer cursor */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.15); /* Subtle shadow */
-}
-.btn-gradient:hover,
-.btn-gradient:focus {
-  opacity: 0.9;                     /* Slightly transparent on hover */
-  transform: translateY(-2px);    /* Lift effect */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Stronger shadow */
-  color: #fff;                     /* Ensure text remains white */
-  outline: none;                    /* Remove focus outline */
-}
-
-/* Gradient Modal Header Background */
-.bg-gradient {
-  background: linear-gradient(135deg, #0d6efd, #6f42c1); /* Diagonal gradient */
-  color: #fff; /* White text for contrast */
-}
-
-/* Style for table headers */
-thead th {
-  text-transform: uppercase;   /* Uppercase headers */
-  font-size: 0.8rem;           /* Smaller header font */
-  letter-spacing: 0.5px;       /* Spacing between letters */
-  color: #6c757d;              /* Grey text color */
-  font-weight: 600;            /* Bolder headers */
-  vertical-align: middle;      /* Vertically align text */
-}
-
-/* Style for selected/active table row */
-tr.selected, tr:active { /* Use :active for brief highlight on click */
-  background-color: #cfe2ff !important; /* Light blue highlight */
-  font-weight: 500; /* Slightly bolder text */
-}
-
-/* Ensure toast container is above other elements */
-.toast-container {
-  z-index: 2000; /* High z-index */
-}
-
-/* Basic Toast Animations (Optional - Bootstrap handles some) */
-.toast {
-  /* Example slide-in/fade-out - Adjust timing/effects as needed */
-  animation: slideInRight 0.5s ease forwards, fadeOut 0.5s ease 3s forwards;
-}
-
-@keyframes slideInRight {
-  from { opacity: 0; transform: translateX(100%); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes fadeOut {
-  from { opacity: 1; transform: translateX(0); }
-  to   { opacity: 0; transform: translateX(100%); }
-}
-
-/* Checkbox Column Width */
-th.select-all,
-td:first-child .form-check-input {
-  width: 40px; /* Adjust as needed for checkbox alignment */
-}
-/* ===============================
-   Styles pour le tri des tables
-   =============================== */
+/* --- STYLES DE TRI (Adaptés) --- */
 #studentsTable thead th.sortable {
     cursor: pointer;
     position: relative;
     user-select: none;
     padding-right: 25px; /* Espace pour la flèche */
 }
-
 #studentsTable thead th.sortable:hover {
-    background-color: #e9ecef; /* Un léger surlignage */
+    background-color: var(--vibrant-primary);
+    filter: brightness(1.1);
 }
-
-/* Flèche par défaut (non trié) */
 #studentsTable thead th.sortable::after {
-    content: '\2195'; /* Flèche haut/bas */
+    content: '\2195';
     font-size: 0.9em;
-    color: #aaa;
+    color: #fff;
+    opacity: 0.7;
     position: absolute;
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
-    transition: color 0.2s;
+    transition: all 0.2s;
 }
-
-/* Flèche tri ASC */
 #studentsTable thead th.sortable.sort-asc::after {
-    content: '\25B2'; /* Flèche vers le haut */
-    color: #333;
+    content: '\25B2';
+    opacity: 1;
 }
-
-/* Flèche tri DESC */
 #studentsTable thead th.sortable.sort-desc::after {
-    content: '\25BC'; /* Flèche vers le haut */
-    color: #333;
+    content: '\25BC';
+    opacity: 1;
 }
 
-/* ================================== */
-/* 🎨 ⭐️ AJOUT: Style Checkbox       */
-/* ================================== */
-.custom-table .form-check-input {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  width: 1.25em;
-  height: 1.25em;
-  border: 2px solid #adb5bd;
-  border-radius: 0.25rem;
-  background-color: #fff;
-  margin: 0;
-  vertical-align: middle;
-  position: relative;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-.custom-table .form-check-input:hover {
-  border-color: #0d6efd;
-}
-.custom-table .form-check-input:checked {
-  background-color: #0d6efd;
-  border-color: #0d6efd;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
-  background-size: 65%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.custom-table .form-check-input:indeterminate {
-  background-color: #0d6efd;
-  border-color: #0d6efd;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M5 10h10'/%3e%3c/svg%3e");
-  background-size: 65%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.custom-table th.select-all .form-check-input {
-  margin: 0 auto;
-  display: block;
+
+/* ===================================================
+ * 📱 SECTION RESPONSIVE (CORRIGÉE POUR 7 COLONNES)
+ * =================================================== */
+@media (max-width: 767px) {
+    
+    #studentsTable thead {
+        display: none; /* Cache l'en-tête */
+    }
+
+    #studentsTable tbody,
+    #studentsTable tr {
+        display: block;
+        width: 100%;
+    }
+    
+    #studentsTable tr {
+        /* Devient une carte */
+        margin-bottom: 1rem;
+        border: none;
+        border-radius: 0.75rem;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+        overflow: hidden;
+        background-color: var(--bg-card);
+        /* Permet de réorganiser les <td> */
+        display: flex;
+        flex-direction: column;
+    }
+
+    #studentsTable td {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        text-align: right !important;
+        padding: 0.75rem 1rem;
+        padding-left: 45% !important; /* Espace pour le label */
+        position: relative;
+        min-height: 48px;
+        border: none;
+        border-bottom: 1px solid var(--border-color);
+        background-color: var(--bg-card);
+    }
+    
+    #studentsTable tr td:last-child {
+        border-bottom: none; /* Pas de bordure sur le dernier item */
+    }
+
+    /* 🎨 LA SURPRISE MOBILE (7 Colonnes) */
+    /* L'ordre des <td> sera : 1:Checkbox, 2:ID, 3:User, 4:Nom, 5:Groupe, 6:Statut, 7:Actions */
+
+    /* (Colonne 4) "Nom Complet" devient l'en-tête de la carte */
+    #studentsTable td:nth-child(4) {
+        background: var(--vibrant-gradient);
+        color: var(--text-header);
+        font-weight: 600;
+        font-size: 1rem;
+        min-height: 56px;
+        justify-content: flex-end;
+        /* Place cet élément en premier dans la "colonne" flex */
+        order: -1; 
+    }
+
+    /* Labels */
+    #studentsTable td::before {
+        content: "Label"; /* Texte par défaut */
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40%;
+        text-align: left !important;
+        font-weight: 600;
+        color: #555;
+        font-size: 0.85rem;
+    }
+    
+    /* (Colonne 1) Checkbox */
+    #studentsTable td:nth-child(1) {
+        justify-content: flex-start;
+        padding-left: 1rem !important;
+    }
+    #studentsTable td:nth-child(1)::before {
+        display: none; /* Pas de label */
+    }
+    
+    /* (Colonne 2) ID */
+    #studentsTable td:nth-child(2)::before { content: "ID"; }
+    
+    /* (Colonne 3) Utilisateur */
+    #studentsTable td:nth-child(3)::before { content: "Utilisateur"; }
+    
+    /* (Colonne 4) "Nom Complet" (Label pour l'en-tête) */
+    #studentsTable td:nth-child(4)::before {
+        content: "Nom";
+        color: var(--text-header);
+        opacity: 0.8;
+    }
+    
+    /* (Colonne 5) Groupe */
+    #studentsTable td:nth-child(5)::before { content: "Groupe"; }
+    
+    /* (Colonne 6) Statut */
+    #studentsTable td:nth-child(6)::before { content: "Statut"; }
+    
+    /* (Colonne 7) Actions */
+    #studentsTable td:nth-child(7) {
+        justify-content: center;
+        padding-left: 1rem !important;
+    }
+    #studentsTable td:nth-child(7)::before {
+        display: none; /* Pas de label */
+    }
 }
 
-/* ================================== */
-/* 🎨 ⭐️ AJOUT: Responsive Table     */
-/* ================================== */
-@media (max-width: 768px) {
-  /* Ce style s'applique au wrapper .table-responsive
-     uniquement sur les petits écrans (tablettes et mobiles) */
-  .table-responsive {
-    border: 1px solid #eee;
-    border-radius: 8px;
-  }
-
-  /* Force le tableau à avoir une largeur minimale,
-     ce qui active le défilement horizontal (overflow-x: auto)
-     du .table-responsive. */
-  .table-responsive .custom-table {
-    min-width: 800px;
-  }
-}
