@@ -73,7 +73,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 async function loadQuizData() {
     try {
         // Fetch quiz metadata (title, description) using user-defined quizId
-        // IMPORTANT: Ensure your Firebase path is 'quizzes' not 'quizzes' if that's your structure
         const quizSnap = await get(ref(database, `quizzes/${quizId}`));
         if (!quizSnap.exists()) throw new Error("Quiz introuvable !");
 
@@ -382,7 +381,7 @@ function calculateScore() {
 
 // --- Save Quiz Result to Firebase ---
 async function saveQuizResult(scoreData) {
-    const user = await checkAuth(true);
+    const user = await checkAuth(true); // 'user' contient { id, username, group, ... }
     if (!user) throw new Error("Utilisateur non authentifié.");
 
     // 1. Save detailed result to '/results/' collection (unique entry per attempt)
@@ -412,7 +411,13 @@ async function saveQuizResult(scoreData) {
 
     // 3. Recalculate and update the user's overall total points
     await updateUserTotalPoints(user.id);
-
+    
+    // ==============================================================
+    // ⭐️ NOUVELLE ÉTAPE 4: Mettre à jour le total et LE RANG du groupe
+    // ==============================================================
+    // (Nous n'avons plus besoin de 'userGroup' car la fonction recalcule tout)
+    await recalculateGroupScoresAndRanks();
+    
     return resultId;
 }
 
@@ -452,6 +457,77 @@ async function updateUserTotalPoints(userId) {
         // Log error but don't block execution
     }
 }
+
+// ====================================================================
+// ⭐️ NOUVELLE FONCTION: Recalculer les scores ET RANGS de TOUS les groupes
+// (Copie de la logique de student-settings.js pour la cohérence)
+// ====================================================================
+/**
+ * Recalcule les scores totaux ET les rangs de TOUS les groupes.
+ * Appelé après qu'un utilisateur a terminé un quiz.
+ */
+async function recalculateGroupScoresAndRanks() {
+    console.log("Recalcul des scores et rangs des groupes...");
+    try {
+        const groupsSnap = await get(ref(database, "groups"));
+        const usersSnap = await get(ref(database, "users"));
+
+        if (!usersSnap.exists()) {
+            console.warn("Recalcul des rangs annulé : aucun utilisateur trouvé.");
+            return;
+        }
+
+        const allUsers = usersSnap.val();
+        const existingGroups = groupsSnap.val() || {};
+        
+        // 1. Réinitialiser les points et les listes d'étudiants de tous les groupes
+        // (Nécessaire si un étudiant a changé de groupe ou pour recalculer à partir de zéro)
+        for (let groupName in existingGroups) {
+            existingGroups[groupName].total_points = 0;
+            existingGroups[groupName].etudiants = []; 
+        }
+
+        // 2. Calculer les points en lisant tous les utilisateurs
+        for (let userId in allUsers) {
+            const user = allUsers[userId];
+            if (user.role === 'student' && (user.group || user.Groupe)) {
+                const groupName = user.group || user.Groupe;
+                
+                // S'assurer que le groupe existe
+                if (!existingGroups[groupName]) {
+                     existingGroups[groupName] = { nom: groupName, total_points: 0, etudiants: [] };
+                }
+                
+                // On additionne le totalPoints (qui vient d'être mis à jour) de l'étudiant
+                existingGroups[groupName].total_points += (user.totalPoints || 0);
+                existingGroups[groupName].etudiants.push(user.id);
+            }
+        }
+
+        // 3. Convertir en tableau, trier et assigner les rangs
+        const groupList = Object.values(existingGroups);
+        groupList.sort((a, b) => (b.total_points || 0) - (a.total_points || 0)); // Tri descendant
+
+        const updates = {};
+        groupList.forEach((group, index) => {
+            const groupName = group.nom;
+            // Prépare la mise à jour pour ce groupe
+            updates[`groups/${groupName}/total_points`] = group.total_points;
+            updates[`groups/${groupName}/rang`] = index + 1; // Le rang est 1-indexé
+            updates[`groups/${groupName}/etudiants`] = group.etudiants; // Maintient la liste des étudiants à jour
+        });
+
+        // 4. Appliquer la mise à jour groupée
+        if (Object.keys(updates).length > 0) {
+            await update(ref(database), updates);
+            console.log("Classement (rangs) des groupes mis à jour.");
+        }
+
+    } catch (error) {
+        console.error("Erreur lors du recalcul des rangs de groupe:", error);
+    }
+}
+
 
 // --- Basic Alert Function ---
 function showBasicAlert(message, type = "info") {

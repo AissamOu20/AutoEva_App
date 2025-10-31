@@ -29,7 +29,7 @@ let categoryChartInstance = null;
 // FONCTION PRINCIPALE : Charger et afficher toutes les stats
 // ===============================
 async function loadAndDisplayStats() {
-    console.log("Chargement des statistiques...");
+    
     // Mettre des placeholders de chargement
     if (studentCountEl) studentCountEl.textContent = '...';
     if (groupCountEl) groupCountEl.textContent = '...';
@@ -134,10 +134,10 @@ async function loadAndDisplayStats() {
         updateGroupChart(groupsArray);
         updateCategoryChart(attemptsPerCategory);
 
-        console.log("Statistiques chargées et affichées.");
+
 
     } catch (error) {
-        console.error("Erreur lors du chargement/affichage des stats:", error);
+    
         // Afficher des messages d'erreur dans l'UI
         if (studentCountEl) studentCountEl.textContent = 'Erreur';
         if (groupCountEl) groupCountEl.textContent = 'Erreur';
@@ -196,7 +196,11 @@ function renderStudentRanking(students) {
 // FONCTIONS D'AFFICHAGE (GRAPHIQUES)
 // ===============================
 function updateGroupChart(groups) {
-    if (!groupChartCtx) return;
+
+    if (!groupChartCtx) {
+        console.error("Contexte du graphique de groupe non trouvé.");
+        return;
+    }
     // S'assurer que Chart.js est chargé
     if (typeof Chart === 'undefined') {
         console.error("Chart.js n'est pas chargé.");
@@ -305,7 +309,7 @@ function generateColors(count, border = false) {
  * @param {Object} user L'objet utilisateur admin (au cas où)
  */
 export function initDashboard(user) {
-    console.log("Initialisation du module Dashboard Stats...");
+
     
     // Charger les statistiques
     loadAndDisplayStats();

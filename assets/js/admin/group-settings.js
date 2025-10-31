@@ -320,13 +320,18 @@ function openStudentEditModal(student) {
 }
 
 // (MODIFIÉ) Gère la sauvegarde (Ajout ou Modification) avec Hachage
+
+// (MODIFIÉ) Gère la sauvegarde (Ajout ou Modification) avec Hachage
+// (MODIFIÉ) Gère la sauvegarde (Ajout ou Modification) avec Hachage
+// ET utilise un ID numérique auto-incrémenté (Ex: 1, 2, 3...)
 async function saveStudentFromGroup(event) {
   event.preventDefault();
 
-  const studentId = studentFromGroupId.value; // Vide si Ajout, rempli si Édition
+  // 'studentId' est la clé Firebase (vide si Ajout, rempli si Édition)
+  const studentId = studentFromGroupId.value; 
   const nom = studentFromGroupName.value;
   const prenom = studentFromGroupFirstName.value;
-  const username = studentFromGroupUsername.value;
+  const username = studentFromGroupUsername.value; 
   const passwordInput = studentFromGroupPassword.value;
 
   let bcrypt; 
@@ -340,10 +345,11 @@ async function saveStudentFromGroup(event) {
   }
 
   try {
-    let finalId = studentId;
+    let finalId = studentId; // Sera écrasé en mode "Ajout"
     let isNewUser = false;
     let hashedPassword = null; 
 
+    // 1. Hacher le mot de passe s'il est fourni
     if (passwordInput) {
         try {
             hashedPassword = await bcrypt.hash(passwordInput, 10); 
@@ -356,8 +362,10 @@ async function saveStudentFromGroup(event) {
 
     if (studentId) {
       // --- Mode Édition ---
+      // (Aucun changement ici, on met à jour l'ID existant)
       const studentRef = ref(database, `users/${studentId}`);
       const updates = { nom, prenom, username };
+      
       if (hashedPassword) { 
         updates.password = hashedPassword;
       }
@@ -369,29 +377,67 @@ async function saveStudentFromGroup(event) {
         alert("Le mot de passe est obligatoire pour un nouvel étudiant.");
         return;
       }
+      if (!username) {
+        alert("L'identifiant (username) est obligatoire pour un nouvel étudiant.");
+        return;
+      }
+
       isNewUser = true;
       
-      // ❗️ Logique d'ID améliorée : Utiliser la clé unique de Firebase
+      // ⬇️ C'EST ICI : "Calculer la database pour incrémenter" ⬇️
+
+      // 1. Récupérer tous les utilisateurs
       const usersRef = ref(database, "users");
-      const newUserRef = push(usersRef); // Génère une clé unique
-      finalId = newUserRef.key; // La clé Firebase
+      const usersSnap = await get(usersRef); // ⬅️ On lit la database
+      let maxId = 0; // On commence à 0
+
+      if (usersSnap.exists()) {
+        const allUsers = usersSnap.val();
+        
+        // 2. On "calcule" en cherchant le plus grand ID numérique
+        for (const userIdKey in allUsers) {
+          const numericId = parseInt(userIdKey, 10);
+          
+          if (!isNaN(numericId) && numericId > maxId) {
+            maxId = numericId; // ⬅️ On trouve le plus grand ID
+          }
+        }
+      }
+
+      // 3. On "incrémente le nombre" (maxId + 1)
+      const newNumericId = maxId + 1; // ⬅️ On ajoute 1 au plus grand ID
+
+      // 4. On utilise ce nouvel ID
+      finalId = String(newNumericId); 
+      
+      const newUserRef = ref(database, `users/${finalId}`);
+      
+      // 5. (Sécurité) Vérifier si cet ID existe
+      const existingUserSnap = await get(newUserRef);
+      if (existingUserSnap.exists()) {
+          alert(`Erreur critique (Concurrence) : L'ID ${finalId} existe déjà. Veuillez réessayer.`);
+          return; 
+      }
+      // ⬆️ FIN DE LA LOGIQUE D'ID ⬆️
 
       const newStudentData = {
-        id: finalId, // Stocke la clé unique aussi comme 'id'
+        id: finalId, // Stocke l'ID "5" (string)
         nom,
         prenom,
         username,
         password: hashedPassword, 
         group: currentGroupIdForModal,
         role: "student",
-        avatar: '/assets/img/user.png',
-        isActive: "active", // changé en string pour correspondre aux admins
+        avatar: '../assets/img/user.png',
+        isActive: false,
         quizzes: {},
         totalPoints: 0
       };
-      await set(newUserRef, newStudentData); // Utilise set sur la nouvelle référence
+      
+      await set(newUserRef, newStudentData); 
     }
 
+    // Actions post-sauvegarde
     studentFromGroupModal.hide();
     loadStudentsForGroup(currentGroupIdForModal);
 
@@ -404,7 +450,6 @@ async function saveStudentFromGroup(event) {
     alert("Erreur lors de la sauvegarde de l'étudiant.");
   }
 }
-
 
 // (MODIFIÉ) Supprime un étudiant par sa clé Firebase
 async function deleteStudentFromGroup(studentKey) { // 'studentKey' est la clé Firebase (student.id)
