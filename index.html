@@ -30,6 +30,18 @@
   <link rel="stylesheet" href="./assets/css/navbar.css">
 
 </head>
+<script>
+    (function() {
+      // Vérifie si l'utilisateur est stocké localement
+      const currentUser = localStorage.getItem("currentUser");
+      
+      if (currentUser) {
+        // Si oui, rediriger vers le tableau de bord étudiant
+        window.location.href = './student/dashboard.html';
+      }
+      // Si non, ne rien faire et laisser la page d'accueil s'afficher.
+    })();
+  </script>
 
 <body>
   <div class="wave-background">
