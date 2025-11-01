@@ -296,4 +296,23 @@ body {
         display: none; /* Pas de label */
     }
 }
+.avatar-lg {
+  display: inline-flex;     /* Utilise flex pour centrer (utile pour les initiales) */
+  align-items: center;
+  justify-content: center;
+  width: 80px;              /* Taille large (width) */
+  height: 80px;             /* Taille large (height) */
+  border-radius: 50%;       /* Rend l'avatar parfaitement rond */
+  overflow: hidden;         /* Masque les coins de l'image */
+  background-color: #0d6efd; /* Couleur de fond (pour les initiales) */
+  color: #ffffff;           /* Couleur du texte (pour les initiales) */
+  font-size: 2rem;          /* Taille de la police pour les initiales */
+  font-weight: 600;
+}
 
+/* S'applique si vous mettez une balise <img> dans votre avatar */
+.avatar-lg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Assure que l'image remplit le cercle sans être déformée */
+}
